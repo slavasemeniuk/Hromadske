@@ -1,0 +1,573 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		43759B4762AA269357A4E50D /* libPods-Hromadske.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1AD7FFDC3FB61C4705150C0 /* libPods-Hromadske.a */; };
+		8405379C1AB776E500AC7971 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405379B1AB776E500AC7971 /* MenuViewController.m */; };
+		840DD8DA1ABB4C1B00EC6923 /* TeamViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 840DD8D81ABB4C1B00EC6923 /* TeamViewCell.m */; };
+		840DD8DB1ABB4C1B00EC6923 /* TeamViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DD8D91ABB4C1B00EC6923 /* TeamViewCell.xib */; };
+		845BA1571AB777AF000E7204 /* ControllersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845BA1561AB777AF000E7204 /* ControllersManager.m */; };
+		845BA1591AB779B6000E7204 /* itemsButtonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 845BA1581AB779B6000E7204 /* itemsButtonIcon.png */; };
+		849D287A1ABB39C300AB07BC /* HelpProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D28791ABB39C300AB07BC /* HelpProjectViewController.m */; };
+		849D287D1ABB3B8800AB07BC /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D287C1ABB3B8800AB07BC /* ContactsViewController.m */; };
+		84A2A6891ABB7D59004862E6 /* RemoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A6881ABB7D59004862E6 /* RemoteManager.m */; };
+		84C22FD61AB77282006C8C2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C22FD51AB77282006C8C2E /* main.m */; };
+		84C22FD91AB77282006C8C2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C22FD81AB77282006C8C2E /* AppDelegate.m */; };
+		84C22FDC1AB77283006C8C2E /* Hromadske.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84C22FDA1AB77283006C8C2E /* Hromadske.xcdatamodeld */; };
+		84C22FE21AB77283006C8C2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C22FE01AB77283006C8C2E /* Main.storyboard */; };
+		84C22FE41AB77283006C8C2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C22FE31AB77283006C8C2E /* Images.xcassets */; };
+		84C22FE71AB77283006C8C2E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C22FE51AB77283006C8C2E /* LaunchScreen.xib */; };
+		84C22FF31AB77283006C8C2E /* HromadskeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C22FF21AB77283006C8C2E /* HromadskeTests.m */; };
+		84D91E751ABB7E9C00670983 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D91E741ABB7E9C00670983 /* DataManager.m */; };
+		84D91E781ABB82CC00670983 /* Employe.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D91E771ABB82CC00670983 /* Employe.m */; };
+		84DB4E121AB7774100D7BA12 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4E111AB7774100D7BA12 /* NewsViewController.m */; };
+		84DB4E151AB7776400D7BA12 /* TeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4E141AB7776400D7BA12 /* TeamViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		84C22FED1AB77283006C8C2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84C22FC81AB77282006C8C2E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84C22FCF1AB77282006C8C2E;
+			remoteInfo = Hromadske;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1938097AA927F14D5DD9C3EF /* Pods-Hromadske.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hromadske.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hromadske/Pods-Hromadske.release.xcconfig"; sourceTree = "<group>"; };
+		42D1E92929CBD39F9F08E36D /* Pods-Hromadske.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hromadske.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hromadske/Pods-Hromadske.debug.xcconfig"; sourceTree = "<group>"; };
+		8405379A1AB776E500AC7971 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		8405379B1AB776E500AC7971 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		840DD8D71ABB4C1B00EC6923 /* TeamViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamViewCell.h; sourceTree = "<group>"; };
+		840DD8D81ABB4C1B00EC6923 /* TeamViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamViewCell.m; sourceTree = "<group>"; };
+		840DD8D91ABB4C1B00EC6923 /* TeamViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamViewCell.xib; sourceTree = "<group>"; };
+		845BA1551AB777AF000E7204 /* ControllersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllersManager.h; sourceTree = "<group>"; };
+		845BA1561AB777AF000E7204 /* ControllersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllersManager.m; sourceTree = "<group>"; };
+		845BA1581AB779B6000E7204 /* itemsButtonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itemsButtonIcon.png; sourceTree = "<group>"; };
+		849D28781ABB39C300AB07BC /* HelpProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpProjectViewController.h; sourceTree = "<group>"; };
+		849D28791ABB39C300AB07BC /* HelpProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpProjectViewController.m; sourceTree = "<group>"; };
+		849D287B1ABB3B8800AB07BC /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		849D287C1ABB3B8800AB07BC /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		84A2A6871ABB7D59004862E6 /* RemoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteManager.h; sourceTree = "<group>"; };
+		84A2A6881ABB7D59004862E6 /* RemoteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteManager.m; sourceTree = "<group>"; };
+		84C22FD01AB77282006C8C2E /* Hromadske.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hromadske.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84C22FD41AB77282006C8C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84C22FD51AB77282006C8C2E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		84C22FD71AB77282006C8C2E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		84C22FD81AB77282006C8C2E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		84C22FDB1AB77283006C8C2E /* Hromadske.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hromadske.xcdatamodel; sourceTree = "<group>"; };
+		84C22FE11AB77283006C8C2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		84C22FE31AB77283006C8C2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		84C22FE61AB77283006C8C2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		84C22FEC1AB77283006C8C2E /* HromadskeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HromadskeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84C22FF11AB77283006C8C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84C22FF21AB77283006C8C2E /* HromadskeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HromadskeTests.m; sourceTree = "<group>"; };
+		84D91E731ABB7E9C00670983 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		84D91E741ABB7E9C00670983 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		84D91E761ABB82CC00670983 /* Employe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Employe.h; sourceTree = "<group>"; };
+		84D91E771ABB82CC00670983 /* Employe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Employe.m; sourceTree = "<group>"; };
+		84DB4E101AB7774100D7BA12 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		84DB4E111AB7774100D7BA12 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		84DB4E131AB7776400D7BA12 /* TeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamViewController.h; sourceTree = "<group>"; };
+		84DB4E141AB7776400D7BA12 /* TeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamViewController.m; sourceTree = "<group>"; };
+		C1AD7FFDC3FB61C4705150C0 /* libPods-Hromadske.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hromadske.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84C22FCD1AB77282006C8C2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43759B4762AA269357A4E50D /* libPods-Hromadske.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84C22FE91AB77283006C8C2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7DBEA62B796CE2A97254AEB1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				42D1E92929CBD39F9F08E36D /* Pods-Hromadske.debug.xcconfig */,
+				1938097AA927F14D5DD9C3EF /* Pods-Hromadske.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		84C22FC71AB77282006C8C2E = {
+			isa = PBXGroup;
+			children = (
+				84C22FD21AB77282006C8C2E /* Hromadske */,
+				84C22FEF1AB77283006C8C2E /* HromadskeTests */,
+				84C22FD11AB77282006C8C2E /* Products */,
+				7DBEA62B796CE2A97254AEB1 /* Pods */,
+				D800507DE9DBD1A7AE84A1C0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		84C22FD11AB77282006C8C2E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84C22FD01AB77282006C8C2E /* Hromadske.app */,
+				84C22FEC1AB77283006C8C2E /* HromadskeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84C22FD21AB77282006C8C2E /* Hromadske */ = {
+			isa = PBXGroup;
+			children = (
+				84C22FD71AB77282006C8C2E /* AppDelegate.h */,
+				84C22FD81AB77282006C8C2E /* AppDelegate.m */,
+				845BA1551AB777AF000E7204 /* ControllersManager.h */,
+				845BA1561AB777AF000E7204 /* ControllersManager.m */,
+				8405379A1AB776E500AC7971 /* MenuViewController.h */,
+				8405379B1AB776E500AC7971 /* MenuViewController.m */,
+				84DB4E101AB7774100D7BA12 /* NewsViewController.h */,
+				84DB4E111AB7774100D7BA12 /* NewsViewController.m */,
+				84DB4E131AB7776400D7BA12 /* TeamViewController.h */,
+				84DB4E141AB7776400D7BA12 /* TeamViewController.m */,
+				849D28781ABB39C300AB07BC /* HelpProjectViewController.h */,
+				849D28791ABB39C300AB07BC /* HelpProjectViewController.m */,
+				849D287B1ABB3B8800AB07BC /* ContactsViewController.h */,
+				849D287C1ABB3B8800AB07BC /* ContactsViewController.m */,
+				840DD8D71ABB4C1B00EC6923 /* TeamViewCell.h */,
+				840DD8D81ABB4C1B00EC6923 /* TeamViewCell.m */,
+				84A2A6871ABB7D59004862E6 /* RemoteManager.h */,
+				84A2A6881ABB7D59004862E6 /* RemoteManager.m */,
+				84D91E731ABB7E9C00670983 /* DataManager.h */,
+				84D91E741ABB7E9C00670983 /* DataManager.m */,
+				84D91E761ABB82CC00670983 /* Employe.h */,
+				84D91E771ABB82CC00670983 /* Employe.m */,
+				840DD8D91ABB4C1B00EC6923 /* TeamViewCell.xib */,
+				84C22FE01AB77283006C8C2E /* Main.storyboard */,
+				84C22FE31AB77283006C8C2E /* Images.xcassets */,
+				84C22FE51AB77283006C8C2E /* LaunchScreen.xib */,
+				84C22FDA1AB77283006C8C2E /* Hromadske.xcdatamodeld */,
+				845BA1581AB779B6000E7204 /* itemsButtonIcon.png */,
+				84C22FD31AB77282006C8C2E /* Supporting Files */,
+			);
+			path = Hromadske;
+			sourceTree = "<group>";
+		};
+		84C22FD31AB77282006C8C2E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84C22FD41AB77282006C8C2E /* Info.plist */,
+				84C22FD51AB77282006C8C2E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84C22FEF1AB77283006C8C2E /* HromadskeTests */ = {
+			isa = PBXGroup;
+			children = (
+				84C22FF21AB77283006C8C2E /* HromadskeTests.m */,
+				84C22FF01AB77283006C8C2E /* Supporting Files */,
+			);
+			path = HromadskeTests;
+			sourceTree = "<group>";
+		};
+		84C22FF01AB77283006C8C2E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				84C22FF11AB77283006C8C2E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D800507DE9DBD1A7AE84A1C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C1AD7FFDC3FB61C4705150C0 /* libPods-Hromadske.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84C22FCF1AB77282006C8C2E /* Hromadske */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84C22FF61AB77283006C8C2E /* Build configuration list for PBXNativeTarget "Hromadske" */;
+			buildPhases = (
+				FE19BD801028F81CA7F5B375 /* Check Pods Manifest.lock */,
+				84C22FCC1AB77282006C8C2E /* Sources */,
+				84C22FCD1AB77282006C8C2E /* Frameworks */,
+				84C22FCE1AB77282006C8C2E /* Resources */,
+				43E2971518636B8DF521EE3C /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hromadske;
+			productName = Hromadske;
+			productReference = 84C22FD01AB77282006C8C2E /* Hromadske.app */;
+			productType = "com.apple.product-type.application";
+		};
+		84C22FEB1AB77283006C8C2E /* HromadskeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84C22FF91AB77283006C8C2E /* Build configuration list for PBXNativeTarget "HromadskeTests" */;
+			buildPhases = (
+				84C22FE81AB77283006C8C2E /* Sources */,
+				84C22FE91AB77283006C8C2E /* Frameworks */,
+				84C22FEA1AB77283006C8C2E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84C22FEE1AB77283006C8C2E /* PBXTargetDependency */,
+			);
+			name = HromadskeTests;
+			productName = HromadskeTests;
+			productReference = 84C22FEC1AB77283006C8C2E /* HromadskeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84C22FC81AB77282006C8C2E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Semeniuk Sviatoslav";
+				TargetAttributes = {
+					84C22FCF1AB77282006C8C2E = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					84C22FEB1AB77283006C8C2E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 84C22FCF1AB77282006C8C2E;
+					};
+				};
+			};
+			buildConfigurationList = 84C22FCB1AB77282006C8C2E /* Build configuration list for PBXProject "Hromadske" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 84C22FC71AB77282006C8C2E;
+			productRefGroup = 84C22FD11AB77282006C8C2E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84C22FCF1AB77282006C8C2E /* Hromadske */,
+				84C22FEB1AB77283006C8C2E /* HromadskeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84C22FCE1AB77282006C8C2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				840DD8DB1ABB4C1B00EC6923 /* TeamViewCell.xib in Resources */,
+				84C22FE21AB77283006C8C2E /* Main.storyboard in Resources */,
+				845BA1591AB779B6000E7204 /* itemsButtonIcon.png in Resources */,
+				84C22FE71AB77283006C8C2E /* LaunchScreen.xib in Resources */,
+				84C22FE41AB77283006C8C2E /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84C22FEA1AB77283006C8C2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		43E2971518636B8DF521EE3C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hromadske/Pods-Hromadske-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE19BD801028F81CA7F5B375 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84C22FCC1AB77282006C8C2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84C22FDC1AB77283006C8C2E /* Hromadske.xcdatamodeld in Sources */,
+				84D91E751ABB7E9C00670983 /* DataManager.m in Sources */,
+				84D91E781ABB82CC00670983 /* Employe.m in Sources */,
+				84DB4E151AB7776400D7BA12 /* TeamViewController.m in Sources */,
+				84C22FD91AB77282006C8C2E /* AppDelegate.m in Sources */,
+				84DB4E121AB7774100D7BA12 /* NewsViewController.m in Sources */,
+				845BA1571AB777AF000E7204 /* ControllersManager.m in Sources */,
+				849D287A1ABB39C300AB07BC /* HelpProjectViewController.m in Sources */,
+				84A2A6891ABB7D59004862E6 /* RemoteManager.m in Sources */,
+				84C22FD61AB77282006C8C2E /* main.m in Sources */,
+				840DD8DA1ABB4C1B00EC6923 /* TeamViewCell.m in Sources */,
+				849D287D1ABB3B8800AB07BC /* ContactsViewController.m in Sources */,
+				8405379C1AB776E500AC7971 /* MenuViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84C22FE81AB77283006C8C2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84C22FF31AB77283006C8C2E /* HromadskeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84C22FEE1AB77283006C8C2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84C22FCF1AB77282006C8C2E /* Hromadske */;
+			targetProxy = 84C22FED1AB77283006C8C2E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		84C22FE01AB77283006C8C2E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84C22FE11AB77283006C8C2E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		84C22FE51AB77283006C8C2E /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84C22FE61AB77283006C8C2E /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84C22FF41AB77283006C8C2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84C22FF51AB77283006C8C2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84C22FF71AB77283006C8C2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42D1E92929CBD39F9F08E36D /* Pods-Hromadske.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Hromadske/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		84C22FF81AB77283006C8C2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1938097AA927F14D5DD9C3EF /* Pods-Hromadske.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Hromadske/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		84C22FFA1AB77283006C8C2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HromadskeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hromadske.app/Hromadske";
+			};
+			name = Debug;
+		};
+		84C22FFB1AB77283006C8C2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HromadskeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hromadske.app/Hromadske";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84C22FCB1AB77282006C8C2E /* Build configuration list for PBXProject "Hromadske" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84C22FF41AB77283006C8C2E /* Debug */,
+				84C22FF51AB77283006C8C2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84C22FF61AB77283006C8C2E /* Build configuration list for PBXNativeTarget "Hromadske" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84C22FF71AB77283006C8C2E /* Debug */,
+				84C22FF81AB77283006C8C2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84C22FF91AB77283006C8C2E /* Build configuration list for PBXNativeTarget "HromadskeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84C22FFA1AB77283006C8C2E /* Debug */,
+				84C22FFB1AB77283006C8C2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		84C22FDA1AB77283006C8C2E /* Hromadske.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84C22FDB1AB77283006C8C2E /* Hromadske.xcdatamodel */,
+			);
+			currentVersion = 84C22FDB1AB77283006C8C2E /* Hromadske.xcdatamodel */;
+			path = Hromadske.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 84C22FC81AB77282006C8C2E /* Project object */;
+}
