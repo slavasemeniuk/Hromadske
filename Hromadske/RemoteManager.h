@@ -11,6 +11,6 @@
 @interface RemoteManager : NSObject
 
 
-+ (void) parseTeam;
+- (void) parsedTeam:(void (^)(id jsonResponse)) successCallback;
 
 @end

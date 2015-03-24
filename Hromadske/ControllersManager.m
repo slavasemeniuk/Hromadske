@@ -32,28 +32,10 @@
     return __manager;
 }
 
--(UINavigationController *)createTeamViewController
+-(UINavigationController *)createNavigationViewControllerWithIdentifier:(NSString *)identifier
 {
-    TeamViewController *teamViewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"Team"];
-    return [self controllersWithRoot:teamViewController];
-}
+    return [self controllersWithRoot:[[self createStoryboard] instantiateViewControllerWithIdentifier:identifier]];
 
--(UINavigationController *)createNewsViewController
-{
-    NewsViewController *newsViewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"News"];
-    return [self controllersWithRoot: newsViewController];
-}
-
--(UINavigationController *)createContactsViewController
-{
-    ContactsViewController *contactViewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"Contacts"];
-    return [self controllersWithRoot:contactViewController];
-}
-
--(UINavigationController *)createHelpViewController
-{
-    HelpProjectViewController *helpProjectViewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"HelpProject"];
-    return [self controllersWithRoot:helpProjectViewController];
 }
 
 -(MenuViewController *)createMenuViewController

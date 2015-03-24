@@ -15,13 +15,10 @@
 
 +(ControllersManager *)sharedManager;
 
--(UINavigationController *)createNewsViewController;
--(UINavigationController *)createTeamViewController;
--(UINavigationController *)createContactsViewController;
--(UINavigationController *)createHelpViewController;
+-(UINavigationController *)createNavigationViewControllerWithIdentifier: (NSString *) indentifier;
 
 -(MenuViewController *)createMenuViewController;
 
--(UINavigationController *)controllersWithRoot: (UIViewController *)controller;
+
 
 @end

@@ -10,11 +10,12 @@
 
 @interface DataManager : NSObject
 
-+(DataManager *)sharedManager;
+//+(DataManager *)sharedManager;
 
 - (void)addTeamToLocalContext:(NSArray *)arrayOfTeam;
 
-- (NSArray *) getTeam;
+- (NSArray *) fetchTeam;
 
+- (NSInteger) countEmployes;
 
 @end

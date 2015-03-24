@@ -7,10 +7,9 @@
 //
 
 #import "RemoteManager.h"
-#import "DataManager.h"
 #import <AFNetworking/AFNetworking.h>
 
-@interface RemoteManager()<NSURLConnectionDelegate>
+@interface RemoteManager()
 
 @end
 
@@ -18,18 +17,18 @@
 {
 }
 
-+(void)parseTeam
+- (void) parsedTeam:(void (^)(id jsonResponse)) successCallback
 {
     __block NSArray *parsedObject =[[NSArray alloc]init];
     static NSString * const urlSrting = @"http://hromadske.cherkasy.ua/?option=com_hromadskeapi&category=team";
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlSrting]];
-    
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     [operation setCompletionBlockWithSuccess: ^(AFHTTPRequestOperation *operation, id responseObject) {
         
         parsedObject = [NSArray arrayWithArray:responseObject[@"result"]];
+        successCallback(parsedObject);
         
     }failure:^(AFHTTPRequestOperation *operation,NSError *error){
         

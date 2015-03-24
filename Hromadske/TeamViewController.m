@@ -9,12 +9,16 @@
 #import "TeamViewController.h"
 #import "TeamViewCell.h"
 #import "DataManager.h"
+#import "RemoteManager.h"
 #import <SWRevealViewController/SWRevealViewController.h>
 
 @interface TeamViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *_team;
+    __weak IBOutlet UITableView *_tableView;
 }
+@property DataManager * dataManager;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
 @end
@@ -25,7 +29,13 @@
 {
     [super viewDidLoad];
     [self setUpMenu];
-    [self getData];
+    [self setUpCell];
+    if ([_dataManager countEmployes]==0) {
+        [self downloadData];
+    } else
+    {
+        _team = [_dataManager fetchTeam];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,12 +59,23 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TeamViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TeamCell" forIndexPath:indexPath];
+    [cell.label setText: [[_team objectAtIndex:indexPath.row] valueForKey:@"title"]];
     return cell;
 }
 
--(void)getData
+-(void)downloadData
 {
-    _team = [[DataManager sharedManager] getTeam];
+    RemoteManager *_remoteManager = [[RemoteManager alloc] init];
+    [_remoteManager parsedTeam:^(id jsonResponse){
+        [_dataManager addTeamToLocalContext:jsonResponse ];
+        _team = jsonResponse;
+        [_tableView reloadData];
+    }];
+}
+
+-(void)setUpCell
+{
+     [_tableView registerNib:[UINib nibWithNibName:@"TeamViewCell" bundle:nil] forCellReuseIdentifier:@"TeamCell"];
 }
 
 /*

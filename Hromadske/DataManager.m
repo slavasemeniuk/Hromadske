@@ -13,16 +13,16 @@
 
 @implementation DataManager
 
-+(DataManager *)sharedManager
-{
-    static DataManager *__manager =nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken,^{
-        __manager = [[DataManager alloc] init];
-    });
-    
-    return __manager;
-}
+//+(DataManager *)sharedManager
+//{
+//    static DataManager *__manager =nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken,^{
+//        __manager = [[DataManager alloc] init];
+//    });
+//    
+//    return __manager;
+//}
 
 - (void)addTeamToLocalContext:(NSArray *)arrayOfTeam
 {
@@ -37,17 +37,13 @@
     
 }
 
-- (NSInteger) countemployes
+- (NSInteger) countEmployes
 {
     return [Employe MR_countOfEntities];
 }
 
--(NSArray *) getTeam
+-(NSArray *) fetchTeam
 {
-    if ([self countemployes] == 0)
-    {
-        [RemoteManager parseTeam];
-    }
     return [Employe MR_findAll];
 }
 

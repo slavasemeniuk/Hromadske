@@ -22,9 +22,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    SWRevealViewController *revealController = [[SWRevealViewController alloc]initWithRearViewController:[[ControllersManager sharedManager]createMenuViewController] frontViewController:[[ControllersManager sharedManager] createNewsViewController]];
-    self.viewController = revealController;
-    self.window.rootViewController = self.viewController;
+//    SWRevealViewController *revealController = [[SWRevealViewController alloc]initWithRearViewController:[[ControllersManager sharedManager]createMenuViewController] frontViewController:[[ControllersManager sharedManager] createNewsViewController]];
+//    self.viewController = revealController;
+//    self.window.rootViewController = self.viewController;
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"MyDatabase.sqlite"];
     
     return YES;

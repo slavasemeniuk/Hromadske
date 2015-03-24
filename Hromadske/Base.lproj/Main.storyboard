@@ -19,6 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="maS-4L-wqK" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="wQo-hu-gs8"/>
+                        <segue destination="J3g-R5-PGq" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="BW1-3m-CS8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -173,6 +177,7 @@
                         <barButtonItem key="leftBarButtonItem" image="itemsButtonIcon.png" id="gUo-qt-0Lf"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="_tableView" destination="1lN-2b-UQj" id="iKb-rk-gO8"/>
                         <outlet property="menuButton" destination="gUo-qt-0Lf" id="E2E-tT-DVM"/>
                     </connections>
                 </viewController>
