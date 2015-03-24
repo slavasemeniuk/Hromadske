@@ -16,9 +16,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NdS-Oq-aBM">
-                        <rect key="frame" x="0.0" y="0.0" width="81" height="80"/>
+                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="81" id="FuO-mc-Trz"/>
+                            <constraint firstAttribute="width" constant="80" id="FuO-mc-Trz"/>
                             <constraint firstAttribute="height" constant="80" id="qCF-iE-jd9"/>
                         </constraints>
                     </imageView>
@@ -33,13 +33,13 @@
                     <constraint firstItem="8dZ-N7-LtV" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="0A6-8t-SnK"/>
                     <constraint firstItem="NdS-Oq-aBM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="1M1-U8-Xxg"/>
                     <constraint firstItem="NdS-Oq-aBM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="5Xs-qd-sJ4"/>
-                    <constraint firstItem="8dZ-N7-LtV" firstAttribute="leading" secondItem="NdS-Oq-aBM" secondAttribute="trailing" constant="14" id="8Qg-vA-9Z0"/>
+                    <constraint firstItem="8dZ-N7-LtV" firstAttribute="leading" secondItem="NdS-Oq-aBM" secondAttribute="trailing" constant="15" id="8Qg-vA-9Z0"/>
                     <constraint firstItem="8dZ-N7-LtV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="9" id="a2O-MQ-4Et"/>
                     <constraint firstAttribute="bottomMargin" secondItem="8dZ-N7-LtV" secondAttribute="bottom" constant="6" id="f75-ba-xIk"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="image" destination="NdS-Oq-aBM" id="uEZ-Cz-OGR"/>
+                <outlet property="imageview" destination="NdS-Oq-aBM" id="Ys4-Cd-mhM"/>
                 <outlet property="label" destination="8dZ-N7-LtV" id="M4k-pp-kfB"/>
             </connections>
             <point key="canvasLocation" x="193" y="184"/>

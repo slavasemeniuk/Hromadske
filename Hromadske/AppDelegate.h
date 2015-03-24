@@ -20,7 +20,6 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-@property (strong, nonatomic) SWRevealViewController *viewController;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

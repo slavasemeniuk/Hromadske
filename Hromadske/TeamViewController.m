@@ -8,16 +8,15 @@
 
 #import "TeamViewController.h"
 #import "TeamViewCell.h"
-#import "DataManager.h"
 #import "RemoteManager.h"
 #import <SWRevealViewController/SWRevealViewController.h>
 
 @interface TeamViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
-    NSArray *_team;
+    NSArray *_tableViewsData;
     __weak IBOutlet UITableView *_tableView;
 }
-@property DataManager * dataManager;
+
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
@@ -30,19 +29,8 @@
     [super viewDidLoad];
     [self setUpMenu];
     [self setUpCell];
-    if ([_dataManager countEmployes]==0) {
-        [self downloadData];
-    } else
-    {
-        _team = [_dataManager fetchTeam];
-    }
+    [self downloadDataAndReloadTableView];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-
 
 -(void)setUpMenu
 {
@@ -53,24 +41,22 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_team count];
+    return [_tableViewsData count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TeamViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TeamCell" forIndexPath:indexPath];
-    [cell.label setText: [[_team objectAtIndex:indexPath.row] valueForKey:@"title"]];
+    [cell.label setText: [[_tableViewsData objectAtIndex:indexPath.row] valueForKey:@"title"]];
+    NSURL *imageURL = [NSURL URLWithString:[[_tableViewsData objectAtIndex:indexPath.row] valueForKey:@"image"]];
+    NSData *imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
+    cell.imageview.image = [UIImage imageWithData:imageData];
     return cell;
 }
 
--(void)downloadData
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RemoteManager *_remoteManager = [[RemoteManager alloc] init];
-    [_remoteManager parsedTeam:^(id jsonResponse){
-        [_dataManager addTeamToLocalContext:jsonResponse ];
-        _team = jsonResponse;
-        [_tableView reloadData];
-    }];
+    return 80;
 }
 
 -(void)setUpCell
@@ -78,6 +64,14 @@
      [_tableView registerNib:[UINib nibWithNibName:@"TeamViewCell" bundle:nil] forCellReuseIdentifier:@"TeamCell"];
 }
 
+-(void)downloadDataAndReloadTableView
+{
+    RemoteManager *remoteManager = [[RemoteManager alloc] init];
+    [remoteManager parsedTeam:^(id jsonResponse){
+        _tableViewsData = jsonResponse;
+        [_tableView reloadData];
+    }];
+}
 /*
 #pragma mark - Navigation
 

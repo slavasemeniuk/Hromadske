@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TeamViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UIImageView *imageview;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end

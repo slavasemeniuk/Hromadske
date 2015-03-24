@@ -21,12 +21,6 @@
     [self setUpMenu];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 -(void)setUpMenu
 {
     [self.menuButton setTarget:self.revealViewController];

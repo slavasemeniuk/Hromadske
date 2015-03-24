@@ -160,6 +160,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1lN-2b-UQj">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="bQW-ze-rHw" id="5hp-qf-ptR"/>
                                     <outlet property="delegate" destination="bQW-ze-rHw" id="UiD-Oc-yT0"/>
@@ -177,7 +178,7 @@
                         <barButtonItem key="leftBarButtonItem" image="itemsButtonIcon.png" id="gUo-qt-0Lf"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="_tableView" destination="1lN-2b-UQj" id="iKb-rk-gO8"/>
+                        <outlet property="_tableView" destination="1lN-2b-UQj" id="j4H-13-Qkf"/>
                         <outlet property="menuButton" destination="gUo-qt-0Lf" id="E2E-tT-DVM"/>
                     </connections>
                 </viewController>

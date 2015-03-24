@@ -13,8 +13,6 @@
 {
 }
 
-+(ControllersManager *)sharedManager;
-
 -(UINavigationController *)createNavigationViewControllerWithIdentifier: (NSString *) indentifier;
 
 -(MenuViewController *)createMenuViewController;

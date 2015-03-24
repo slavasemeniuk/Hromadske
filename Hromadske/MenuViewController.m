@@ -18,19 +18,15 @@
 {
     NSArray *_menuItems;
     NSArray *_arrayOfIdentifier;
+    ControllersManager *_controllersManager;
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _menuItems=@[@"News",@"Team",@"Help",@"Contacts"];
-    _arrayOfIdentifier = @[@"News", @"Team", @"HelpProject", @"Contacts"];
+    [self setUpViewController];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Table view data source
 
@@ -58,22 +54,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.revealViewController pushFrontViewController: [[ControllersManager sharedManager]createNavigationViewControllerWithIdentifier:[_arrayOfIdentifier objectAtIndex:indexPath.row]] animated:YES];
-//    switch (indexPath.row) {
-//        case 0:
-//            [self.revealViewController pushFrontViewController:[[ControllersManager sharedManager] createNewsViewController] animated:YES];
-//            break;
-//            
-//        case 1:
-//            [self.revealViewController pushFrontViewController:[[ControllersManager sharedManager] createTeamViewController] animated:YES];
-//            break;
-//        case 2:
-//            [self.revealViewController pushFrontViewController:[[ControllersManager sharedManager] createHelpViewController] animated:YES];
-//        break;
-//        case 3:
-//            [self.revealViewController pushFrontViewController:[[ControllersManager sharedManager] createContactsViewController] animated:YES];
-//            break;
-//    }
+    [self.revealViewController pushFrontViewController: [_controllersManager createNavigationViewControllerWithIdentifier:[_arrayOfIdentifier objectAtIndex:indexPath.row]] animated:YES];
+}
+
+-(void) setUpViewController
+{
+    _controllersManager = [[ControllersManager alloc] init];
+    _menuItems=@[@"News",@"Team",@"Help",@"Contacts"];
+    _arrayOfIdentifier = @[@"News", @"Team", @"HelpProject", @"Contacts"];
 }
 
 @end
