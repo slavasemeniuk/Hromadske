@@ -24,7 +24,7 @@
 
 -(UINavigationController *)createNavigationViewControllerWithIdentifier:(NSString *)identifier
 {
-    return [self controllersWithRoot:[[self createStoryboard] instantiateViewControllerWithIdentifier:identifier]];
+    return [[self createStoryboard] instantiateViewControllerWithIdentifier:identifier];
 
 }
 
@@ -42,7 +42,9 @@
 
 -(UINavigationController *)controllersWithRoot:(UIViewController *)controller
 {
-    return [[UINavigationController alloc] initWithRootViewController:controller];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+    navController.navigationBar.barTintColor = [UIColor orangeColor];
+    return navController;
 }
 
 

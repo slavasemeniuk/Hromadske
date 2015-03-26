@@ -40,34 +40,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HgQ-Ch-YfG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HgQ-Ch-YfG">
                                 <rect key="frame" x="0.0" y="65" width="600" height="535"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="separatorColor" red="1" green="0.65526244649999998" blue="0.0012718094800000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="maS-4L-wqK" id="SK4-z2-qhs"/>
                                     <outlet property="delegate" destination="maS-4L-wqK" id="YQe-DF-dO2"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hromadske_logo_cherkasy.png" translatesAutoresizingMaskIntoConstraints="NO" id="axB-E2-2OE">
+                                <rect key="frame" x="0.0" y="35" width="416" height="24"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.71004398639999999" blue="0.025829139349999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.99607849120000003" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="axB-E2-2OE" firstAttribute="top" secondItem="nW0-qI-LOf" secondAttribute="bottom" constant="15" id="IXD-xm-unb"/>
                             <constraint firstItem="HgQ-Ch-YfG" firstAttribute="top" secondItem="VZS-YQ-R4o" secondAttribute="topMargin" constant="65" id="JS8-hg-y21"/>
+                            <constraint firstItem="HgQ-Ch-YfG" firstAttribute="top" secondItem="axB-E2-2OE" secondAttribute="bottom" constant="6" id="Mhe-Fb-Gvu"/>
+                            <constraint firstItem="axB-E2-2OE" firstAttribute="leading" secondItem="VZS-YQ-R4o" secondAttribute="leadingMargin" constant="-16" id="UpC-4M-Ucx"/>
                             <constraint firstItem="1fP-Cs-Wbd" firstAttribute="top" secondItem="HgQ-Ch-YfG" secondAttribute="bottom" id="hHW-nW-uRV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HgQ-Ch-YfG" secondAttribute="trailing" constant="-16" id="jzW-oh-zS1"/>
                             <constraint firstItem="HgQ-Ch-YfG" firstAttribute="leading" secondItem="VZS-YQ-R4o" secondAttribute="leadingMargin" constant="-16" id="ruO-dd-9XU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="axB-E2-2OE" secondAttribute="trailing" constant="168" id="yfL-ro-LnW"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sV8-U9-ZIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1244" y="-502"/>
+            <point key="canvasLocation" x="1244" y="-500"/>
         </scene>
-        <!--Help Project-->
+        <!--Navigation Controller-->
+        <scene sceneID="MZt-J0-YMV">
+            <objects>
+                <navigationController storyboardIdentifier="HelpProject" useStoryboardIdentifierAsRestorationIdentifier="YES" id="s2d-pW-xuQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PB1-VL-WbR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.65526244649999998" blue="0.0012718094800000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="e4r-1E-nm2" kind="relationship" relationship="rootViewController" id="Y4b-IW-mgu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bnh-w5-mMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1878" y="-146"/>
+        </scene>
+        <!--Допомогти-->
         <scene sceneID="Rgz-X8-pli">
             <objects>
-                <viewController storyboardIdentifier="HelpProject" title="Help Project" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e4r-1E-nm2" customClass="HelpProjectViewController" sceneMemberID="viewController">
+                <viewController id="e4r-1E-nm2" customClass="HelpProjectViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nOs-zr-jLt"/>
                         <viewControllerLayoutGuide type="bottom" id="e4x-J3-4cE"/>
@@ -77,7 +101,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="HuD-m1-6yj">
+                    <navigationItem key="navigationItem" title="Допомогти" id="HuD-m1-6yj">
                         <barButtonItem key="leftBarButtonItem" image="itemsButtonIcon.png" id="yDR-KU-Fnq"/>
                     </navigationItem>
                     <connections>
@@ -86,12 +110,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V3j-IQ-ZYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2406" y="-86"/>
+            <point key="canvasLocation" x="2538" y="-146"/>
         </scene>
-        <!--Contacts View Controller-->
+        <!--Контакти-->
         <scene sceneID="uFC-kn-15U">
             <objects>
-                <viewController storyboardIdentifier="Contacts" title="Contacts View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a8c-5K-bwc" customClass="ContactsViewController" sceneMemberID="viewController">
+                <viewController id="a8c-5K-bwc" customClass="ContactsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5BV-bN-OdW"/>
                         <viewControllerLayoutGuide type="bottom" id="hA1-IU-1yM"/>
@@ -101,24 +125,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="50D-cF-qzU">
-                        <barButtonItem key="leftBarButtonItem" image="itemsButtonIcon.png" id="VL2-oK-ssE"/>
+                    <navigationItem key="navigationItem" title="Контакти" id="oX2-1t-kEK">
+                        <barButtonItem key="leftBarButtonItem" image="itemsButtonIcon.png" id="efQ-n8-54c"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="menuButton" destination="VL2-oK-ssE" id="tbF-Oc-YdT"/>
+                        <outlet property="menuButton" destination="efQ-n8-54c" id="ldc-sw-wMR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhA-FE-pXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2630" y="728"/>
+            <point key="canvasLocation" x="2642" y="1113"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UjF-dv-gVE">
+            <objects>
+                <navigationController storyboardIdentifier="Contacts" useStoryboardIdentifierAsRestorationIdentifier="YES" id="O7t-hN-B1q" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ODl-uJ-usX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.65526244649999998" blue="0.0012718094800000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="a8c-5K-bwc" kind="relationship" relationship="rootViewController" id="05A-2J-Jht"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qBv-rc-AjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1942" y="1113"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GXG-Gx-iw6">
             <objects>
-                <navigationController storyboardIdentifier="NewsNavController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J3g-R5-PGq" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="News" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J3g-R5-PGq" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9RY-35-CCd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.65526244649999998" blue="0.0012718094800000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="yCa-Sq-Wem" kind="relationship" relationship="rootViewController" id="4Tm-jM-m6C"/>
@@ -128,10 +170,27 @@
             </objects>
             <point key="canvasLocation" x="468" y="330"/>
         </scene>
-        <!--News View Controller-->
+        <!--NavigationTeamController-->
+        <scene sceneID="hdG-p8-0Ib">
+            <objects>
+                <navigationController storyboardIdentifier="Team" title="NavigationTeamController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SFt-Ox-AqA" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6d8-fn-ZDO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.65526244649999998" blue="0.0012718094800000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bQW-ze-rHw" kind="relationship" relationship="rootViewController" id="SGx-5H-GZz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zFe-Tq-6Or" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="444" y="1089"/>
+        </scene>
+        <!--Новини-->
         <scene sceneID="KNe-i2-uYZ">
             <objects>
-                <viewController storyboardIdentifier="News" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yCa-Sq-Wem" customClass="NewsViewController" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="yCa-Sq-Wem" customClass="NewsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F7K-d1-KIP"/>
                         <viewControllerLayoutGuide type="bottom" id="4GY-gq-Cku"/>
@@ -141,7 +200,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.99607849120000003" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="4zJ-fm-shK">
+                    <navigationItem key="navigationItem" title="Новини" id="4zJ-fm-shK">
                         <barButtonItem key="leftBarButtonItem" image="itemsButtonIcon.png" id="S2y-al-lyp"/>
                     </navigationItem>
                     <connections>
@@ -152,10 +211,10 @@
             </objects>
             <point key="canvasLocation" x="1244" y="326"/>
         </scene>
-        <!--Team View Controller-->
+        <!--Команда-->
         <scene sceneID="0rQ-3p-aQQ">
             <objects>
-                <viewController storyboardIdentifier="Team" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bQW-ze-rHw" customClass="TeamViewController" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="bQW-ze-rHw" customClass="TeamViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7vA-4O-8J6"/>
                         <viewControllerLayoutGuide type="bottom" id="X2x-f7-a64"/>
@@ -164,9 +223,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1lN-2b-UQj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1lN-2b-UQj">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="bQW-ze-rHw" id="5hp-qf-ptR"/>
@@ -181,7 +241,7 @@
                             <constraint firstItem="1lN-2b-UQj" firstAttribute="leading" secondItem="nXI-Ts-kUh" secondAttribute="leadingMargin" constant="-16" id="TGk-hY-MlY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="gKH-n1-BrI">
+                    <navigationItem key="navigationItem" title="Команда" id="gKH-n1-BrI">
                         <barButtonItem key="leftBarButtonItem" image="itemsButtonIcon.png" id="gUo-qt-0Lf"/>
                     </navigationItem>
                     <connections>
@@ -191,10 +251,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nmb-VX-y43" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1244" y="1098"/>
+            <point key="canvasLocation" x="1244" y="1089"/>
         </scene>
     </scenes>
     <resources>
+        <image name="hromadske_logo_cherkasy.png" width="240" height="50"/>
         <image name="itemsButtonIcon.png" width="22" height="17"/>
     </resources>
 </document>

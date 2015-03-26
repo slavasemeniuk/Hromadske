@@ -13,6 +13,7 @@
 		840DD8DB1ABB4C1B00EC6923 /* TeamViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DD8D91ABB4C1B00EC6923 /* TeamViewCell.xib */; };
 		845BA1571AB777AF000E7204 /* ControllersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845BA1561AB777AF000E7204 /* ControllersManager.m */; };
 		845BA1591AB779B6000E7204 /* itemsButtonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 845BA1581AB779B6000E7204 /* itemsButtonIcon.png */; };
+		849BDACD1AC4B64A00A68C75 /* hromadske_logo_cherkasy.png in Resources */ = {isa = PBXBuildFile; fileRef = 849BDACC1AC4B64A00A68C75 /* hromadske_logo_cherkasy.png */; };
 		849D287A1ABB39C300AB07BC /* HelpProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D28791ABB39C300AB07BC /* HelpProjectViewController.m */; };
 		849D287D1ABB3B8800AB07BC /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D287C1ABB3B8800AB07BC /* ContactsViewController.m */; };
 		84A2A6891ABB7D59004862E6 /* RemoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A6881ABB7D59004862E6 /* RemoteManager.m */; };
@@ -50,6 +51,7 @@
 		845BA1551AB777AF000E7204 /* ControllersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllersManager.h; sourceTree = "<group>"; };
 		845BA1561AB777AF000E7204 /* ControllersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllersManager.m; sourceTree = "<group>"; };
 		845BA1581AB779B6000E7204 /* itemsButtonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itemsButtonIcon.png; sourceTree = "<group>"; };
+		849BDACC1AC4B64A00A68C75 /* hromadske_logo_cherkasy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hromadske_logo_cherkasy.png; sourceTree = "<group>"; };
 		849D28781ABB39C300AB07BC /* HelpProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpProjectViewController.h; sourceTree = "<group>"; };
 		849D28791ABB39C300AB07BC /* HelpProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpProjectViewController.m; sourceTree = "<group>"; };
 		849D287B1ABB3B8800AB07BC /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		84C22FD21AB77282006C8C2E /* Hromadske */ = {
 			isa = PBXGroup;
 			children = (
+				849BDACC1AC4B64A00A68C75 /* hromadske_logo_cherkasy.png */,
 				84C22FD71AB77282006C8C2E /* AppDelegate.h */,
 				84C22FD81AB77282006C8C2E /* AppDelegate.m */,
 				845BA1551AB777AF000E7204 /* ControllersManager.h */,
@@ -284,6 +287,7 @@
 				845BA1591AB779B6000E7204 /* itemsButtonIcon.png in Resources */,
 				84C22FE71AB77283006C8C2E /* LaunchScreen.xib in Resources */,
 				84C22FE41AB77283006C8C2E /* Images.xcassets in Resources */,
+				849BDACD1AC4B64A00A68C75 /* hromadske_logo_cherkasy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

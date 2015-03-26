@@ -55,6 +55,7 @@
     Employe *employe = [_tableViewsData objectAtIndex:indexPath.row];
     [cell.label setText: employe.name];
     cell.imageview.image = [UIImage imageWithContentsOfFile:employe.image];
+    
     return cell;
 }
 
