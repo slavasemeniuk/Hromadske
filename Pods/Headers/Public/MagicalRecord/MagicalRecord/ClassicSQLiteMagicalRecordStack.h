@@ -1,0 +1,1 @@
+../../../../MagicalRecord/Library/MagicalRecordStack/ClassicSQLiteMagicalRecordStack.h

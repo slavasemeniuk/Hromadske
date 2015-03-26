@@ -40,8 +40,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HgQ-Ch-YfG">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HgQ-Ch-YfG">
+                                <rect key="frame" x="0.0" y="65" width="600" height="535"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <sections/>
@@ -51,6 +51,13 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <color key="backgroundColor" red="1" green="0.71004398639999999" blue="0.025829139349999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="HgQ-Ch-YfG" firstAttribute="top" secondItem="VZS-YQ-R4o" secondAttribute="topMargin" constant="65" id="JS8-hg-y21"/>
+                            <constraint firstItem="1fP-Cs-Wbd" firstAttribute="top" secondItem="HgQ-Ch-YfG" secondAttribute="bottom" id="hHW-nW-uRV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HgQ-Ch-YfG" secondAttribute="trailing" constant="-16" id="jzW-oh-zS1"/>
+                            <constraint firstItem="HgQ-Ch-YfG" firstAttribute="leading" secondItem="VZS-YQ-R4o" secondAttribute="leadingMargin" constant="-16" id="ruO-dd-9XU"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sV8-U9-ZIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -132,7 +139,7 @@
                     <view key="view" contentMode="scaleToFill" id="VGx-v3-0ZT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.011264019409999999" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.99607849120000003" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="4zJ-fm-shK">
                         <barButtonItem key="leftBarButtonItem" image="itemsButtonIcon.png" id="S2y-al-lyp"/>

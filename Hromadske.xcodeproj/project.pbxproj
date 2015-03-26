@@ -23,10 +23,10 @@
 		84C22FE41AB77283006C8C2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C22FE31AB77283006C8C2E /* Images.xcassets */; };
 		84C22FE71AB77283006C8C2E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C22FE51AB77283006C8C2E /* LaunchScreen.xib */; };
 		84C22FF31AB77283006C8C2E /* HromadskeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C22FF21AB77283006C8C2E /* HromadskeTests.m */; };
-		84D91E751ABB7E9C00670983 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D91E741ABB7E9C00670983 /* DataManager.m */; };
-		84D91E781ABB82CC00670983 /* Employe.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D91E771ABB82CC00670983 /* Employe.m */; };
 		84DB4E121AB7774100D7BA12 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4E111AB7774100D7BA12 /* NewsViewController.m */; };
 		84DB4E151AB7776400D7BA12 /* TeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4E141AB7776400D7BA12 /* TeamViewController.m */; };
+		84EBBAF41AC4527E00DF6E9D /* Employe.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBBAF31AC4527E00DF6E9D /* Employe.m */; };
+		84EBBAF71AC454D900DF6E9D /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBBAF61AC454D900DF6E9D /* DataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,14 +68,14 @@
 		84C22FEC1AB77283006C8C2E /* HromadskeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HromadskeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C22FF11AB77283006C8C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C22FF21AB77283006C8C2E /* HromadskeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HromadskeTests.m; sourceTree = "<group>"; };
-		84D91E731ABB7E9C00670983 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
-		84D91E741ABB7E9C00670983 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		84D91E761ABB82CC00670983 /* Employe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Employe.h; sourceTree = "<group>"; };
-		84D91E771ABB82CC00670983 /* Employe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Employe.m; sourceTree = "<group>"; };
 		84DB4E101AB7774100D7BA12 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		84DB4E111AB7774100D7BA12 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		84DB4E131AB7776400D7BA12 /* TeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamViewController.h; sourceTree = "<group>"; };
 		84DB4E141AB7776400D7BA12 /* TeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamViewController.m; sourceTree = "<group>"; };
+		84EBBAF21AC4527E00DF6E9D /* Employe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Employe.h; sourceTree = "<group>"; };
+		84EBBAF31AC4527E00DF6E9D /* Employe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Employe.m; sourceTree = "<group>"; };
+		84EBBAF51AC454D900DF6E9D /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		84EBBAF61AC454D900DF6E9D /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		C1AD7FFDC3FB61C4705150C0 /* libPods-Hromadske.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hromadske.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -148,10 +148,10 @@
 				840DD8D81ABB4C1B00EC6923 /* TeamViewCell.m */,
 				84A2A6871ABB7D59004862E6 /* RemoteManager.h */,
 				84A2A6881ABB7D59004862E6 /* RemoteManager.m */,
-				84D91E731ABB7E9C00670983 /* DataManager.h */,
-				84D91E741ABB7E9C00670983 /* DataManager.m */,
-				84D91E761ABB82CC00670983 /* Employe.h */,
-				84D91E771ABB82CC00670983 /* Employe.m */,
+				84EBBAF51AC454D900DF6E9D /* DataManager.h */,
+				84EBBAF61AC454D900DF6E9D /* DataManager.m */,
+				84EBBAF21AC4527E00DF6E9D /* Employe.h */,
+				84EBBAF31AC4527E00DF6E9D /* Employe.m */,
 				840DD8D91ABB4C1B00EC6923 /* TeamViewCell.xib */,
 				84C22FE01AB77283006C8C2E /* Main.storyboard */,
 				84C22FE31AB77283006C8C2E /* Images.xcassets */,
@@ -335,12 +335,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C22FDC1AB77283006C8C2E /* Hromadske.xcdatamodeld in Sources */,
-				84D91E751ABB7E9C00670983 /* DataManager.m in Sources */,
-				84D91E781ABB82CC00670983 /* Employe.m in Sources */,
 				84DB4E151AB7776400D7BA12 /* TeamViewController.m in Sources */,
 				84C22FD91AB77282006C8C2E /* AppDelegate.m in Sources */,
+				84EBBAF41AC4527E00DF6E9D /* Employe.m in Sources */,
 				84DB4E121AB7774100D7BA12 /* NewsViewController.m in Sources */,
 				845BA1571AB777AF000E7204 /* ControllersManager.m in Sources */,
+				84EBBAF71AC454D900DF6E9D /* DataManager.m in Sources */,
 				849D287A1ABB39C300AB07BC /* HelpProjectViewController.m in Sources */,
 				84A2A6891ABB7D59004862E6 /* RemoteManager.m in Sources */,
 				84C22FD61AB77282006C8C2E /* main.m in Sources */,

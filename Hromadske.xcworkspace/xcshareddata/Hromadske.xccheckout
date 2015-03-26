@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C812C6E0-DC9E-4624-A9E8-FA9C286D69ED</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Hromadske</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B22A96BFA3D859369BF040B40E89559340ADEACE</key>
+		<string>https://github.com/slavasemeniuk/Hromadske.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Hromadske.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B22A96BFA3D859369BF040B40E89559340ADEACE</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/slavasemeniuk/Hromadske.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B22A96BFA3D859369BF040B40E89559340ADEACE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B22A96BFA3D859369BF040B40E89559340ADEACE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Hromadske</string>
+		</dict>
+	</array>
+</dict>
+</plist>

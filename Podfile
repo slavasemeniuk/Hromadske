@@ -5,7 +5,7 @@ target 'Hromadske' do
 
 pod 'SWRevealViewController'
 pod 'AFNetworking'
-pod 'MagicalRecord'
+pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord.git', :branch => 'release/3.0'
 
 end
 

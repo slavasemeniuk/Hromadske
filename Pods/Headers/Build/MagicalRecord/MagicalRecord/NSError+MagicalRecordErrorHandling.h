@@ -1,0 +1,1 @@
+../../../../MagicalRecord/Library/Categories/Foundation/NSError+MagicalRecordErrorHandling.h

@@ -9,6 +9,8 @@
 #import "TeamViewController.h"
 #import "TeamViewCell.h"
 #import "RemoteManager.h"
+#import "DataManager.h"
+#import "Employe.h"
 #import <SWRevealViewController/SWRevealViewController.h>
 
 @interface TeamViewController ()<UITableViewDataSource, UITableViewDelegate>
@@ -27,9 +29,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self setUpMenu];
     [self setUpCell];
-    [self downloadDataAndReloadTableView];
+    
+    [self setUpDataAndReloadTableView];
 }
 
 -(void)setUpMenu
@@ -47,10 +51,10 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TeamViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TeamCell" forIndexPath:indexPath];
-    [cell.label setText: [[_tableViewsData objectAtIndex:indexPath.row] valueForKey:@"title"]];
-    NSURL *imageURL = [NSURL URLWithString:[[_tableViewsData objectAtIndex:indexPath.row] valueForKey:@"image"]];
-    NSData *imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
-    cell.imageview.image = [UIImage imageWithData:imageData];
+    
+    Employe *employe = [_tableViewsData objectAtIndex:indexPath.row];
+    [cell.label setText: employe.name];
+    cell.imageview.image = [UIImage imageWithContentsOfFile:employe.image];
     return cell;
 }
 
@@ -64,13 +68,21 @@
      [_tableView registerNib:[UINib nibWithNibName:@"TeamViewCell" bundle:nil] forCellReuseIdentifier:@"TeamCell"];
 }
 
--(void)downloadDataAndReloadTableView
+-(void)setUpDataAndReloadTableView
 {
-    RemoteManager *remoteManager = [[RemoteManager alloc] init];
-    [remoteManager parsedTeam:^(id jsonResponse){
-        _tableViewsData = jsonResponse;
-        [_tableView reloadData];
-    }];
+    DataManager *dataManager = [[DataManager alloc] init];
+    if ([dataManager countEmployes]) {
+        _tableViewsData = [dataManager fetchArrayOfEmployes];
+    }
+    else
+    {
+        RemoteManager *remoteManager = [[RemoteManager alloc] init];
+        [remoteManager parsedTeam:^(id jsonResponse){
+            [dataManager saveTeamToContext:jsonResponse];
+            _tableViewsData = [dataManager fetchArrayOfEmployes];
+            [_tableView reloadData];
+        }];
+    }
 }
 /*
 #pragma mark - Navigation

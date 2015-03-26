@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FDDBCCDD33C80EC765B7EE11"
+               BlueprintIdentifier = "32857D51AC82F774F5A65877"
                BuildableName = "libPods-Hromadske-SWRevealViewController.a"
                BlueprintName = "Pods-Hromadske-SWRevealViewController"
                ReferencedContainer = "container:Pods.xcodeproj">

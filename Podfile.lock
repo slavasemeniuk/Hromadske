@@ -20,19 +20,29 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - MagicalRecord (2.2):
-    - MagicalRecord/Core (= 2.2)
-  - MagicalRecord/Core (2.2)
+  - MagicalRecord (3.0.0.dev.1427379445):
+    - MagicalRecord/Core (= 3.0.0.dev.1427379445)
+  - MagicalRecord/Core (3.0.0.dev.1427379445)
   - SWRevealViewController (2.3.0)
 
 DEPENDENCIES:
   - AFNetworking
-  - MagicalRecord
+  - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord.git`, branch `release/3.0`)
   - SWRevealViewController
+
+EXTERNAL SOURCES:
+  MagicalRecord:
+    :branch: release/3.0
+    :git: https://github.com/magicalpanda/MagicalRecord.git
+
+CHECKOUT OPTIONS:
+  MagicalRecord:
+    :commit: a8dd474c31a7cffe6b3c24efdbffacacfbff9b26
+    :git: https://github.com/magicalpanda/MagicalRecord.git
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
-  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
+  MagicalRecord: 1108009980499d6f370a373c16afb1f52635fde8
   SWRevealViewController: f6d80638b8e12323e87ac79562345403a799cb77
 
 COCOAPODS: 0.35.0
