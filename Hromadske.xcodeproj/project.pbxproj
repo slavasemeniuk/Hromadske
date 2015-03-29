@@ -13,6 +13,7 @@
 		840DD8DB1ABB4C1B00EC6923 /* TeamViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DD8D91ABB4C1B00EC6923 /* TeamViewCell.xib */; };
 		845BA1571AB777AF000E7204 /* ControllersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845BA1561AB777AF000E7204 /* ControllersManager.m */; };
 		845BA1591AB779B6000E7204 /* itemsButtonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 845BA1581AB779B6000E7204 /* itemsButtonIcon.png */; };
+		846A24221AC617AC002564B9 /* EmployerDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A24211AC617AC002564B9 /* EmployerDetailsViewController.m */; };
 		849BDACD1AC4B64A00A68C75 /* hromadske_logo_cherkasy.png in Resources */ = {isa = PBXBuildFile; fileRef = 849BDACC1AC4B64A00A68C75 /* hromadske_logo_cherkasy.png */; };
 		849D287A1ABB39C300AB07BC /* HelpProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D28791ABB39C300AB07BC /* HelpProjectViewController.m */; };
 		849D287D1ABB3B8800AB07BC /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849D287C1ABB3B8800AB07BC /* ContactsViewController.m */; };
@@ -51,6 +52,8 @@
 		845BA1551AB777AF000E7204 /* ControllersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllersManager.h; sourceTree = "<group>"; };
 		845BA1561AB777AF000E7204 /* ControllersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllersManager.m; sourceTree = "<group>"; };
 		845BA1581AB779B6000E7204 /* itemsButtonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itemsButtonIcon.png; sourceTree = "<group>"; };
+		846A24201AC617AC002564B9 /* EmployerDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployerDetailsViewController.h; sourceTree = "<group>"; };
+		846A24211AC617AC002564B9 /* EmployerDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployerDetailsViewController.m; sourceTree = "<group>"; };
 		849BDACC1AC4B64A00A68C75 /* hromadske_logo_cherkasy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hromadske_logo_cherkasy.png; sourceTree = "<group>"; };
 		849D28781ABB39C300AB07BC /* HelpProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpProjectViewController.h; sourceTree = "<group>"; };
 		849D28791ABB39C300AB07BC /* HelpProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpProjectViewController.m; sourceTree = "<group>"; };
@@ -109,6 +112,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		849F6A191AC6146B00FC3560 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8405379A1AB776E500AC7971 /* MenuViewController.h */,
+				8405379B1AB776E500AC7971 /* MenuViewController.m */,
+				84DB4E101AB7774100D7BA12 /* NewsViewController.h */,
+				84DB4E111AB7774100D7BA12 /* NewsViewController.m */,
+				84DB4E131AB7776400D7BA12 /* TeamViewController.h */,
+				84DB4E141AB7776400D7BA12 /* TeamViewController.m */,
+				849D28781ABB39C300AB07BC /* HelpProjectViewController.h */,
+				849D28791ABB39C300AB07BC /* HelpProjectViewController.m */,
+				849D287B1ABB3B8800AB07BC /* ContactsViewController.h */,
+				849D287C1ABB3B8800AB07BC /* ContactsViewController.m */,
+				846A24201AC617AC002564B9 /* EmployerDetailsViewController.h */,
+				846A24211AC617AC002564B9 /* EmployerDetailsViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		84C22FC71AB77282006C8C2E = {
 			isa = PBXGroup;
 			children = (
@@ -132,21 +154,11 @@
 		84C22FD21AB77282006C8C2E /* Hromadske */ = {
 			isa = PBXGroup;
 			children = (
-				849BDACC1AC4B64A00A68C75 /* hromadske_logo_cherkasy.png */,
 				84C22FD71AB77282006C8C2E /* AppDelegate.h */,
 				84C22FD81AB77282006C8C2E /* AppDelegate.m */,
 				845BA1551AB777AF000E7204 /* ControllersManager.h */,
 				845BA1561AB777AF000E7204 /* ControllersManager.m */,
-				8405379A1AB776E500AC7971 /* MenuViewController.h */,
-				8405379B1AB776E500AC7971 /* MenuViewController.m */,
-				84DB4E101AB7774100D7BA12 /* NewsViewController.h */,
-				84DB4E111AB7774100D7BA12 /* NewsViewController.m */,
-				84DB4E131AB7776400D7BA12 /* TeamViewController.h */,
-				84DB4E141AB7776400D7BA12 /* TeamViewController.m */,
-				849D28781ABB39C300AB07BC /* HelpProjectViewController.h */,
-				849D28791ABB39C300AB07BC /* HelpProjectViewController.m */,
-				849D287B1ABB3B8800AB07BC /* ContactsViewController.h */,
-				849D287C1ABB3B8800AB07BC /* ContactsViewController.m */,
+				849F6A191AC6146B00FC3560 /* ViewControllers */,
 				840DD8D71ABB4C1B00EC6923 /* TeamViewCell.h */,
 				840DD8D81ABB4C1B00EC6923 /* TeamViewCell.m */,
 				84A2A6871ABB7D59004862E6 /* RemoteManager.h */,
@@ -161,6 +173,7 @@
 				84C22FE51AB77283006C8C2E /* LaunchScreen.xib */,
 				84C22FDA1AB77283006C8C2E /* Hromadske.xcdatamodeld */,
 				845BA1581AB779B6000E7204 /* itemsButtonIcon.png */,
+				849BDACC1AC4B64A00A68C75 /* hromadske_logo_cherkasy.png */,
 				84C22FD31AB77282006C8C2E /* Supporting Files */,
 			);
 			path = Hromadske;
@@ -340,6 +353,7 @@
 			files = (
 				84C22FDC1AB77283006C8C2E /* Hromadske.xcdatamodeld in Sources */,
 				84DB4E151AB7776400D7BA12 /* TeamViewController.m in Sources */,
+				846A24221AC617AC002564B9 /* EmployerDetailsViewController.m in Sources */,
 				84C22FD91AB77282006C8C2E /* AppDelegate.m in Sources */,
 				84EBBAF41AC4527E00DF6E9D /* Employe.m in Sources */,
 				84DB4E121AB7774100D7BA12 /* NewsViewController.m in Sources */,

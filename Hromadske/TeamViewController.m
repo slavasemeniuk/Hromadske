@@ -11,6 +11,8 @@
 #import "RemoteManager.h"
 #import "DataManager.h"
 #import "Employe.h"
+#import "EmployerDetailsViewController.h"
+#import <UIImageView+AFNetworking.h>
 #import <SWRevealViewController/SWRevealViewController.h>
 
 @interface TeamViewController ()<UITableViewDataSource, UITableViewDelegate>
@@ -54,7 +56,13 @@
     
     Employe *employe = [_tableViewsData objectAtIndex:indexPath.row];
     [cell.label setText: employe.name];
-    cell.imageview.image = [UIImage imageWithContentsOfFile:employe.image];
+    
+    NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:employe.image]
+                                                  cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                              timeoutInterval:60];
+                                  [cell.imageView setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
+    
+//    cell.imageview.image = [UIImage imageWithContentsOfFile:employe.image];
     
     return cell;
 }
@@ -62,6 +70,12 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 80;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    EmployerDetailsViewController *employersDetails = [[EmployerDetailsViewController alloc]init];
+    [self.navigationController pushViewController:employersDetails animated:YES];
 }
 
 -(void)setUpCell

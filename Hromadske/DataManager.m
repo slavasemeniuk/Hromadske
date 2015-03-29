@@ -18,8 +18,11 @@
     for (int i=0; i<[arrayOfTeam count]; i++)
     {
         Employe *employe = [Employe MR_createEntity];
+        
         employe.name = [[arrayOfTeam objectAtIndex:i] valueForKey:@"title"];
-        employe.image = [self downloadImage:[[arrayOfTeam objectAtIndex:i] valueForKey:@"image"] withName:i];
+        employe.image = [[arrayOfTeam objectAtIndex:i] valueForKey:@"image"];
+        
+//      employe.image = [self downloadImage:[[arrayOfTeam objectAtIndex:i] valueForKey:@"image"] withName:i];
         [employe.managedObjectContext MR_saveToPersistentStoreAndWait];
     }
     
@@ -35,16 +38,16 @@
     return [Employe MR_findAll];
 }
 
--(NSString *)downloadImage:(NSString *)url withName:(int)imageName
-{
-    UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
-    NSString *filePath = [NSString stringWithFormat:@"%d.jpeg",imageName];
-    NSArray * ditPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docDir = [ditPath objectAtIndex:0];
-    NSString *jpegFilePath = [docDir stringByAppendingPathComponent:filePath];
-    NSData *data = [NSData dataWithData:UIImageJPEGRepresentation(image, 0.1f)];
-    [data writeToFile:jpegFilePath atomically:YES];
-    return jpegFilePath;
-}
+//-(NSString *)downloadImage:(NSString *)url withName:(int)imageName
+//{
+//    UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+//    NSString *filePath = [NSString stringWithFormat:@"%d.jpeg",imageName];
+//    NSArray * ditPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *docDir = [ditPath objectAtIndex:0];
+//    NSString *jpegFilePath = [docDir stringByAppendingPathComponent:filePath];
+//    NSData *data = [NSData dataWithData:UIImageJPEGRepresentation(image, 0.1f)];
+//    [data writeToFile:jpegFilePath atomically:YES];
+//    return jpegFilePath;
+//}
 
 @end
