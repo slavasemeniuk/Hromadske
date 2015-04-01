@@ -8,21 +8,15 @@
 
 #import "TeamViewController.h"
 #import "TeamViewCell.h"
-#import "RemoteManager.h"
-#import "DataManager.h"
 #import "Employe.h"
-#import "EmployerDetailsViewController.h"
+#import "DataManager.h"
 #import <UIImageView+AFNetworking.h>
-#import <SWRevealViewController/SWRevealViewController.h>
 
 @interface TeamViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *_tableViewsData;
     __weak IBOutlet UITableView *_tableView;
 }
-
-
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
 @end
 
@@ -31,18 +25,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self setUpMenu];
     [self setUpCell];
     
-    [self setUpDataAndReloadTableView];
-}
-
--(void)setUpMenu
-{
-    [self.menuButton setTarget:self.revealViewController];
-    [self.menuButton setAction:@selector(revealToggle:)];
-    [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    [[DataManager sharedManager] teamWithCompletion:^(NSArray *team) {
+        _tableViewsData = team;
+        [_tableView reloadData];
+    }];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -56,57 +44,26 @@
     
     Employe *employe = [_tableViewsData objectAtIndex:indexPath.row];
     [cell.label setText: employe.name];
+    [cell.bio setText:employe.bio];
     
     NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:employe.image]
                                                   cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                               timeoutInterval:60];
-                                  [cell.imageView setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
-    
-//    cell.imageview.image = [UIImage imageWithContentsOfFile:employe.image];
-    
+                                  [cell.imageview setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 480;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    EmployerDetailsViewController *employersDetails = [[EmployerDetailsViewController alloc]init];
-    [self.navigationController pushViewController:employersDetails animated:YES];
-}
 
 -(void)setUpCell
 {
      [_tableView registerNib:[UINib nibWithNibName:@"TeamViewCell" bundle:nil] forCellReuseIdentifier:@"TeamCell"];
 }
 
--(void)setUpDataAndReloadTableView
-{
-    DataManager *dataManager = [[DataManager alloc] init];
-    if ([dataManager countEmployes]) {
-        _tableViewsData = [dataManager fetchArrayOfEmployes];
-    }
-    else
-    {
-        RemoteManager *remoteManager = [[RemoteManager alloc] init];
-        [remoteManager parsedTeam:^(id jsonResponse){
-            [dataManager saveTeamToContext:jsonResponse];
-            _tableViewsData = [dataManager fetchArrayOfEmployes];
-            [_tableView reloadData];
-        }];
-    }
-}
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

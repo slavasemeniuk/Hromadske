@@ -10,12 +10,11 @@
 #import "MenuViewController.h"
 
 @interface ControllersManager : NSObject
-{
-}
+
 
 -(UINavigationController *)createNavigationViewControllerWithIdentifier: (NSString *) indentifier;
 
--(MenuViewController *)createMenuViewController;
+- (MenuViewController *)createMenuViewController;
 
 
 

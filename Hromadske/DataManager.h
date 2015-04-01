@@ -10,11 +10,10 @@
 
 @interface DataManager : NSObject
 
++ (DataManager *)sharedManager;
 
-- (void)saveTeamToContext:(NSArray *)arrayOfTeam;
+- (void) teamWithCompletion:(void (^)(NSArray *team)) completion;
 
-- (NSArray *) fetchArrayOfEmployes;
-
-- (NSInteger) countEmployes;
+- (void) helpProjectDataWithCompletion:(void (^)(id helpProjectData)) completion;
 
 @end

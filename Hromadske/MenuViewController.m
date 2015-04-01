@@ -11,15 +11,16 @@
 #import "ControllersManager.h"
 
 @interface MenuViewController ()<UITableViewDataSource,UITableViewDelegate>
-
-@end
-
-@implementation MenuViewController
 {
     NSArray *_menuItems;
     NSArray *_arrayOfIdentifier;
     ControllersManager *_controllersManager;
 }
+
+@end
+
+@implementation MenuViewController
+
 
 
 - (void)viewDidLoad {
@@ -49,7 +50,6 @@
         cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
-    cell.textLabel.textColor = [UIColor orangeColor];
     cell.textLabel.text = [_menuItems objectAtIndex:indexPath.row];
     return cell;
 }
@@ -63,7 +63,7 @@
 -(void) setUpViewController
 {
     _controllersManager = [[ControllersManager alloc] init];
-    _menuItems=@[@"News",@"Team",@"Help",@"Contacts"];
+    _menuItems=@[@"Новини",@"Команда",@"Допомогти",@"Контакти"];
     _arrayOfIdentifier = @[@"News", @"Team", @"HelpProject", @"Contacts"];
 }
 

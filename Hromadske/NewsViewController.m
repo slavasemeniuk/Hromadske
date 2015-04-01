@@ -7,10 +7,9 @@
 //
 
 #import "NewsViewController.h"
-#import <SWRevealViewController/SWRevealViewController.h>
+
 
 @interface NewsViewController ()
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
 @end
 
@@ -18,14 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpMenu];
-}
-
--(void)setUpMenu
-{
-    [self.menuButton setTarget:self.revealViewController];
-    [self.menuButton setAction:@selector(revealToggle:)];
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 /*
 #pragma mark - Navigation

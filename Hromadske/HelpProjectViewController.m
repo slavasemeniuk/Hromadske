@@ -7,10 +7,12 @@
 //
 
 #import "HelpProjectViewController.h"
-#import <SWRevealViewController/SWRevealViewController.h>
+#import "DataManager.h"
+#import "HelpProject.h"
 
 @interface HelpProjectViewController ()
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
+@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) NSString *url;
 
 @end
 
@@ -18,30 +20,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpMenu];
+    [self setUpLabel];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void) setUpLabel {
+    _label.lineBreakMode = NSLineBreakByWordWrapping;
+    _label.numberOfLines = 0;
 }
 
-
--(void)setUpMenu
-{
-    [self.menuButton setTarget:self.revealViewController];
-    [self.menuButton setAction:@selector(revealToggle:)];
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+-(void) setUpData {
+    [[DataManager sharedManager] helpProjectDataWithCompletion: ^(id helpData) {
+        HelpProject *helpProjectData = helpData;
+        [_label setText: helpProjectData.content];
+        _url = helpProjectData.url;
+    }];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)goToHelp:(id)sender {
+    NSURL *url = [NSURL URLWithString:_url];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    UIWebView *helpPage = [[UIWebView alloc] init];
+    [helpPage loadRequest:requestObj];
 }
-*/
 
 @end

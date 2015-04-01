@@ -14,5 +14,6 @@
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * image;
+@property (nonatomic, retain) NSString * bio;
 
 @end

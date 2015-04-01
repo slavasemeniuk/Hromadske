@@ -51,19 +51,21 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hromadske_logo_cherkasy.png" translatesAutoresizingMaskIntoConstraints="NO" id="axB-E2-2OE">
-                                <rect key="frame" x="0.0" y="35" width="416" height="24"/>
+                                <rect key="frame" x="1" y="32" width="140" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="cZf-Pg-Z9N"/>
+                                    <constraint firstAttribute="height" constant="25" id="fNN-db-lG9"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99607849120000003" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="axB-E2-2OE" firstAttribute="top" secondItem="nW0-qI-LOf" secondAttribute="bottom" constant="15" id="IXD-xm-unb"/>
-                            <constraint firstItem="HgQ-Ch-YfG" firstAttribute="top" secondItem="VZS-YQ-R4o" secondAttribute="topMargin" constant="65" id="JS8-hg-y21"/>
-                            <constraint firstItem="HgQ-Ch-YfG" firstAttribute="top" secondItem="axB-E2-2OE" secondAttribute="bottom" constant="6" id="Mhe-Fb-Gvu"/>
-                            <constraint firstItem="axB-E2-2OE" firstAttribute="leading" secondItem="VZS-YQ-R4o" secondAttribute="leadingMargin" constant="-16" id="UpC-4M-Ucx"/>
-                            <constraint firstItem="1fP-Cs-Wbd" firstAttribute="top" secondItem="HgQ-Ch-YfG" secondAttribute="bottom" id="hHW-nW-uRV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HgQ-Ch-YfG" secondAttribute="trailing" constant="-16" id="jzW-oh-zS1"/>
-                            <constraint firstItem="HgQ-Ch-YfG" firstAttribute="leading" secondItem="VZS-YQ-R4o" secondAttribute="leadingMargin" constant="-16" id="ruO-dd-9XU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="axB-E2-2OE" secondAttribute="trailing" constant="168" id="yfL-ro-LnW"/>
+                            <constraint firstItem="HgQ-Ch-YfG" firstAttribute="leading" secondItem="VZS-YQ-R4o" secondAttribute="leadingMargin" constant="-16" id="4IJ-zy-a0V"/>
+                            <constraint firstItem="axB-E2-2OE" firstAttribute="leading" secondItem="VZS-YQ-R4o" secondAttribute="leadingMargin" constant="-15" id="FWY-uH-FHW"/>
+                            <constraint firstItem="HgQ-Ch-YfG" firstAttribute="top" secondItem="nW0-qI-LOf" secondAttribute="bottom" constant="45" id="PZP-A5-In3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HgQ-Ch-YfG" secondAttribute="trailing" constant="-16" id="PfM-0W-yS5"/>
+                            <constraint firstItem="1fP-Cs-Wbd" firstAttribute="top" secondItem="HgQ-Ch-YfG" secondAttribute="bottom" id="Qtf-fz-j7A"/>
+                            <constraint firstItem="HgQ-Ch-YfG" firstAttribute="top" secondItem="axB-E2-2OE" secondAttribute="bottom" constant="8" id="paq-bm-ORa"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -99,13 +101,40 @@
                     <view key="view" contentMode="scaleToFill" id="9Cw-mV-e2i">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ick-Ku-E31">
+                                <rect key="frame" x="251" y="526" width="98" height="34"/>
+                                <color key="backgroundColor" red="1" green="0.65526244649999998" blue="0.0012718094800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <size key="titleShadowOffset" width="0.0" height="-2"/>
+                                <state key="normal" title=" Допомогти ">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goToHelp:" destination="e4r-1E-nm2" eventType="touchUpInside" id="KoN-et-uqI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sr3-Fa-yZp">
+                                <rect key="frame" x="26" y="104" width="548" height="396"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sr3-Fa-yZp" firstAttribute="top" secondItem="nOs-zr-jLt" secondAttribute="bottom" constant="40" id="CDJ-i7-a3t"/>
+                            <constraint firstItem="Ick-Ku-E31" firstAttribute="top" secondItem="sr3-Fa-yZp" secondAttribute="bottom" constant="26" id="aEA-3A-SZq"/>
+                            <constraint firstItem="sr3-Fa-yZp" firstAttribute="leading" secondItem="9Cw-mV-e2i" secondAttribute="leadingMargin" constant="10" id="e6c-4D-hya"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sr3-Fa-yZp" secondAttribute="trailing" constant="10" id="ozw-XW-Evc"/>
+                            <constraint firstItem="e4x-J3-4cE" firstAttribute="top" secondItem="Ick-Ku-E31" secondAttribute="bottom" constant="40" id="p9P-wr-N2G"/>
+                            <constraint firstItem="e4x-J3-4cE" firstAttribute="top" secondItem="sr3-Fa-yZp" secondAttribute="bottom" constant="100" id="vj7-d3-c5b"/>
+                            <constraint firstAttribute="centerX" secondItem="Ick-Ku-E31" secondAttribute="centerX" id="xcN-v5-eYc"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Допомогти" id="HuD-m1-6yj">
-                        <barButtonItem key="leftBarButtonItem" image="itemsButtonIcon.png" id="yDR-KU-Fnq"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Допомогти" id="HuD-m1-6yj"/>
                     <connections>
-                        <outlet property="menuButton" destination="yDR-KU-Fnq" id="qC0-E4-9wE"/>
+                        <outlet property="label" destination="sr3-Fa-yZp" id="fFi-Be-e0m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V3j-IQ-ZYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -125,12 +154,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Контакти" id="oX2-1t-kEK">
-                        <barButtonItem key="leftBarButtonItem" image="itemsButtonIcon.png" id="efQ-n8-54c"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="menuButton" destination="efQ-n8-54c" id="ldc-sw-wMR"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Контакти" id="oX2-1t-kEK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhA-FE-pXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -177,7 +201,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6d8-fn-ZDO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.65526244649999998" blue="0.0012718094800000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.99607867002487183" green="0.71372562646865845" blue="0.031372476369142532" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="bQW-ze-rHw" kind="relationship" relationship="rootViewController" id="SGx-5H-GZz"/>
@@ -206,12 +230,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99607849120000003" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Новини" id="4zJ-fm-shK">
-                        <barButtonItem key="leftBarButtonItem" image="itemsButtonIcon.png" id="S2y-al-lyp"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="menuButton" destination="S2y-al-lyp" id="HtD-A9-MXG"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Новини" id="4zJ-fm-shK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sHr-Gw-SBG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -229,7 +248,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1lN-2b-UQj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1lN-2b-UQj">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -247,39 +266,17 @@
                             <constraint firstItem="1lN-2b-UQj" firstAttribute="leading" secondItem="nXI-Ts-kUh" secondAttribute="leadingMargin" constant="-16" id="TGk-hY-MlY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Команда" id="gKH-n1-BrI">
-                        <barButtonItem key="leftBarButtonItem" image="itemsButtonIcon.png" id="gUo-qt-0Lf"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Команда" id="gKH-n1-BrI"/>
                     <connections>
                         <outlet property="_tableView" destination="1lN-2b-UQj" id="j4H-13-Qkf"/>
-                        <outlet property="menuButton" destination="gUo-qt-0Lf" id="E2E-tT-DVM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nmb-VX-y43" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="500" y="1113"/>
         </scene>
-        <!--Employer Details View Controller-->
-        <scene sceneID="uGk-KA-6MH">
-            <objects>
-                <viewController id="dhl-Lc-I0O" customClass="EmployerDetailsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="S5h-Lc-jS5"/>
-                        <viewControllerLayoutGuide type="bottom" id="XvI-6v-mA9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DHK-rk-8FD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k08-q8-mal" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1383" y="1144"/>
-        </scene>
     </scenes>
     <resources>
         <image name="hromadske_logo_cherkasy.png" width="240" height="50"/>
-        <image name="itemsButtonIcon.png" width="22" height="17"/>
     </resources>
 </document>

@@ -13,5 +13,6 @@
 
 @dynamic name;
 @dynamic image;
+@dynamic bio;
 
 @end

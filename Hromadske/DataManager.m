@@ -9,45 +9,77 @@
 #import "DataManager.h"
 #import <MagicalRecord.h>
 #import "Employe.h"
+#import "HelpProject.h"
+#import "RemoteManager.h"
 
 @implementation DataManager
 
++ (DataManager *)sharedManager {
+    static DataManager *__manager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        __manager = [[DataManager alloc] init];
+    });
+    
+    return __manager;
+}
 
 - (void)saveTeamToContext:(NSArray *)arrayOfTeam
 {
+    NSManagedObjectContext *context = nil;
     for (int i=0; i<[arrayOfTeam count]; i++)
     {
         Employe *employe = [Employe MR_createEntity];
         
         employe.name = [[arrayOfTeam objectAtIndex:i] valueForKey:@"title"];
         employe.image = [[arrayOfTeam objectAtIndex:i] valueForKey:@"image"];
-        
-//      employe.image = [self downloadImage:[[arrayOfTeam objectAtIndex:i] valueForKey:@"image"] withName:i];
-        [employe.managedObjectContext MR_saveToPersistentStoreAndWait];
+        employe.bio = [[arrayOfTeam objectAtIndex:i] valueForKey:@"fulltext"];
+        context = employe.managedObjectContext;
     }
+    [context MR_saveToPersistentStoreAndWait];
     
 }
 
-- (NSInteger) countEmployes
+- (void)saveHelpDataToContext:(NSArray *)arrayOfHelpData
 {
-    return [Employe MR_countOfEntities];
+    HelpProject * helpProjectData= [HelpProject MR_createEntity];
+    helpProjectData.content = [arrayOfHelpData valueForKey:@"content"];
+    helpProjectData.url = [arrayOfHelpData valueForKey:@"url"];
 }
 
--(NSArray *) fetchArrayOfEmployes
+
+-(NSArray *) fetchListOfEmployes
 {
     return [Employe MR_findAll];
 }
 
-//-(NSString *)downloadImage:(NSString *)url withName:(int)imageName
-//{
-//    UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
-//    NSString *filePath = [NSString stringWithFormat:@"%d.jpeg",imageName];
-//    NSArray * ditPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *docDir = [ditPath objectAtIndex:0];
-//    NSString *jpegFilePath = [docDir stringByAppendingPathComponent:filePath];
-//    NSData *data = [NSData dataWithData:UIImageJPEGRepresentation(image, 0.1f)];
-//    [data writeToFile:jpegFilePath atomically:YES];
-//    return jpegFilePath;
-//}
+- (void) teamWithCompletion:(void (^)(NSArray *team)) completion {
+    if ([Employe MR_countOfEntities]) {
+        completion([self fetchListOfEmployes]);
+    }
+    else
+    {
+        [[RemoteManager sharedManager] parsedTeam:^(NSArray *parsedTeam)
+        {
+            [self saveTeamToContext:parsedTeam];
+            completion(parsedTeam);
+        }];
+    }
+}
+
+- (void) helpProjectDataWithCompletion:(void (^)(id helpProjectData))completion
+{
+    if ([HelpProject MR_countOfEntities]) {
+        completion([HelpProject MR_findFirst]);
+    }
+    else
+    {
+        [[RemoteManager sharedManager] parseHelpData:^(NSArray *parsedHelpData)
+         {
+            [self saveHelpDataToContext:parsedHelpData];
+            completion(parsedHelpData);
+        }];
+    }
+}
 
 @end

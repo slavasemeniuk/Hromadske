@@ -9,7 +9,7 @@
 #import "ControllersManager.h"
 #import "TeamViewController.h"
 #import "NewsViewController.h"
-#include "HelpProjectViewController.h"
+#import "HelpProjectViewController.h"
 #import "ContactsViewController.h"
 
 @interface ControllersManager ()
@@ -38,13 +38,6 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     return storyboard;
-}
-
--(UINavigationController *)controllersWithRoot:(UIViewController *)controller
-{
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-    navController.navigationBar.barTintColor = [UIColor orangeColor];
-    return navController;
 }
 
 

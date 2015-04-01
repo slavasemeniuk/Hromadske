@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Semeniuk Sviatoslav. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface NewsViewController : UIViewController
+@interface NewsViewController : BaseViewController
 
 @end
