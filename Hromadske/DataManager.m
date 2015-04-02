@@ -59,10 +59,10 @@
     }
     else
     {
-        [[RemoteManager sharedManager] parsedTeam:^(NSArray *parsedTeam)
+        [[RemoteManager sharedManager] parsedJsonWithEndOfURL:@"team" :^(NSArray *parsedTeam)
         {
             [self saveTeamToContext:parsedTeam];
-            completion(parsedTeam);
+            completion([self fetchListOfEmployes]);
         }];
     }
 }
@@ -74,10 +74,10 @@
     }
     else
     {
-        [[RemoteManager sharedManager] parseHelpData:^(NSArray *parsedHelpData)
+        [[RemoteManager sharedManager] parsedJsonWithEndOfURL:@"donate" :^(NSArray *parsedHelpData)
          {
             [self saveHelpDataToContext:parsedHelpData];
-            completion(parsedHelpData);
+            completion([HelpProject MR_findFirst]);
         }];
     }
 }

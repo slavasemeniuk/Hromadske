@@ -13,6 +13,8 @@
 
 @end
 
+static NSString * const basicUrlSrting = @"http://hromadske.cherkasy.ua/?option=com_hromadskeapi&category=";
+
 @implementation RemoteManager
 {
 }
@@ -27,10 +29,10 @@
     return __manager;
 }
 
-- (void) parsedTeam:(void (^)(NSArray *parsedTeam))successCallback
+- (void) parsedJsonWithEndOfURL:(NSString *)urlEnd :(void (^)(NSArray * parsedObject))successCallback
 {
-    static NSString * const urlSrting = @"http://hromadske.cherkasy.ua/?option=com_hromadskeapi&category=team";
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlSrting]];
+    NSString *urlForRequest = [NSString stringWithFormat:@"%@%@",basicUrlSrting,urlEnd];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlForRequest]];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -48,23 +50,4 @@
     [operation start];
 }
 
-- (void) parseHelpData:(void (^)(NSArray *parsedHelpData))successCallback
-{
-    static NSString * const urlSrting = @"/api/v1/info/donate.json";
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlSrting]];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-    [operation setCompletionBlockWithSuccess: ^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        successCallback([NSArray arrayWithArray:responseObject[@"result"]]);
-        
-    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-        
-        UIAlertView *allertView = [[UIAlertView alloc]initWithTitle:@"Error Retrieving" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [allertView show];
-        
-    }];
-    [operation start];
-}
 @end

@@ -13,8 +13,6 @@
 
 + (RemoteManager *)sharedManager;
 
-- (void) parsedTeam:(void (^)(NSArray *parsedTeam)) successCallback;
-
-- (void) parseHelpData: (void (^)(NSArray *parsedHelpData)) successCallback;
+- (void) parsedJsonWithEndOfURL:(NSString*)urlEnd :(void (^)(NSArray *parsedObject)) successCallback;
 
 @end
