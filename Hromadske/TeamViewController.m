@@ -55,7 +55,18 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 480;
+    
+    TeamViewCell *prototypecell = [tableView dequeueReusableCellWithIdentifier:@"TeamCell"];
+    Employe *employe = [_tableViewsData objectAtIndex:indexPath.row];
+    
+    [prototypecell.bio setText:employe.bio];
+    
+    [prototypecell setNeedsLayout];
+    [prototypecell layoutIfNeeded];
+    
+    return [prototypecell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height+1.0f;
+    
+    
 }
 
 

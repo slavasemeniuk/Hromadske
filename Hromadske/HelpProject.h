@@ -15,4 +15,6 @@
 @property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) NSString * content;
 
+-(void) convertDataToHelpProjectModel: (NSArray *) helpData;
+
 @end

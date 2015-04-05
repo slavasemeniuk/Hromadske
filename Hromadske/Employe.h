@@ -16,4 +16,6 @@
 @property (nonatomic, retain) NSString * image;
 @property (nonatomic, retain) NSString * bio;
 
+-(void) convertDataToEmployeModel: (NSArray *) employe;
+
 @end

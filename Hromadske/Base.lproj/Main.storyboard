@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -117,7 +116,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sr3-Fa-yZp">
                                 <rect key="frame" x="26" y="104" width="548" height="396"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -223,14 +222,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Dj-Cz-c7x">
-                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Dj-Cz-c7x">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="yCa-Sq-Wem" id="QO9-kc-J2g"/>
+                                    <outlet property="delegate" destination="yCa-Sq-Wem" id="XlX-Nf-Xq0"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.99607849120000003" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="4GY-gq-Cku" firstAttribute="top" secondItem="8Dj-Cz-c7x" secondAttribute="bottom" id="79x-MK-pTu"/>
+                            <constraint firstItem="8Dj-Cz-c7x" firstAttribute="leading" secondItem="VGx-v3-0ZT" secondAttribute="leadingMargin" constant="-16" id="7P0-d2-AHw"/>
+                            <constraint firstItem="8Dj-Cz-c7x" firstAttribute="top" secondItem="VGx-v3-0ZT" secondAttribute="topMargin" id="O21-Mo-spG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8Dj-Cz-c7x" secondAttribute="trailing" constant="-16" id="kKE-TN-zKN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Новини" id="4zJ-fm-shK"/>
+                    <connections>
+                        <outlet property="tableView" destination="8Dj-Cz-c7x" id="GeD-qP-3iZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sHr-Gw-SBG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

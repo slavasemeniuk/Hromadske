@@ -19,4 +19,6 @@
 @property (nonatomic, retain) NSString * place;
 @property (nonatomic, retain) NSString * url;
 
+-(void) convertDataToContactsModel: (NSArray *) contacts;
+
 @end

@@ -18,4 +18,14 @@
 @dynamic place;
 @dynamic url;
 
+-(void)convertDataToContactsModel:(NSArray *)contacts
+{
+    self.emails = [contacts valueForKey:@"email"];
+    self.lat = [contacts valueForKey:@"lat"];
+    self.lon = [contacts valueForKey:@"lon"];
+    self.phones = [contacts valueForKey:@"phone"];
+    self.place = [contacts valueForKey:@"place"];
+    self.url = [contacts valueForKey:@"url"];
+}
+
 @end

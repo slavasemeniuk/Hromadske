@@ -14,4 +14,10 @@
 @dynamic url;
 @dynamic content;
 
+-(void) convertDataToHelpProjectModel: (NSArray *) helpData
+{
+    self.content = [helpData valueForKey:@"content"];
+    self.url = [helpData valueForKey:@"url"];
+}
+
 @end

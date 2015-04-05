@@ -30,10 +30,7 @@
     for (int i=0; i<[arrayOfTeam count]; i++)
     {
         Employe *employe = [Employe MR_createEntity];
-        
-        employe.name = [[arrayOfTeam objectAtIndex:i] valueForKey:@"title"];
-        employe.image = [[arrayOfTeam objectAtIndex:i] valueForKey:@"image"];
-        employe.bio = [[arrayOfTeam objectAtIndex:i] valueForKey:@"fulltext"];
+        [employe convertDataToEmployeModel:[arrayOfTeam objectAtIndex:i]];
         context = employe.managedObjectContext;
     }
     [context MR_saveToPersistentStoreAndWait];
@@ -43,10 +40,11 @@
 - (void)saveHelpDataToContext:(NSArray *)arrayOfHelpData
 {
     HelpProject * helpProjectData= [HelpProject MR_createEntity];
-    helpProjectData.content = [arrayOfHelpData valueForKey:@"content"];
-    helpProjectData.url = [arrayOfHelpData valueForKey:@"url"];
-}
-
+    
+    [helpProjectData convertDataToHelpProjectModel:arrayOfHelpData];
+    
+    [helpProjectData.managedObjectContext MR_saveOnlySelfAndWait];
+   }
 
 -(NSArray *) fetchListOfEmployes
 {

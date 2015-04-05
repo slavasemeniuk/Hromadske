@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="13F1066" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Artilces" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="short_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="veiws_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="vk_id" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Contacts" syncable="YES">
         <attribute name="emails" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -18,6 +28,7 @@
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Artilces" positionX="63" positionY="45" width="128" height="165"/>
         <element name="Contacts" positionX="187" positionY="9" width="128" height="135"/>
         <element name="Employe" positionX="-63" positionY="-18" width="128" height="88"/>
         <element name="HelpProject" positionX="63" positionY="45" width="128" height="75"/>
