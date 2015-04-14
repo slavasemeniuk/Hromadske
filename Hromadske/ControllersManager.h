@@ -11,6 +11,7 @@
 
 @interface ControllersManager : NSObject
 
++ (ControllersManager *)sharedManager;
 
 -(UINavigationController *)createNavigationViewControllerWithIdentifier: (NSString *) indentifier;
 

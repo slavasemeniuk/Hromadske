@@ -14,12 +14,16 @@
 @dynamic name;
 @dynamic image;
 @dynamic bio;
+@dynamic identifire;
+@dynamic position;
 
 -(void)convertDataToEmployeModel:(NSArray *)employe
 {
-    self.name = [employe valueForKey:@"title"];
-    self.image = [employe valueForKey:@"image"];
-    self.bio = [employe valueForKey:@"fulltext"];
+    self.name = [employe valueForKey:@"name"];
+    self.image = [employe valueForKey:@"photo"];
+    self.bio = [employe valueForKey:@"bio"];
+    self.position = [employe valueForKey:@"position"];
+    self.identifire = [employe valueForKey:@"id"] ;
 
 }
 

@@ -16,4 +16,12 @@
 
 - (void) helpProjectDataWithCompletion:(void (^)(id helpProjectData)) completion;
 
+- (void) contactsDataWithCompletion:(void (^)(id contacts)) completion;
+
+- (void) newsWithCompletion:(void (^)(NSArray *newsList)) completion;
+
+- (NSDate* ) getDateOfLastArticle;
+
+- (NSArray *)fetchListOfArticles;
+
 @end

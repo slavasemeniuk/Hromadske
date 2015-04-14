@@ -14,12 +14,21 @@
 
 @interface ControllersManager ()
 {
-//offset.x for newsViewController
 }
 
 @end
 
 @implementation ControllersManager
+
++ (ControllersManager *)sharedManager {
+    static ControllersManager *__manager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        __manager = [[ControllersManager alloc] init];
+    });
+    
+    return __manager;
+}
 
 
 -(UINavigationController *)createNavigationViewControllerWithIdentifier:(NSString *)identifier

@@ -13,7 +13,7 @@
 
 @end
 
-static NSString * const basicUrlSrting = @"http://hromadske.cherkasy.ua/?option=com_hromadskeapi&category=";
+static NSString * const basicUrlSrting = @"http://178.62.205.247/v1/";
 
 @implementation RemoteManager
 {
@@ -33,13 +33,12 @@ static NSString * const basicUrlSrting = @"http://hromadske.cherkasy.ua/?option=
 {
     NSString *urlForRequest = [NSString stringWithFormat:@"%@%@",basicUrlSrting,urlEnd];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlForRequest]];
-    
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [operation setCompletionBlockWithSuccess: ^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        successCallback([NSArray arrayWithArray:responseObject[@"result"]]);
+        NSArray *ar = [NSArray arrayWithArray:responseObject[@"data"]];
+        successCallback([NSArray arrayWithArray:responseObject[@"data"]]);
         
     }failure:^(AFHTTPRequestOperation *operation,NSError *error){
         

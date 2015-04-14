@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -151,9 +152,59 @@
                     <view key="view" contentMode="scaleToFill" id="Pqt-4Q-KQ9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adress:" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1X-Oj-zmV">
+                                <rect key="frame" x="16" y="74" width="568" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наша сторінка:" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bC6-2V-Hg8">
+                                <rect key="frame" x="16" y="99" width="568" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Електронна пошта:" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vm-ik-pvb">
+                                <rect key="frame" x="16" y="124" width="568" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Телефон:" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf6-za-c7O">
+                                <rect key="frame" x="16" y="149" width="568" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u1X-Oj-zmV" firstAttribute="top" secondItem="5BV-bN-OdW" secondAttribute="bottom" constant="10" id="2qS-3W-OpC"/>
+                            <constraint firstItem="bC6-2V-Hg8" firstAttribute="trailing" secondItem="Pqt-4Q-KQ9" secondAttribute="trailingMargin" id="8QJ-ic-hHa"/>
+                            <constraint firstItem="bf6-za-c7O" firstAttribute="top" secondItem="9vm-ik-pvb" secondAttribute="bottom" constant="8" id="EHR-ZB-y0z"/>
+                            <constraint firstItem="9vm-ik-pvb" firstAttribute="top" secondItem="bC6-2V-Hg8" secondAttribute="bottom" constant="8" id="OA4-DY-7aS"/>
+                            <constraint firstItem="9vm-ik-pvb" firstAttribute="trailing" secondItem="Pqt-4Q-KQ9" secondAttribute="trailingMargin" id="RnL-eu-fPg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bf6-za-c7O" secondAttribute="trailing" id="SyP-j0-tnX"/>
+                            <constraint firstItem="u1X-Oj-zmV" firstAttribute="leading" secondItem="Pqt-4Q-KQ9" secondAttribute="leadingMargin" id="a7k-E5-V7b"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="u1X-Oj-zmV" secondAttribute="trailing" id="iI4-2z-yNS"/>
+                            <constraint firstItem="bC6-2V-Hg8" firstAttribute="leading" secondItem="Pqt-4Q-KQ9" secondAttribute="leadingMargin" id="iaE-xJ-zsH"/>
+                            <constraint firstItem="bf6-za-c7O" firstAttribute="leading" secondItem="Pqt-4Q-KQ9" secondAttribute="leadingMargin" id="qnh-f7-aU2"/>
+                            <constraint firstItem="9vm-ik-pvb" firstAttribute="leading" secondItem="Pqt-4Q-KQ9" secondAttribute="leadingMargin" id="r7g-Kk-28k"/>
+                            <constraint firstItem="bC6-2V-Hg8" firstAttribute="top" secondItem="u1X-Oj-zmV" secondAttribute="bottom" constant="8" id="uKM-Ts-Wjp"/>
+                            <constraint firstItem="9vm-ik-pvb" firstAttribute="top" secondItem="bC6-2V-Hg8" secondAttribute="bottom" constant="8" id="vEj-io-FXn"/>
+                            <constraint firstItem="bC6-2V-Hg8" firstAttribute="top" secondItem="u1X-Oj-zmV" secondAttribute="bottom" constant="8" id="ym5-L0-fDZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Контакти" id="oX2-1t-kEK"/>
+                    <connections>
+                        <outlet property="Email" destination="9vm-ik-pvb" id="297-G5-icd"/>
+                        <outlet property="WebPage" destination="bC6-2V-Hg8" id="Ual-00-tes"/>
+                        <outlet property="adress" destination="u1X-Oj-zmV" id="Y2i-rC-DTJ"/>
+                        <outlet property="email" destination="9vm-ik-pvb" id="cZQ-Gw-PIQ"/>
+                        <outlet property="phone" destination="bf6-za-c7O" id="nhJ-mX-M8g"/>
+                        <outlet property="webPage" destination="bC6-2V-Hg8" id="3gO-wf-Z1t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhA-FE-pXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

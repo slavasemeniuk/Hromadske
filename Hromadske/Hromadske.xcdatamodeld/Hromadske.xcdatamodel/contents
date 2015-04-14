@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="13F1066" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Artilces" syncable="YES">
+    <entity name="Articles" representedClassName="Articles" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="short_description" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="veiws_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="vk_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="views_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="vk_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="withLink" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Link" inverseName="inArticle" inverseEntity="Link" syncable="YES"/>
+        <relationship name="withPhoto" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="inArticle" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="withVideo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" inverseName="inArticle" inverseEntity="Video" syncable="YES"/>
     </entity>
     <entity name="Contacts" syncable="YES">
         <attribute name="emails" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,17 +23,34 @@
     </entity>
     <entity name="Employe" representedClassName="Employe" syncable="YES">
         <attribute name="bio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifire" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="HelpProject" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Link" syncable="YES">
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="inArticle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Articles" inverseName="withLink" inverseEntity="Articles" syncable="YES"/>
+    </entity>
+    <entity name="Photo" syncable="YES">
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="inArticle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Articles" inverseName="withPhoto" inverseEntity="Articles" syncable="YES"/>
+    </entity>
+    <entity name="Video" syncable="YES">
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="inArticle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Articles" inverseName="withVideo" inverseEntity="Articles" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Artilces" positionX="63" positionY="45" width="128" height="165"/>
-        <element name="Contacts" positionX="187" positionY="9" width="128" height="135"/>
-        <element name="Employe" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="HelpProject" positionX="63" positionY="45" width="128" height="75"/>
+        <element name="Articles" positionX="7" positionY="-19" width="128" height="208"/>
+        <element name="Contacts" positionX="-162" positionY="-180" width="128" height="135"/>
+        <element name="Employe" positionX="-162" positionY="-18" width="128" height="120"/>
+        <element name="HelpProject" positionX="-18" positionY="-180" width="128" height="73"/>
+        <element name="Photo" positionX="178" positionY="225" width="128" height="73"/>
+        <element name="Link" positionX="288" positionY="135" width="128" height="73"/>
+        <element name="Video" positionX="306" positionY="27" width="128" height="73"/>
     </elements>
 </model>

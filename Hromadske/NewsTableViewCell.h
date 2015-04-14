@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *shortDescription;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UIView *imagesView;
+@property (weak, nonatomic) IBOutlet UILabel *createdAt;
 
 @end

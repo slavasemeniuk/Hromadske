@@ -14,7 +14,6 @@
 {
     NSArray *_menuItems;
     NSArray *_arrayOfIdentifier;
-    ControllersManager *_controllersManager;
 }
 
 @end
@@ -57,13 +56,12 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.revealViewController pushFrontViewController: [_controllersManager createNavigationViewControllerWithIdentifier:[_arrayOfIdentifier objectAtIndex:indexPath.row]] animated:YES];
+    [self.revealViewController pushFrontViewController: [[ControllersManager sharedManager] createNavigationViewControllerWithIdentifier:[_arrayOfIdentifier objectAtIndex:indexPath.row]] animated:YES];
 }
 
 -(void) setUpViewController
 {
-    _controllersManager = [[ControllersManager alloc] init];
-    _menuItems=@[@"Новини",@"Команда",@"Допомогти",@"Контакти"];
+        _menuItems=@[@"Новини",@"Команда",@"Допомогти",@"Контакти"];
     _arrayOfIdentifier = @[@"News", @"Team", @"HelpProject", @"Contacts"];
 }
 
