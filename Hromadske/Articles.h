@@ -2,13 +2,14 @@
 //  Articles.h
 //  Hromadske
 //
-//  Created by Admin on 13.04.15.
+//  Created by Admin on 14.04.15.
 //  Copyright (c) 2015 Semeniuk Sviatoslav. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Video;
 
 @interface Articles : NSManagedObject
 
@@ -20,28 +21,26 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSNumber * views_count;
 @property (nonatomic, retain) NSNumber * vk_id;
-@property (nonatomic, retain) NSSet *withLink;
-@property (nonatomic, retain) NSSet *withPhoto;
-@property (nonatomic, retain) NSSet *withVideo;
+@property (nonatomic, retain) NSSet *links;
+@property (nonatomic, retain) NSSet *photos;
+@property (nonatomic, retain) NSSet *videos;
 @end
 
 @interface Articles (CoreDataGeneratedAccessors)
 
-- (void)addWithLinkObject:(NSManagedObject *)value;
-- (void)removeWithLinkObject:(NSManagedObject *)value;
-- (void)addWithLink:(NSSet *)values;
-- (void)removeWithLink:(NSSet *)values;
+- (void)addLinksObject:(NSManagedObject *)value;
+- (void)removeLinksObject:(NSManagedObject *)value;
+- (void)addLinks:(NSSet *)values;
+- (void)removeLinks:(NSSet *)values;
 
-- (void)addWithPhotoObject:(NSManagedObject *)value;
-- (void)removeWithPhotoObject:(NSManagedObject *)value;
-- (void)addWithPhoto:(NSSet *)values;
-- (void)removeWithPhoto:(NSSet *)values;
+- (void)addPhotosObject:(NSManagedObject *)value;
+- (void)removePhotosObject:(NSManagedObject *)value;
+- (void)addPhotos:(NSSet *)values;
+- (void)removePhotos:(NSSet *)values;
 
-- (void)addWithVideoObject:(NSManagedObject *)value;
-- (void)removeWithVideoObject:(NSManagedObject *)value;
-- (void)addWithVideo:(NSSet *)values;
-- (void)removeWithVideo:(NSSet *)values;
-
--(void) convertDataToArticleModel: (NSArray *) article;
+- (void)addVideosObject:(Video *)value;
+- (void)removeVideosObject:(Video *)value;
+- (void)addVideos:(NSSet *)values;
+- (void)removeVideos:(NSSet *)values;
 
 @end

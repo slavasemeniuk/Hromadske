@@ -2,7 +2,7 @@
 //  Photo.m
 //  Hromadske
 //
-//  Created by Admin on 13.04.15.
+//  Created by Admin on 14.04.15.
 //  Copyright (c) 2015 Semeniuk Sviatoslav. All rights reserved.
 //
 
@@ -13,6 +13,6 @@
 @implementation Photo
 
 @dynamic url;
-@dynamic inArticle;
+@dynamic article;
 
 @end
