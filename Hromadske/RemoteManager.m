@@ -7,17 +7,11 @@
 //
 
 #import "RemoteManager.h"
+#import "Constants.h"
 #import <AFNetworking/AFNetworking.h>
 
-@interface RemoteManager()
-
-@end
-
-static NSString * const basicUrlSrting = @"http://178.62.205.247/v1/";
 
 @implementation RemoteManager
-{
-}
 
 + (RemoteManager *)sharedManager {
     static RemoteManager *__manager = nil;
@@ -29,15 +23,15 @@ static NSString * const basicUrlSrting = @"http://178.62.205.247/v1/";
     return __manager;
 }
 
+
 - (void) parsedJsonWithEndOfURL:(NSString *)urlEnd :(void (^)(NSArray * parsedObject))successCallback
 {
-    NSString *urlForRequest = [NSString stringWithFormat:@"%@%@",basicUrlSrting,urlEnd];
+    NSString *urlForRequest = [NSString stringWithFormat:@"%@%@",API_URL,urlEnd];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlForRequest]];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [operation setCompletionBlockWithSuccess: ^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSArray *ar = [NSArray arrayWithArray:responseObject[@"data"]];
         successCallback([NSArray arrayWithArray:responseObject[@"data"]]);
         
     }failure:^(AFHTTPRequestOperation *operation,NSError *error){
@@ -48,5 +42,38 @@ static NSString * const basicUrlSrting = @"http://178.62.205.247/v1/";
     }];
     [operation start];
 }
+
+- (void) parsedJsonWithTimeSync:(NSString *)date andUrlEnd:(NSString * )urlEnd :(void (^)(NSArray *))successCallback
+{
+    NSString *urlForRequest = [NSString stringWithFormat:@"%@%@",API_URL,urlEnd];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:urlForRequest parameters:@{@"sync_date":date} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        successCallback([NSArray arrayWithArray:responseObject[@"data"]]);
+    }
+         failure:^(AFHTTPRequestOperation *operation,NSError *error){
+             
+             UIAlertView *allertView = [[UIAlertView alloc]initWithTitle:@"Error Retrieving" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+             [allertView show];
+             
+         }];
+}
+
+- (void) parsedArticleWithId:(NSNumber *)identifire :(void (^)(NSDictionary *))successCallback
+{
+    NSString *urlEnd = [NSString stringWithFormat:@"articles/%d",[identifire intValue]];
+    NSString *urlForRequest = [NSString stringWithFormat:@"%@%@",API_URL,urlEnd];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:urlForRequest parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        successCallback([NSDictionary dictionaryWithDictionary:responseObject[@"data"]]);
+    }
+         failure:^(AFHTTPRequestOperation *operation,NSError *error){
+             
+             UIAlertView *allertView = [[UIAlertView alloc]initWithTitle:@"Error Retrieving" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+             [allertView show];
+             
+         }];
+}
+
+
 
 @end

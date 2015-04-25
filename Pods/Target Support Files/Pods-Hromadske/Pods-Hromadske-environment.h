@@ -48,19 +48,25 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// KVNProgress
+#define COCOAPODS_POD_AVAILABLE_KVNProgress
+#define COCOAPODS_VERSION_MAJOR_KVNProgress 2
+#define COCOAPODS_VERSION_MINOR_KVNProgress 2
+#define COCOAPODS_VERSION_PATCH_KVNProgress 1
+
 // MagicalRecord
 #define COCOAPODS_POD_AVAILABLE_MagicalRecord
 // This library does not follow semantic-versioning,
 // so we were not able to define version macros.
 // Please contact the author.
-// Version: 3.0.0.dev.1427379445.
+// Version: 3.0.0.dev.1429393336.
 
 // MagicalRecord/Core
 #define COCOAPODS_POD_AVAILABLE_MagicalRecord_Core
 // This library does not follow semantic-versioning,
 // so we were not able to define version macros.
 // Please contact the author.
-// Version: 3.0.0.dev.1427379445.
+// Version: 3.0.0.dev.1429393336.
 
 // SWRevealViewController
 #define COCOAPODS_POD_AVAILABLE_SWRevealViewController

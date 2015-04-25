@@ -7,16 +7,6 @@
 //
 
 #import "ControllersManager.h"
-#import "TeamViewController.h"
-#import "NewsViewController.h"
-#import "HelpProjectViewController.h"
-#import "ContactsViewController.h"
-
-@interface ControllersManager ()
-{
-}
-
-@end
 
 @implementation ControllersManager
 
@@ -31,10 +21,16 @@
 }
 
 
--(UINavigationController *)createNavigationViewControllerWithIdentifier:(NSString *)identifier
+-(UINavigationController *)createNavigationControllerWithIdentifier:(NSString *)identifier
 {
     return [[self createStoryboard] instantiateViewControllerWithIdentifier:identifier];
+}
 
+-(NewsDetailsViewController *)createNewsDetailsViewControllerWithArticle:(id)article
+{
+    NewsDetailsViewController *viewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"NewsDetails"];
+    [viewController setContent:article];
+    return viewController;
 }
 
 -(MenuViewController *)createMenuViewController

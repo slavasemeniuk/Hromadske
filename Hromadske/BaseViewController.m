@@ -22,7 +22,7 @@
 
 -(void)setUpMenuButton
 {
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"itemsButtonIcon.png"] style:UIBarButtonItemStyleDone target:self.revealViewController action:@selector(revealToggle:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStyleDone target:self.revealViewController action:@selector(revealToggle:)];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 

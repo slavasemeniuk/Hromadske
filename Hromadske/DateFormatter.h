@@ -10,4 +10,8 @@
 
 @interface DateFormatter : NSObject
 
++(DateFormatter *)sharedManager;
+
+-(NSString *)convertDateFromTimeStamp : (NSNumber *)value;
+
 @end

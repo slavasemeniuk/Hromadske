@@ -11,7 +11,13 @@
 @interface NewsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *shortDescription;
 @property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UIView *imagesView;
 @property (weak, nonatomic) IBOutlet UILabel *createdAt;
+@property (weak, nonatomic) IBOutlet UILabel *viewsCount;
+@property (weak, nonatomic) IBOutlet UIView *topLine;
+@property (weak, nonatomic) IBOutlet UIImageView *image_view;
+@property (weak, nonatomic) IBOutlet UIView *container;
+
+-(void)unviewed;
+
 
 @end

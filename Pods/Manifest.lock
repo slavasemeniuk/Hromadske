@@ -20,13 +20,15 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - MagicalRecord (3.0.0.dev.1427379445):
-    - MagicalRecord/Core (= 3.0.0.dev.1427379445)
-  - MagicalRecord/Core (3.0.0.dev.1427379445)
+  - KVNProgress (2.2.1)
+  - MagicalRecord (3.0.0.dev.1429393336):
+    - MagicalRecord/Core (= 3.0.0.dev.1429393336)
+  - MagicalRecord/Core (3.0.0.dev.1429393336)
   - SWRevealViewController (2.3.0)
 
 DEPENDENCIES:
   - AFNetworking
+  - KVNProgress
   - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord.git`, branch `release/3.0`)
   - SWRevealViewController
 
@@ -42,6 +44,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
+  KVNProgress: 7001d2d16a2755cee5599e8e485befe056f2197b
   MagicalRecord: 1108009980499d6f370a373c16afb1f52635fde8
   SWRevealViewController: f6d80638b8e12323e87ac79562345403a799cb77
 

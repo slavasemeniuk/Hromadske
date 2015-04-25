@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Semeniuk Sviatoslav. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface NewsDetailsViewController : NSObject
+@interface NewsDetailsViewController : UIViewController
+
+-(void) setContent: (id) article;
 
 @end

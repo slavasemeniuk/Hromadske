@@ -8,14 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "MenuViewController.h"
+#import "NewsDetailsViewController.h"
 
 @interface ControllersManager : NSObject
 
-+ (ControllersManager *)sharedManager;
++(ControllersManager *)sharedManager;
 
--(UINavigationController *)createNavigationViewControllerWithIdentifier: (NSString *) indentifier;
+-(UINavigationController *)createNavigationControllerWithIdentifier: (NSString *) indentifier;
 
-- (MenuViewController *)createMenuViewController;
+-(NewsDetailsViewController *)createNewsDetailsViewControllerWithArticle: (id) article;
+-(MenuViewController *)createMenuViewController;
 
 
 

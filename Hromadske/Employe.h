@@ -18,6 +18,6 @@
 @property (nonatomic, retain) NSNumber * identifire;
 @property (nonatomic, retain) NSString * position;
 
--(void) convertDataToEmployeModel: (NSArray *) employe;
+-(void) convertDataToEmployeModel: (NSDictionary *) employe;
 
 @end

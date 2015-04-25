@@ -64,7 +64,7 @@
     [prototypecell setNeedsLayout];
     [prototypecell layoutIfNeeded];
     
-    return [prototypecell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height+1.0f;
+    return [prototypecell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     
     
 }

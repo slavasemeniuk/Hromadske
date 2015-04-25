@@ -12,16 +12,17 @@
 
 + (DataManager *)sharedManager;
 
+- (void) updateDigest;
+- (void) updateArticleWithId: (NSNumber*) identifire;
+
 - (void) teamWithCompletion:(void (^)(NSArray *team)) completion;
-
 - (void) helpProjectDataWithCompletion:(void (^)(id helpProjectData)) completion;
-
 - (void) contactsDataWithCompletion:(void (^)(id contacts)) completion;
 
-- (void) newsWithCompletion:(void (^)(NSArray *newsList)) completion;
+- (id) getRateAndWeather;
 
-- (NSDate* ) getDateOfLastArticle;
-
-- (NSArray *)fetchListOfArticles;
+@property (nonatomic, strong) NSArray *listOfArticles;
+@property (nonatomic, strong) NSString *streaming;
+@property  NSInteger new_entries_count;
 
 @end

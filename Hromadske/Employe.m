@@ -17,7 +17,7 @@
 @dynamic identifire;
 @dynamic position;
 
--(void)convertDataToEmployeModel:(NSArray *)employe
+-(void)convertDataToEmployeModel:(NSDictionary *)employe
 {
     self.name = [employe valueForKey:@"name"];
     self.image = [employe valueForKey:@"photo"];
