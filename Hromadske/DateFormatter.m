@@ -31,6 +31,7 @@
     double timestamp = [value floatValue];
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
     
+    
     return [self timeIntervalFromDate:date];
 }
 
@@ -39,7 +40,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate * d2 = [NSDate date];
     
-    NSTimeInterval delta = [date1 timeIntervalSinceDate:d2];
+    NSTimeInterval delta = [d2 timeIntervalSinceDate:date1];
     
     if (delta < 2 * MINUTE) {
         return @"Хвилину назад";
