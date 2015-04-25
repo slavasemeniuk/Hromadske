@@ -90,8 +90,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([NetworkTracker isReachable]) {
-        Articles *article = [_tableViewsData objectAtIndex:indexPath.row];
+    Articles *article = [_tableViewsData objectAtIndex:indexPath.row];
+    if ([NetworkTracker isReachable]||(article.content)) {
         [self.navigationController pushViewController:[[ControllersManager sharedManager] createNewsDetailsViewControllerWithArticle:article] animated:YES];
     }
     else{

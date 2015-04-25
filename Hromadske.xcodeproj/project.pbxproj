@@ -16,13 +16,7 @@
 		8434AA2B1ACB5DD000523C10 /* HelpProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8434AA2A1ACB5DD000523C10 /* HelpProject.m */; };
 		8436031C1AEA629600EC66EA /* NewArticlesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436031B1AEA629600EC66EA /* NewArticlesView.m */; };
 		843603201AEA687400EC66EA /* NewArticlesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8436031F1AEA687400EC66EA /* NewArticlesView.xib */; };
-		843603251AEA70B400EC66EA /* news-details 14-15-05-780.png in Resources */ = {isa = PBXBuildFile; fileRef = 843603211AEA70B400EC66EA /* news-details 14-15-05-780.png */; };
-		843603261AEA70B400EC66EA /* news-details@2x 14-15-07-281.png in Resources */ = {isa = PBXBuildFile; fileRef = 843603221AEA70B400EC66EA /* news-details@2x 14-15-07-281.png */; };
-		843603271AEA70B400EC66EA /* news-views-count 14-14-54-317.png in Resources */ = {isa = PBXBuildFile; fileRef = 843603231AEA70B400EC66EA /* news-views-count 14-14-54-317.png */; };
-		843603281AEA70B400EC66EA /* news-views-count@2x 14-14-55-896.png in Resources */ = {isa = PBXBuildFile; fileRef = 843603241AEA70B400EC66EA /* news-views-count@2x 14-14-55-896.png */; };
 		845742911AEAD2F4000AF3DD /* NetworkTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 845742901AEAD2F4000AF3DD /* NetworkTracker.m */; };
-		845742941AEAD945000AF3DD /* hromadske_logo_cherkasy.png in Resources */ = {isa = PBXBuildFile; fileRef = 845742921AEAD945000AF3DD /* hromadske_logo_cherkasy.png */; };
-		845742951AEAD945000AF3DD /* hromadske_logo_cherkasy2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 845742931AEAD945000AF3DD /* hromadske_logo_cherkasy2x.png */; };
 		845BA1571AB777AF000E7204 /* ControllersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845BA1561AB777AF000E7204 /* ControllersManager.m */; };
 		8472D1381ADDA8E600F188E9 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 8472D1371ADDA8E600F188E9 /* Video.m */; };
 		8472D13E1ADDA8E600F188E9 /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 8472D13D1ADDA8E600F188E9 /* Link.m */; };
@@ -79,15 +73,9 @@
 		8436031A1AEA629600EC66EA /* NewArticlesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewArticlesView.h; sourceTree = "<group>"; };
 		8436031B1AEA629600EC66EA /* NewArticlesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewArticlesView.m; sourceTree = "<group>"; };
 		8436031F1AEA687400EC66EA /* NewArticlesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewArticlesView.xib; sourceTree = "<group>"; };
-		843603211AEA70B400EC66EA /* news-details 14-15-05-780.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "news-details 14-15-05-780.png"; sourceTree = "<group>"; };
-		843603221AEA70B400EC66EA /* news-details@2x 14-15-07-281.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "news-details@2x 14-15-07-281.png"; sourceTree = "<group>"; };
-		843603231AEA70B400EC66EA /* news-views-count 14-14-54-317.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "news-views-count 14-14-54-317.png"; sourceTree = "<group>"; };
-		843603241AEA70B400EC66EA /* news-views-count@2x 14-14-55-896.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "news-views-count@2x 14-14-55-896.png"; sourceTree = "<group>"; };
 		843693181AD6E13F0007BF94 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8457428F1AEAD2F4000AF3DD /* NetworkTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTracker.h; sourceTree = "<group>"; };
 		845742901AEAD2F4000AF3DD /* NetworkTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTracker.m; sourceTree = "<group>"; };
-		845742921AEAD945000AF3DD /* hromadske_logo_cherkasy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hromadske_logo_cherkasy.png; sourceTree = "<group>"; };
-		845742931AEAD945000AF3DD /* hromadske_logo_cherkasy2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hromadske_logo_cherkasy2x.png; sourceTree = "<group>"; };
 		845BA1551AB777AF000E7204 /* ControllersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllersManager.h; sourceTree = "<group>"; };
 		845BA1561AB777AF000E7204 /* ControllersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllersManager.m; sourceTree = "<group>"; };
 		8472D1361ADDA8E600F188E9 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
@@ -256,7 +244,6 @@
 				84A356F91ACDEF8300A604F7 /* Cells */,
 				849F6A191AC6146B00FC3560 /* ViewControllers */,
 				84EA84081ACB5B3C00D51EB0 /* DataClasses */,
-				84EA84091ACB5C7500D51EB0 /* img */,
 				84C22FE01AB77283006C8C2E /* Main.storyboard */,
 				84C22FE51AB77283006C8C2E /* LaunchScreen.xib */,
 				84C22FE31AB77283006C8C2E /* Images.xcassets */,
@@ -319,19 +306,6 @@
 				8434AA2A1ACB5DD000523C10 /* HelpProject.m */,
 			);
 			name = DataClasses;
-			sourceTree = "<group>";
-		};
-		84EA84091ACB5C7500D51EB0 /* img */ = {
-			isa = PBXGroup;
-			children = (
-				843603211AEA70B400EC66EA /* news-details 14-15-05-780.png */,
-				843603221AEA70B400EC66EA /* news-details@2x 14-15-07-281.png */,
-				843603231AEA70B400EC66EA /* news-views-count 14-14-54-317.png */,
-				843603241AEA70B400EC66EA /* news-views-count@2x 14-14-55-896.png */,
-				845742921AEAD945000AF3DD /* hromadske_logo_cherkasy.png */,
-				845742931AEAD945000AF3DD /* hromadske_logo_cherkasy2x.png */,
-			);
-			name = img;
 			sourceTree = "<group>";
 		};
 		D800507DE9DBD1A7AE84A1C0 /* Frameworks */ = {
@@ -426,19 +400,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				843603201AEA687400EC66EA /* NewArticlesView.xib in Resources */,
-				843603281AEA70B400EC66EA /* news-views-count@2x 14-14-55-896.png in Resources */,
 				840DD8DB1ABB4C1B00EC6923 /* TeamViewCell.xib in Resources */,
-				845742951AEAD945000AF3DD /* hromadske_logo_cherkasy2x.png in Resources */,
 				841032721AE41A20006E34C4 /* MenuItemCell.xib in Resources */,
-				843603251AEA70B400EC66EA /* news-details 14-15-05-780.png in Resources */,
 				84C22FE21AB77283006C8C2E /* Main.storyboard in Resources */,
 				84C30A8A1ACF38E000D44E8C /* NewsTableViewCell.xib in Resources */,
-				845742941AEAD945000AF3DD /* hromadske_logo_cherkasy.png in Resources */,
 				84C22FE71AB77283006C8C2E /* LaunchScreen.xib in Resources */,
 				84C22FE41AB77283006C8C2E /* Images.xcassets in Resources */,
-				843603261AEA70B400EC66EA /* news-details@2x 14-15-07-281.png in Resources */,
 				849F82781AE9562200EF2125 /* StreamView.xib in Resources */,
-				843603271AEA70B400EC66EA /* news-views-count 14-14-54-317.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
