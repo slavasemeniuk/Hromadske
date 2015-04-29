@@ -66,15 +66,15 @@
     if (delta < 24 * HOUR) {
         int hours = ((double)delta/HOUR);
         if ((hours>4&&hours<=20)||(hours%10==0)) {
-            res =@"хвилин назад";
+            res =@"годин назад";
         }
         else
             if (hours%10==1) {
-                res =@"хвилина назад";
+                res =@"година назад";
             }
             else
                 if (hours%10>=1&&hours%10<=4) {
-                    res =@"хвилини назад";
+                    res =@"години назад";
                 }
         return [NSString stringWithFormat:@"%d %@", hours, res];
     }
