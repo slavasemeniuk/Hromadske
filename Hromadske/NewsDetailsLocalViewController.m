@@ -48,7 +48,7 @@
     [self.name setText:_article.title];
     [self.descript setText:_article.short_description];
     if ([_article getVideoURL]) {
-        UIWebView *webView = [[UIWebView alloc]initWithFrame:self.attachmentView.frame];
+        UIWebView *webView = [[UIWebView alloc]initWithFrame:self.attachmentView.bounds];
         NSURLRequest *request = [[NSURLRequest alloc]initWithURL:[NSURL URLWithString:[_article getVideoURL]]];
         [webView loadRequest:request];
         [self.attachmentView addSubview:webView];

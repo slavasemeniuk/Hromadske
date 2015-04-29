@@ -103,16 +103,24 @@
         self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"news-sun"];
         self.navigationController.navigationBar.barTintColor=[UIColor blackColor];
         self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
+        UIView *addStatusBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, 20)];
+        addStatusBar.backgroundColor = [UIColor blackColor];
+        [self.navigationController.navigationBar.window addSubview:addStatusBar];
     }
     else{
         _mode=@"day";
         self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"news-moon"];
         self.navigationController.navigationBar.barTintColor=[UIColor whiteColor];
         self.navigationController.navigationBar.tintColor=[UIColor blackColor];
+        UIView *addStatusBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, 20)];
+        addStatusBar.backgroundColor = [UIColor colorWithRed:253.0f/255.0f green:123.0f/255.0f blue:40.0f/255.0f alpha:1];;
+        [self.navigationController.navigationBar.window addSubview:addStatusBar];
     }
     [self setUpWebView];
 }
-    
+
+
+
 -(void)goRoot{
     self.navigationController.navigationBar.barTintColor=[UIColor whiteColor];
     self.navigationController.navigationBar.tintColor=[UIColor blackColor];

@@ -44,6 +44,6 @@
 		<string>font.ttf</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<integer>0</integer>
+	<false/>
 </dict>
 </plist>

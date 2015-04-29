@@ -577,7 +577,7 @@
                                 </connections>
                             </webView>
                         </subviews>
-                        <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.77647066119999997" green="0.8078432083" blue="0.82745105029999999" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="T2T-0g-7c2" firstAttribute="top" secondItem="LjV-dE-ERe" secondAttribute="bottom" id="2oh-yf-Fsz"/>
                             <constraint firstItem="LjV-dE-ERe" firstAttribute="leading" secondItem="myR-P1-0EN" secondAttribute="leading" id="ELt-8L-pLW"/>

@@ -40,10 +40,10 @@
 
 - (void)setUpStatusBar{
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        UIView *addStatusBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.window.frame.size.width, 20)];
+        //UIView *addStatusBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.window.frame.size.width, 20)];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        addStatusBar.backgroundColor = [UIColor colorWithRed:253.0f/255.0f green:123.0f/255.0f blue:40.0f/255.0f alpha:1];
-        [self.window.rootViewController.view addSubview:addStatusBar];
+        //addStatusBar.backgroundColor = [UIColor colorWithRed:253.0f/255.0f green:123.0f/255.0f blue:40.0f/255.0f alpha:1];
+       // [self.window.rootViewController.view addSubview:addStatusBar];
     }
 
 }

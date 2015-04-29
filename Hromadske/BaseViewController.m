@@ -18,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpMenuButton];
+    UIView *addStatusBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, 20)];
+    addStatusBar.backgroundColor = [UIColor colorWithRed:253.0f/255.0f green:123.0f/255.0f blue:40.0f/255.0f alpha:1];
+    [self.navigationController.navigationBar.window addSubview:addStatusBar];
+
 }
 
 -(void)setUpMenuButton
