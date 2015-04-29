@@ -9,6 +9,7 @@
 #import "NewsDetailsViewController.h"
 #import <KVNProgress/KVNProgress.h>
 #import "DataManager.h"
+#import "ControllersManager.h"
 #import "Link.h"
 #import "Constants.h"
 #import "Articles.h"
@@ -49,10 +50,10 @@
         NSURLRequest *request = [[NSURLRequest alloc]initWithURL:[NSURL URLWithString:url]];
         [_webView loadRequest:request];
     }
-    if (([[_article valueForKey:@"content"] isEqual:@"link"])&&(![_article getLink])) {
-        UIAlertView *noDetails = [[UIAlertView alloc]initWithTitle:@"Деталі відсутні" message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-        [noDetails show];
-        [self goBack];
+    if (([[_article valueForKey:@"content"] isEqual:@"link"])&&(([_article getVideoURL])||[_article getImageUrl])) {
+        NewsDetailsLocalViewController *newsdet=[[ControllersManager sharedManager] createLocalNewsDetailsViewControllerWithArticle:_article];
+        [self.navigationController pushViewController:newsdet animated:YES];
+       
     }
     
 
@@ -91,21 +92,30 @@
 }
 
 -(void)setUpNavigationBar{
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(goBack)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(changeMode)];
+    self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"hromadske-logo"]];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Назад" style:UIBarButtonItemStylePlain target:self action:@selector(goRoot)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"news-moon"] style:UIBarButtonItemStyleDone target:self action:@selector(changeMode)];
 }
 
 -(void)changeMode{
     if ([_mode isEqual:@"day"]) {
         _mode=@"night";
+        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"news-sun"];
+        self.navigationController.navigationBar.barTintColor=[UIColor blackColor];
+        self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
     }
     else{
         _mode=@"day";
+        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"news-moon"];
+        self.navigationController.navigationBar.barTintColor=[UIColor whiteColor];
+        self.navigationController.navigationBar.tintColor=[UIColor blackColor];
     }
     [self setUpWebView];
 }
-
--(void)goBack{
+    
+-(void)goRoot{
+    self.navigationController.navigationBar.barTintColor=[UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor=[UIColor blackColor];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

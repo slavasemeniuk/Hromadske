@@ -7,8 +7,9 @@
 //
 
 #import "HelpProjectViewController.h"
-#import "DataManager.h"
-#import "HelpProject.h"
+#import "Constants.h"
+#import "ControllersManager.h"
+//#import "HelpProject.h"
 
 @interface HelpProjectViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *label;
@@ -20,28 +21,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpLabel];
-    [self setUpData];
+//    [self setUpLabel];
+//    [self setUpData];
     
 }
 
 -(void) setUpLabel {
-    _label.lineBreakMode = NSLineBreakByWordWrapping;
-    _label.numberOfLines = 0;
+//    _label.lineBreakMode = NSLineBreakByWordWrapping;
+//    _label.numberOfLines = 0;
 }
 
 -(void) setUpData {
-    [[DataManager sharedManager] helpProjectDataWithCompletion: ^(id helpData) {
-        HelpProject *helpProjectData = helpData;
-        [_label setText: helpProjectData.content];
-        _url = helpProjectData.url;
-    }];
+//    [[DataManager sharedManager] helpProjectDataWithCompletion: ^(id helpData) {
+//        HelpProject *helpProjectData = helpData;
+//        [_label setText: helpProjectData.content];
+//        _url = helpProjectData.url;
+//    }];
 }
-- (IBAction)goToHelp:(id)sender {
-    NSURL *url = [NSURL URLWithString:_url];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    UIWebView *helpPage = [[UIWebView alloc] init];
-    [helpPage loadRequest:requestObj];
+
+- (IBAction)goToWebSite:(id)sender {
+    [self.navigationController pushViewController:[[ControllersManager sharedManager] createNavigationControllerWithIdentifier:@"webhelp"] animated:YES];
 }
 
 @end

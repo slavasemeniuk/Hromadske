@@ -46,6 +46,7 @@
 -(void) createArticlesDataModel: (NSDictionary *) article;
 -(NSString *)getImageUrl;
 -(NSString *)getLink;
+-(NSString *)getVideoURL;
 
 
 @end

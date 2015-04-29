@@ -80,7 +80,7 @@
     RateAndWeather *data = [[DataManager sharedManager]getRateAndWeather];
     [_usdRate setText:[NSString stringWithFormat:@"USD %@",data.rateUSD]];
     [_eurRate setText:[NSString stringWithFormat:@"EUR %@",data.rateEUR]];
-    [_temperature setText:data.weather];
+    [_temperature setText:[NSString stringWithFormat:@"%@°",data.weather]];
 }
 
 -(void)gradientBackground{

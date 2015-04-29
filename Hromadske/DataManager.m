@@ -73,8 +73,13 @@
               [self saveRatesAndWeatherToContext:parsedDigest];
               [self fetchRateAndWeather];
               
-              _streaming = [[parsedDigest valueForKey:@"streaming"] objectAtIndex:0];
-              _new_entries_count = [[[parsedDigest valueForKey:@"new_entries_count"] objectAtIndex:0] integerValue];
+              NSNull *null = [[NSNull alloc]init];
+              if ([[parsedDigest valueForKey:@"streaming"] objectAtIndex:0]!=null) {
+                  _streaming = [[parsedDigest valueForKey:@"streaming"] objectAtIndex:0];
+              }
+              else{
+                  _streaming=nil;
+              }
               
               [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshMenuNotification" object:nil];
               
@@ -84,17 +89,19 @@
 }
 
 -(void) updateArticlesData {
-     if (!_new_entries_count)//Change when API done
-     {
+     ///if (!_new_entries_count)//Change when API done
+     //{
          [[RemoteManager sharedManager] parsedJsonWithTimeSync:_dateOfLastArticle andUrlEnd:ARTICKE_JSON :^(NSArray *parsedArticles)
           {
               [self saveArticlesToContext:parsedArticles];
               _listOfArticles = [self fetchListOfArticles];
-              _new_entries_count = [_listOfArticles count];
+              if ([parsedArticles count]) {
+                  _new_entries_count = [parsedArticles count];
+              }
               _dateOfLastArticle = [[[_listOfArticles objectAtIndex:0] valueForKey:@"created_at"] stringValue];
               [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDataNotification" object:nil];
           }];
-     }
+    // }
 }
 
 -(void) updateArticleWithId:(NSNumber *)identifire{

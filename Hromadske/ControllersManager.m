@@ -33,6 +33,13 @@
     return viewController;
 }
 
+-(NewsDetailsLocalViewController *)createLocalNewsDetailsViewControllerWithArticle:(id)article
+{
+    NewsDetailsLocalViewController *viewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"localController"];
+    [viewController setdata:article];
+    return viewController;
+}
+
 -(MenuViewController *)createMenuViewController
 {
     MenuViewController *menuViewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"Menu"];

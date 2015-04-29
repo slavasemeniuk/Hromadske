@@ -41,20 +41,42 @@
     NSDate * d2 = [NSDate date];
     
     NSTimeInterval delta = [d2 timeIntervalSinceDate:date1];
-    
+    NSString *res = [[NSString alloc]init];
     if (delta < 2 * MINUTE) {
         return @"Хвилину назад";
     }
     if (delta < 45 * MINUTE) {
         int minutes = ((double)delta/MINUTE);
-        return [NSString stringWithFormat:@"%d хвилин назад", minutes];
+        if ((minutes>4&&minutes<=20)||(minutes%10==0)) {
+            res =@"хвилин назад";
+        }
+        else
+        if (minutes%10==1) {
+            res =@"хвилина назад";
+        }
+        else
+        if (minutes%10>=1&&minutes%10<=4) {
+            res =@"хвилини назад";
+        }
+        return [NSString stringWithFormat:@"%d %@", minutes, res];
     }
     if (delta < 90*MINUTE) {
         return @"Годину назад";
     }
     if (delta < 24 * HOUR) {
         int hours = ((double)delta/HOUR);
-        return [NSString stringWithFormat:@"%d годин назад", hours];
+        if ((hours>4&&hours<=20)||(hours%10==0)) {
+            res =@"хвилин назад";
+        }
+        else
+            if (hours%10==1) {
+                res =@"хвилина назад";
+            }
+            else
+                if (hours%10>=1&&hours%10<=4) {
+                    res =@"хвилини назад";
+                }
+        return [NSString stringWithFormat:@"%d %@", hours, res];
     }
     if (delta < 48 * HOUR) {
         return @"Вчора";

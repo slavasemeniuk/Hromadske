@@ -65,16 +65,30 @@
 -(NSString *)getImageUrl
 {
     NSArray *listOfImage = [self.photos allObjects];
-    Photo *image=[listOfImage objectAtIndex:0];
-    return image.url;
+    if ([listOfImage count]) {
+        Photo *image=[listOfImage objectAtIndex:0];
+        return image.url;
+    }
+    return nil;
 }
 
 -(NSString *)getLink
 {
     NSArray *listOfLinks = [self.links allObjects];
-    Link *link=[listOfLinks objectAtIndex:0];
-    return link.url;
+    if ([listOfLinks count]) {
+        Link *link=[listOfLinks objectAtIndex:0];
+        return link.url;
+    }
+    return nil;
 }
-
+-(NSString *)getVideoURL
+{
+    NSArray *listOfVideos = [self.videos allObjects];
+    if ([listOfVideos count]) {
+        Link *link=[listOfVideos objectAtIndex:0];
+        return link.url;
+    }
+    return nil;
+}
 
 @end

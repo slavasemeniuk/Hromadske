@@ -46,7 +46,6 @@
 -(void)startNetworkTracker
 {
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:API_URL]];
-    
     [manager.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
         _networkStatus=status;
         if ([NetworkTracker isReachable]) {

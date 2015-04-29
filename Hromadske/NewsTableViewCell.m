@@ -12,11 +12,12 @@
 
 - (void)awakeFromNib {
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_container.bounds];
-    _container.layer.masksToBounds=NO;
+    _container.layer.masksToBounds=YES;
     _container.layer.shadowColor = [UIColor blackColor].CGColor;
     _container.layer.shadowOffset=CGSizeMake(1.0f, 0.0f);
-    _container.layer.shadowOpacity=0.5f;
+    _container.layer.shadowOpacity=0.2f;
     _container.layer.shadowPath=shadowPath.CGPath;
+    //[_title setFont:[UIFont fontWithName:@"Lucida Grande" size:13.0f]];
 }
 
 -(void)unviewed

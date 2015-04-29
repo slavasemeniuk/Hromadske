@@ -115,8 +115,7 @@
 {
     _tableViewsData = [DataManager sharedManager].listOfArticles;
     _newArticles=[[DataManager sharedManager] new_entries_count];
-    //_stream=[[DataManager sharedManager] streaming];
-     _newArticles = [[DataManager sharedManager] new_entries_count];
+    _stream=[[DataManager sharedManager] streaming];
     [_tableView reloadData];
     [self setUpStreamView];
     [self setupNavBar];

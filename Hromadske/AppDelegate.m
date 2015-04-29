@@ -8,15 +8,14 @@
 
 #import "AppDelegate.h"
 #import "DataManager.h"
-
-@interface AppDelegate ()
-
-@end
+#import "Constants.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [GMSServices provideAPIKey:API_GOOGLE];
     [self setUpStatusBar];
     [DataManager sharedManager];
     return YES;

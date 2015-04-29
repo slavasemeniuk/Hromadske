@@ -6,12 +6,15 @@
 //  Copyright (c) 2015 Semeniuk Sviatoslav. All rights reserved.
 //
 
+
+static NSString * const API_GOOGLE = @"AIzaSyCbYvIR377tNF-b7Flggn5r0N3A0qzVPyE";
 static NSString * const API_URL = @"http://178.62.205.247/v1/";
 static NSString * const ARTICKE_JSON = @"articles";
 static NSString * const TEAM_JSON = @"info/team";
 static NSString * const DONATE_JSON = @"info/donate";
 static NSString * const CONTACTS_JSON = @"contacts";
 static NSString * const DIGEST_JSON = @"info/digest";
+static NSString * const HELP_URL=@"http://hromadske.cherkasy.ua/dopomogti";
 
 static NSString * const HROMADSKE_URL = @"http://hromadske.cherkasy.ua";
 
