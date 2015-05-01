@@ -32,7 +32,9 @@
 {
     self.id = [article valueForKey:@"id"];
     self.short_description = [article valueForKey:@"short_description"];
-    self.created_at = [article valueForKey:@"created_at"];
+    
+    self.created_at = [[DateFormatter sharedManager] convertToDateFromTimeStamp:[article valueForKey:@"created_at"]];
+    
     self.category = [article valueForKey:@"category"];
     self.title = [article valueForKey:@"title"];
     self.vk_id = [article valueForKey:@"vk_id"];

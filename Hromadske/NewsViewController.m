@@ -19,14 +19,16 @@
 #import "Photo.h"
 
 
-@interface NewsViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface NewsViewController ()<UITableViewDataSource, UITableViewDelegate, DataManangerDelagate>
 {
-    NSArray *_tableViewsData;
-    NSInteger _newArticles;
+    NSMutableArray *_tableViewsData;
     NSString *_stream;
+    NewArticlesView *_newArticles;
+    NSInteger _countNewArticles;
+    
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) UIRefreshControl *pullToReferesh;
 @end
 
 @implementation NewsViewController
@@ -34,27 +36,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self setUpCell];
-    [self setupNavBar];
+    [[DataManager sharedManager] setDelegate:self];
+    [self setUpViews];
     [self setUpData];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:@"refreshDataNotification" object:nil];
     [self setUpStreamView];
+    
+    
 }
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_tableViewsData count];
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NewsTableViewCell *newsCell = [tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
     Articles *article = [_tableViewsData objectAtIndex:indexPath.row];
     [newsCell.title setText:article.title];
     [newsCell.shortDescription setText:article.short_description];
     [newsCell.viewsCount setText:[article.views_count stringValue]];
-    [newsCell.createdAt setText:[[DateFormatter sharedManager]convertDateFromTimeStamp:article.created_at]];
+    [newsCell.createdAt setText:[[DateFormatter sharedManager] timeIntervalFromDate:article.created_at]];
     
     NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[article getImageUrl]]
                                                   cachePolicy:NSURLRequestReturnCacheDataElseLoad
@@ -62,7 +63,7 @@
     [newsCell.image_view setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
     
     
-    if (indexPath.row<_newArticles) {
+    if (indexPath.row<_countNewArticles) {
         [newsCell unviewed];
     };
 
@@ -101,24 +102,9 @@
     [_tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
--(void)setUpCell
-{
-    [_tableView registerNib:[UINib nibWithNibName:@"NewsTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsCell"];
-}
-
 -(void)setUpData
 {
-    _tableViewsData = [DataManager sharedManager].listOfArticles;
-}
-
--(void)refreshData
-{
-    _tableViewsData = [DataManager sharedManager].listOfArticles;
-    _newArticles=[[DataManager sharedManager] new_entries_count];
-    _stream=[[DataManager sharedManager] streaming];
-    [_tableView reloadData];
-    [self setUpStreamView];
-    [self setupNavBar];
+    _tableViewsData = [NSMutableArray arrayWithArray:[DataManager sharedManager].listOfArticles];
 }
 
 -(void)setUpStreamView
@@ -134,15 +120,50 @@
     }
 }
 
--(void)setupNavBar{
-    if (_newArticles) {
-        NewArticlesView *view =[[NewArticlesView alloc]init];
-        [view newArticles:_newArticles];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:view];
+-(void)setUpViews{
+    [_tableView registerNib:[UINib nibWithNibName:@"NewsTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsCell"];
+    _pullToReferesh = [[UIRefreshControl alloc] init];
+    [_pullToReferesh addTarget:[DataManager sharedManager] action:@selector(fetchRemoteArticles) forControlEvents:UIControlEventValueChanged];
+    [_tableView addSubview:_pullToReferesh];
+    
+}
+-(void)showNewArticleBage:(NSInteger)count{
+    if (!_newArticles) {
+        _newArticles =[[NewArticlesView alloc]init];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_newArticles];
     }
-    else{
-        self.navigationItem.rightBarButtonItem = nil;
+    [_newArticles setHidden:NO];
+    [_newArticles newArticles:count];
+}
+
+-(void)hideNewArticlesBage{
+    [_newArticles setHidden:YES];
+}
+
+- (void) dataManagerDidStartUpadating:(DataManager *)manager
+{
+    if (![_pullToReferesh isRefreshing]) {
+         [_pullToReferesh beginRefreshing];
     }
+}
+- (void) dataManager:(DataManager *)manager didFinishUpdatingArticles:(NSArray *)listOfArticles{
+    _countNewArticles = [listOfArticles count];
+    if (_countNewArticles>0 && _tableView.contentOffset.y>0)
+    {
+        [self showNewArticleBage:_countNewArticles];
+    }
+    else
+    {
+        [self hideNewArticlesBage];
+    }
+    [_tableViewsData addObjectsFromArray:listOfArticles];
+    [_tableView reloadData];
+    [_pullToReferesh endRefreshing];
+}
+
+
+- (void) dataManagerDidFaildUpadating:(DataManager *)manager{
+    [_pullToReferesh endRefreshing];
 }
 
 

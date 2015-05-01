@@ -14,6 +14,13 @@
 #define DAY (24*HOUR)
 #define MONTH (30*DAY)
 
+@interface DateFormatter ()
+
+{
+    NSDateFormatter *_df;
+}
+
+@end
 
 @implementation DateFormatter
 
@@ -27,17 +34,31 @@
     return _manager;
 }
 
--(NSString *)convertDateFromTimeStamp:(NSNumber *)value{
-    double timestamp = [value floatValue];
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
-    
-    
-    return [self timeIntervalFromDate:date];
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _df = [[NSDateFormatter alloc] init];
+        [_df setDateFormat:@"yyyy-MM-dd HH:mm:ss:SSS"];
+    }
+    return self;
 }
 
--(NSString *)timeIntervalFromDate:(NSDate *)date1{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+- (NSDate *)convertToDateFromTimeStamp:(NSNumber *)value{
+    double timestamp = [value doubleValue];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
+    return date;
+}
+
+- (NSString *)convertToTimeStamp: (NSDate *)date{
+    NSTimeInterval timeInterval = [date timeIntervalSince1970];
+    NSString *res = [NSString stringWithFormat:@"%f",timeInterval];
+    NSLog(@"%@",res);
+    return res;
+}
+
+- (NSString *)timeIntervalFromDate:(NSDate *)date1{
+    
     NSDate * d2 = [NSDate date];
     
     NSTimeInterval delta = [d2 timeIntervalSinceDate:date1];
@@ -83,8 +104,8 @@
     }
     else
     {
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        return [dateFormatter stringFromDate: date1];
+        [_df setDateStyle:NSDateFormatterMediumStyle];
+        return [_df stringFromDate: date1];
     }
 }
 

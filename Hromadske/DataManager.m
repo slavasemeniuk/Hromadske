@@ -8,6 +8,7 @@
 
 #import "DataManager.h"
 #import <MagicalRecord/MagicalRecord.h>
+#import "DateFormatter.h"
 #import "RemoteManager.h"
 #import "NetworkTracker.h"
 #import "Constants.h"
@@ -18,8 +19,8 @@
 #import "Contacts.h"
 
 @interface DataManager()
-@property (nonatomic, strong) NSString *dateOfLastArticle;
-@property (nonatomic ,strong) RateAndWeather *rateAndWeather;
+@property (nonatomic, strong) NSString * dateOfLastArticle;
+@property (nonatomic ,strong) RateAndWeather * rateAndWeather;
 @end
 
 @implementation DataManager
@@ -44,64 +45,30 @@
     return self;
 }
 
+-(void) dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+
 -(void)setUp{
     [MagicalRecord setupSQLiteStackWithStoreNamed:@"Hromadske.sqlite"];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDigest) name:@"checkDigest" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveConnectionNotification:) name:@"NetworkConnetction" object:nil];
     [NetworkTracker sharedManager];
     
-    _listOfArticles= [self fetchListOfArticles];
-    [self fetchRateAndWeather];
-    _new_entries_count=0;
-    
-    if ([_listOfArticles count]) {
-        _dateOfLastArticle = [[[_listOfArticles objectAtIndex:0] valueForKey:@"created_at"] stringValue];
-        
-    }
-    else {
-        _dateOfLastArticle = @"1";
-    }
-
+    [self fetchLocalData];
 }
 
--(void)updateDigest
-{
-    if ([NetworkTracker isReachable])
-    {
-        [[RemoteManager sharedManager] parsedJsonWithTimeSync:_dateOfLastArticle andUrlEnd:DIGEST_JSON :^(NSArray *parsedDigest)
-          {
-              [self saveRatesAndWeatherToContext:parsedDigest];
-              [self fetchRateAndWeather];
-              
-              NSNull *null = [[NSNull alloc]init];
-              if ([[parsedDigest valueForKey:@"streaming"] objectAtIndex:0]!=null) {
-                  _streaming = [[parsedDigest valueForKey:@"streaming"] objectAtIndex:0];
-              }
-              else{
-                  _streaming=nil;
-              }
-              
-              [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshMenuNotification" object:nil];
-              
-              [self updateArticlesData];
-          }];
+-(void)recieveConnectionNotification:(NSNotification *)notification{
+    NSDictionary *status =notification.userInfo;
+    if ([[status valueForKey:@"status"] isEqual:@"Reachable"]) {
+        [self fetchRemoteArticles];
     }
-}
-
--(void) updateArticlesData {
-     ///if (!_new_entries_count)//Change when API done
-     //{
-         [[RemoteManager sharedManager] parsedJsonWithTimeSync:_dateOfLastArticle andUrlEnd:ARTICKE_JSON :^(NSArray *parsedArticles)
-          {
-              [self saveArticlesToContext:parsedArticles];
-              _listOfArticles = [self fetchListOfArticles];
-              if ([parsedArticles count]) {
-                  _new_entries_count = [parsedArticles count];
-              }
-              _dateOfLastArticle = [[[_listOfArticles objectAtIndex:0] valueForKey:@"created_at"] stringValue];
-              [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDataNotification" object:nil];
-          }];
-    // }
+    if ([[status valueForKey:@"status"] isEqual:@"notReachable"]) {
+        if ([_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)])
+        {
+            [_delegate dataManagerDidFaildUpadating:self];
+        }
+    }
 }
 
 -(void) updateArticleWithId:(NSNumber *)identifire{
@@ -127,27 +94,6 @@
     [rateAndWeather.managedObjectContext MR_saveOnlySelfAndWait];
 }
 
--(void)fetchRateAndWeather
-{
-    if (![RateAndWeather MR_findFirst]) {
-        RateAndWeather *rateAndWeather = [RateAndWeather MR_createEntity];
-        [rateAndWeather createInitialRateAndWeather];
-        [rateAndWeather.managedObjectContext MR_saveOnlySelfAndWait];
-    }
-    _rateAndWeather=[RateAndWeather MR_findFirst];
-}
-
-- (void)saveArticlesToContext:(NSArray *)arrayOfArticles
-{
-    NSManagedObjectContext *context = nil;
-    for (int i=0; i<[arrayOfArticles count]; i++)
-    {
-        Articles *article = [Articles MR_createEntity];
-        [article createArticlesDataModel:[arrayOfArticles objectAtIndex:i]];
-        context=article.managedObjectContext;
-    }
-    [context MR_saveToPersistentStoreAndWait];
-}
 
 -(void)saveTeamToContext:(NSArray *)arrayOfTeam
 {
@@ -178,17 +124,6 @@
 }
 
 
--(NSArray *)fetchListOfArticles
-{
-    return [Articles MR_findAllSortedBy:@"created_at" ascending:NO];
-}
-
--(NSArray *) fetchListOfEmployes
-{
-    return [Employe MR_findAll];
-}
-
-
 -(id)getRateAndWeather{
     return _rateAndWeather;
 }
@@ -196,14 +131,15 @@
 
 -(void) teamWithCompletion:(void (^)(NSArray *team)) completion {
     if ([Employe MR_countOfEntities]) {
-        completion([self fetchListOfEmployes]);
+        completion(_listOfEmployes);
     }
     else
     {
         [[RemoteManager sharedManager] parsedJsonWithEndOfURL:TEAM_JSON :^(NSArray *parsedTeam)
         {
             [self saveTeamToContext:parsedTeam];
-            completion([self fetchListOfEmployes]);
+            [self fetchListOfEmployes];
+            completion(_listOfEmployes);
         }];
     }
 }
@@ -236,8 +172,105 @@
     }
 }
 
--(void) dealloc {
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
+
+#pragma mark - FetchingLocalData
+-(void)fetchLocalData{
+    [self fetchListOfArticles];
+    [self fetchListOfEmployes];
+    [self fetchLocalRateAndWeather];
+    
+    _new_entries_count=0;
+    
+    if ([_listOfArticles count]) {
+        _dateOfLastArticle = [[DateFormatter sharedManager] convertToTimeStamp:[(Articles *)[_listOfArticles firstObject] created_at]];
+    }
+    else {
+        _dateOfLastArticle = @"1";
+    }
+
+}
+
+-(void)fetchListOfArticles
+{
+    _listOfArticles = [Articles MR_findAllSortedBy:@"created_at" ascending:NO];
+}
+
+-(void) fetchListOfEmployes
+{
+    _listOfEmployes = [Employe MR_findAll];
+}
+
+-(void)fetchLocalRateAndWeather
+{
+    if (![RateAndWeather MR_findFirst]) {
+        RateAndWeather *rateAndWeather = [RateAndWeather MR_createEntity];
+        [rateAndWeather createInitialRateAndWeather];
+        [rateAndWeather.managedObjectContext MR_saveOnlySelfAndWait];
+    }
+    _rateAndWeather=[RateAndWeather MR_findFirst];
+}
+
+#pragma mark - Remote
+
+-(void) fetchRemoteArticles {
+    if ( [_delegate respondsToSelector:@selector(dataManagerDidStartUpadating:)] )
+    {
+        [_delegate dataManagerDidStartUpadating:self];
+    }
+    if ([NetworkTracker isReachable]) {
+        [[RemoteManager sharedManager] objectsForPath:ARTICKE_JSON attributes:@{@"sync_date":_dateOfLastArticle} success:^(NSArray *parsedArticles){
+            NSMutableArray *newArticles =[NSMutableArray array];
+            NSManagedObjectContext *context = nil;
+            for (int i=0; i<[parsedArticles count]; i++)
+            {
+                Articles *article = [Articles MR_createEntity];
+                [article createArticlesDataModel:[parsedArticles objectAtIndex:i]];
+                context=article.managedObjectContext;
+                [newArticles addObject:article];
+            }
+            [context MR_saveToPersistentStoreAndWait];
+            
+            if ([newArticles count]) {
+                _dateOfLastArticle = [[DateFormatter sharedManager] convertToTimeStamp:[(Articles *)[newArticles firstObject] created_at]];
+            }
+            
+            if ( [_delegate respondsToSelector:@selector(dataManager:didFinishUpdatingArticles:)])
+            {
+                [_delegate dataManager:self didFinishUpdatingArticles:newArticles];
+            }
+            
+            
+        }fail:^(){
+            if ( [_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)])
+            {
+                [_delegate dataManagerDidFaildUpadating:self];
+            }
+        }];
+    }
+    [self fetchRemoteDigest];
+}
+
+-(void)fetchRemoteDigest
+{
+    if ([NetworkTracker isReachable])
+    {
+        [[RemoteManager sharedManager] objectsForPath:DIGEST_JSON attributes:@{@"sync_date":_dateOfLastArticle} success:^(NSArray *parsedDigest) {
+            [self saveRatesAndWeatherToContext:parsedDigest];
+            [self fetchLocalRateAndWeather];
+            
+            NSNull *null = [[NSNull alloc]init];
+            if ([[parsedDigest valueForKey:@"streaming"] firstObject]!=null) {
+                _streamingURL = [[parsedDigest valueForKey:@"streaming"] firstObject];
+            }
+            else{
+                _streamingURL=nil;
+            }
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"DigestUpdated" object:nil];
+            
+        } fail:^{
+        }];
+    }
 }
 
 @end

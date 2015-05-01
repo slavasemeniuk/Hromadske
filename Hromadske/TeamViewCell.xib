@@ -15,27 +15,27 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8u-uC-heD">
-                        <rect key="frame" x="5" y="5" width="310" height="364"/>
+                        <rect key="frame" x="7" y="0.0" width="306" height="367"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NdS-Oq-aBM">
-                                <rect key="frame" x="7" y="7" width="120" height="120"/>
+                                <rect key="frame" x="10" y="10" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="4An-Z2-3tc"/>
                                     <constraint firstAttribute="width" constant="120" id="Iky-Xr-Xcy"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="s" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="295" translatesAutoresizingMaskIntoConstraints="NO" id="hd2-L9-HT1">
-                                <rect key="frame" x="5" y="134" width="295" height="222"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                                <color key="textColor" red="0.49411767721176147" green="0.58431375026702881" blue="0.63529413938522339" alpha="1" colorSpace="deviceRGB"/>
+                                <rect key="frame" x="5" y="137" width="291" height="222"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.39215689897537231" green="0.51372551918029785" blue="0.57647061347961426" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Імя Прізвище" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="123" translatesAutoresizingMaskIntoConstraints="NO" id="8dZ-N7-LtV">
-                                <rect key="frame" x="137" y="40" width="123" height="55"/>
+                                <rect key="frame" x="140" y="41" width="131" height="81"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="Cka-q8-kos"/>
+                                    <constraint firstAttribute="height" constant="81" id="Cka-q8-kos"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.094117656350135803" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -44,22 +44,22 @@
                         <constraints>
                             <constraint firstItem="8dZ-N7-LtV" firstAttribute="leading" secondItem="NdS-Oq-aBM" secondAttribute="trailing" constant="10" id="0W6-uT-WlY"/>
                             <constraint firstAttribute="trailing" secondItem="hd2-L9-HT1" secondAttribute="trailing" constant="10" id="GkT-P5-LLf"/>
-                            <constraint firstItem="NdS-Oq-aBM" firstAttribute="leading" secondItem="D8u-uC-heD" secondAttribute="leading" constant="7" id="Jq1-57-A12"/>
+                            <constraint firstItem="NdS-Oq-aBM" firstAttribute="leading" secondItem="D8u-uC-heD" secondAttribute="leading" constant="10" id="Jq1-57-A12"/>
                             <constraint firstAttribute="bottom" secondItem="hd2-L9-HT1" secondAttribute="bottom" constant="8" id="exT-CE-oJS"/>
-                            <constraint firstAttribute="trailing" secondItem="8dZ-N7-LtV" secondAttribute="trailing" constant="50" id="hSb-yh-55i"/>
+                            <constraint firstAttribute="trailing" secondItem="8dZ-N7-LtV" secondAttribute="trailing" constant="35" id="hSb-yh-55i"/>
                             <constraint firstItem="hd2-L9-HT1" firstAttribute="leading" secondItem="D8u-uC-heD" secondAttribute="leading" constant="5" id="k8W-NM-ANh"/>
-                            <constraint firstItem="NdS-Oq-aBM" firstAttribute="top" secondItem="D8u-uC-heD" secondAttribute="top" constant="7" id="rmV-m0-e2J"/>
-                            <constraint firstItem="8dZ-N7-LtV" firstAttribute="top" secondItem="D8u-uC-heD" secondAttribute="top" constant="40" id="vLa-Js-ogv"/>
+                            <constraint firstItem="NdS-Oq-aBM" firstAttribute="top" secondItem="D8u-uC-heD" secondAttribute="top" constant="10" id="rmV-m0-e2J"/>
+                            <constraint firstItem="8dZ-N7-LtV" firstAttribute="top" secondItem="D8u-uC-heD" secondAttribute="top" constant="41" id="vLa-Js-ogv"/>
                             <constraint firstItem="hd2-L9-HT1" firstAttribute="top" secondItem="NdS-Oq-aBM" secondAttribute="bottom" constant="7" id="z6K-68-oO8"/>
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.92941182851791382" green="0.93333339691162109" blue="0.95686280727386475" alpha="1" colorSpace="deviceRGB"/>
+                <color key="backgroundColor" red="0.90196084980000002" green="0.90588241820000004" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="D8u-uC-heD" secondAttribute="bottom" constant="5" id="7jF-aQ-FMa"/>
-                    <constraint firstAttribute="trailing" secondItem="D8u-uC-heD" secondAttribute="trailing" constant="5" id="8zC-aF-8dK"/>
-                    <constraint firstItem="D8u-uC-heD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="H2D-xE-6Cp"/>
-                    <constraint firstItem="D8u-uC-heD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="x7h-3j-v6T"/>
+                    <constraint firstItem="D8u-uC-heD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Cj7-vZ-DPz"/>
+                    <constraint firstAttribute="trailing" secondItem="D8u-uC-heD" secondAttribute="trailing" constant="7" id="GPL-BW-kvn"/>
+                    <constraint firstItem="D8u-uC-heD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="7" id="Uxs-3z-XG5"/>
+                    <constraint firstAttribute="bottom" secondItem="D8u-uC-heD" secondAttribute="bottom" constant="7" id="yRd-e0-5U7"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -68,7 +68,7 @@
                 <outlet property="imageview" destination="NdS-Oq-aBM" id="Mn5-e3-tbT"/>
                 <outlet property="label" destination="8dZ-N7-LtV" id="Snn-iR-XxR"/>
             </connections>
-            <point key="canvasLocation" x="199" y="206.5"/>
+            <point key="canvasLocation" x="199" y="204.5"/>
         </tableViewCell>
     </objects>
 </document>

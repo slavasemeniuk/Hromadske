@@ -437,9 +437,11 @@
 				TargetAttributes = {
 					84C22FCF1AB77282006C8C2E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = KLU94V4U4X;
 					};
 					84C22FEB1AB77283006C8C2E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = KLU94V4U4X;
 						TestTargetID = 84C22FCF1AB77282006C8C2E;
 					};
 				};
@@ -685,6 +687,7 @@
 			baseConfigurationReference = 42D1E92929CBD39F9F08E36D /* Pods-Hromadske.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Timophiy Kozak (4836Z36Z53)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -701,6 +704,7 @@
 			baseConfigurationReference = 1938097AA927F14D5DD9C3EF /* Pods-Hromadske.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Timophiy Kozak (4836Z36Z53)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -716,6 +720,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -727,6 +733,7 @@
 				INFOPLIST_FILE = HromadskeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hromadske.app/Hromadske";
 			};
 			name = Debug;
@@ -735,6 +742,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -742,6 +751,7 @@
 				INFOPLIST_FILE = HromadskeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hromadske.app/Hromadske";
 			};
 			name = Release;

@@ -35,7 +35,48 @@
     [super viewDidLoad];
     [self setUpViewController];
     [self refreshData];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:@"refreshMenuNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:@"DigestUpdated" object:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+}
+
+-(void) setUpViewController
+{
+    [self.revealViewController setRearViewRevealWidth:self.view.frame.size.width-40.0f];
+    [self gradientBackground];
+    [_tableView registerNib:[UINib nibWithNibName:@"MenuItemCell" bundle:nil] forCellReuseIdentifier:@"menu_cell"];
+    
+    _listOfIcon = @[@"menu-items-news",@"menu-items-team",@"menu-donate",@"menu-contacts"];
+    _menuItems=@[@"Новини",@"Команда",@"Допомогти проекту",@"Контакти"];
+    _arrayOfIdentifier = @[@"News", @"Team", @"HelpProject", @"Contacts"];
+}
+
+-(void)refreshData{
+    RateAndWeather *data = [[DataManager sharedManager]getRateAndWeather];
+    [_usdRate setText:data.rateUSD];
+    [_eurRate setText:data.rateEUR];
+    [_temperature setText:[NSString stringWithFormat:@"%@",data.weather]];
+}
+
+-(void)gradientBackground{
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame=self.view.bounds;
+    UIColor *leftColor = [UIColor colorWithRed:74.0f/255.0f green:75.0f/255.0f blue:89.0f/255.0f alpha:1.0f];
+    UIColor *rightColor = [UIColor colorWithRed:167.0f/255.0f green:157.0f/255.0f blue:161.0f/255.0f alpha:1.0f];
+    gradient.startPoint = CGPointMake(0.0f, 0.5f);
+    gradient.endPoint = CGPointMake(1.0f, 0.5f);
+    gradient.colors=[NSArray arrayWithObjects:(id)leftColor.CGColor,rightColor.CGColor, nil];
+    [self.view.layer insertSublayer:gradient atIndex:0];
+    _tableView.backgroundView.alpha = 0.0f;
+    
 }
 
 
@@ -64,36 +105,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.revealViewController pushFrontViewController: [[ControllersManager sharedManager] createNavigationControllerWithIdentifier:[_arrayOfIdentifier objectAtIndex:indexPath.row]] animated:YES];
+    [_tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
--(void) setUpViewController
-{
-    [self gradientBackground];
-    [_tableView registerNib:[UINib nibWithNibName:@"MenuItemCell" bundle:nil] forCellReuseIdentifier:@"menu_cell"];
-
-    _listOfIcon = @[@"menu-items-news",@"menu-items-team",@"menu-donate",@"menu-contacts"];
-        _menuItems=@[@"Новини",@"Команда",@"Допомогти проекту",@"Контакти"];
-    _arrayOfIdentifier = @[@"News", @"Team", @"HelpProject", @"Contacts"];
-}
-
--(void)refreshData{
-    RateAndWeather *data = [[DataManager sharedManager]getRateAndWeather];
-    [_usdRate setText:[NSString stringWithFormat:@"USD %@",data.rateUSD]];
-    [_eurRate setText:[NSString stringWithFormat:@"EUR %@",data.rateEUR]];
-    [_temperature setText:[NSString stringWithFormat:@"%@°",data.weather]];
-}
-
--(void)gradientBackground{
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame=self.view.bounds;
-    UIColor *leftColor = [UIColor colorWithRed:74.0f/255.0f green:75.0f/255.0f blue:89.0f/255.0f alpha:1.0f];
-    UIColor *rightColor = [UIColor colorWithRed:167.0f/255.0f green:157.0f/255.0f blue:161.0f/255.0f alpha:1.0f];
-    gradient.startPoint = CGPointMake(0.0f, 0.5f);
-    gradient.endPoint = CGPointMake(1.0f, 0.5f);    
-    gradient.colors=[NSArray arrayWithObjects:(id)leftColor.CGColor,rightColor.CGColor, nil];
-    [self.view.layer insertSublayer:gradient atIndex:0];
-    _tableView.backgroundView.alpha = 0.0f;
-    
-}
 
 @end

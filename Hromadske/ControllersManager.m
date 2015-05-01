@@ -7,6 +7,15 @@
 //
 
 #import "ControllersManager.h"
+#import "AppDelegate.h"
+
+@interface ControllersManager ()
+
+{
+    UINavigationController * _newsViewController;
+}
+
+@end
 
 @implementation ControllersManager
 
@@ -21,37 +30,47 @@
 }
 
 
--(UINavigationController *)createNavigationControllerWithIdentifier:(NSString *)identifier
+- (UINavigationController *) createNavigationControllerWithIdentifier:(NSString *)identifier
 {
+    if ([identifier isEqual:@"News"]) {
+        return [self newsNavigationController];
+    }
     return [[self createStoryboard] instantiateViewControllerWithIdentifier:identifier];
 }
 
--(NewsDetailsViewController *)createNewsDetailsViewControllerWithArticle:(id)article
+- (NewsDetailsViewController *)createNewsDetailsViewControllerWithArticle:(id)article
 {
     NewsDetailsViewController *viewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"NewsDetails"];
     [viewController setContent:article];
     return viewController;
 }
 
--(NewsDetailsLocalViewController *)createLocalNewsDetailsViewControllerWithArticle:(id)article
+- (NewsDetailsLocalViewController *)createLocalNewsDetailsViewControllerWithArticle:(id)article
 {
     NewsDetailsLocalViewController *viewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"localController"];
     [viewController setdata:article];
     return viewController;
 }
 
--(MenuViewController *)createMenuViewController
+- (MenuViewController *)createMenuViewController
 {
     MenuViewController *menuViewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"Menu"];
     return menuViewController;
 }
 
--(UIStoryboard *)createStoryboard
+- (UINavigationController *) newsNavigationController
+{
+    if (!_newsViewController) {
+        _newsViewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"News"];
+    }
+    return _newsViewController;
+}
+
+- (UIStoryboard *)createStoryboard
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     return storyboard;
 }
-
 
 
 @end

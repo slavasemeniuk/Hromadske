@@ -15,7 +15,7 @@
 
 @property (nonatomic, retain) NSString * category;
 @property (nonatomic, retain) NSString * content;
-@property (nonatomic, retain) NSNumber * created_at;
+@property (nonatomic, retain) NSDate * created_at;
 @property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSString * short_description;
 @property (nonatomic, retain) NSString * title;

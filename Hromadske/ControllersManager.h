@@ -23,6 +23,6 @@
 
 -(MenuViewController *)createMenuViewController;
 
-
+- (UINavigationController *) newsNavigationController;
 
 @end

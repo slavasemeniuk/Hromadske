@@ -43,17 +43,19 @@
     [operation start];
 }
 
-- (void) parsedJsonWithTimeSync:(NSString *)date andUrlEnd:(NSString * )urlEnd :(void (^)(NSArray *))successCallback
+- (void) objectsForPath:(NSString *)path attributes:(NSDictionary *)attributes success:(void (^)(NSArray *))success fail:(void (^)(void))fail
 {
-    NSString *urlForRequest = [NSString stringWithFormat:@"%@%@",API_URL,urlEnd];
+   
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:urlForRequest parameters:@{@"sync_date":date} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        successCallback([NSArray arrayWithArray:responseObject[@"data"]]);
+    [manager GET:path parameters:attributes success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success([NSArray arrayWithArray:responseObject[@"data"]]);
     }
          failure:^(AFHTTPRequestOperation *operation,NSError *error){
              
-             UIAlertView *allertView = [[UIAlertView alloc]initWithTitle:@"Error Retrieving" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-             [allertView show];
+             if (fail){
+                 NSLog(@"%@",error);
+                 fail();
+             }
              
          }];
 }

@@ -8,16 +8,22 @@
 
 #import "AppDelegate.h"
 #import "DataManager.h"
+#import <SWRevealViewController/SWRevealViewController.h>
+#import "ControllersManager.h"
 #import "Constants.h"
 #import <GoogleMaps/GoogleMaps.h>
+
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [GMSServices provideAPIKey:API_GOOGLE];
-    [self setUpStatusBar];
     [DataManager sharedManager];
+    
+    SWRevealViewController *mainReavealViewController = [[SWRevealViewController alloc] initWithRearViewController:[[ControllersManager sharedManager] createMenuViewController] frontViewController:[[ControllersManager sharedManager] newsNavigationController]];
+    self.window.rootViewController=mainReavealViewController;
+    
     return YES;
 }
 
@@ -29,7 +35,7 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    [[DataManager sharedManager] updateDigest];
+    [[DataManager sharedManager] fetchRemoteDigest];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -38,9 +44,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
 
-- (void)setUpStatusBar{
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
-}
+
 
 @end

@@ -62,12 +62,20 @@
 -(void)webViewWithHtml
 {
     if ([_mode isEqual:@"day"]) {
-        NSString *HTMLString = [NSString stringWithFormat:@"%@%@%@",HTMLDETAILS_BEGIN,_article.content,HTMLDETAILS_END];
-        [_webView loadHTMLString:HTMLString baseURL:[NSURL URLWithString:HROMADSKE_URL]];
+        self.navigationController.navigationBar.barTintColor=[UIColor whiteColor];
+        self.navigationController.navigationBar.tintColor=[UIColor blackColor];
+        self.webView.backgroundColor = [UIColor colorWithRed:232.0f/255.0f green:232.0f/255.0f blue:232.0f/255.0f alpha:1.0f];
+        [_webView loadHTMLString:[NSString stringWithFormat:@"%@%@%@",HTMLDETAILS_BEGIN,_article.content,HTMLDETAILS_END] baseURL:[NSURL URLWithString:HROMADSKE_URL]];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+
     }
     else{
-        NSString *HTMLString = [NSString stringWithFormat:@"%@%@%@",HTMLDETAILS_BEGIN_NIGHT,_article.content,HTMLDETAILS_END];
-        [_webView loadHTMLString:HTMLString baseURL:[NSURL URLWithString:HROMADSKE_URL]];
+        
+        self.navigationController.navigationBar.barTintColor=[UIColor blackColor];
+        self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
+        self.webView.backgroundColor = [UIColor colorWithRed:30.0f/255.0f green:30.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
+        [_webView loadHTMLString:[NSString stringWithFormat:@"%@%@%@",HTMLDETAILS_BEGIN_NIGHT,_article.content,HTMLDETAILS_END] baseURL:[NSURL URLWithString:HROMADSKE_URL]];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     }
     
 }
@@ -93,38 +101,25 @@
 
 -(void)setUpNavigationBar{
     self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"hromadske-logo"]];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Назад" style:UIBarButtonItemStylePlain target:self action:@selector(goRoot)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"news-moon"] style:UIBarButtonItemStyleDone target:self action:@selector(changeMode)];
 }
 
 -(void)changeMode{
     if ([_mode isEqual:@"day"]) {
         _mode=@"night";
-        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"news-sun"];
-        self.navigationController.navigationBar.barTintColor=[UIColor blackColor];
-        self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
-        UIView *addStatusBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, 20)];
-        addStatusBar.backgroundColor = [UIColor blackColor];
-        [self.navigationController.navigationBar.window addSubview:addStatusBar];
     }
     else{
         _mode=@"day";
-        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"news-moon"];
-        self.navigationController.navigationBar.barTintColor=[UIColor whiteColor];
-        self.navigationController.navigationBar.tintColor=[UIColor blackColor];
-        UIView *addStatusBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.navigationBar.frame.size.width, 20)];
-        addStatusBar.backgroundColor = [UIColor colorWithRed:253.0f/255.0f green:123.0f/255.0f blue:40.0f/255.0f alpha:1];;
-        [self.navigationController.navigationBar.window addSubview:addStatusBar];
     }
     [self setUpWebView];
 }
 
-
-
--(void)goRoot{
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     self.navigationController.navigationBar.barTintColor=[UIColor whiteColor];
     self.navigationController.navigationBar.tintColor=[UIColor blackColor];
-    [self.navigationController popViewControllerAnimated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
+
 
 @end

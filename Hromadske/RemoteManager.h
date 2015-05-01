@@ -15,10 +15,8 @@
 
 - (void) parsedJsonWithEndOfURL:(NSString*)urlEnd :(void (^)(NSArray *parsedObject)) successCallback;
 
-- (void) parsedJsonWithTimeSync:(NSString *) date andUrlEnd:(NSString * )urlEnd :(void (^)(NSArray *))successCallback;
-
 - (void) parsedArticleWithId:(NSNumber *)identifire :(void (^)(NSDictionary *))successCallback;
 
-
+- (void) objectsForPath:(NSString *)path attributes:(NSDictionary *)attributes success:(void (^)(NSArray *))success fail:(void (^)(void))fail;
 
 @end
