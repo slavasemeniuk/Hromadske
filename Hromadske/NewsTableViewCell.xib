@@ -81,7 +81,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LuZ-UX-yvO">
-                                <rect key="frame" x="190" y="322" width="100" height="15"/>
+                                <rect key="frame" x="190" y="317" width="100" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="8SM-Tj-QjN"/>
                                     <constraint firstAttribute="height" constant="15" id="pmb-9P-EBb"/>
@@ -99,7 +99,7 @@
                             <constraint firstItem="UtM-TJ-Dwk" firstAttribute="top" secondItem="Xrw-na-eqY" secondAttribute="bottom" constant="3" id="Bz4-AV-My3"/>
                             <constraint firstAttribute="trailing" secondItem="ftw-3n-ZXT" secondAttribute="trailing" id="FZD-St-URE"/>
                             <constraint firstAttribute="trailing" secondItem="IRR-I7-FkV" secondAttribute="trailing" constant="8" id="GaP-UP-sgN"/>
-                            <constraint firstAttribute="bottom" secondItem="LuZ-UX-yvO" secondAttribute="bottom" constant="5" id="LdX-Yt-UdL"/>
+                            <constraint firstAttribute="bottom" secondItem="LuZ-UX-yvO" secondAttribute="bottom" constant="10" id="LdX-Yt-UdL"/>
                             <constraint firstItem="CJZ-kp-AbI" firstAttribute="leading" secondItem="rlW-R0-SCV" secondAttribute="leading" id="Mdx-mT-xZ1"/>
                             <constraint firstAttribute="trailing" secondItem="CJZ-kp-AbI" secondAttribute="trailing" id="R1V-0t-cqr"/>
                             <constraint firstItem="dU5-xT-lQU" firstAttribute="top" secondItem="ftw-3n-ZXT" secondAttribute="bottom" constant="8" id="Udk-1B-mB5"/>
