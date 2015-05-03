@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    NewsDetailsModeDay = 0,
+    NewsDetailsModeNight
+} NewsDetailsMode;
+
 @interface NewsDetailsViewController : UIViewController
 
 -(void) setContent: (id) article;
