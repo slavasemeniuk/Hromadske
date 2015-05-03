@@ -494,7 +494,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Dj-Cz-c7x">
-                                <rect key="frame" x="0.0" y="7" width="600" height="529"/>
+                                <rect key="frame" x="0.0" y="12" width="600" height="524"/>
                                 <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="yCa-Sq-Wem" id="QO9-kc-J2g"/>
@@ -504,7 +504,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="8Dj-Cz-c7x" firstAttribute="top" secondItem="VGx-v3-0ZT" secondAttribute="top" constant="7" id="5gB-eY-aAe"/>
+                            <constraint firstItem="8Dj-Cz-c7x" firstAttribute="top" secondItem="VGx-v3-0ZT" secondAttribute="top" constant="12" id="5gB-eY-aAe"/>
                             <constraint firstItem="4GY-gq-Cku" firstAttribute="top" secondItem="8Dj-Cz-c7x" secondAttribute="bottom" id="AKl-7o-WcS"/>
                             <constraint firstAttribute="trailing" secondItem="8Dj-Cz-c7x" secondAttribute="trailing" id="wNR-A3-a3l"/>
                             <constraint firstItem="8Dj-Cz-c7x" firstAttribute="leading" secondItem="VGx-v3-0ZT" secondAttribute="leading" id="yyD-37-gUu"/>
