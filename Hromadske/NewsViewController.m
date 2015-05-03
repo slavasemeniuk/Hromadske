@@ -48,6 +48,10 @@
     return [_tableViewsData count];
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [(NewsTableViewCell *)cell performSelector:@selector(updateShadow) withObject:nil afterDelay:0];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NewsTableViewCell *newsCell = [tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
@@ -84,7 +88,7 @@
         [self.navigationController pushViewController:[[ControllersManager sharedManager] createNewsDetailsViewControllerWithArticle:article] animated:YES];
     }
     else{
-        UIAlertView *noConnection = [[UIAlertView alloc]initWithTitle:@"Підключітся, будь-ласка, до інтернету" message:nil delegate:self cancelButtonTitle:@"ОК" otherButtonTitles: nil];
+        UIAlertView *noConnection = [[UIAlertView alloc]initWithTitle:@"Помилка" message:@"Перевірте підключення до мережі" delegate:self cancelButtonTitle:@"Добре" otherButtonTitles: nil];
         [noConnection show];
     }
     [_tableView deselectRowAtIndexPath:indexPath animated:NO];

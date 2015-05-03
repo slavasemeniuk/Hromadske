@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIView *container;
 @property (weak, nonatomic) IBOutlet UILabel *category;
 
--(void)unviewed;
-
+- (void) unviewed;
+- (void) updateShadow;
 
 @end

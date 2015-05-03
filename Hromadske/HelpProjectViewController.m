@@ -30,17 +30,16 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![[defaults valueForKey:@"Allert"] isEqual:@"Choosed"]) {
-        UIAlertView *allert =[[UIAlertView alloc] initWithTitle:@"Хочете поставити нагадування про допомогу Громадському" message:nil delegate:self cancelButtonTitle:@"Ні" otherButtonTitles:@"Так", nil];
+        UIAlertView *allert =[[UIAlertView alloc] initWithTitle:@"Нагадування" message:@"Ми постійно потребуємо твоєї підтримки. Встановити щомісячне нагадування про допомогу?" delegate:self cancelButtonTitle:@"Пізніше" otherButtonTitles:@"Авжеж", nil];
         [allert show];
     }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@"Choosed" forKey:@"Allert"];
-    [defaults synchronize];
-    
     if (buttonIndex != [alertView cancelButtonIndex]){
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:@"Choosed" forKey:@"Allert"];
+        [defaults synchronize];
         [self setUpLoacalNotification];
     }
 }
@@ -55,7 +54,7 @@
     
     localNotification.fireDate = [gregorian dateFromComponents:comp];
     localNotification.repeatInterval = kCFCalendarUnitMonth;
-    localNotification.alertBody = [NSString stringWithFormat:@"Допомогти Громадському"];
+    localNotification.alertBody = [NSString stringWithFormat:@"Громадське чекає на допомогу"];
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     localNotification.applicationIconBadgeNumber = 1;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
