@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *temperature;
 @property (weak, nonatomic) IBOutlet UILabel *eurRate;
 @property (weak, nonatomic) IBOutlet UILabel *usdRate;
+@property (weak, nonatomic) IBOutlet UILabel *version;
 
 @end
 
@@ -45,13 +46,15 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 -(void) setUpViewController
 {
     [self.revealViewController setRearViewRevealWidth:self.view.frame.size.width-40.0f];
     [self gradientBackground];
+    NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    _version.text = [NSString stringWithFormat:@"Версія %@",appVersion];
     [_tableView registerNib:[UINib nibWithNibName:@"MenuItemCell" bundle:nil] forCellReuseIdentifier:@"menu_cell"];
     
     _listOfIcon = @[@"menu-items-news",@"menu-items-team",@"menu-donate",@"menu-contacts"];
@@ -61,8 +64,10 @@
 
 -(void)refreshData{
     RateAndWeather *data = [[DataManager sharedManager]getRateAndWeather];
-    [_usdRate setText:data.rateUSD];
-    [_eurRate setText:data.rateEUR];
+    NSString *format = [NSString stringWithFormat:@"%.02f",[data.rateUSD floatValue]];
+    [_usdRate setText:format];
+    format = [NSString stringWithFormat:@"%.02f",[data.rateEUR floatValue]];
+    [_eurRate setText:format];
     [_temperature setText:[NSString stringWithFormat:@"%@",data.weather]];
 }
 
@@ -91,21 +96,19 @@
     return _menuItems.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
    
     MenuItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menu_cell" forIndexPath:indexPath];
     
     [cell.title setText:[_menuItems objectAtIndex:indexPath.row]];
     [cell.icon setImage:[UIImage imageNamed:[_listOfIcon objectAtIndex:indexPath.row]]];
+    
     return cell;
 }
-
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.revealViewController pushFrontViewController: [[ControllersManager sharedManager] createNavigationControllerWithIdentifier:[_arrayOfIdentifier objectAtIndex:indexPath.row]] animated:YES];
-    [_tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 

@@ -16,8 +16,10 @@
 		8434AA2B1ACB5DD000523C10 /* HelpProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8434AA2A1ACB5DD000523C10 /* HelpProject.m */; };
 		8436031C1AEA629600EC66EA /* NewArticlesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8436031B1AEA629600EC66EA /* NewArticlesView.m */; };
 		843603201AEA687400EC66EA /* NewArticlesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8436031F1AEA687400EC66EA /* NewArticlesView.xib */; };
+		844CDDC31AF56F750031470D /* HTMLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 844CDDC21AF56F750031470D /* HTMLManager.m */; };
 		845742911AEAD2F4000AF3DD /* NetworkTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 845742901AEAD2F4000AF3DD /* NetworkTracker.m */; };
 		845BA1571AB777AF000E7204 /* ControllersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845BA1561AB777AF000E7204 /* ControllersManager.m */; };
+		845D90E11AF65E4A00C6BA19 /* hromadske_logo_cherkasy2x 02-22-30-978.png in Resources */ = {isa = PBXBuildFile; fileRef = 845D90E01AF65E4A00C6BA19 /* hromadske_logo_cherkasy2x 02-22-30-978.png */; };
 		8472D1381ADDA8E600F188E9 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = 8472D1371ADDA8E600F188E9 /* Video.m */; };
 		8472D13E1ADDA8E600F188E9 /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 8472D13D1ADDA8E600F188E9 /* Link.m */; };
 		8472D1411ADDA8E600F188E9 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8472D1401ADDA8E600F188E9 /* Photo.m */; };
@@ -44,7 +46,6 @@
 		84A159B11AF00D0C008AD999 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A51AF00D0C008AD999 /* SystemConfiguration.framework */; };
 		84A1A9321AF02D7100646DE5 /* font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84A1A9311AF02D7100646DE5 /* font.ttf */; };
 		84A1A93A1AF0467C00646DE5 /* WebHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A9391AF0467C00646DE5 /* WebHelpViewController.m */; };
-		84A1A93D1AF04BB500646DE5 /* NewsDetailsLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A93C1AF04BB500646DE5 /* NewsDetailsLocalViewController.m */; };
 		84A2A6891ABB7D59004862E6 /* RemoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A6881ABB7D59004862E6 /* RemoteManager.m */; };
 		84A439381AE5BB67002C0A98 /* RateAndWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A439371AE5BB67002C0A98 /* RateAndWeather.m */; };
 		84A9972E1AC9DA03007876F1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9972D1AC9DA03007876F1 /* BaseViewController.m */; };
@@ -91,10 +92,13 @@
 		8436031A1AEA629600EC66EA /* NewArticlesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewArticlesView.h; sourceTree = "<group>"; };
 		8436031B1AEA629600EC66EA /* NewArticlesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewArticlesView.m; sourceTree = "<group>"; };
 		8436031F1AEA687400EC66EA /* NewArticlesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewArticlesView.xib; sourceTree = "<group>"; };
+		844CDDC11AF56F750031470D /* HTMLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLManager.h; sourceTree = "<group>"; };
+		844CDDC21AF56F750031470D /* HTMLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLManager.m; sourceTree = "<group>"; };
 		8457428F1AEAD2F4000AF3DD /* NetworkTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTracker.h; sourceTree = "<group>"; };
 		845742901AEAD2F4000AF3DD /* NetworkTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTracker.m; sourceTree = "<group>"; };
 		845BA1551AB777AF000E7204 /* ControllersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControllersManager.h; sourceTree = "<group>"; };
 		845BA1561AB777AF000E7204 /* ControllersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControllersManager.m; sourceTree = "<group>"; };
+		845D90E01AF65E4A00C6BA19 /* hromadske_logo_cherkasy2x 02-22-30-978.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hromadske_logo_cherkasy2x 02-22-30-978.png"; sourceTree = "<group>"; };
 		8472D1361ADDA8E600F188E9 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
 		8472D1371ADDA8E600F188E9 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
 		8472D13C1ADDA8E600F188E9 /* Link.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Link.h; sourceTree = "<group>"; };
@@ -131,8 +135,6 @@
 		84A1A9311AF02D7100646DE5 /* font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = font.ttf; sourceTree = "<group>"; };
 		84A1A9381AF0467C00646DE5 /* WebHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebHelpViewController.h; sourceTree = "<group>"; };
 		84A1A9391AF0467C00646DE5 /* WebHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebHelpViewController.m; sourceTree = "<group>"; };
-		84A1A93B1AF04BB500646DE5 /* NewsDetailsLocalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailsLocalViewController.h; sourceTree = "<group>"; };
-		84A1A93C1AF04BB500646DE5 /* NewsDetailsLocalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailsLocalViewController.m; sourceTree = "<group>"; };
 		84A2A6871ABB7D59004862E6 /* RemoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteManager.h; sourceTree = "<group>"; };
 		84A2A6881ABB7D59004862E6 /* RemoteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteManager.m; sourceTree = "<group>"; };
 		84A439361AE5BB67002C0A98 /* RateAndWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateAndWeather.h; sourceTree = "<group>"; };
@@ -229,8 +231,6 @@
 				849D287C1ABB3B8800AB07BC /* ContactsViewController.m */,
 				84A1A9381AF0467C00646DE5 /* WebHelpViewController.h */,
 				84A1A9391AF0467C00646DE5 /* WebHelpViewController.m */,
-				84A1A93B1AF04BB500646DE5 /* NewsDetailsLocalViewController.h */,
-				84A1A93C1AF04BB500646DE5 /* NewsDetailsLocalViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -264,6 +264,8 @@
 				849D0A631AE1A070003D9DE1 /* DateFormatter.m */,
 				8457428F1AEAD2F4000AF3DD /* NetworkTracker.h */,
 				845742901AEAD2F4000AF3DD /* NetworkTracker.m */,
+				844CDDC11AF56F750031470D /* HTMLManager.h */,
+				844CDDC21AF56F750031470D /* HTMLManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -293,6 +295,7 @@
 			children = (
 				84A1A9311AF02D7100646DE5 /* font.ttf */,
 				84A159941AF002F8008AD999 /* kopilka.jpg */,
+				845D90E01AF65E4A00C6BA19 /* hromadske_logo_cherkasy2x 02-22-30-978.png */,
 				84C22FD71AB77282006C8C2E /* AppDelegate.h */,
 				84C22FD81AB77282006C8C2E /* AppDelegate.m */,
 				847D71D21AE286EF000477FE /* Constants.h */,
@@ -476,6 +479,7 @@
 				84A159951AF002F8008AD999 /* kopilka.jpg in Resources */,
 				84C22FE21AB77283006C8C2E /* Main.storyboard in Resources */,
 				84C30A8A1ACF38E000D44E8C /* NewsTableViewCell.xib in Resources */,
+				845D90E11AF65E4A00C6BA19 /* hromadske_logo_cherkasy2x 02-22-30-978.png in Resources */,
 				84C22FE71AB77283006C8C2E /* LaunchScreen.xib in Resources */,
 				84A1A9321AF02D7100646DE5 /* font.ttf in Resources */,
 				84C22FE41AB77283006C8C2E /* Images.xcassets in Resources */,
@@ -553,11 +557,11 @@
 				847EEFE31AE1A95800E600B4 /* NewsDetailsViewController.m in Sources */,
 				849D287A1ABB39C300AB07BC /* HelpProjectViewController.m in Sources */,
 				84C30A891ACF38E000D44E8C /* NewsTableViewCell.m in Sources */,
+				844CDDC31AF56F750031470D /* HTMLManager.m in Sources */,
 				841032711AE41A20006E34C4 /* MenuItemCell.m in Sources */,
 				84A2A6891ABB7D59004862E6 /* RemoteManager.m in Sources */,
 				84C22FD61AB77282006C8C2E /* main.m in Sources */,
 				840DD8DA1ABB4C1B00EC6923 /* TeamViewCell.m in Sources */,
-				84A1A93D1AF04BB500646DE5 /* NewsDetailsLocalViewController.m in Sources */,
 				849D287D1ABB3B8800AB07BC /* ContactsViewController.m in Sources */,
 				845742911AEAD2F4000AF3DD /* NetworkTracker.m in Sources */,
 				8405379C1AB776E500AC7971 /* MenuViewController.m in Sources */,

@@ -11,9 +11,7 @@
 
 @interface ControllersManager ()
 
-{
-    UINavigationController * _newsViewController;
-}
+@property (strong, nonatomic) UINavigationController * newsViewController;
 
 @end
 
@@ -42,13 +40,6 @@
 {
     NewsDetailsViewController *viewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"NewsDetails"];
     [viewController setContent:article];
-    return viewController;
-}
-
-- (NewsDetailsLocalViewController *)createLocalNewsDetailsViewControllerWithArticle:(id)article
-{
-    NewsDetailsLocalViewController *viewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"localController"];
-    [viewController setdata:article];
     return viewController;
 }
 

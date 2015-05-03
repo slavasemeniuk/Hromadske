@@ -25,15 +25,15 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="s" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="295" translatesAutoresizingMaskIntoConstraints="NO" id="hd2-L9-HT1">
-                                <rect key="frame" x="5" y="137" width="291" height="222"/>
+                                <rect key="frame" x="10" y="137" width="286" height="222"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.39215689897537231" green="0.51372551918029785" blue="0.57647061347961426" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Імя Прізвище" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="123" translatesAutoresizingMaskIntoConstraints="NO" id="8dZ-N7-LtV">
-                                <rect key="frame" x="140" y="41" width="131" height="81"/>
+                                <rect key="frame" x="140" y="39" width="131" height="63"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="81" id="Cka-q8-kos"/>
+                                    <constraint firstAttribute="height" constant="63" id="Cka-q8-kos"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.094117656350135803" alpha="1" colorSpace="deviceRGB"/>
@@ -47,9 +47,9 @@
                             <constraint firstItem="NdS-Oq-aBM" firstAttribute="leading" secondItem="D8u-uC-heD" secondAttribute="leading" constant="10" id="Jq1-57-A12"/>
                             <constraint firstAttribute="bottom" secondItem="hd2-L9-HT1" secondAttribute="bottom" constant="8" id="exT-CE-oJS"/>
                             <constraint firstAttribute="trailing" secondItem="8dZ-N7-LtV" secondAttribute="trailing" constant="35" id="hSb-yh-55i"/>
-                            <constraint firstItem="hd2-L9-HT1" firstAttribute="leading" secondItem="D8u-uC-heD" secondAttribute="leading" constant="5" id="k8W-NM-ANh"/>
+                            <constraint firstItem="hd2-L9-HT1" firstAttribute="leading" secondItem="D8u-uC-heD" secondAttribute="leading" constant="10" id="k8W-NM-ANh"/>
                             <constraint firstItem="NdS-Oq-aBM" firstAttribute="top" secondItem="D8u-uC-heD" secondAttribute="top" constant="10" id="rmV-m0-e2J"/>
-                            <constraint firstItem="8dZ-N7-LtV" firstAttribute="top" secondItem="D8u-uC-heD" secondAttribute="top" constant="41" id="vLa-Js-ogv"/>
+                            <constraint firstItem="8dZ-N7-LtV" firstAttribute="top" secondItem="D8u-uC-heD" secondAttribute="top" constant="39" id="vLa-Js-ogv"/>
                             <constraint firstItem="hd2-L9-HT1" firstAttribute="top" secondItem="NdS-Oq-aBM" secondAttribute="bottom" constant="7" id="z6K-68-oO8"/>
                         </constraints>
                     </view>
@@ -68,7 +68,7 @@
                 <outlet property="imageview" destination="NdS-Oq-aBM" id="Mn5-e3-tbT"/>
                 <outlet property="label" destination="8dZ-N7-LtV" id="Snn-iR-XxR"/>
             </connections>
-            <point key="canvasLocation" x="199" y="204.5"/>
+            <point key="canvasLocation" x="199" y="202.5"/>
         </tableViewCell>
     </objects>
 </document>

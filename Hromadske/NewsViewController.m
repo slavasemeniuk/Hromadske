@@ -39,10 +39,10 @@
     [[DataManager sharedManager] setDelegate:self];
     [self setUpViews];
     [self setUpData];
-    [self setUpStreamView];
-    
+    [[DataManager sharedManager] fetchRemoteArticles];
     
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_tableViewsData count];
@@ -56,13 +56,14 @@
     [newsCell.shortDescription setText:article.short_description];
     [newsCell.viewsCount setText:[article.views_count stringValue]];
     [newsCell.createdAt setText:[[DateFormatter sharedManager] timeIntervalFromDate:article.created_at]];
+    if (![article.category isEqual:@"uncategorized"]) {
+        [newsCell.category setText:article.category];
+    }
     
     NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[article getImageUrl]]
                                                   cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                               timeoutInterval:60];
     [newsCell.image_view setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
-    
-    
     if (indexPath.row<_countNewArticles) {
         [newsCell unviewed];
     };
@@ -72,20 +73,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    NewsTableViewCell *prototypecell = [tableView dequeueReusableCellWithIdentifier:@"NewsCell"];
-    Articles *articl = [_tableViewsData objectAtIndex:indexPath.row];
-    
-    [prototypecell.title setText:articl.title];
-    [prototypecell.shortDescription setText:articl.short_description];
-    
-    
-    [prototypecell setNeedsLayout];
-    [prototypecell layoutIfNeeded];
-    
-    return [prototypecell.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
-    
-    
+    return 316.f;
 }
 
 
@@ -96,7 +84,7 @@
         [self.navigationController pushViewController:[[ControllersManager sharedManager] createNewsDetailsViewControllerWithArticle:article] animated:YES];
     }
     else{
-        UIAlertView *noConnection = [[UIAlertView alloc]initWithTitle:@"З'єднання відсутнє" message:nil delegate:self cancelButtonTitle:@"ОК" otherButtonTitles: nil];
+        UIAlertView *noConnection = [[UIAlertView alloc]initWithTitle:@"Підключітся, будь-ласка, до інтернету" message:nil delegate:self cancelButtonTitle:@"ОК" otherButtonTitles: nil];
         [noConnection show];
     }
     [_tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -130,10 +118,21 @@
 -(void)showNewArticleBage:(NSInteger)count{
     if (!_newArticles) {
         _newArticles =[[NewArticlesView alloc]init];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_newArticles];
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setBounds:_newArticles.frame];
+        [btn addSubview:_newArticles];
+        [btn addTarget:self action:@selector(goToTop) forControlEvents:UIControlEventAllEvents];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+        
     }
     [_newArticles setHidden:NO];
     [_newArticles newArticles:count];
+}
+
+- (void) goToTop{
+    [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+    [self hideNewArticlesBage];
 }
 
 -(void)hideNewArticlesBage{
@@ -148,7 +147,7 @@
 }
 - (void) dataManager:(DataManager *)manager didFinishUpdatingArticles:(NSArray *)listOfArticles{
     _countNewArticles = [listOfArticles count];
-    if (_countNewArticles>0 && _tableView.contentOffset.y>0)
+    if (_countNewArticles>0 && _tableView.contentOffset.y!=0)
     {
         [self showNewArticleBage:_countNewArticles];
     }
@@ -156,6 +155,7 @@
     {
         [self hideNewArticlesBage];
     }
+    _stream=[[DataManager sharedManager] streamingURL];
     [_tableViewsData addObjectsFromArray:listOfArticles];
     [_tableView reloadData];
     [_pullToReferesh endRefreshing];

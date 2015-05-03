@@ -23,26 +23,6 @@
     return __manager;
 }
 
-
-- (void) parsedJsonWithEndOfURL:(NSString *)urlEnd :(void (^)(NSArray * parsedObject))successCallback
-{
-    NSString *urlForRequest = [NSString stringWithFormat:@"%@%@",API_URL,urlEnd];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlForRequest]];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-    
-    [operation setCompletionBlockWithSuccess: ^(AFHTTPRequestOperation *operation, id responseObject) {
-        successCallback([NSArray arrayWithArray:responseObject[@"data"]]);
-        
-    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-        
-        UIAlertView *allertView = [[UIAlertView alloc]initWithTitle:@"Error Retrieving" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [allertView show];
-        
-    }];
-    [operation start];
-}
-
 - (void) objectsForPath:(NSString *)path attributes:(NSDictionary *)attributes success:(void (^)(NSArray *))success fail:(void (^)(void))fail
 {
    
@@ -51,7 +31,6 @@
         success([NSArray arrayWithArray:responseObject[@"data"]]);
     }
          failure:^(AFHTTPRequestOperation *operation,NSError *error){
-             
              if (fail){
                  NSLog(@"%@",error);
                  fail();

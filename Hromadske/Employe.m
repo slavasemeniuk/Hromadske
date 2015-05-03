@@ -17,14 +17,17 @@
 @dynamic identifire;
 @dynamic position;
 
--(void)convertDataToEmployeModel:(NSDictionary *)employe
+- (void)convertDataToEmployeModel:(NSDictionary *)employe
 {
     self.name = [employe valueForKey:@"name"];
     self.image = [employe valueForKey:@"photo"];
     self.bio = [employe valueForKey:@"bio"];
     self.position = [employe valueForKey:@"position"];
     self.identifire = [employe valueForKey:@"id"] ;
+}
 
+- (void)updateTeam: (NSArray *)listOfEmployes{
+    
 }
 
 @end

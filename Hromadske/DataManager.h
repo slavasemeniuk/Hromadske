@@ -16,9 +16,9 @@
 
 - (void) updateArticleWithId: (NSNumber*) identifire;
 
-- (void) teamWithCompletion:(void (^)(NSArray *team)) completion;
-- (void) helpProjectDataWithCompletion:(void (^)(id helpProjectData)) completion;
-- (void) contactsDataWithCompletion:(void (^)(id contacts)) completion;
+- (void) teamWithCompletion:(void (^)()) completion;
+//- (void) helpProjectDataWithCompletion:(void (^)(id helpProjectData)) completion;
+//- (void) contactsDataWithCompletion:(void (^)(id contacts)) completion;
 
 
 - (void) fetchRemoteArticles;
@@ -30,7 +30,6 @@
 @property (nonatomic, strong) NSArray *listOfArticles;
 @property (nonatomic, strong) NSArray *listOfEmployes;
 @property (nonatomic, strong) NSString *streamingURL;
-@property  NSInteger new_entries_count;
 @property (nonatomic ,assign) id <DataManangerDelagate> delegate;
 
 @end

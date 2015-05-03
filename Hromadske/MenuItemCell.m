@@ -8,6 +8,7 @@
 
 #import "MenuItemCell.h"
 
+
 @implementation MenuItemCell
 
 - (void)awakeFromNib {
@@ -15,12 +16,15 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    
-    
+    [super setSelected:selected animated:animated];
+  
 }
 
 -(void)setSelected:(BOOL)selected{
-    
+    UIView * selectedBackgroundView = [[UIView alloc] init];
+    [selectedBackgroundView setBackgroundColor:[UIColor colorWithRed:21.f/255.0f green:21.f/255.0f blue:21.f/255.0f alpha:0.2f]];
+    [self setSelectedBackgroundView:selectedBackgroundView];
+ 
 }
 
 @end

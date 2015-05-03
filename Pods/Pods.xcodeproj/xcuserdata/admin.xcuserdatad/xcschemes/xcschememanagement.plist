@@ -9,7 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Hromadske-KVNProgress.xcscheme</key>
+		<key>Pods-Hromadske-Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -19,7 +19,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Hromadske-PQFCustomLoaders.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Hromadske-Parse.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Hromadske-SWRevealViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Hromadske-UIColor+FlatColors.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,27 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>22A8205F4BA6EB1030E588F3</key>
+		<key>261ECB0EA9347505E9EC1434</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>447C3A02CA06620DA7F1B66E</key>
+		<key>42DF96AC7876E8A43DB5BE0E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8CD2A12490F5D7E030979266</key>
+		<key>6F4FF15E8EA70E4E2742258E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1EF500DD2D42EA9D8CC49EB</key>
+		<key>954CCC3928159ECEE249639F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E0AB1944ECA97101483D29E2</key>
+		<key>AF356AFD44BFEBA9702C1B26</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C46ECAC3541399E18FE55337</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DF2A511CF205A8E0C639BCEC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F9F1F98411EBF5F480B74A1C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

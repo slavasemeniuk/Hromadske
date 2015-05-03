@@ -12,6 +12,7 @@
 #import "Video.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import "DateFormatter.h"
+#import "HTMLManager.h"
 
 
 @implementation Articles
@@ -31,12 +32,12 @@
 -(void) createArticlesDataModel: (NSDictionary *) article
 {
     self.id = [article valueForKey:@"id"];
-    self.short_description = [article valueForKey:@"short_description"];
+    self.short_description = [[HTMLManager sharedManager]  removeTagsFromString:[article valueForKey:@"short_description"]];
+    self.title = [[HTMLManager sharedManager]  removeTagsFromString:[article valueForKey:@"title"]];
     
     self.created_at = [[DateFormatter sharedManager] convertToDateFromTimeStamp:[article valueForKey:@"created_at"]];
     
     self.category = [article valueForKey:@"category"];
-    self.title = [article valueForKey:@"title"];
     self.vk_id = [article valueForKey:@"vk_id"];
     self.views_count = [article valueForKey:@"views_count"];
     

@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StreamView">
             <connections>
-                <outlet property="label" destination="fVz-7a-0vU" id="7gd-h6-4gj"/>
                 <outlet property="view" destination="iN0-l3-epB" id="a1w-eq-w00"/>
                 <outlet property="webView" destination="QV5-l5-0XF" id="N0v-Uq-5f9"/>
             </connections>
@@ -18,25 +17,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QV5-l5-0XF">
-                    <rect key="frame" x="5" y="0.0" width="310" height="195"/>
+                    <rect key="frame" x="10" y="0.0" width="300" height="190"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LIVE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVz-7a-0vU">
-                    <rect key="frame" x="19" y="8" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.88774913877952755" green="0.40006766732283466" blue="0.14809916338582677" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="live" translatesAutoresizingMaskIntoConstraints="NO" id="jio-BO-VDj">
+                    <rect key="frame" x="18" y="8" width="54" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="54" id="9V3-M7-hdr"/>
+                        <constraint firstAttribute="height" constant="21" id="SlD-XA-qSw"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="QV5-l5-0XF" secondAttribute="trailing" constant="5" id="1bJ-op-enS"/>
-                <constraint firstAttribute="bottom" secondItem="QV5-l5-0XF" secondAttribute="bottom" constant="5" id="UXH-id-Aac"/>
+                <constraint firstAttribute="trailing" secondItem="QV5-l5-0XF" secondAttribute="trailing" constant="10" id="1bJ-op-enS"/>
+                <constraint firstItem="jio-BO-VDj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="18" id="HQ5-MM-V7V"/>
+                <constraint firstAttribute="bottom" secondItem="QV5-l5-0XF" secondAttribute="bottom" constant="10" id="UXH-id-Aac"/>
+                <constraint firstItem="jio-BO-VDj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="bqX-l3-i75"/>
                 <constraint firstItem="QV5-l5-0XF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="smM-2K-HDN"/>
-                <constraint firstItem="QV5-l5-0XF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="xQ1-6V-q07"/>
+                <constraint firstItem="QV5-l5-0XF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="xQ1-6V-q07"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-2" y="54"/>
         </view>
     </objects>
+    <resources>
+        <image name="live" width="54" height="21"/>
+    </resources>
 </document>

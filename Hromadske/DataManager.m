@@ -52,23 +52,7 @@
 
 -(void)setUp{
     [MagicalRecord setupSQLiteStackWithStoreNamed:@"Hromadske.sqlite"];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveConnectionNotification:) name:@"NetworkConnetction" object:nil];
-    [NetworkTracker sharedManager];
-    
     [self fetchLocalData];
-}
-
--(void)recieveConnectionNotification:(NSNotification *)notification{
-    NSDictionary *status =notification.userInfo;
-    if ([[status valueForKey:@"status"] isEqual:@"Reachable"]) {
-        [self fetchRemoteArticles];
-    }
-    if ([[status valueForKey:@"status"] isEqual:@"notReachable"]) {
-        if ([_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)])
-        {
-            [_delegate dataManagerDidFaildUpadating:self];
-        }
-    }
 }
 
 -(void) updateArticleWithId:(NSNumber *)identifire{
@@ -79,9 +63,13 @@
             if (![[updatedArticle valueForKey:@"content"] isEqual:n]) {
                 article.content = [updatedArticle valueForKey:@"content"];
             }
-            else{
+            if ([[updatedArticle valueForKey:@"content"] isEqual:n]&&[article getLink]) {
                 article.content = @"link";
             }
+            if ([[updatedArticle valueForKey:@"content"] isEqual:n]&&![article getLink]) {
+                article.content = [NSString stringWithFormat:HTMLCONTENTWITHIMAGE,article.title,[article getImageUrl],article.short_description];
+                }
+            
             [article.managedObjectContext MR_saveOnlySelfAndWait];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDataNotification" object:nil];
         }];
@@ -129,32 +117,61 @@
 }
 
 
--(void) teamWithCompletion:(void (^)(NSArray *team)) completion {
+- (void) teamWithCompletion:(void (^)()) completion {
     if ([Employe MR_countOfEntities]) {
-        completion(_listOfEmployes);
+        completion();
+        [self upDateTeam];
+    
     }
     else
     {
-        [[RemoteManager sharedManager] parsedJsonWithEndOfURL:TEAM_JSON :^(NSArray *parsedTeam)
-        {
-            [self saveTeamToContext:parsedTeam];
-            [self fetchListOfEmployes];
-            completion(_listOfEmployes);
-        }];
+        if ([NetworkTracker isReachable]) {
+            [[RemoteManager sharedManager] objectsForPath:TEAM_JSON attributes:nil success:^(NSArray *parsedTeam){
+                [self saveTeamToContext:parsedTeam];
+                [self fetchListOfEmployes];
+                completion();
+                
+            }fail:^(){
+                completion();
+            }];
+        }
     }
 }
 
--(void) helpProjectDataWithCompletion:(void (^)(id helpProjectData))completion{
+- (void) upDateTeam{
+    [[RemoteManager sharedManager] objectsForPath:TEAM_JSON attributes:nil success:^(NSArray *parsedTeam){
+        NSArray *listOfLocalEmployes = [NSArray arrayWithArray:[Employe MR_findAll]];
+        if ([parsedTeam count]!=[listOfLocalEmployes count]) {
+            for (int i=0; i<[parsedTeam count]; i++) {
+                if ([(Employe *)[listOfLocalEmployes objectAtIndex:i] identifire] != [[parsedTeam objectAtIndex:i] valueForKey:@"id"]) {
+                    Employe * employe =[Employe MR_findFirstByAttribute:@"id" withValue:[[listOfLocalEmployes objectAtIndex:i] identifire]];
+                    [employe convertDataToEmployeModel:[parsedTeam objectAtIndex:i]];
+                    [employe.managedObjectContext MR_saveOnlySelfAndWait];
+                }
+            }
+            _listOfEmployes=[Employe MR_findAll];
+        }else{
+            [Employe truncateAll];
+            [self saveTeamToContext:parsedTeam];
+            [self fetchListOfEmployes];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTeamNotification" object:nil];
+        }
+    }fail:^(){
+        
+    }];
+}
+
+- (void) helpProjectDataWithCompletion:(void (^)(id helpProjectData))completion{
     if ([HelpProject MR_countOfEntities]) {
         completion([HelpProject MR_findFirst]);
     }
     else
     {
-        [[RemoteManager sharedManager] parsedJsonWithEndOfURL:DONATE_JSON :^(NSArray *parsedHelpData)
-         {
-            [self saveHelpDataToContext:parsedHelpData];
-            completion([HelpProject MR_findFirst]);
-        }];
+        //[[RemoteManager sharedManager] parsedJsonWithEndOfURL:DONATE_JSON :^(NSArray *parsedHelpData)
+         //{
+         //   [self saveHelpDataToContext:parsedHelpData];
+         //   completion([HelpProject MR_findFirst]);
+       // }];
     }
 }
 
@@ -164,11 +181,11 @@
     }
     else
     {
-        [[RemoteManager sharedManager] parsedJsonWithEndOfURL:CONTACTS_JSON :^(NSArray *parsedContactsData)
-         {
-             [self saveContactsDataToContext:parsedContactsData];
-             completion([Contacts MR_findFirst]);
-         }];
+        //[[RemoteManager sharedManager] parsedJsonWithEndOfURL:CONTACTS_JSON :^(NSArray *parsedContactsData)
+        // {
+        //     [self saveContactsDataToContext:parsedContactsData];
+        //     completion([Contacts MR_findFirst]);
+        // }];
     }
 }
 
@@ -178,9 +195,7 @@
     [self fetchListOfArticles];
     [self fetchListOfEmployes];
     [self fetchLocalRateAndWeather];
-    
-    _new_entries_count=0;
-    
+
     if ([_listOfArticles count]) {
         _dateOfLastArticle = [[DateFormatter sharedManager] convertToTimeStamp:[(Articles *)[_listOfArticles firstObject] created_at]];
     }
@@ -218,6 +233,7 @@
         [_delegate dataManagerDidStartUpadating:self];
     }
     if ([NetworkTracker isReachable]) {
+        [self fetchRemoteDigest];
         [[RemoteManager sharedManager] objectsForPath:ARTICKE_JSON attributes:@{@"sync_date":_dateOfLastArticle} success:^(NSArray *parsedArticles){
             NSMutableArray *newArticles =[NSMutableArray array];
             NSManagedObjectContext *context = nil;
@@ -246,14 +262,17 @@
                 [_delegate dataManagerDidFaildUpadating:self];
             }
         }];
+    }else{
+        if ( [_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)])
+        {
+            [_delegate dataManagerDidFaildUpadating:self];
+        }
     }
-    [self fetchRemoteDigest];
+   
 }
 
 -(void)fetchRemoteDigest
 {
-    if ([NetworkTracker isReachable])
-    {
         [[RemoteManager sharedManager] objectsForPath:DIGEST_JSON attributes:@{@"sync_date":_dateOfLastArticle} success:^(NSArray *parsedDigest) {
             [self saveRatesAndWeatherToContext:parsedDigest];
             [self fetchLocalRateAndWeather];
@@ -270,7 +289,6 @@
             
         } fail:^{
         }];
-    }
 }
 
 @end

@@ -39,7 +39,7 @@
     self = [super init];
     if (self) {
         _df = [[NSDateFormatter alloc] init];
-        [_df setDateFormat:@"yyyy-MM-dd HH:mm:ss:SSS"];
+        [_df setDateStyle:NSDateFormatterMediumStyle];
     }
     return self;
 }
@@ -64,38 +64,38 @@
     NSTimeInterval delta = [d2 timeIntervalSinceDate:date1];
     NSString *res = [[NSString alloc]init];
     if (delta < 2 * MINUTE) {
-        return @"Хвилину назад";
+        return @"Хвилину тому";
     }
     if (delta < 45 * MINUTE) {
         int minutes = ((double)delta/MINUTE);
         if ((minutes>4&&minutes<=20)||(minutes%10==0)) {
-            res =@"хвилин назад";
+            res =@"хвилин тому";
         }
         else
         if (minutes%10==1) {
-            res =@"хвилина назад";
+            res =@"хвилина тому";
         }
         else
         if (minutes%10>=1&&minutes%10<=4) {
-            res =@"хвилини назад";
+            res =@"хвилини тому";
         }
         return [NSString stringWithFormat:@"%d %@", minutes, res];
     }
     if (delta < 90*MINUTE) {
-        return @"Годину назад";
+        return @"Годину тому";
     }
     if (delta < 24 * HOUR) {
         int hours = ((double)delta/HOUR);
         if ((hours>4&&hours<=20)||(hours%10==0)) {
-            res =@"годин назад";
+            res =@"годин тому";
         }
         else
             if (hours%10==1) {
-                res =@"година назад";
+                res =@"година тому";
             }
             else
                 if (hours%10>=1&&hours%10<=4) {
-                    res =@"години назад";
+                    res =@"години тому";
                 }
         return [NSString stringWithFormat:@"%d %@", hours, res];
     }
@@ -104,7 +104,6 @@
     }
     else
     {
-        [_df setDateStyle:NSDateFormatterMediumStyle];
         return [_df stringFromDate: date1];
     }
 }

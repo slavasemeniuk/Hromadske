@@ -1,35 +1,41 @@
 PODS:
-  - AFNetworking (2.5.1):
-    - AFNetworking/NSURLConnection (= 2.5.1)
-    - AFNetworking/NSURLSession (= 2.5.1)
-    - AFNetworking/Reachability (= 2.5.1)
-    - AFNetworking/Security (= 2.5.1)
-    - AFNetworking/Serialization (= 2.5.1)
-    - AFNetworking/UIKit (= 2.5.1)
-  - AFNetworking/NSURLConnection (2.5.1):
+  - AFNetworking (2.5.3):
+    - AFNetworking/NSURLConnection (= 2.5.3)
+    - AFNetworking/NSURLSession (= 2.5.3)
+    - AFNetworking/Reachability (= 2.5.3)
+    - AFNetworking/Security (= 2.5.3)
+    - AFNetworking/Serialization (= 2.5.3)
+    - AFNetworking/UIKit (= 2.5.3)
+  - AFNetworking/NSURLConnection (2.5.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.1):
+  - AFNetworking/NSURLSession (2.5.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.1)
-  - AFNetworking/Security (2.5.1)
-  - AFNetworking/Serialization (2.5.1)
-  - AFNetworking/UIKit (2.5.1):
+  - AFNetworking/Reachability (2.5.3)
+  - AFNetworking/Security (2.5.3)
+  - AFNetworking/Serialization (2.5.3)
+  - AFNetworking/UIKit (2.5.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - KVNProgress (2.2.1)
-  - MagicalRecord (3.0.0.dev.1429393336):
-    - MagicalRecord/Core (= 3.0.0.dev.1429393336)
-  - MagicalRecord/Core (3.0.0.dev.1429393336)
+  - Bolts/Tasks (1.1.5)
+  - MagicalRecord (3.0.0.dev.1430607365):
+    - MagicalRecord/Core (= 3.0.0.dev.1430607365)
+  - MagicalRecord/Core (3.0.0.dev.1430607365)
+  - Parse (1.7.2.1):
+    - Bolts/Tasks (>= 1.1.5)
+  - PQFCustomLoaders (0.0.1):
+    - UIColor+FlatColors
   - SWRevealViewController (2.3.0)
+  - UIColor+FlatColors (0.0.2)
 
 DEPENDENCIES:
   - AFNetworking
-  - KVNProgress
   - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord.git`, branch `release/3.0`)
+  - Parse
+  - PQFCustomLoaders
   - SWRevealViewController
 
 EXTERNAL SOURCES:
@@ -43,9 +49,12 @@ CHECKOUT OPTIONS:
     :git: https://github.com/magicalpanda/MagicalRecord.git
 
 SPEC CHECKSUMS:
-  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
-  KVNProgress: 7001d2d16a2755cee5599e8e485befe056f2197b
+  AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
+  Bolts: aac24961496d504aa56fc267cde95162a71bac39
   MagicalRecord: 1108009980499d6f370a373c16afb1f52635fde8
-  SWRevealViewController: f6d80638b8e12323e87ac79562345403a799cb77
+  Parse: 8213b05b52768b34b87e1e41fd9efc88a9933f3f
+  PQFCustomLoaders: 6e630d3ab3987e035598050f56a4f5a6a7766d92
+  SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
+  UIColor+FlatColors: 6c699df7a575281794c688c64cee6c44fd1f93b4
 
 COCOAPODS: 0.35.0

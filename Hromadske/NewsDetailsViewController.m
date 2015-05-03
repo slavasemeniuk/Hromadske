@@ -7,7 +7,7 @@
 //
 
 #import "NewsDetailsViewController.h"
-#import <KVNProgress/KVNProgress.h>
+#import <PQFCustomLoaders/PQFCirclesInTriangle.h>
 #import "DataManager.h"
 #import "ControllersManager.h"
 #import "Link.h"
@@ -20,6 +20,7 @@
 }
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) Articles *article;
+@property (strong, nonatomic) PQFCirclesInTriangle *loader;
 @end
 
 @implementation NewsDetailsViewController
@@ -31,7 +32,7 @@
 }
 
 -(void)setUpViewController{
-    _mode=@"day";
+     _mode=@"day";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:@"refreshDataNotification" object:nil];
     [self setUpNavigationBar];
     if (_article.content) {
@@ -45,18 +46,10 @@
         [self webViewWithHtml];
     }
     if (([[_article valueForKey:@"content"] isEqual:@"link"])&&([_article getLink])) {
-
         NSString *url = [[NSString alloc] initWithString:[_article getLink]];
         NSURLRequest *request = [[NSURLRequest alloc]initWithURL:[NSURL URLWithString:url]];
         [_webView loadRequest:request];
     }
-    if (([[_article valueForKey:@"content"] isEqual:@"link"])&&(([_article getVideoURL])||[_article getImageUrl])) {
-        NewsDetailsLocalViewController *newsdet=[[ControllersManager sharedManager] createLocalNewsDetailsViewControllerWithArticle:_article];
-        [self.navigationController pushViewController:newsdet animated:YES];
-       
-    }
-    
-
 }
 
 -(void)webViewWithHtml
@@ -75,7 +68,7 @@
         self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
         self.webView.backgroundColor = [UIColor colorWithRed:30.0f/255.0f green:30.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
         [_webView loadHTMLString:[NSString stringWithFormat:@"%@%@%@",HTMLDETAILS_BEGIN_NIGHT,_article.content,HTMLDETAILS_END] baseURL:[NSURL URLWithString:HROMADSKE_URL]];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     }
     
 }
@@ -88,14 +81,12 @@
 -(void)updateData{
     if (!_article.content) {
         [[DataManager sharedManager] updateArticleWithId:_article.id];
-        [KVNProgress showWithStatus:@"Завантаження"];
     }
 }
 
 -(void)refreshData
 {
     [self setUpWebView];
-    [KVNProgress dismiss];
     
 }
 
@@ -107,9 +98,11 @@
 -(void)changeMode{
     if ([_mode isEqual:@"day"]) {
         _mode=@"night";
+        self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"news-sun"];
     }
     else{
         _mode=@"day";
+        self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"news-moon"];
     }
     [self setUpWebView];
 }

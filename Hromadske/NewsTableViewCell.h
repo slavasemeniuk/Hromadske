@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIView *topLine;
 @property (weak, nonatomic) IBOutlet UIImageView *image_view;
 @property (weak, nonatomic) IBOutlet UIView *container;
+@property (weak, nonatomic) IBOutlet UILabel *category;
 
 -(void)unviewed;
 

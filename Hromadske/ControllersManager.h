@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "MenuViewController.h"
 #import "NewsDetailsViewController.h"
-#import "NewsDetailsLocalViewController.h"
 
 @interface ControllersManager : NSObject
 
@@ -18,8 +17,6 @@
 -(UINavigationController *)createNavigationControllerWithIdentifier: (NSString *) indentifier;
 
 -(NewsDetailsViewController *)createNewsDetailsViewControllerWithArticle: (id) article;
-
--(NewsDetailsLocalViewController *)createLocalNewsDetailsViewControllerWithArticle:(id) article;
 
 -(MenuViewController *)createMenuViewController;
 

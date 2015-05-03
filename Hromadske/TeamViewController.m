@@ -26,11 +26,15 @@
 {
     [super viewDidLoad];
     [self setUpCell];
-    
-    [[DataManager sharedManager] teamWithCompletion:^(NSArray *team) {
-        _tableViewsData = team;
-        [_tableView reloadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:@"refreshTeamNotification" object:nil];
+    [[DataManager sharedManager] teamWithCompletion:^() {
+        [self updateData];
     }];
+}
+
+-(void) updateData{
+    _tableViewsData = [[DataManager sharedManager] listOfEmployes];
+    [_tableView reloadData];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -53,7 +57,7 @@
     return cell;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     TeamViewCell *prototypecell = [tableView dequeueReusableCellWithIdentifier:@"TeamCell"];

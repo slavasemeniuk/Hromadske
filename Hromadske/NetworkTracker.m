@@ -48,13 +48,6 @@
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:API_URL]];
     [manager.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
         _networkStatus=status;
-        NSString *stringStatus = [[NSString alloc]init];
-        if ([NetworkTracker isReachable]) {
-            stringStatus=@"Reachable";
-        }else{
-           stringStatus=@"notReachable";
-        }
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NetworkConnetction" object:self userInfo:@{@"status":stringStatus}];
     }];
     [manager.reachabilityManager startMonitoring];
 }
