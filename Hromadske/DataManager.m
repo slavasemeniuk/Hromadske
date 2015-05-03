@@ -232,7 +232,6 @@
     {
         [_delegate dataManagerDidStartUpadating:self];
     }
-    if ([NetworkTracker isReachable]) {
         [self fetchRemoteDigest];
         [[RemoteManager sharedManager] objectsForPath:ARTICKE_JSON attributes:@{@"sync_date":_dateOfLastArticle} success:^(NSArray *parsedArticles){
             NSMutableArray *newArticles =[NSMutableArray array];
@@ -262,13 +261,6 @@
                 [_delegate dataManagerDidFaildUpadating:self];
             }
         }];
-    }else{
-        if ( [_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)])
-        {
-            [_delegate dataManagerDidFaildUpadating:self];
-        }
-    }
-   
 }
 
 -(void)fetchRemoteDigest

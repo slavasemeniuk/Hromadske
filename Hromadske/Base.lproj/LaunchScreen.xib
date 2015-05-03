@@ -11,11 +11,11 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hromadske_logo_cherkasy2x 02-22-30-978.png" translatesAutoresizingMaskIntoConstraints="NO" id="fxs-hu-O6c">
-                    <rect key="frame" x="120" y="215" width="240" height="50"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hromadske-loho-launch" translatesAutoresizingMaskIntoConstraints="NO" id="fxs-hu-O6c">
+                    <rect key="frame" x="180" y="228" width="120" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="8Ul-5r-YIi"/>
-                        <constraint firstAttribute="width" constant="240" id="JlM-le-yeo"/>
+                        <constraint firstAttribute="height" constant="25" id="8Ul-5r-YIi"/>
+                        <constraint firstAttribute="width" constant="120" id="JlM-le-yeo"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -30,6 +30,6 @@
         </view>
     </objects>
     <resources>
-        <image name="hromadske_logo_cherkasy2x 02-22-30-978.png" width="240" height="50"/>
+        <image name="hromadske-loho-launch" width="120" height="25"/>
     </resources>
 </document>

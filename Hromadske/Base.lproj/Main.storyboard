@@ -376,10 +376,10 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone-icon" translatesAutoresizingMaskIntoConstraints="NO" id="RQD-ow-P1Y">
-                                <rect key="frame" x="41" y="367" width="16" height="16"/>
+                                <rect key="frame" x="43" y="367" width="14" height="19"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="2sR-Rg-lfg"/>
-                                    <constraint firstAttribute="width" constant="16" id="u37-Dt-ypV"/>
+                                    <constraint firstAttribute="height" constant="19" id="2sR-Rg-lfg"/>
+                                    <constraint firstAttribute="width" constant="14" id="u37-Dt-ypV"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adress-icon" translatesAutoresizingMaskIntoConstraints="NO" id="eIV-mo-h3Y">
@@ -390,7 +390,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bf6-za-c7O" firstAttribute="top" secondItem="RuM-Ck-KMw" secondAttribute="bottom" constant="1" id="21I-YM-g4b"/>
                             <constraint firstItem="RuM-Ck-KMw" firstAttribute="top" secondItem="u1X-Oj-zmV" secondAttribute="bottom" constant="1" id="5ET-1l-G7Y"/>

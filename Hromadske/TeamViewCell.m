@@ -15,7 +15,6 @@
     [self setUpImageView];
 }
 
-
 - (void)setUpImageView
 {
     _imageview.layer.cornerRadius = _imageview.frame.size.width/2;

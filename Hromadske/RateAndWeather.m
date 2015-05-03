@@ -17,7 +17,7 @@
 @dynamic weatherType;
 
 -(void)createInitialRateAndWeather{
-    self.weather=@"5";
+    self.weather=@"+5";
     self.weatherType=@"0";
     self.rateEUR=@"10.00";
     self.rateUSD=@"5.00";
