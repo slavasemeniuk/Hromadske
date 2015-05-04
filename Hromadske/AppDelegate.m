@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "NetworkTracker.h"
 #import "DataManager.h"
-#import <SWRevealViewController/SWRevealViewController.h>
 #import "ControllersManager.h"
 #import "Constants.h"
 #import <GoogleMaps/GoogleMaps.h>
@@ -21,12 +20,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [NetworkTracker sharedManager];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     [GMSServices provideAPIKey:API_GOOGLE];
     [DataManager sharedManager];
     
-    SWRevealViewController *mainReavealViewController = [[SWRevealViewController alloc] initWithRearViewController:[[ControllersManager sharedManager] createMenuViewController] frontViewController:[[ControllersManager sharedManager] newsNavigationController]];
-    self.window.rootViewController=mainReavealViewController;
+    
+    self.window.rootViewController= [[ControllersManager sharedManager] revealController];
+    
     [self setUpParse:application launchOptions:launchOptions];
     
     return YES;
@@ -79,7 +78,7 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    [[DataManager sharedManager] fetchRemoteArticles];
+    [[DataManager sharedManager] fetchRemoteDigest];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

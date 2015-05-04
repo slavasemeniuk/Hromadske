@@ -8,18 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "MenuViewController.h"
+#import <SWRevealViewController/SWRevealViewController.h>
 #import "NewsDetailsViewController.h"
+
 
 @interface ControllersManager : NSObject
 
 +(ControllersManager *)sharedManager;
 
--(UINavigationController *)createNavigationControllerWithIdentifier: (NSString *) indentifier;
+- (SWRevealViewController *) revealController;
 
--(NewsDetailsViewController *)createNewsDetailsViewControllerWithArticle: (id) article;
+- (UIViewController *) viewControllerWithIdentefier:(NSString*)identefier;
 
--(MenuViewController *)createMenuViewController;
-
-- (UINavigationController *) newsNavigationController;
+- (void) showTopViewControllerWithIdentefier:(NSString *)identefier;
 
 @end

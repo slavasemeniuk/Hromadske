@@ -228,11 +228,6 @@
 #pragma mark - Remote
 
 -(void) fetchRemoteArticles {
-    if ( [_delegate respondsToSelector:@selector(dataManagerDidStartUpadating:)] )
-    {
-        [_delegate dataManagerDidStartUpadating:self];
-    }
-        [self fetchRemoteDigest];
         [[RemoteManager sharedManager] objectsForPath:ARTICKE_JSON attributes:@{@"sync_date":_dateOfLastArticle} success:^(NSArray *parsedArticles){
             NSMutableArray *newArticles =[NSMutableArray array];
             NSManagedObjectContext *context = nil;
@@ -265,6 +260,11 @@
 
 -(void)fetchRemoteDigest
 {
+    if ( [_delegate respondsToSelector:@selector(dataManagerDidStartUpadating:)] )
+    {
+        [_delegate dataManagerDidStartUpadating:self];
+    }
+    
         [[RemoteManager sharedManager] objectsForPath:DIGEST_JSON attributes:@{@"sync_date":_dateOfLastArticle} success:^(NSArray *parsedDigest) {
             [self saveRatesAndWeatherToContext:parsedDigest];
             [self fetchLocalRateAndWeather];
@@ -277,9 +277,16 @@
                 _streamingURL=nil;
             }
             
+            [self fetchRemoteArticles];
+            
             [[NSNotificationCenter defaultCenter] postNotificationName:@"DigestUpdated" object:nil];
             
         } fail:^{
+            if ( [_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)])
+            {
+                [_delegate dataManagerDidFaildUpadating:self];
+            }
+
         }];
 }
 

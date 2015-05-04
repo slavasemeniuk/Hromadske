@@ -9,9 +9,17 @@
 #import "ControllersManager.h"
 #import "AppDelegate.h"
 
+#import "NewsViewController.h"
+#import "NewsDetailsViewController.h"
+#import "TeamViewController.h"
+#import "ContactsViewController.h"
+#import "HelpProjectViewController.h"
+#import "MenuViewController.h"
+
 @interface ControllersManager ()
 
-@property (strong, nonatomic) UINavigationController * newsViewController;
+@property (strong , nonatomic) NewsViewController * newsViewController;
+@property (strong , nonatomic) SWRevealViewController * revealViewController;
 
 @end
 
@@ -27,41 +35,57 @@
     return __manager;
 }
 
-
-- (UINavigationController *) createNavigationControllerWithIdentifier:(NSString *)identifier
-{
-    if ([identifier isEqual:@"News"]) {
-        return [self newsNavigationController];
-    }
-    return [[self createStoryboard] instantiateViewControllerWithIdentifier:identifier];
-}
-
-- (NewsDetailsViewController *)createNewsDetailsViewControllerWithArticle:(id)article
-{
-    NewsDetailsViewController *viewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"NewsDetails"];
-    [viewController setContent:article];
-    return viewController;
-}
-
-- (MenuViewController *)createMenuViewController
-{
-    MenuViewController *menuViewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"Menu"];
-    return menuViewController;
-}
-
-- (UINavigationController *) newsNavigationController
-{
-    if (!_newsViewController) {
-        _newsViewController = [[self createStoryboard] instantiateViewControllerWithIdentifier:@"News"];
-    }
-    return _newsViewController;
-}
-
-- (UIStoryboard *)createStoryboard
+- (UIStoryboard *)storyboard
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     return storyboard;
 }
+
+- (SWRevealViewController *) revealController {
+    if (!_revealViewController) {
+        _revealViewController = [[SWRevealViewController alloc] initWithRearViewController:[self menu] frontViewController:nil];
+        UIViewController *news = [self topViewControllerWithIdentefier:NSStringFromClass([NewsViewController class])];
+        _revealViewController.frontViewController = news;
+    }
+    return _revealViewController;
+}
+
+- (MenuViewController *) menu {
+    return (MenuViewController *)[self viewControllerWithIdentefier:NSStringFromClass([MenuViewController class])];
+}
+
+- (UINavigationController *) topViewControllerWithIdentefier:(NSString*)identefier {
+    
+    UIViewController *controller = [self viewControllerWithIdentefier:identefier];
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
+    
+    [navigation.view addGestureRecognizer: [self revealController].panGestureRecognizer];
+    
+    return navigation;
+}
+
+- (UIViewController *) viewControllerWithIdentefier:(NSString*)identefier {
+    
+    UIViewController *controller = nil;
+    
+    if ([identefier isEqual:NSStringFromClass([NewsViewController class])]) {
+        
+        if (!_newsViewController) {
+            _newsViewController = [[self storyboard] instantiateViewControllerWithIdentifier:identefier];
+        }
+        controller = _newsViewController;
+    } else {
+        controller = [[self storyboard] instantiateViewControllerWithIdentifier:identefier];
+    }
+    
+    return controller;
+}
+
+- (void) showTopViewControllerWithIdentefier:(NSString *)identefier {
+    UIViewController *controller = [self topViewControllerWithIdentefier:identefier];
+    [[self revealController] pushFrontViewController:controller animated:YES];
+}
+
 
 
 @end

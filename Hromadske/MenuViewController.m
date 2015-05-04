@@ -41,12 +41,12 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 -(void) setUpViewController
@@ -55,11 +55,12 @@
     [self gradientBackground];
     NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     _version.text = [NSString stringWithFormat:@"Версія %@",appVersion];
+
     [_tableView registerNib:[UINib nibWithNibName:@"MenuItemCell" bundle:nil] forCellReuseIdentifier:@"menu_cell"];
     
     _listOfIcon = @[@"menu-items-news",@"menu-items-team",@"menu-donate",@"menu-contacts"];
     _menuItems=@[@"Новини",@"Команда",@"Допомогти проекту",@"Контакти"];
-    _arrayOfIdentifier = @[@"News", @"Team", @"HelpProject", @"Contacts"];
+    _arrayOfIdentifier = @[ @"NewsViewController", @"TeamViewController", @"HelpProjectViewController", @"ContactsViewController"];
 }
 
 -(void)refreshData{
@@ -108,7 +109,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.revealViewController pushFrontViewController: [[ControllersManager sharedManager] createNavigationControllerWithIdentifier:[_arrayOfIdentifier objectAtIndex:indexPath.row]] animated:YES];
+    NSString *identefier = [_arrayOfIdentifier objectAtIndex:indexPath.row];
+    [[ControllersManager sharedManager] showTopViewControllerWithIdentefier:identefier];
 }
 
 

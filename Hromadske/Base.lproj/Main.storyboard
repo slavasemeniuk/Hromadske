@@ -26,7 +26,7 @@
         <!--Menu View Controller-->
         <scene sceneID="fap-sc-WeL">
             <objects>
-                <viewController storyboardIdentifier="Menu" useStoryboardIdentifierAsRestorationIdentifier="YES" id="maS-4L-wqK" customClass="MenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="maS-4L-wqK" customClass="MenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nW0-qI-LOf"/>
                         <viewControllerLayoutGuide type="bottom" id="1fP-Cs-Wbd"/>
@@ -129,8 +129,8 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egW-ae-yKW">
-                                        <rect key="frame" x="0.0" y="457" width="280" height="15"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <rect key="frame" x="0.0" y="459" width="280" height="13"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="11"/>
                                         <color key="textColor" red="0.70045863750000004" green="0.700824801" blue="0.72325465430000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -190,27 +190,10 @@
             </objects>
             <point key="canvasLocation" x="-19" y="-1156"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="MZt-J0-YMV">
-            <objects>
-                <navigationController storyboardIdentifier="HelpProject" useStoryboardIdentifierAsRestorationIdentifier="YES" id="s2d-pW-xuQ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PB1-VL-WbR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="e4r-1E-nm2" kind="relationship" relationship="rootViewController" id="Y4b-IW-mgu"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bnh-w5-mMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-364" y="2662"/>
-        </scene>
         <!--Допомогти-->
         <scene sceneID="Rgz-X8-pli">
             <objects>
-                <viewController id="e4r-1E-nm2" customClass="HelpProjectViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpProjectViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e4r-1E-nm2" customClass="HelpProjectViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nOs-zr-jLt"/>
                         <viewControllerLayoutGuide type="bottom" id="e4x-J3-4cE"/>
@@ -220,18 +203,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kopilka.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ZPt-SJ-xs6">
-                                <rect key="frame" x="70" y="84" width="180" height="169"/>
+                                <rect key="frame" x="70" y="40" width="180" height="169"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="169" id="4ml-Jf-D4V"/>
                                     <constraint firstAttribute="width" constant="180" id="btF-Jy-c9e"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJ8-LK-6Z7">
-                                <rect key="frame" x="50" y="420" width="220" height="40"/>
+                                <rect key="frame" x="38" y="420" width="245" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eyV-zk-fiq"/>
-                                    <constraint firstAttribute="width" constant="220" id="yBA-xc-aVu"/>
+                                    <constraint firstAttribute="width" constant="245" id="yBA-xc-aVu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Допомогти Громадському">
@@ -242,13 +225,13 @@
                                     <action selector="goToWebSite:" destination="e4r-1E-nm2" eventType="touchUpInside" id="SA2-Yp-azL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="13" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="268" translatesAutoresizingMaskIntoConstraints="NO" id="sr3-Fa-yZp">
-                                <rect key="frame" x="20" y="258" width="280" height="152"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="13" minimumFontSize="7" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="268" translatesAutoresizingMaskIntoConstraints="NO" id="sr3-Fa-yZp">
+                                <rect key="frame" x="20" y="214" width="280" height="152"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="152" id="Lre-G1-bf6"/>
                                 </constraints>
                                 <string key="text">Громадське – перший в Україні проект, який створили самі журналісти. Ми незалежні від влади, олігархів і політичних сил. Громадське належить громадянам України і є некомерційним проектом. Громадське існує за рахуноксаме вашої підтримки. Переважну частину коштів, за рахунок яких працює вся команда Громадського, ми отримуємо від наших глядачів.</string>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -278,7 +261,7 @@
         <!--Web Help View Controller-->
         <scene sceneID="5FE-GW-Rfq">
             <objects>
-                <viewController storyboardIdentifier="webhelp" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IvM-sW-2np" customClass="WebHelpViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebHelpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IvM-sW-2np" customClass="WebHelpViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rVg-Ig-hE1"/>
                         <viewControllerLayoutGuide type="bottom" id="Ccy-Ox-VBw"/>
@@ -313,7 +296,7 @@
         <!--Контакти-->
         <scene sceneID="uFC-kn-15U">
             <objects>
-                <viewController id="a8c-5K-bwc" customClass="ContactsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="a8c-5K-bwc" customClass="ContactsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5BV-bN-OdW"/>
                         <viewControllerLayoutGuide type="bottom" id="hA1-IU-1yM"/>
@@ -322,71 +305,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hromadske.ck@gmail.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vm-ik-pvb">
-                                <rect key="frame" x="75" y="411" width="170" height="69"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hromadske.ck@gmail.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vm-ik-pvb">
+                                <rect key="frame" x="48" y="411" width="256" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="69" id="NSv-1R-VFx"/>
-                                    <constraint firstAttribute="width" constant="170" id="y0u-Cx-cm5"/>
+                                    <constraint firstAttribute="width" constant="256" id="y0u-Cx-cm5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тел. 38-38-85, 097-189-01-45" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf6-za-c7O">
-                                <rect key="frame" x="62" y="341" width="197" height="69"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тел. 38-38-85, 097-189-01-45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf6-za-c7O">
+                                <rect key="frame" x="48" y="341" width="256" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="69" id="nNn-2z-3QZ"/>
-                                    <constraint firstAttribute="width" constant="197" id="xjW-Zo-9sI"/>
+                                    <constraint firstAttribute="width" constant="256" id="xjW-Zo-9sI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMW-rb-F92">
-                                <rect key="frame" x="0.0" y="64" width="320" height="202"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="246"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Адреса: вул. Хрещатик, 223, офіс 401" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1X-Oj-zmV">
-                                <rect key="frame" x="33" y="269" width="255" height="69"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Адреса: вул. Хрещатик, 223, офіс 401" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1X-Oj-zmV">
+                                <rect key="frame" x="48" y="269" width="265" height="69"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="255" id="T3q-G6-cQh"/>
+                                    <constraint firstAttribute="width" constant="265" id="T3q-G6-cQh"/>
                                     <constraint firstAttribute="height" constant="69" id="axM-U0-aAu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GsC-1f-qlN">
-                                <rect key="frame" x="40" y="409" width="240" height="1"/>
-                                <color key="backgroundColor" red="0.99215692280000001" green="0.48627454040000001" blue="0.15686275059999999" alpha="1" colorSpace="deviceRGB"/>
+                                <rect key="frame" x="0.0" y="409" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.8112630864" green="0.8221603381" blue="0.8308185253" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="dwv-sI-Eui"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuM-Ck-KMw">
-                                <rect key="frame" x="40" y="339" width="240" height="1"/>
-                                <color key="backgroundColor" red="0.99215692280000001" green="0.48627454040000001" blue="0.15686275059999999" alpha="1" colorSpace="deviceRGB"/>
+                                <rect key="frame" x="0.0" y="339" width="320" height="1"/>
+                                <color key="backgroundColor" red="0.8112630864" green="0.8221603381" blue="0.8308185253" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="aS0-oq-TWH"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email-icon" translatesAutoresizingMaskIntoConstraints="NO" id="7NQ-ij-hfp">
-                                <rect key="frame" x="54" y="438" width="16" height="16"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email-icon" translatesAutoresizingMaskIntoConstraints="NO" id="7NQ-ij-hfp">
+                                <rect key="frame" x="15" y="434" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="eOP-YR-TcG"/>
-                                    <constraint firstAttribute="height" constant="16" id="hte-eB-bfr"/>
+                                    <constraint firstAttribute="width" constant="24" id="eOP-YR-TcG"/>
+                                    <constraint firstAttribute="height" constant="24" id="hte-eB-bfr"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone-icon" translatesAutoresizingMaskIntoConstraints="NO" id="RQD-ow-P1Y">
-                                <rect key="frame" x="43" y="367" width="14" height="19"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone-icon" translatesAutoresizingMaskIntoConstraints="NO" id="RQD-ow-P1Y">
+                                <rect key="frame" x="16" y="364" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="19" id="2sR-Rg-lfg"/>
-                                    <constraint firstAttribute="width" constant="14" id="u37-Dt-ypV"/>
+                                    <constraint firstAttribute="height" constant="24" id="2sR-Rg-lfg"/>
+                                    <constraint firstAttribute="width" constant="24" id="u37-Dt-ypV"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adress-icon" translatesAutoresizingMaskIntoConstraints="NO" id="eIV-mo-h3Y">
-                                <rect key="frame" x="14" y="292" width="14" height="23"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adress-icon" translatesAutoresizingMaskIntoConstraints="NO" id="eIV-mo-h3Y">
+                                <rect key="frame" x="15" y="292" width="24" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="WXp-bV-C5X"/>
-                                    <constraint firstAttribute="width" constant="14" id="uBl-j5-58E"/>
+                                    <constraint firstAttribute="height" constant="24" id="WXp-bV-C5X"/>
+                                    <constraint firstAttribute="width" constant="24" id="uBl-j5-58E"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -394,26 +377,26 @@
                         <constraints>
                             <constraint firstItem="bf6-za-c7O" firstAttribute="top" secondItem="RuM-Ck-KMw" secondAttribute="bottom" constant="1" id="21I-YM-g4b"/>
                             <constraint firstItem="RuM-Ck-KMw" firstAttribute="top" secondItem="u1X-Oj-zmV" secondAttribute="bottom" constant="1" id="5ET-1l-G7Y"/>
-                            <constraint firstItem="GsC-1f-qlN" firstAttribute="leading" secondItem="Pqt-4Q-KQ9" secondAttribute="leading" constant="40" id="7gJ-aL-ldg"/>
-                            <constraint firstItem="bf6-za-c7O" firstAttribute="leading" secondItem="RQD-ow-P1Y" secondAttribute="trailing" constant="5" id="8NG-T5-fQO"/>
-                            <constraint firstAttribute="centerX" secondItem="9vm-ik-pvb" secondAttribute="centerX" id="8bO-2K-ZHX"/>
+                            <constraint firstItem="GsC-1f-qlN" firstAttribute="leading" secondItem="Pqt-4Q-KQ9" secondAttribute="leading" id="7gJ-aL-ldg"/>
+                            <constraint firstItem="bf6-za-c7O" firstAttribute="leading" secondItem="RQD-ow-P1Y" secondAttribute="trailing" constant="8" id="8NG-T5-fQO"/>
+                            <constraint firstAttribute="centerX" secondItem="9vm-ik-pvb" secondAttribute="centerX" constant="-16" id="8bO-2K-ZHX"/>
                             <constraint firstItem="9vm-ik-pvb" firstAttribute="top" secondItem="bf6-za-c7O" secondAttribute="bottom" constant="1" id="Ak9-d4-vzE"/>
-                            <constraint firstItem="RuM-Ck-KMw" firstAttribute="leading" secondItem="Pqt-4Q-KQ9" secondAttribute="leading" constant="40" id="Bg9-yU-W1F"/>
+                            <constraint firstItem="RuM-Ck-KMw" firstAttribute="leading" secondItem="Pqt-4Q-KQ9" secondAttribute="leading" id="Bg9-yU-W1F"/>
                             <constraint firstItem="hA1-IU-1yM" firstAttribute="top" secondItem="9vm-ik-pvb" secondAttribute="bottom" id="EfO-4w-tyR"/>
-                            <constraint firstAttribute="centerX" secondItem="u1X-Oj-zmV" secondAttribute="centerX" id="IG9-Gv-gRQ"/>
+                            <constraint firstAttribute="centerX" secondItem="u1X-Oj-zmV" secondAttribute="centerX" constant="-20.5" id="IG9-Gv-gRQ"/>
                             <constraint firstAttribute="trailing" secondItem="PMW-rb-F92" secondAttribute="trailing" id="Jla-GU-IIg"/>
-                            <constraint firstAttribute="trailing" secondItem="RuM-Ck-KMw" secondAttribute="trailing" constant="40" id="KjD-0f-fne"/>
-                            <constraint firstItem="u1X-Oj-zmV" firstAttribute="leading" secondItem="eIV-mo-h3Y" secondAttribute="trailing" constant="5" id="MLg-nW-aY2"/>
+                            <constraint firstAttribute="trailing" secondItem="RuM-Ck-KMw" secondAttribute="trailing" id="KjD-0f-fne"/>
+                            <constraint firstItem="u1X-Oj-zmV" firstAttribute="leading" secondItem="eIV-mo-h3Y" secondAttribute="trailing" constant="9" id="MLg-nW-aY2"/>
                             <constraint firstItem="eIV-mo-h3Y" firstAttribute="top" secondItem="PMW-rb-F92" secondAttribute="bottom" constant="26" id="NRE-IW-twr"/>
                             <constraint firstItem="9vm-ik-pvb" firstAttribute="top" secondItem="GsC-1f-qlN" secondAttribute="bottom" constant="1" id="T5D-gR-Elm"/>
                             <constraint firstItem="PMW-rb-F92" firstAttribute="leading" secondItem="Pqt-4Q-KQ9" secondAttribute="leading" id="djn-fU-Pk7"/>
-                            <constraint firstAttribute="centerX" secondItem="bf6-za-c7O" secondAttribute="centerX" id="eOj-l5-f5n"/>
-                            <constraint firstItem="7NQ-ij-hfp" firstAttribute="top" secondItem="GsC-1f-qlN" secondAttribute="bottom" constant="28" id="gem-4P-A9r"/>
-                            <constraint firstItem="9vm-ik-pvb" firstAttribute="leading" secondItem="7NQ-ij-hfp" secondAttribute="trailing" constant="5" id="hH4-db-YJS"/>
+                            <constraint firstAttribute="centerX" secondItem="bf6-za-c7O" secondAttribute="centerX" constant="-16" id="eOj-l5-f5n"/>
+                            <constraint firstItem="7NQ-ij-hfp" firstAttribute="top" secondItem="GsC-1f-qlN" secondAttribute="bottom" constant="24" id="gem-4P-A9r"/>
+                            <constraint firstItem="9vm-ik-pvb" firstAttribute="leading" secondItem="7NQ-ij-hfp" secondAttribute="trailing" constant="9" id="hH4-db-YJS"/>
                             <constraint firstItem="PMW-rb-F92" firstAttribute="top" secondItem="5BV-bN-OdW" secondAttribute="bottom" id="iEZ-Ml-hR2"/>
                             <constraint firstItem="u1X-Oj-zmV" firstAttribute="top" secondItem="PMW-rb-F92" secondAttribute="bottom" constant="3" id="n8f-nR-o6m"/>
-                            <constraint firstItem="RQD-ow-P1Y" firstAttribute="top" secondItem="RuM-Ck-KMw" secondAttribute="bottom" constant="27" id="pXC-Gm-pOB"/>
-                            <constraint firstAttribute="trailing" secondItem="GsC-1f-qlN" secondAttribute="trailing" constant="40" id="urK-cx-Et3"/>
+                            <constraint firstItem="RQD-ow-P1Y" firstAttribute="top" secondItem="RuM-Ck-KMw" secondAttribute="bottom" constant="24" id="pXC-Gm-pOB"/>
+                            <constraint firstAttribute="trailing" secondItem="GsC-1f-qlN" secondAttribute="trailing" id="urK-cx-Et3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Контакти" id="oX2-1t-kEK"/>
@@ -431,70 +414,20 @@
             </objects>
             <point key="canvasLocation" x="414" y="1897"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="UjF-dv-gVE">
-            <objects>
-                <navigationController storyboardIdentifier="Contacts" useStoryboardIdentifierAsRestorationIdentifier="YES" id="O7t-hN-B1q" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ODl-uJ-usX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="a8c-5K-bwc" kind="relationship" relationship="rootViewController" id="05A-2J-Jht"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qBv-rc-AjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-380" y="1897"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="GXG-Gx-iw6">
-            <objects>
-                <navigationController storyboardIdentifier="News" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J3g-R5-PGq" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="9RY-35-CCd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="yCa-Sq-Wem" kind="relationship" relationship="rootViewController" id="4Tm-jM-m6C"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4cn-e0-8ba" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-372" y="326"/>
-        </scene>
-        <!--NavigationTeamController-->
-        <scene sceneID="hdG-p8-0Ib">
-            <objects>
-                <navigationController storyboardIdentifier="Team" title="NavigationTeamController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SFt-Ox-AqA" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6d8-fn-ZDO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="bQW-ze-rHw" kind="relationship" relationship="rootViewController" id="SGx-5H-GZz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zFe-Tq-6Or" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-364" y="1113"/>
-        </scene>
         <!--News View Controller-->
         <scene sceneID="KNe-i2-uYZ">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="yCa-Sq-Wem" customClass="NewsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yCa-Sq-Wem" customClass="NewsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F7K-d1-KIP"/>
                         <viewControllerLayoutGuide type="bottom" id="4GY-gq-Cku"/>
                     </layoutGuides>
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="VGx-v3-0ZT">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Dj-Cz-c7x">
-                                <rect key="frame" x="0.0" y="7" width="600" height="529"/>
+                                <rect key="frame" x="0.0" y="12" width="600" height="588"/>
                                 <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="yCa-Sq-Wem" id="QO9-kc-J2g"/>
@@ -504,7 +437,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="8Dj-Cz-c7x" firstAttribute="top" secondItem="VGx-v3-0ZT" secondAttribute="top" constant="7" id="5gB-eY-aAe"/>
+                            <constraint firstItem="8Dj-Cz-c7x" firstAttribute="top" secondItem="VGx-v3-0ZT" secondAttribute="top" constant="12" id="5gB-eY-aAe"/>
                             <constraint firstItem="4GY-gq-Cku" firstAttribute="top" secondItem="8Dj-Cz-c7x" secondAttribute="bottom" id="AKl-7o-WcS"/>
                             <constraint firstAttribute="trailing" secondItem="8Dj-Cz-c7x" secondAttribute="trailing" id="wNR-A3-a3l"/>
                             <constraint firstItem="8Dj-Cz-c7x" firstAttribute="leading" secondItem="VGx-v3-0ZT" secondAttribute="leading" id="yyD-37-gUu"/>
@@ -539,7 +472,7 @@
         <!--Team View Controller-->
         <scene sceneID="0rQ-3p-aQQ">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="bQW-ze-rHw" customClass="TeamViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bQW-ze-rHw" customClass="TeamViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7vA-4O-8J6"/>
                         <viewControllerLayoutGuide type="bottom" id="X2x-f7-a64"/>
@@ -596,7 +529,7 @@
         <!--News Details View Controller-->
         <scene sceneID="xCa-s9-W8B">
             <objects>
-                <viewController storyboardIdentifier="NewsDetails" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QZX-Eg-1OZ" customClass="NewsDetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QZX-Eg-1OZ" customClass="NewsDetailsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AzM-Wf-PXJ"/>
                         <viewControllerLayoutGuide type="bottom" id="T2T-0g-7c2"/>

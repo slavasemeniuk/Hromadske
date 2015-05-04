@@ -53,7 +53,6 @@
 		84C22FDC1AB77283006C8C2E /* Hromadske.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84C22FDA1AB77283006C8C2E /* Hromadske.xcdatamodeld */; };
 		84C22FE21AB77283006C8C2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C22FE01AB77283006C8C2E /* Main.storyboard */; };
 		84C22FE41AB77283006C8C2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C22FE31AB77283006C8C2E /* Images.xcassets */; };
-		84C22FE71AB77283006C8C2E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C22FE51AB77283006C8C2E /* LaunchScreen.xib */; };
 		84C22FF31AB77283006C8C2E /* HromadskeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C22FF21AB77283006C8C2E /* HromadskeTests.m */; };
 		84C30A891ACF38E000D44E8C /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C30A871ACF38E000D44E8C /* NewsTableViewCell.m */; };
 		84C30A8A1ACF38E000D44E8C /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C30A881ACF38E000D44E8C /* NewsTableViewCell.xib */; };
@@ -147,7 +146,6 @@
 		84C22FDB1AB77283006C8C2E /* Hromadske.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hromadske.xcdatamodel; sourceTree = "<group>"; };
 		84C22FE11AB77283006C8C2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84C22FE31AB77283006C8C2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		84C22FE61AB77283006C8C2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		84C22FEC1AB77283006C8C2E /* HromadskeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HromadskeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C22FF11AB77283006C8C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C22FF21AB77283006C8C2E /* HromadskeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HromadskeTests.m; sourceTree = "<group>"; };
@@ -301,7 +299,6 @@
 				849F6A191AC6146B00FC3560 /* ViewControllers */,
 				84EA84081ACB5B3C00D51EB0 /* DataClasses */,
 				84C22FE01AB77283006C8C2E /* Main.storyboard */,
-				84C22FE51AB77283006C8C2E /* LaunchScreen.xib */,
 				84C22FE31AB77283006C8C2E /* Images.xcassets */,
 				84C22FDA1AB77283006C8C2E /* Hromadske.xcdatamodeld */,
 				84C22FD31AB77282006C8C2E /* Supporting Files */,
@@ -476,7 +473,6 @@
 				84A159951AF002F8008AD999 /* kopilka.jpg in Resources */,
 				84C22FE21AB77283006C8C2E /* Main.storyboard in Resources */,
 				84C30A8A1ACF38E000D44E8C /* NewsTableViewCell.xib in Resources */,
-				84C22FE71AB77283006C8C2E /* LaunchScreen.xib in Resources */,
 				84A1A9321AF02D7100646DE5 /* font.ttf in Resources */,
 				84C22FE41AB77283006C8C2E /* Images.xcassets in Resources */,
 				849F82781AE9562200EF2125 /* StreamView.xib in Resources */,
@@ -589,14 +585,6 @@
 				84C22FE11AB77283006C8C2E /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		84C22FE51AB77283006C8C2E /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84C22FE61AB77283006C8C2E /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

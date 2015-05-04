@@ -21,10 +21,11 @@
     [_container.layer setRasterizationScale:[UIScreen mainScreen].scale];
 }
 
--(void)layoutSubviews {
+- (void) updateShadow {
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_container.bounds];
     _container.layer.shadowPath = shadowPath.CGPath;
 }
+
 
 -(void)unviewed
 {
@@ -41,13 +42,12 @@
     _category.text =nil;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    
-    
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    [self setHighlighted:highlighted];
 }
 
--(void)setSelected:(BOOL)selected{
-    
+- (void)setHighlighted:(BOOL)highlighted{
+    self.container.alpha = highlighted ? 0.5 : 1;
 }
 
 @end
