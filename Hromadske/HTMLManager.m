@@ -46,8 +46,8 @@
                                                withString: @" "];
     }
     string = [string stringByReplacingOccurrencesOfString:@"\r\n&nbsp" withString:@" "];
-    string = [string stringByReplacingOccurrencesOfString:@"&nbsp" withString:@" "];
-    string = [string stringByReplacingOccurrencesOfString:@"&quot" withString:@" "];
+    string = [string stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "];
+    string = [string stringByReplacingOccurrencesOfString:@"&quot;" withString:@" "];
     
     return string;
 }
