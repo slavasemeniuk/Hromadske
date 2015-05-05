@@ -38,6 +38,30 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8JW-Yc-BEW">
                                 <rect key="frame" x="0.0" y="0.0" width="280" height="480"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egW-ae-yKW">
+                                        <rect key="frame" x="0.0" y="459" width="280" height="13"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="11"/>
+                                        <color key="textColor" red="0.70045863750000004" green="0.700824801" blue="0.72325465430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view clipsSubviews="YES" alpha="0.24999999999999967" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="fVE-bM-ewd">
+                                        <rect key="frame" x="15" y="210" width="230" height="1"/>
+                                        <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="QcX-UH-T0g"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="45" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HgQ-Ch-YfG">
+                                        <rect key="frame" x="0.0" y="219" width="320" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="2t4-bv-NAf"/>
+                                        </constraints>
+                                        <sections/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="maS-4L-wqK" id="SK4-z2-qhs"/>
+                                            <outlet property="delegate" destination="maS-4L-wqK" id="YQe-DF-dO2"/>
+                                        </connections>
+                                    </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfQ-5i-hqI">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="210"/>
                                         <subviews>
@@ -109,7 +133,6 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
                                             <constraint firstItem="phx-Kz-qk9" firstAttribute="top" secondItem="LfQ-5i-hqI" secondAttribute="top" constant="65" id="1Ke-wB-0gV"/>
                                             <constraint firstItem="phx-Kz-qk9" firstAttribute="leading" secondItem="vXf-YL-JVp" secondAttribute="trailing" constant="-3" id="3R7-Cy-7HH"/>
@@ -129,30 +152,6 @@
                                             <constraint firstItem="vvE-F1-gSF" firstAttribute="top" secondItem="cpM-rj-8dV" secondAttribute="bottom" constant="26" id="w1Q-sE-0Jg"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egW-ae-yKW">
-                                        <rect key="frame" x="0.0" y="459" width="280" height="13"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="11"/>
-                                        <color key="textColor" red="0.70045863750000004" green="0.700824801" blue="0.72325465430000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view clipsSubviews="YES" alpha="0.24999999999999967" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="fVE-bM-ewd">
-                                        <rect key="frame" x="15" y="210" width="230" height="1"/>
-                                        <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="QcX-UH-T0g"/>
-                                        </constraints>
-                                    </view>
-                                    <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="45" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HgQ-Ch-YfG">
-                                        <rect key="frame" x="0.0" y="219" width="320" height="180"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="180" id="2t4-bv-NAf"/>
-                                        </constraints>
-                                        <sections/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="maS-4L-wqK" id="SK4-z2-qhs"/>
-                                            <outlet property="delegate" destination="maS-4L-wqK" id="YQe-DF-dO2"/>
-                                        </connections>
-                                    </tableView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="HgQ-Ch-YfG" firstAttribute="leading" secondItem="8JW-Yc-BEW" secondAttribute="leading" id="1lW-DS-zir"/>
