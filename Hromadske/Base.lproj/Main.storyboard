@@ -112,16 +112,6 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+22" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpM-rj-8dV">
-                                                <rect key="frame" x="0.0" y="57" width="151" height="52"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="52" id="J3T-Bo-yPN"/>
-                                                    <constraint firstAttribute="width" constant="151" id="iSf-CP-Jia"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="70"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="highlightedColor" red="0.65490198135375977" green="0.61568629741668701" blue="0.63137257099151611" alpha="1" colorSpace="deviceRGB"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvE-F1-gSF">
                                                 <rect key="frame" x="0.0" y="135" width="124" height="26"/>
                                                 <constraints>
@@ -131,6 +121,16 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+22" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpM-rj-8dV">
+                                                <rect key="frame" x="0.0" y="57" width="151" height="52"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="52" id="J3T-Bo-yPN"/>
+                                                    <constraint firstAttribute="width" constant="151" id="iSf-CP-Jia"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="70"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="highlightedColor" red="0.65490198135375977" green="0.61568629741668701" blue="0.63137257099151611" alpha="1" colorSpace="deviceRGB"/>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -153,6 +153,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstItem="HgQ-Ch-YfG" firstAttribute="leading" secondItem="8JW-Yc-BEW" secondAttribute="leading" id="1lW-DS-zir"/>
                                     <constraint firstItem="egW-ae-yKW" firstAttribute="leading" secondItem="8JW-Yc-BEW" secondAttribute="leading" id="BfW-vg-1WD"/>

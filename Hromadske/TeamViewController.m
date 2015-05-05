@@ -63,7 +63,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     TeamViewCell *prototypecell = [tableView dequeueReusableCellWithIdentifier:@"TeamCell"];
     Employe *employe = [_tableViewsData objectAtIndex:indexPath.row];
     
@@ -77,6 +76,9 @@
     
 }
 
+- (CGFloat) tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 171;
+}
 
 -(void)setUpCell
 {
