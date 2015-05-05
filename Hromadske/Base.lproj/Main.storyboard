@@ -63,7 +63,7 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfQ-5i-hqI">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="210"/>
+                                        <rect key="frame" x="-10" y="0.0" width="300" height="210"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7PC-hP-CFR">
                                                 <rect key="frame" x="164" y="135" width="50" height="26"/>
@@ -112,16 +112,6 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvE-F1-gSF">
-                                                <rect key="frame" x="0.0" y="135" width="124" height="26"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="124" id="70N-k4-0vS"/>
-                                                    <constraint firstAttribute="height" constant="26" id="vep-cD-fYP"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+22" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpM-rj-8dV">
                                                 <rect key="frame" x="0.0" y="57" width="151" height="52"/>
                                                 <constraints>
@@ -132,13 +122,23 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="highlightedColor" red="0.65490198135375977" green="0.61568629741668701" blue="0.63137257099151611" alpha="1" colorSpace="deviceRGB"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EUR" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvE-F1-gSF">
+                                                <rect key="frame" x="0.0" y="135" width="124" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="124" id="70N-k4-0vS"/>
+                                                    <constraint firstAttribute="height" constant="26" id="vep-cD-fYP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="phx-Kz-qk9" firstAttribute="top" secondItem="LfQ-5i-hqI" secondAttribute="top" constant="65" id="1Ke-wB-0gV"/>
                                             <constraint firstItem="phx-Kz-qk9" firstAttribute="leading" secondItem="vXf-YL-JVp" secondAttribute="trailing" constant="-3" id="3R7-Cy-7HH"/>
                                             <constraint firstItem="cpM-rj-8dV" firstAttribute="top" secondItem="LfQ-5i-hqI" secondAttribute="top" constant="57" id="ALM-bJ-Yvf"/>
                                             <constraint firstItem="bUw-XK-SS7" firstAttribute="top" secondItem="vvE-F1-gSF" secondAttribute="bottom" id="EvP-P4-7b8"/>
-                                            <constraint firstAttribute="width" constant="280" id="GRo-qA-Ebd"/>
+                                            <constraint firstAttribute="width" constant="300" id="GRo-qA-Ebd"/>
                                             <constraint firstItem="luJ-qQ-uKO" firstAttribute="top" secondItem="7PC-hP-CFR" secondAttribute="bottom" id="KQs-e9-gAM"/>
                                             <constraint firstItem="vXf-YL-JVp" firstAttribute="leading" secondItem="cpM-rj-8dV" secondAttribute="trailing" constant="2" id="QTf-op-1YJ"/>
                                             <constraint firstItem="vvE-F1-gSF" firstAttribute="leading" secondItem="LfQ-5i-hqI" secondAttribute="leading" id="TeA-m3-rA1"/>
@@ -153,7 +153,6 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstItem="HgQ-Ch-YfG" firstAttribute="leading" secondItem="8JW-Yc-BEW" secondAttribute="leading" id="1lW-DS-zir"/>
                                     <constraint firstItem="egW-ae-yKW" firstAttribute="leading" secondItem="8JW-Yc-BEW" secondAttribute="leading" id="BfW-vg-1WD"/>
