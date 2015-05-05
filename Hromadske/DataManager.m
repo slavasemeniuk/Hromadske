@@ -140,11 +140,12 @@
 
 - (void) upDateTeam{
     [[RemoteManager sharedManager] objectsForPath:TEAM_JSON attributes:nil success:^(NSArray *parsedTeam){
-        NSArray *listOfLocalEmployes = [NSArray arrayWithArray:[Employe MR_findAll]];
-        if ([parsedTeam count]!=[listOfLocalEmployes count]) {
+        NSArray *listOfLocalEmployes = [NSArray arrayWithArray:[Employe MR_findAllSortedBy:@"identifire" ascending:YES]];
+        if ([parsedTeam count]==[listOfLocalEmployes count]) {
             for (int i=0; i<[parsedTeam count]; i++) {
-                if ([(Employe *)[listOfLocalEmployes objectAtIndex:i] identifire] != [[parsedTeam objectAtIndex:i] valueForKey:@"id"]) {
-                    Employe * employe =[Employe MR_findFirstByAttribute:@"id" withValue:[[listOfLocalEmployes objectAtIndex:i] identifire]];
+                if ([[(Employe *)[listOfLocalEmployes objectAtIndex:i] identifire] intValue] != [[[parsedTeam objectAtIndex:i] valueForKey:@"id"] intValue]) {
+                    NSLog(@"%@ %@",[[parsedTeam objectAtIndex:i] valueForKey:@"name"],[[listOfLocalEmployes objectAtIndex:i] valueForKey:@"name"]);
+                    Employe * employe =[Employe MR_findFirstByAttribute:@"identifire" withValue:[[listOfLocalEmployes objectAtIndex:i] identifire]];
                     [employe convertDataToEmployeModel:[parsedTeam objectAtIndex:i]];
                     [employe.managedObjectContext MR_saveOnlySelfAndWait];
                 }
@@ -154,8 +155,9 @@
             [Employe truncateAll];
             [self saveTeamToContext:parsedTeam];
             [self fetchListOfEmployes];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTeamNotification" object:nil];
+           
         }
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTeamNotification" object:nil];
     }fail:^(){
         
     }];
@@ -228,7 +230,7 @@
 #pragma mark - Remote
 
 -(void) fetchRemoteArticles {
-        [[RemoteManager sharedManager] objectsForPath:ARTICKE_JSON attributes:@{@"sync_date":_dateOfLastArticle} success:^(NSArray *parsedArticles){
+        [[RemoteManager sharedManager] objectsForPath:ARTICKE_JSON attributes:@{@"sync_date":_dateOfLastArticle, @"per_page":@"100"} success:^(NSArray *parsedArticles){
             NSMutableArray *newArticles =[NSMutableArray array];
             NSManagedObjectContext *context = nil;
             for (int i=0; i<[parsedArticles count]; i++)
@@ -276,8 +278,14 @@
             else{
                 _streamingURL=nil;
             }
-            
-            [self fetchRemoteArticles];
+            if ([parsedDigest valueForKey:@"new_entries_count"]){
+              [self fetchRemoteArticles];
+            }else{
+                if ( [_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)])
+                {
+                    [_delegate dataManagerDidFaildUpadating:self];
+                }
+            }
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"DigestUpdated" object:nil];
             

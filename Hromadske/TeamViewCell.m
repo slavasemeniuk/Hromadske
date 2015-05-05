@@ -43,5 +43,12 @@
     self.conteiner.alpha = highlighted ? 0.5 : 1;
 }
 
+-(void)prepareForReuse{
+    [super prepareForReuse];
+    _imageview.image=nil;
+    _bio.text=nil;
+    _label.text=nil;
+}
+
 
 @end
