@@ -37,14 +37,15 @@
     [_tableView reloadData];
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [(TeamViewCell *)cell performSelector:@selector(updateShadow) withObject:nil afterDelay:0];
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_tableViewsData count];
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [(TeamViewCell *)cell performSelector:@selector(updateShadow) withObject:nil afterDelay:0];
-}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -53,7 +54,6 @@
     Employe *employe = [_tableViewsData objectAtIndex:indexPath.row];
     [cell.label setText: employe.name];
     [cell.bio setText:employe.bio];
-    
     NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:employe.image]
                                                   cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                               timeoutInterval:60];

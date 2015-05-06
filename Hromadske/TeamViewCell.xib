@@ -45,13 +45,25 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="hd2-L9-HT1" secondAttribute="bottom" constant="8" id="AYT-7r-ZRl"/>
                             <constraint firstItem="8dZ-N7-LtV" firstAttribute="top" secondItem="D8u-uC-heD" secondAttribute="top" constant="37" id="ELJ-Kf-QMT"/>
-                            <constraint firstAttribute="trailing" secondItem="8dZ-N7-LtV" secondAttribute="trailing" constant="35" id="OQE-kq-DHl"/>
+                            <constraint firstItem="8dZ-N7-LtV" firstAttribute="leading" secondItem="NdS-Oq-aBM" secondAttribute="trailing" constant="4" id="GJX-Uv-CXc"/>
                             <constraint firstAttribute="trailing" secondItem="hd2-L9-HT1" secondAttribute="trailing" constant="10" id="d5f-gw-Oen"/>
                             <constraint firstItem="hd2-L9-HT1" firstAttribute="top" secondItem="NdS-Oq-aBM" secondAttribute="bottom" constant="7" id="h0G-FV-tqE"/>
                             <constraint firstItem="NdS-Oq-aBM" firstAttribute="top" secondItem="D8u-uC-heD" secondAttribute="top" constant="10" id="iUv-mF-Jwf"/>
                             <constraint firstItem="hd2-L9-HT1" firstAttribute="leading" secondItem="D8u-uC-heD" secondAttribute="leading" constant="10" id="sfe-nR-Ri8"/>
                             <constraint firstItem="NdS-Oq-aBM" firstAttribute="leading" secondItem="D8u-uC-heD" secondAttribute="leading" constant="10" id="xS8-Yu-oLI"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                <size key="value" width="0.5" height="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" red="0.90196084980000002" green="0.90588241820000004" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>

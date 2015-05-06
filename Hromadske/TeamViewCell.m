@@ -13,20 +13,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self setUpImageView];
-
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_conteiner.bounds];
-    _conteiner.layer.masksToBounds = NO;
-    _conteiner.layer.shadowColor = [UIColor blackColor].CGColor;
-    _conteiner.layer.shadowOffset = CGSizeMake(0.5f, 0.5f);
-    _conteiner.layer.shadowOpacity = 0.5f;
-    _conteiner.layer.shadowPath = shadowPath.CGPath;
-    [_conteiner.layer setShouldRasterize:YES];
-    [_conteiner.layer setRasterizationScale:[UIScreen mainScreen].scale];
-}
-
-- (void) updateShadow {
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_conteiner.bounds];
-    _conteiner.layer.shadowPath = shadowPath.CGPath;
 }
 
 - (void) setUpImageView
@@ -50,5 +36,9 @@
     _label.text=nil;
 }
 
+- (void) updateShadow {
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_conteiner.bounds];
+    _conteiner.layer.shadowPath = shadowPath.CGPath;
+}
 
 @end
