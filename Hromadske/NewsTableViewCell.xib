@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -25,7 +25,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Title Of Article Title Of Article Title Of Article " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="1hM-Fm-iPp">
-                                <rect key="frame" x="10" y="6" width="243" height="44"/>
+                                <rect key="frame" x="10" y="7" width="243" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="EG1-PV-KRP"/>
                                 </constraints>
@@ -52,20 +52,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="news-views-count" translatesAutoresizingMaskIntoConstraints="NO" id="UtM-TJ-Dwk">
-                                <rect key="frame" x="270" y="30" width="16" height="9"/>
+                                <rect key="frame" x="270" y="31" width="16" height="9"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="P1Z-Dl-xnT"/>
                                     <constraint firstAttribute="height" constant="9" id="aca-hE-mZb"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ftw-3n-ZXT">
-                                <rect key="frame" x="0.0" y="54" width="300" height="210"/>
+                                <rect key="frame" x="0.0" y="56" width="300" height="210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="210" id="EUQ-fT-mWr"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12180" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="35" translatesAutoresizingMaskIntoConstraints="NO" id="Xrw-na-eqY">
-                                <rect key="frame" x="261" y="16" width="35" height="12"/>
+                                <rect key="frame" x="261" y="17" width="35" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="6U2-Pa-DHA"/>
                                 </constraints>
@@ -102,21 +102,33 @@
                             <constraint firstAttribute="bottom" secondItem="LuZ-UX-yvO" secondAttribute="bottom" constant="8" id="LdX-Yt-UdL"/>
                             <constraint firstItem="CJZ-kp-AbI" firstAttribute="leading" secondItem="rlW-R0-SCV" secondAttribute="leading" id="Mdx-mT-xZ1"/>
                             <constraint firstAttribute="trailing" secondItem="CJZ-kp-AbI" secondAttribute="trailing" id="R1V-0t-cqr"/>
-                            <constraint firstItem="dU5-xT-lQU" firstAttribute="top" secondItem="ftw-3n-ZXT" secondAttribute="bottom" constant="6" id="Udk-1B-mB5"/>
+                            <constraint firstItem="dU5-xT-lQU" firstAttribute="top" secondItem="ftw-3n-ZXT" secondAttribute="bottom" constant="4" id="Udk-1B-mB5"/>
                             <constraint firstItem="dU5-xT-lQU" firstAttribute="leading" secondItem="rlW-R0-SCV" secondAttribute="leading" constant="10" id="VS2-e1-IWB"/>
                             <constraint firstItem="i7e-B2-u2e" firstAttribute="top" secondItem="dU5-xT-lQU" secondAttribute="bottom" constant="3" id="W5d-OW-Sex"/>
                             <constraint firstAttribute="bottom" secondItem="i7e-B2-u2e" secondAttribute="bottom" constant="8" id="WhW-Kj-k2z"/>
-                            <constraint firstItem="1hM-Fm-iPp" firstAttribute="top" secondItem="CJZ-kp-AbI" secondAttribute="bottom" constant="3" id="YyL-a3-jJl"/>
+                            <constraint firstItem="1hM-Fm-iPp" firstAttribute="top" secondItem="CJZ-kp-AbI" secondAttribute="bottom" constant="4" id="YyL-a3-jJl"/>
                             <constraint firstItem="Xrw-na-eqY" firstAttribute="leading" secondItem="1hM-Fm-iPp" secondAttribute="trailing" constant="8" id="bIc-bK-EPH"/>
-                            <constraint firstItem="Xrw-na-eqY" firstAttribute="top" secondItem="CJZ-kp-AbI" secondAttribute="bottom" constant="13" id="dgi-eE-uIE"/>
+                            <constraint firstItem="Xrw-na-eqY" firstAttribute="top" secondItem="CJZ-kp-AbI" secondAttribute="bottom" constant="14" id="dgi-eE-uIE"/>
                             <constraint firstAttribute="trailing" secondItem="LuZ-UX-yvO" secondAttribute="trailing" constant="10" id="eDv-p6-xmz"/>
                             <constraint firstAttribute="trailing" secondItem="Xrw-na-eqY" secondAttribute="trailing" constant="4" id="f7k-Zk-8XZ"/>
-                            <constraint firstItem="ftw-3n-ZXT" firstAttribute="top" secondItem="1hM-Fm-iPp" secondAttribute="bottom" constant="4" id="fas-OL-Ctt"/>
+                            <constraint firstItem="ftw-3n-ZXT" firstAttribute="top" secondItem="1hM-Fm-iPp" secondAttribute="bottom" constant="5" id="fas-OL-Ctt"/>
                             <constraint firstAttribute="trailing" secondItem="UtM-TJ-Dwk" secondAttribute="trailing" constant="14" id="j2v-EB-ooX"/>
                             <constraint firstItem="CJZ-kp-AbI" firstAttribute="top" secondItem="rlW-R0-SCV" secondAttribute="top" id="jqZ-3q-04j"/>
                             <constraint firstItem="1hM-Fm-iPp" firstAttribute="leading" secondItem="rlW-R0-SCV" secondAttribute="leading" constant="10" id="kMA-68-g1h"/>
-                            <constraint firstItem="IRR-I7-FkV" firstAttribute="top" secondItem="ftw-3n-ZXT" secondAttribute="bottom" constant="29" id="zf9-cC-UT8"/>
+                            <constraint firstItem="IRR-I7-FkV" firstAttribute="top" secondItem="ftw-3n-ZXT" secondAttribute="bottom" constant="27" id="zf9-cC-UT8"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                <size key="value" width="0.5" height="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" red="0.95294123888015747" green="0.95294123888015747" blue="0.95294123888015747" alpha="1" colorSpace="deviceRGB"/>

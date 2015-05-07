@@ -10,23 +10,6 @@
 
 @implementation NewsTableViewCell
 
-- (void)awakeFromNib {
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_container.bounds];
-    _container.layer.masksToBounds = NO;
-    _container.layer.shadowColor = [UIColor blackColor].CGColor;
-    _container.layer.shadowOffset = CGSizeMake(0.5f, 0.5f);
-    _container.layer.shadowOpacity = 0.5f;
-    _container.layer.shadowPath = shadowPath.CGPath;
-    [_container.layer setShouldRasterize:YES];
-    [_container.layer setRasterizationScale:[UIScreen mainScreen].scale];
-}
-
-- (void) updateShadow {
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_container.bounds];
-    _container.layer.shadowPath = shadowPath.CGPath;
-}
-
-
 -(void)unviewed
 {
     _topLine.backgroundColor = [UIColor colorWithRed:253.0f/255.0f green:124.0f/255.0f blue:40.0f/255.0f alpha:1.0f];

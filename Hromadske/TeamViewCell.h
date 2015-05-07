@@ -14,6 +14,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *bio;
 @property (weak, nonatomic) IBOutlet UIView *conteiner;
 
-- (void) updateShadow;
-
 @end

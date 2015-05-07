@@ -36,9 +36,4 @@
     _label.text=nil;
 }
 
-- (void) updateShadow {
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_conteiner.bounds];
-    _conteiner.layer.shadowPath = shadowPath.CGPath;
-}
-
 @end

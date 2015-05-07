@@ -37,10 +37,6 @@
     [_tableView reloadData];
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [(TeamViewCell *)cell performSelector:@selector(updateShadow) withObject:nil afterDelay:0];
-}
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_tableViewsData count];

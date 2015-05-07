@@ -19,6 +19,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *category;
 
 - (void) unviewed;
-- (void) updateShadow;
 
 @end
