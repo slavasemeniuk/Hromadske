@@ -140,23 +140,19 @@
 
 - (void) upDateTeam{
     [[RemoteManager sharedManager] objectsForPath:TEAM_JSON attributes:nil success:^(NSArray *parsedTeam){
-        NSArray *listOfLocalEmployes = [NSArray arrayWithArray:[Employe MR_findAllSortedBy:@"identifire" ascending:YES]];
-        if ([parsedTeam count]==[listOfLocalEmployes count]) {
+        if ([parsedTeam count]==[_listOfEmployes count]) {
             for (int i=0; i<[parsedTeam count]; i++) {
-                if ([[(Employe *)[listOfLocalEmployes objectAtIndex:i] identifire] intValue] != [[[parsedTeam objectAtIndex:i] valueForKey:@"id"] intValue]) {
-                    NSLog(@"%@ %@",[[parsedTeam objectAtIndex:i] valueForKey:@"name"],[[listOfLocalEmployes objectAtIndex:i] valueForKey:@"name"]);
-                    Employe * employe =[Employe MR_findFirstByAttribute:@"identifire" withValue:[[listOfLocalEmployes objectAtIndex:i] identifire]];
+                if ([[(Employe *)[_listOfEmployes objectAtIndex:i] identifire] intValue] != [[[parsedTeam objectAtIndex:i] valueForKey:@"id"] intValue]) {
+                    Employe * employe =[Employe MR_findFirstByAttribute:@"identifire" withValue:[[_listOfEmployes objectAtIndex:i] identifire]];
                     [employe convertDataToEmployeModel:[parsedTeam objectAtIndex:i]];
                     [employe.managedObjectContext MR_saveOnlySelfAndWait];
                 }
             }
-            _listOfEmployes=[Employe MR_findAll];
         }else{
             [Employe truncateAll];
             [self saveTeamToContext:parsedTeam];
-            [self fetchListOfEmployes];
-           
         }
+         [self fetchListOfEmployes];
          [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTeamNotification" object:nil];
     }fail:^(){
         
@@ -209,12 +205,12 @@
 
 -(void)fetchListOfArticles
 {
-    _listOfArticles = [Articles MR_findAllSortedBy:@"created_at" ascending:NO];
+    _listOfArticles = [Articles MR_findAllSortedBy:@"created_at" ascending:YES];
 }
 
 -(void) fetchListOfEmployes
 {
-    _listOfEmployes = [Employe MR_findAll];
+    _listOfEmployes = [NSArray arrayWithArray:[Employe MR_findAllSortedBy:@"identifire" ascending:NO]];
 }
 
 -(void)fetchLocalRateAndWeather
@@ -268,18 +264,19 @@
     }
     
         [[RemoteManager sharedManager] objectsForPath:DIGEST_JSON attributes:@{@"sync_date":_dateOfLastArticle} success:^(NSArray *parsedDigest) {
+            
             [self saveRatesAndWeatherToContext:parsedDigest];
             [self fetchLocalRateAndWeather];
             
             NSNull *null = [[NSNull alloc]init];
             if ([[parsedDigest valueForKey:@"streaming"] firstObject]!=null) {
                 _streamingURL = [[parsedDigest valueForKey:@"streaming"] firstObject];
-            }
-            else{
+            }else{
                 _streamingURL=nil;
             }
-            if ([parsedDigest valueForKey:@"new_entries_count"]){
-              [self fetchRemoteArticles];
+            
+            if ([[parsedDigest valueForKey:@"new_entries_count"] firstObject]!=[NSNumber numberWithInt:0]){
+            [self fetchRemoteArticles];
             }else{
                 if ( [_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)])
                 {

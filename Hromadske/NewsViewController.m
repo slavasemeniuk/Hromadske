@@ -43,6 +43,11 @@
     
 }
 
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+        [(NewsTableViewCell *)cell performSelector:@selector(updateShadow) withObject:nil afterDelay:0];
+    }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_tableViewsData count];
@@ -114,7 +119,7 @@
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor blackColor]];
     [_tableView registerNib:[UINib nibWithNibName:@"NewsTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsCell"];
     _pullToReferesh = [[UIRefreshControl alloc] init];
-    [_pullToReferesh addTarget:[DataManager sharedManager] action:@selector(fetchRemoteArticles) forControlEvents:UIControlEventValueChanged];
+    [_pullToReferesh addTarget:[DataManager sharedManager] action:@selector(fetchRemoteDigest) forControlEvents:UIControlEventValueChanged];
     [_tableView addSubview:_pullToReferesh];
     
 }
@@ -159,7 +164,9 @@
         [self hideNewArticlesBage];
     }
     _stream=[[DataManager sharedManager] streamingURL];
-    [_tableViewsData addObjectsFromArray:listOfArticles];
+    for (int i=0; i<[listOfArticles count]; i++) {
+        [_tableViewsData insertObject:[listOfArticles objectAtIndex:i] atIndex:i];
+    }
     [_tableView reloadData];
     [_pullToReferesh endRefreshing];
 }

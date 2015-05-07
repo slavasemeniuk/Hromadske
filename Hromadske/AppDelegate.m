@@ -78,7 +78,7 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    [[DataManager sharedManager] fetchRemoteDigest];
+    [[DataManager sharedManager] fetchRemoteDigest]; 
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

@@ -68,7 +68,7 @@
     }
     if (delta < 45 * MINUTE) {
         int minutes = ((double)delta/MINUTE);
-        if ((minutes>4&&minutes<=20)||(minutes%10==0)) {
+        if ((minutes>4&&minutes<=20)||(minutes%10==0)||(minutes%10>=5)) {
             res =@"хвилин тому";
         }
         else
@@ -86,7 +86,7 @@
     }
     if (delta < 24 * HOUR) {
         int hours = ((double)delta/HOUR);
-        if ((hours>4&&hours<=20)||(hours%10==0)) {
+        if ((hours>4&&hours<=20)||(hours%10==0)||(hours%10>=5)) {
             res =@"годин тому";
         }
         else
