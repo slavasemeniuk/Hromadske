@@ -44,6 +44,8 @@
 - (SWRevealViewController *) revealController {
     if (!_revealViewController) {
         _revealViewController = [[SWRevealViewController alloc] initWithRearViewController:[self menu] frontViewController:nil];
+        [self.revealViewController setRearViewRevealWidth:[self menu].view.frame.size.width-40.0f];
+
         UIViewController *news = [self topViewControllerWithIdentefier:NSStringFromClass([NewsViewController class])];
         _revealViewController.frontViewController = news;
     }

@@ -45,7 +45,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view clipsSubviews="YES" alpha="0.24999999999999967" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="fVE-bM-ewd">
-                                        <rect key="frame" x="15" y="212" width="250" height="1"/>
+                                        <rect key="frame" x="15" y="212" width="230" height="1"/>
                                         <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="UoM-ob-20w"/>
@@ -63,7 +63,7 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfQ-5i-hqI">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="210"/>
+                                        <rect key="frame" x="-10" y="0.0" width="280" height="210"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7PC-hP-CFR">
                                                 <rect key="frame" x="164" y="135" width="50" height="26"/>
@@ -159,13 +159,13 @@
                                     <constraint firstItem="HgQ-Ch-YfG" firstAttribute="top" secondItem="fVE-bM-ewd" secondAttribute="bottom" constant="8" id="FdZ-y5-ucP"/>
                                     <constraint firstAttribute="bottom" secondItem="egW-ae-yKW" secondAttribute="bottom" constant="8" id="Fh4-MI-Iqr"/>
                                     <constraint firstAttribute="trailing" secondItem="egW-ae-yKW" secondAttribute="trailing" id="Mcn-uZ-eZw"/>
-                                    <constraint firstAttribute="trailing" secondItem="fVE-bM-ewd" secondAttribute="trailing" constant="15" id="Oiz-e3-NLU"/>
+                                    <constraint firstAttribute="trailing" secondItem="fVE-bM-ewd" secondAttribute="trailing" constant="35" id="Oiz-e3-NLU"/>
                                     <constraint firstAttribute="trailing" secondItem="HgQ-Ch-YfG" secondAttribute="trailing" id="Vn7-8F-say"/>
                                     <constraint firstItem="fVE-bM-ewd" firstAttribute="top" secondItem="LfQ-5i-hqI" secondAttribute="bottom" constant="2" id="aau-D3-TIc"/>
                                     <constraint firstAttribute="centerX" secondItem="egW-ae-yKW" secondAttribute="centerX" id="aym-Qr-lus"/>
                                     <constraint firstItem="fVE-bM-ewd" firstAttribute="leading" secondItem="8JW-Yc-BEW" secondAttribute="leading" constant="15" id="bKe-0A-Q8m"/>
                                     <constraint firstItem="LfQ-5i-hqI" firstAttribute="top" secondItem="8JW-Yc-BEW" secondAttribute="top" id="kw6-o9-JYb"/>
-                                    <constraint firstAttribute="centerX" secondItem="LfQ-5i-hqI" secondAttribute="centerX" id="l6G-ML-1l3"/>
+                                    <constraint firstItem="LfQ-5i-hqI" firstAttribute="centerX" secondItem="8JW-Yc-BEW" secondAttribute="centerX" constant="-10" id="l6G-ML-1l3"/>
                                 </constraints>
                             </view>
                         </subviews>

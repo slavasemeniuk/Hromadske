@@ -51,7 +51,6 @@
 
 -(void) setUpViewController
 {
-    [self.revealViewController setRearViewRevealWidth:self.view.frame.size.width-40.0f];
     [self gradientBackground];
     NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     _version.text = [NSString stringWithFormat:@"Версія %@",appVersion];
