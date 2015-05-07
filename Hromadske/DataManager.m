@@ -205,12 +205,12 @@
 
 -(void)fetchListOfArticles
 {
-    _listOfArticles = [Articles MR_findAllSortedBy:@"created_at" ascending:YES];
+    _listOfArticles = [Articles MR_findAllSortedBy:@"created_at" ascending:NO];
 }
 
 -(void) fetchListOfEmployes
 {
-    _listOfEmployes = [NSArray arrayWithArray:[Employe MR_findAllSortedBy:@"identifire" ascending:NO]];
+    _listOfEmployes = [NSArray arrayWithArray:[Employe MR_findAllSortedBy:@"identifire" ascending:YES]];
 }
 
 -(void)fetchLocalRateAndWeather
