@@ -43,7 +43,6 @@
 		84A159AF1AF00D0C008AD999 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A31AF00D0C008AD999 /* OpenGLES.framework */; };
 		84A159B01AF00D0C008AD999 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A41AF00D0C008AD999 /* QuartzCore.framework */; };
 		84A159B11AF00D0C008AD999 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A51AF00D0C008AD999 /* SystemConfiguration.framework */; };
-		84A1A9321AF02D7100646DE5 /* font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84A1A9311AF02D7100646DE5 /* font.ttf */; };
 		84A1A93A1AF0467C00646DE5 /* WebHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A9391AF0467C00646DE5 /* WebHelpViewController.m */; };
 		84A2A6891ABB7D59004862E6 /* RemoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A6881ABB7D59004862E6 /* RemoteManager.m */; };
 		84A439381AE5BB67002C0A98 /* RateAndWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A439371AE5BB67002C0A98 /* RateAndWeather.m */; };
@@ -129,7 +128,6 @@
 		84A159A31AF00D0C008AD999 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		84A159A41AF00D0C008AD999 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		84A159A51AF00D0C008AD999 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		84A1A9311AF02D7100646DE5 /* font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = font.ttf; sourceTree = "<group>"; };
 		84A1A9381AF0467C00646DE5 /* WebHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebHelpViewController.h; sourceTree = "<group>"; };
 		84A1A9391AF0467C00646DE5 /* WebHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebHelpViewController.m; sourceTree = "<group>"; };
 		84A2A6871ABB7D59004862E6 /* RemoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteManager.h; sourceTree = "<group>"; };
@@ -289,7 +287,6 @@
 		84C22FD21AB77282006C8C2E /* Hromadske */ = {
 			isa = PBXGroup;
 			children = (
-				84A1A9311AF02D7100646DE5 /* font.ttf */,
 				84A159941AF002F8008AD999 /* kopilka.jpg */,
 				84C22FD71AB77282006C8C2E /* AppDelegate.h */,
 				84C22FD81AB77282006C8C2E /* AppDelegate.m */,
@@ -473,7 +470,6 @@
 				84A159951AF002F8008AD999 /* kopilka.jpg in Resources */,
 				84C22FE21AB77283006C8C2E /* Main.storyboard in Resources */,
 				84C30A8A1ACF38E000D44E8C /* NewsTableViewCell.xib in Resources */,
-				84A1A9321AF02D7100646DE5 /* font.ttf in Resources */,
 				84C22FE41AB77283006C8C2E /* Images.xcassets in Resources */,
 				849F82781AE9562200EF2125 /* StreamView.xib in Resources */,
 				84A159991AF00B97008AD999 /* GoogleMaps.bundle in Resources */,
