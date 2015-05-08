@@ -138,7 +138,7 @@
 		84A439371AE5BB67002C0A98 /* RateAndWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateAndWeather.m; sourceTree = "<group>"; };
 		84A9972C1AC9DA03007876F1 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		84A9972D1AC9DA03007876F1 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		84C22FD01AB77282006C8C2E /* Hromadske.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hromadske.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84C22FD01AB77282006C8C2E /* hromadske.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hromadske.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C22FD41AB77282006C8C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C22FD51AB77282006C8C2E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84C22FD71AB77282006C8C2E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 		84C22FD11AB77282006C8C2E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84C22FD01AB77282006C8C2E /* Hromadske.app */,
+				84C22FD01AB77282006C8C2E /* hromadske.app */,
 				84C22FEC1AB77283006C8C2E /* HromadskeTests.xctest */,
 			);
 			name = Products;
@@ -402,7 +402,7 @@
 			);
 			name = Hromadske;
 			productName = Hromadske;
-			productReference = 84C22FD01AB77282006C8C2E /* Hromadske.app */;
+			productReference = 84C22FD01AB77282006C8C2E /* hromadske.app */;
 			productType = "com.apple.product-type.application";
 		};
 		84C22FEB1AB77283006C8C2E /* HromadskeTests */ = {
@@ -676,7 +676,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Timophiy Kozak (4836Z36Z53)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -684,7 +685,9 @@
 				INFOPLIST_FILE = Hromadske/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = hromadske;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -694,7 +697,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Timophiy Kozak (4836Z36Z53)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -702,7 +706,9 @@
 				INFOPLIST_FILE = Hromadske/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = hromadske;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
