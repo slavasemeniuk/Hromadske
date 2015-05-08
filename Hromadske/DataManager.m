@@ -277,14 +277,15 @@
                 _streamingURL=nil;
             }
             
-//            if ([[parsedDigest valueForKey:@"new_entries_count"] firstObject]!=[NSNumber numberWithInt:0]){
+            if (![[[parsedDigest valueForKey:@"new_entries_count"] firstObject] isEqual:@"0"]){
             [self fetchRemoteArticles];
-//            }else{
-//                if ( [_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)])
-//                {
-//                    [_delegate dataManagerDidFaildUpadating:self];
-//                }
-//            }
+            }else{
+                [self updateViewsCount];
+                if ( [_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)])
+                {
+                    [_delegate dataManagerDidFaildUpadating:self];
+                }
+            }
             [[NSNotificationCenter defaultCenter] postNotificationName:@"DigestUpdated" object:nil];
             
         } fail:^{
