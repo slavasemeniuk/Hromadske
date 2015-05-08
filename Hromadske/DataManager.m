@@ -277,7 +277,7 @@
                 _streamingURL=nil;
             }
             
-            if ([[parsedDigest valueForKey:@"new_entries_count"] firstObject]!=[NSNumber numberWithInt:0]){
+            if (![[[parsedDigest valueForKey:@"new_entries_count"] firstObject] isEqual:@"0"]){
             [self fetchRemoteArticles];
             }else{
                 [self updateViewsCount];
