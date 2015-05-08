@@ -238,6 +238,8 @@
             }
             [context MR_saveToPersistentStoreAndWait];
             
+            [self updateViewsCount];
+            
             if ([newArticles count]) {
                 _dateOfLastArticle = [[DateFormatter sharedManager] convertToTimeStamp:[(Articles *)[newArticles firstObject] created_at]];
             }
@@ -275,15 +277,14 @@
                 _streamingURL=nil;
             }
             
-            if ([[parsedDigest valueForKey:@"new_entries_count"] firstObject]!=[NSNumber numberWithInt:0]){
+//            if ([[parsedDigest valueForKey:@"new_entries_count"] firstObject]!=[NSNumber numberWithInt:0]){
             [self fetchRemoteArticles];
-            }else{
-                if ( [_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)])
-                {
-                    [_delegate dataManagerDidFaildUpadating:self];
-                }
-            }
-            
+//            }else{
+//                if ( [_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)])
+//                {
+//                    [_delegate dataManagerDidFaildUpadating:self];
+//                }
+//            }
             [[NSNotificationCenter defaultCenter] postNotificationName:@"DigestUpdated" object:nil];
             
         } fail:^{
@@ -293,6 +294,21 @@
             }
 
         }];
+}
+
+- (void)updateViewsCount{
+    NSString *count = [NSString stringWithFormat:@"%lu",(unsigned long)[Articles MR_countOfEntities]];
+    [self fetchListOfArticles];
+    [[RemoteManager sharedManager] objectsForPath:ARTICKE_JSON attributes:@{@"sync_date":@"1", @"per_page":count} success:^(NSArray *parsedArticles){
+        for (int i=0; i<[parsedArticles count]; i++) {
+            Articles *article = [_listOfArticles objectAtIndex:i];
+            article.views_count=[[parsedArticles objectAtIndex:i] valueForKey:@"views_count"];
+            [article.managedObjectContext MR_saveOnlySelfAndWait];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ViewsCountUpdated" object:nil];
+   }fail:^(){
+   
+   }];
 }
 
 @end

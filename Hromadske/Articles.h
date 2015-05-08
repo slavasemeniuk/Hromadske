@@ -28,6 +28,8 @@
 
 @interface Articles (CoreDataGeneratedAccessors)
 
+- (void)updateViewsCount:(NSArray *)listOfArticles;
+
 - (void)addLinksObject:(Link *)value;
 - (void)removeLinksObject:(Link *)value;
 - (void)addLinks:(NSSet *)values;

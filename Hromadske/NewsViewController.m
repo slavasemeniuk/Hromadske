@@ -39,6 +39,7 @@
     [[DataManager sharedManager] setDelegate:self];
     [self setUpViews];
     [self setUpData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpData) name:@"ViewsCountUpdated" object:nil];
     [[DataManager sharedManager] fetchRemoteDigest];
     
 }
