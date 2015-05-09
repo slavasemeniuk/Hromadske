@@ -58,17 +58,32 @@
 -(void) updateArticleWithId:(NSNumber *)identifire{
     Articles *article = [Articles MR_findFirstByAttribute:@"id" withValue:identifire];
         [[RemoteManager sharedManager] parsedArticleWithId:identifire : ^(NSDictionary* updatedArticle){
+            
             article.views_count = [updatedArticle valueForKey:@"views_count"];
+            
             NSNull * n=[[NSNull alloc]init];
             if (![[updatedArticle valueForKey:@"content"] isEqual:n]) {
                 article.content = [updatedArticle valueForKey:@"content"];
             }
+            
             if ([[updatedArticle valueForKey:@"content"] isEqual:n]&&[article getLink]) {
                 article.content = @"link";
             }
-            if ([[updatedArticle valueForKey:@"content"] isEqual:n]&&![article getLink]) {
-                article.content = [NSString stringWithFormat:HTMLCONTENTWITHIMAGE,article.title,[article getImageUrl],article.short_description];
+            
+            if ( [[updatedArticle valueForKey:@"content"] isEqual:n] && ![article getLink] ) {
+                NSDataDetector* detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
+                NSArray* matches = [detector matchesInString:article.short_description options:0 range:NSMakeRange(0, [article.short_description length])];
+
+                NSString *short_description = article.short_description;
+
+                for (NSTextCheckingResult *match in matches) {
+                    NSString *link = [[match URL] absoluteString];
+                    NSString *html_link = [NSString stringWithFormat:@"<a href='%@'>%@</a>",link,link];
+                    short_description = [short_description stringByReplacingOccurrencesOfString:link withString:html_link];
                 }
+
+                article.content = [NSString stringWithFormat:HTML_CONTENT_WITH_IMAGE,article.title,[article getImageUrl],short_description];
+            }
             
             [article.managedObjectContext MR_saveOnlySelfAndWait];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDataNotification" object:nil];
