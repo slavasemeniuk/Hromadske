@@ -53,6 +53,7 @@
 -(void)setUp{
     [MagicalRecord setupSQLiteStackWithStoreNamed:@"Hromadske.sqlite"];
     [self fetchLocalData];
+    _newsDetailsMode=NewsDetailsModeNone;
 }
 
 -(void) updateArticleWithId:(NSNumber *)identifire{
@@ -172,34 +173,6 @@
     }fail:^(){
         
     }];
-}
-
-- (void) helpProjectDataWithCompletion:(void (^)(id helpProjectData))completion{
-    if ([HelpProject MR_countOfEntities]) {
-        completion([HelpProject MR_findFirst]);
-    }
-    else
-    {
-        //[[RemoteManager sharedManager] parsedJsonWithEndOfURL:DONATE_JSON :^(NSArray *parsedHelpData)
-         //{
-         //   [self saveHelpDataToContext:parsedHelpData];
-         //   completion([HelpProject MR_findFirst]);
-       // }];
-    }
-}
-
--(void)contactsDataWithCompletion:(void (^)(id))completion{
-    if ([Contacts MR_countOfEntities]) {
-        completion([Contacts MR_findFirst]);
-    }
-    else
-    {
-        //[[RemoteManager sharedManager] parsedJsonWithEndOfURL:CONTACTS_JSON :^(NSArray *parsedContactsData)
-        // {
-        //     [self saveContactsDataToContext:parsedContactsData];
-        //     completion([Contacts MR_findFirst]);
-        // }];
-    }
 }
 
 

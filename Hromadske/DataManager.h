@@ -7,29 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Constants.h"
 @protocol DataManangerDelagate;
 
 @interface DataManager : NSObject
-
 + (DataManager *)sharedManager;
 
 
 - (void) updateArticleWithId: (NSNumber*) identifire;
-
 - (void) teamWithCompletion:(void (^)()) completion;
-//- (void) helpProjectDataWithCompletion:(void (^)(id helpProjectData)) completion;
-//- (void) contactsDataWithCompletion:(void (^)(id contacts)) completion;
-
-
 - (void) fetchRemoteArticles;
 - (void) fetchRemoteDigest;
-
 - (id) getRateAndWeather;
 
 
 @property (nonatomic, strong) NSArray *listOfArticles;
 @property (nonatomic, strong) NSArray *listOfEmployes;
 @property (nonatomic, strong) NSString *streamingURL;
+@property NewsDetailsMode newsDetailsMode;
 @property (nonatomic ,assign) id <DataManangerDelagate> delegate;
 
 @end

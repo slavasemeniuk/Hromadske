@@ -35,36 +35,42 @@
         [self loadWebViewContent];
     } else {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataLoaded) name:@"refreshDataNotification" object:nil];
+
         [self loadData];
     }
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    
+    [_loader remove];
+    [DataManager sharedManager].newsDetailsMode=_mode;
     _mode = NewsDetailsModeDay;
     [self updateCurrentMode];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    _mode = _lastMode;
+    _mode = [DataManager sharedManager].newsDetailsMode;
     [self updateCurrentMode];
 }
 
 #pragma mark - VIEW CONTROLLER
 -(void)setUpViewController{
-    NSDate *date = [NSDate date];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
-    NSInteger hour = [components hour];
-    if (hour > 18 || hour < 8) {
-        _mode = NewsDetailsModeNight;
-        
-    } else {
-        _mode = NewsDetailsModeDay;
+    if ([DataManager sharedManager].newsDetailsMode!=NewsDetailsModeNone) {
+        _mode=[DataManager sharedManager].newsDetailsMode;
+    }else{
+        NSDate *date = [NSDate date];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
+        NSInteger hour = [components hour];
+        if (hour > 18 || hour < 8) {
+            _mode = NewsDetailsModeNight;
+            
+        } else {
+            _mode = NewsDetailsModeDay;
+        }
     }
-    _lastMode = _mode;
-    
     [self setUpNavigationBar];
     _webView.delegate = self;
     _webView.alpha = 0;
@@ -73,6 +79,7 @@
 -(void)setUpNavigationBar{
     self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"hromadske-logo"]];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"news-moon"] style:UIBarButtonItemStyleDone target:self action:@selector(toggleMode)];
+    self.navigationItem.backBarButtonItem.title=@"Назад";
 }
 
 
@@ -85,8 +92,8 @@
 }
 -(void)dataLoaded
 {
-    [self loadWebViewContent];
     [self showLoader:NO];
+    [self loadWebViewContent];
 }
 
 -(void)loadWebViewContent{
@@ -114,6 +121,7 @@
     else{
         _mode = NewsDetailsModeDay;
     }
+    [self setLoaderColor];
     [self updateCurrentMode];
 }
 
@@ -122,7 +130,7 @@
         self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"news-moon"];
         self.navigationController.navigationBar.barTintColor=[UIColor whiteColor];
         self.navigationController.navigationBar.tintColor=[UIColor blackColor];
-        self.webView.backgroundColor = [UIColor colorWithRed:232.0f/255.0f green:232.0f/255.0f blue:232.0f/255.0f alpha:1.0f];
+        _webView.backgroundColor = [UIColor colorWithRed:232.0f/255.0f green:232.0f/255.0f blue:232.0f/255.0f alpha:_webView.alpha];
         self.view.backgroundColor = [UIColor colorWithRed:232.0f/255.0f green:232.0f/255.0f blue:232.0f/255.0f alpha:1.0f];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     }
@@ -130,7 +138,7 @@
         self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"news-sun"];
         self.navigationController.navigationBar.barTintColor=[UIColor blackColor];
         self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
-        self.webView.backgroundColor = [UIColor colorWithRed:30.0f/255.0f green:30.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
+        _webView.backgroundColor = [UIColor colorWithRed:30.0f/255.0f green:30.0f/255.0f blue:30.0f/255.0f alpha:_webView.alpha];
         self.view.backgroundColor = [UIColor colorWithRed:30.0f/255.0f green:30.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     }
@@ -140,34 +148,45 @@
 
 - (void) showLoader:(BOOL)yes{
     if (!_loader) {
-        self.loader = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.webView];
-        self.loader.layer.cornerRadius=4.f;
-        self.loader.layer.borderColor = [UIColor clearColor].CGColor;
-        self.loader.layer.borderWidth = .5f;
-        self.loader.layer.backgroundColor = [UIColor clearColor].CGColor;
-        self.loader.loaderColor = [UIColor lightGrayColor];
-        self.loader.center = CGPointMake(self.view.frame.size.width / 2, 100);
+        _loader = [[PQFCirclesInTriangle alloc] initLoaderOnView:self.view];
+        _loader.layer.cornerRadius=4.f;
+        _loader.layer.borderColor = [UIColor clearColor].CGColor;
+        _loader.layer.borderWidth = .5f;
+        _loader.layer.backgroundColor = [UIColor clearColor].CGColor;
+        [self setLoaderColor];
+        _loader.center = CGPointMake(self.view.frame.size.width / 2, 100);
     }
     
     if (yes) {
-        [self.loader show];
+        [_loader show];
     } else {
-        [self.loader hide];
+        [_loader hide];
     }
     
+}
+
+- (void)setLoaderColor{
+    if (_mode==NewsDetailsModeDay) {
+        _loader.loaderColor = [UIColor lightGrayColor];
+    }else{
+        _loader.loaderColor = [UIColor whiteColor];
+    }
 }
 
 #pragma mark - DELEGATE
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     _webView.alpha = 0;
+    [self showLoader:YES];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [UIView animateWithDuration:0.3 delay:0.2 options:UIViewAnimationOptionCurveLinear animations:^{
+        [self showLoader:NO];
         _webView.alpha = 1;
     } completion:nil];
 }
-
-
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    [self showLoader:NO];
+}
 
 
 @end

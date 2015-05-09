@@ -29,10 +29,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [NetworkTracker sharedManager];
+    
     [GMSServices provideAPIKey:API_GOOGLE];
+    
     [DataManager sharedManager];
     
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     self.window.rootViewController= [[ControllersManager sharedManager] revealController];
     
     [self setUpParse:application launchOptions:launchOptions];
@@ -124,12 +126,12 @@
 }
 
 - (void) setUpIRate{
-    [iRate sharedInstance].appStoreID = 355313284;//Зміниті
-    [iRate sharedInstance].applicationBundleID = @"com.charcoaldesign.rainbowblocks";
+    [iRate sharedInstance].appStoreID = 987421683;
+    [iRate sharedInstance].applicationBundleID = @"com.timothykozak.hromadske";
     [iRate sharedInstance].onlyPromptIfLatestVersion = NO;
-    [iRate sharedInstance].previewMode = NO;//Change for NO when release
-    [iRate sharedInstance].daysUntilPrompt=5;
-    [iRate sharedInstance].usesUntilPrompt=15;
+    [iRate sharedInstance].previewMode = NO;
+    [iRate sharedInstance].daysUntilPrompt=2;
+    [iRate sharedInstance].usesUntilPrompt=5;
     [iRate sharedInstance].remindPeriod=5;
     [iRate sharedInstance].messageTitle=@"Оціни Громадське";
     [iRate sharedInstance].message=@"Якщо тобі сподобався додаток, оціни Громадське в AppStore";

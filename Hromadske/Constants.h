@@ -25,7 +25,11 @@ static NSString * const HTMLDETAILS_NIGHT = @"<!DOCTYPE html><html><head><meta c
 static NSString * const HTMLDETAILS_WRAP = @"</div></body></html>";
 static NSString * const HTML_CONTENT_WITH_IMAGE = @"<div class='itemHeader'><h2 class='itemTitle'>%@</h2></div><div class='itemBody'><div class='itemIntroText'><p><img src='%@'/></p><p>%@</p></div></div>";
 
-
+typedef enum {
+    NewsDetailsModeDay = 0,
+    NewsDetailsModeNight,
+    NewsDetailsModeNone
+} NewsDetailsMode;
 
 
 

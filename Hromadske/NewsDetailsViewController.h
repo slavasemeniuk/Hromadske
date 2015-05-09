@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class Articles;
-typedef enum {
-    NewsDetailsModeDay = 0,
-    NewsDetailsModeNight
-} NewsDetailsMode;
+
 
 
 @interface NewsDetailsViewController : UIViewController
