@@ -58,7 +58,7 @@
 
     [_tableView registerNib:[UINib nibWithNibName:@"MenuItemCell" bundle:nil] forCellReuseIdentifier:@"menu_cell"];
     
-    _listOfIcon = @[@"menu-items-news",@"menu-items-team",@"menu-donate",@"menu-contacts", @""];
+    _listOfIcon = @[@"menu-items-news",@"menu-items-team",@"menu-donate",@"menu-contacts", @"menu-item-rate"];
     _menuItems=@[@"Новини",@"Команда",@"Допомогти проекту",@"Контакти",@"Оцінити"];
     _arrayOfIdentifier = @[ @"NewsViewController", @"TeamViewController", @"HelpProjectViewController", @"ContactsViewController"];
 }
