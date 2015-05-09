@@ -39,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Hromadske-iRate.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Hromadske.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>261ECB0EA9347505E9EC1434</key>
+		<key>09384570420FA8A587E7ABA5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>42DF96AC7876E8A43DB5BE0E</key>
+		<key>3F3A5CDD27F91FD593967F99</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F4FF15E8EA70E4E2742258E</key>
+		<key>7E363684C32E88565A8173F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>954CCC3928159ECEE249639F</key>
+		<key>87164EC34C26750C5D05219A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF356AFD44BFEBA9702C1B26</key>
+		<key>894AC30B2A728C3A387108DB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C46ECAC3541399E18FE55337</key>
+		<key>90D7254B2571278C2EDDB91D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF2A511CF205A8E0C639BCEC</key>
+		<key>9CE8B7C5B4ED9723D2486DC7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F9F1F98411EBF5F480B74A1C</key>
+		<key>A8E604F717085AB7F9D8A163</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C2F94F2666F39DF4114CF440</key>
 		<dict>
 			<key>primary</key>
 			<true/>

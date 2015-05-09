@@ -59,14 +59,14 @@
 // This library does not follow semantic-versioning,
 // so we were not able to define version macros.
 // Please contact the author.
-// Version: 3.0.0.dev.1430607365.
+// Version: 3.0.0.dev.1431165833.
 
 // MagicalRecord/Core
 #define COCOAPODS_POD_AVAILABLE_MagicalRecord_Core
 // This library does not follow semantic-versioning,
 // so we were not able to define version macros.
 // Please contact the author.
-// Version: 3.0.0.dev.1430607365.
+// Version: 3.0.0.dev.1431165833.
 
 // PQFCustomLoaders
 #define COCOAPODS_POD_AVAILABLE_PQFCustomLoaders
@@ -79,7 +79,7 @@
 // This library does not follow semantic-versioning,
 // so we were not able to define version macros.
 // Please contact the author.
-// Version: 1.7.2.1.
+// Version: 1.7.2.2.
 
 // SWRevealViewController
 #define COCOAPODS_POD_AVAILABLE_SWRevealViewController
@@ -92,4 +92,10 @@
 #define COCOAPODS_VERSION_MAJOR_UIColor_FlatColors 0
 #define COCOAPODS_VERSION_MINOR_UIColor_FlatColors 0
 #define COCOAPODS_VERSION_PATCH_UIColor_FlatColors 2
+
+// iRate
+#define COCOAPODS_POD_AVAILABLE_iRate
+#define COCOAPODS_VERSION_MAJOR_iRate 1
+#define COCOAPODS_VERSION_MINOR_iRate 11
+#define COCOAPODS_VERSION_PATCH_iRate 4
 
