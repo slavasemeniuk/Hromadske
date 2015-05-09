@@ -79,7 +79,7 @@
 -(void)setUpNavigationBar{
     self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"hromadske-logo"]];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"news-moon"] style:UIBarButtonItemStyleDone target:self action:@selector(toggleMode)];
-    self.navigationItem.backBarButtonItem.title=@"Назад";
+    self.navigationController.navigationBar.topItem.backBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"Назад" style:UIBarButtonItemStyleDone target:self action:nil];
 }
 
 

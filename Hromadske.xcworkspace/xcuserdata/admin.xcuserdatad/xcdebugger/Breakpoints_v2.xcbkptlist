@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hromadske/NewsDetailsViewController.m"
-            timestampString = "452904706.631237"
+            timestampString = "452907798.335524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "-showLoader:"
             landmarkType = "5">
          </BreakpointContent>
@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hromadske/NewsDetailsViewController.m"
-            timestampString = "452904706.631237"
+            timestampString = "452907798.335524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "-loadWebViewContent"
             landmarkType = "5">
          </BreakpointContent>
@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hromadske/NewsDetailsViewController.m"
-            timestampString = "452904706.631237"
+            timestampString = "452907798.335524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-loadData"
             landmarkType = "5">
          </BreakpointContent>
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hromadske/NewsDetailsViewController.m"
-            timestampString = "452904706.631237"
+            timestampString = "452907798.335524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "-webViewDidStartLoad:"
             landmarkType = "5">
          </BreakpointContent>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hromadske/NewsDetailsViewController.m"
-            timestampString = "452904706.631237"
+            timestampString = "452907798.335524"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "-webViewDidFinishLoad:"
             landmarkType = "5">
             <Locations>
@@ -103,12 +103,12 @@
                   symbolName = "-[NewsDetailsViewController webViewDidFinishLoad:]"
                   moduleName = "hromadske"
                   urlString = "file:///Users/admin/Desktop/Hromadske/Hromadske/NewsDetailsViewController.m"
-                  timestampString = "452903278.901463"
+                  timestampString = "452906947.088348"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "179"
-                  endingLineNumber = "179"
-                  offsetFromSymbolStart = "92">
+                  startingLineNumber = "182"
+                  endingLineNumber = "182"
+                  offsetFromSymbolStart = "79">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -117,12 +117,12 @@
                   symbolName = "__50-[NewsDetailsViewController webViewDidFinishLoad:]_block_invoke"
                   moduleName = "hromadske"
                   urlString = "file:///Users/admin/Desktop/Hromadske/Hromadske/NewsDetailsViewController.m"
-                  timestampString = "452903278.902213"
+                  timestampString = "452906947.088542"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "179"
-                  endingLineNumber = "179"
-                  offsetFromSymbolStart = "46">
+                  startingLineNumber = "182"
+                  endingLineNumber = "182"
+                  offsetFromSymbolStart = "25">
                </Location>
             </Locations>
          </BreakpointContent>
