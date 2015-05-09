@@ -8,6 +8,7 @@ pod 'AFNetworking'
 pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord.git', :branch => 'release/3.0'
 pod 'PQFCustomLoaders'
 pod 'Parse'
+pod 'iRate'
 
 
 

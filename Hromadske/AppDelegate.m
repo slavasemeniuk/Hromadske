@@ -13,10 +13,19 @@
 #import "Constants.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <Parse/Parse.h>
+#import <iRate/iRate.h>
 
 
 @implementation AppDelegate
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self setUpIRate];
+    }
+    return self;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [NetworkTracker sharedManager];
@@ -114,5 +123,19 @@
     }
 }
 
+- (void) setUpIRate{
+    [iRate sharedInstance].appStoreID = 355313284;//Зміниті
+    [iRate sharedInstance].applicationBundleID = @"com.charcoaldesign.rainbowblocks";
+    [iRate sharedInstance].onlyPromptIfLatestVersion = NO;
+    [iRate sharedInstance].previewMode = NO;//Change for NO when release
+    [iRate sharedInstance].daysUntilPrompt=5;
+    [iRate sharedInstance].usesUntilPrompt=15;
+    [iRate sharedInstance].remindPeriod=5;
+    [iRate sharedInstance].messageTitle=@"Оціни Громадське";
+    [iRate sharedInstance].message=@"Якщо тобі сподобався додаток, оціни Громадське в AppStore";
+    [iRate sharedInstance].CancelButtonLabel = @"Ні, дякую";
+    [iRate sharedInstance].RemindButtonLabel = @"Нагадати пізніше";
+    [iRate sharedInstance].RateButtonLabel = @"Оцінити";
+}
 
 @end

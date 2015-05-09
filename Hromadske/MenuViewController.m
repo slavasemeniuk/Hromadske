@@ -13,6 +13,7 @@
 #import "MenuItemCell.h"
 #import "RateAndWeather.h"
 #import "DataManager.h"
+#import <iRate/iRate.h>
 
 @interface MenuViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -57,8 +58,8 @@
 
     [_tableView registerNib:[UINib nibWithNibName:@"MenuItemCell" bundle:nil] forCellReuseIdentifier:@"menu_cell"];
     
-    _listOfIcon = @[@"menu-items-news",@"menu-items-team",@"menu-donate",@"menu-contacts"];
-    _menuItems=@[@"Новини",@"Команда",@"Допомогти проекту",@"Контакти"];
+    _listOfIcon = @[@"menu-items-news",@"menu-items-team",@"menu-donate",@"menu-contacts", @""];
+    _menuItems=@[@"Новини",@"Команда",@"Допомогти проекту",@"Контакти",@"Оцінити"];
     _arrayOfIdentifier = @[ @"NewsViewController", @"TeamViewController", @"HelpProjectViewController", @"ContactsViewController"];
 }
 
@@ -108,8 +109,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *identefier = [_arrayOfIdentifier objectAtIndex:indexPath.row];
-    [[ControllersManager sharedManager] showTopViewControllerWithIdentefier:identefier];
+    if (indexPath.row!=4) {
+        NSString *identefier = [_arrayOfIdentifier objectAtIndex:indexPath.row];
+        [[ControllersManager sharedManager] showTopViewControllerWithIdentefier:identefier];
+    }else{
+        [[iRate sharedInstance] openRatingsPageInAppStore];
+        [iRate sharedInstance].ratedThisVersion=YES;
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    }
+    
 }
 
 
