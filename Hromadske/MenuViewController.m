@@ -8,7 +8,6 @@
 
 #import "MenuViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import <SWRevealViewController/SWRevealViewController.h>
 #import "ControllersManager.h"
 #import "MenuItemCell.h"
 #import "RateAndWeather.h"
@@ -20,6 +19,7 @@
     NSArray *_menuItems;
     NSArray *_arrayOfIdentifier;
     NSArray *_listOfIcon;
+    UIStatusBarStyle _statusBarStyle;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *temperature;
@@ -42,12 +42,13 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    _statusBarStyle=[[UIApplication sharedApplication] statusBarStyle];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle:_statusBarStyle animated:YES];
 }
 
 -(void) setUpViewController
