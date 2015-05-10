@@ -40,10 +40,14 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    
-    [_loader remove];
-    [DataManager sharedManager].newsDetailsMode=_mode;
+    [DataManager sharedManager].newsDetailsMode = _mode;
     _mode = NewsDetailsModeDay;
+    [self updateCurrentMode];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    _mode = [DataManager sharedManager].newsDetailsMode;
     [self updateCurrentMode];
 }
 
@@ -104,8 +108,6 @@
 
 
 
-
-
 #pragma mark - MODE
 -(void)toggleMode{
     if (_mode == NewsDetailsModeDay) {
@@ -114,7 +116,6 @@
     else{
         _mode = NewsDetailsModeDay;
     }
-    [self setLoaderColor];
     [self updateCurrentMode];
     [self loadWebViewContent];
 }
@@ -127,6 +128,7 @@
         _webView.backgroundColor = [UIColor colorWithRed:232.0f/255.0f green:232.0f/255.0f blue:232.0f/255.0f alpha:_webView.alpha];
         self.view.backgroundColor = [UIColor colorWithRed:232.0f/255.0f green:232.0f/255.0f blue:232.0f/255.0f alpha:1.0f];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+        _loader.loaderColor = [UIColor lightGrayColor];
     }
     else{
         self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"news-sun"];
@@ -135,6 +137,7 @@
         _webView.backgroundColor = [UIColor colorWithRed:30.0f/255.0f green:30.0f/255.0f blue:30.0f/255.0f alpha:_webView.alpha];
         self.view.backgroundColor = [UIColor colorWithRed:30.0f/255.0f green:30.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        _loader.loaderColor = [UIColor whiteColor];
     }
 }
 
@@ -146,7 +149,6 @@
         _loader.layer.borderColor = [UIColor clearColor].CGColor;
         _loader.layer.borderWidth = .5f;
         _loader.layer.backgroundColor = [UIColor clearColor].CGColor;
-        [self setLoaderColor];
         _loader.center = CGPointMake(self.view.frame.size.width / 2, 100);
     }
     
@@ -158,14 +160,6 @@
     
 }
 
-- (void)setLoaderColor{
-    if (_mode==NewsDetailsModeDay) {
-        _loader.loaderColor = [UIColor lightGrayColor];
-    }else{
-        _loader.loaderColor = [UIColor whiteColor];
-    }
-}
-
 #pragma mark - DELEGATE
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     _webView.alpha = 0;
@@ -173,8 +167,8 @@
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [UIView animateWithDuration:0.3 delay:0.2 options:UIViewAnimationOptionCurveLinear animations:^{
-        [self showLoader:NO];
         _webView.alpha = 1;
+        [self showLoader:NO];
     } completion:nil];
 }
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
