@@ -128,7 +128,7 @@
         _webView.backgroundColor = [UIColor colorWithRed:232.0f/255.0f green:232.0f/255.0f blue:232.0f/255.0f alpha:_webView.alpha];
         self.view.backgroundColor = [UIColor colorWithRed:232.0f/255.0f green:232.0f/255.0f blue:232.0f/255.0f alpha:1.0f];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-        _loader.loaderColor = [UIColor lightGrayColor];
+        _loader.loaderColor = [UIColor grayColor];
     }
     else{
         self.navigationItem.rightBarButtonItem.image = [UIImage imageNamed:@"news-sun"];
@@ -150,6 +150,11 @@
         _loader.layer.borderWidth = .5f;
         _loader.layer.backgroundColor = [UIColor clearColor].CGColor;
         _loader.center = CGPointMake(self.view.frame.size.width / 2, 100);
+        if (_mode==NewsDetailsModeDay) {
+            _loader.loaderColor = [UIColor grayColor];
+        }else{
+            _loader.loaderColor = [UIColor whiteColor];
+        }
     }
     
     if (yes) {
@@ -172,7 +177,7 @@
     } completion:nil];
 }
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-   // [self showLoader:NO];
+    [self showLoader:NO];
 }
 
 

@@ -24,6 +24,7 @@
     NSString *_stream;
     NewArticlesView *_newArticles;
     NSInteger _countNewArticles;
+    NSMutableArray *_viewedArticles;
     
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -38,7 +39,7 @@
     [[DataManager sharedManager] setDelegate:self];
     [self setUpViews];
     [self setUpData];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpData) name:@"ViewsCountUpdated" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViweData) name:@"ViewsCountUpdated" object:nil];
     [[DataManager sharedManager] fetchRemoteDigest];
     
 }
@@ -93,7 +94,13 @@
 
 -(void)setUpData
 {
+    _viewedArticles = [NSMutableArray array];
     _tableViewsData = [NSMutableArray arrayWithArray:[DataManager sharedManager].listOfArticles];
+}
+
+-(void)reloadTableViweData{
+    _tableViewsData = [NSMutableArray arrayWithArray:[DataManager sharedManager].listOfArticles];
+    [_tableView reloadData];
 }
 
 - (void) dataManagerDidStartUpadating:(DataManager *)manager
@@ -152,7 +159,8 @@
                                                   cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                               timeoutInterval:60];
     [newsCell.image_view setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
-    if (indexPath.row<_countNewArticles) {
+    
+    if (indexPath.row<_countNewArticles&&![_viewedArticles containsObject:[NSNumber numberWithInteger:indexPath.row]]) {
         [newsCell unviewed];
     };
     
@@ -177,6 +185,8 @@
         UIAlertView *noConnection = [[UIAlertView alloc]initWithTitle:@"Помилка" message:@"Перевірте підключення до мережі" delegate:self cancelButtonTitle:@"Добре" otherButtonTitles: nil];
         [noConnection show];
     }
+    [_viewedArticles addObject:[NSNumber numberWithInteger:indexPath.row]];
+    [_tableView reloadData];
     [_tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 

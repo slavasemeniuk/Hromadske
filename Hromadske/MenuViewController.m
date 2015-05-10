@@ -14,6 +14,7 @@
 #import "DataManager.h"
 #import <iRate/iRate.h>
 
+
 @interface MenuViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSArray *_menuItems;
@@ -57,9 +58,9 @@
 
     [_tableView registerNib:[UINib nibWithNibName:@"MenuItemCell" bundle:nil] forCellReuseIdentifier:@"menu_cell"];
     
-    _listOfIcon = @[@"menu-items-news",@"menu-items-team",@"menu-donate",@"menu-contacts", @"menu-item-rate"];
-    _menuItems=@[@"Новини",@"Команда",@"Допомогти проекту",@"Контакти",@"Оцінити"];
-    _arrayOfIdentifier = @[ @"NewsViewController", @"TeamViewController", @"HelpProjectViewController", @"ContactsViewController"];
+    _listOfIcon = @[@"menu-items-news",@"menu-donate",@"menu-items-team",@"menu-contacts", @"menu-item-rate"];
+    _menuItems=@[@"Новини",@"Допомогти проекту",@"Команда",@"Контакти",@"Оцінити"];
+    _arrayOfIdentifier = @[ @"NewsViewController",@"HelpProjectViewController", @"TeamViewController",@"ContactsViewController"];
 }
 
 -(void)refreshData{
