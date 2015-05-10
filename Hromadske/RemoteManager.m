@@ -35,26 +35,21 @@
                  NSLog(@"%@",error);
                  fail();
              }
-             
          }];
 }
 
-- (void) parsedArticleWithId:(NSNumber *)identifire :(void (^)(NSDictionary *))successCallback
+- (void)dicrtionaryForPath: (NSString *)path attributes:(NSDictionary *)attributes success:(void (^)(NSDictionary *))success fail:(void (^)(void))fail
 {
-    NSString *urlEnd = [NSString stringWithFormat:@"articles/%d",[identifire intValue]];
-    NSString *urlForRequest = [NSString stringWithFormat:@"%@%@",API_URL,urlEnd];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:urlForRequest parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        successCallback([NSDictionary dictionaryWithDictionary:responseObject[@"data"]]);
+    [manager GET:path parameters:attributes success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success([NSDictionary dictionaryWithDictionary:responseObject[@"data"]]);
     }
          failure:^(AFHTTPRequestOperation *operation,NSError *error){
-             
-             UIAlertView *allertView = [[UIAlertView alloc]initWithTitle:@"Error Retrieving" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-             [allertView show];
-             
+             if (fail){
+                 NSLog(@"%@",error);
+                 fail();
+             }
          }];
 }
-
-
 
 @end

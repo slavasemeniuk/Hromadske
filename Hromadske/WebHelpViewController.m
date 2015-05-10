@@ -12,6 +12,7 @@
 @interface WebHelpViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
+
 @end
 
 @implementation WebHelpViewController
@@ -21,6 +22,10 @@
     [self setUpBar];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:HELP_URL]];
     [_webView loadRequest:request];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
 }
 
 -(void)setUpBar{

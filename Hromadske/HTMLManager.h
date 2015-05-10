@@ -12,4 +12,5 @@
 
 + (HTMLManager *)sharedManager;
 - (NSString *)removeTagsFromString: (NSString *) string;
+
 @end

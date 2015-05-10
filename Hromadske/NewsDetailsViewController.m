@@ -10,17 +10,15 @@
 #import <PQFCustomLoaders/PQFCirclesInTriangle.h>
 #import "DataManager.h"
 #import "ControllersManager.h"
-#import "Link.h"
 #import "Constants.h"
 #import "Articles.h"
 
 @interface NewsDetailsViewController ()<UIWebViewDelegate>
 {
     NewsDetailsMode _mode;
-    NewsDetailsMode _lastMode;
+    PQFCirclesInTriangle *_loader;
 }
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-@property (strong, nonatomic) PQFCirclesInTriangle *loader;
 @end
 
 @implementation NewsDetailsViewController
@@ -49,11 +47,6 @@
     [self updateCurrentMode];
 }
 
-- (void) viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    _mode = [DataManager sharedManager].newsDetailsMode;
-    [self updateCurrentMode];
-}
 
 #pragma mark - VIEW CONTROLLER
 -(void)setUpViewController{
@@ -123,6 +116,7 @@
     }
     [self setLoaderColor];
     [self updateCurrentMode];
+    [self loadWebViewContent];
 }
 
 - (void) updateCurrentMode {
@@ -142,7 +136,6 @@
         self.view.backgroundColor = [UIColor colorWithRed:30.0f/255.0f green:30.0f/255.0f blue:30.0f/255.0f alpha:1.0f];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     }
-    [self loadWebViewContent];
 }
 
 
@@ -185,7 +178,7 @@
     } completion:nil];
 }
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    [self showLoader:NO];
+   // [self showLoader:NO];
 }
 
 

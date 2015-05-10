@@ -11,6 +11,7 @@
 @protocol DataManangerDelagate;
 
 @interface DataManager : NSObject
+
 + (DataManager *)sharedManager;
 
 

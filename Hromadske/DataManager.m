@@ -56,48 +56,12 @@
     _newsDetailsMode=NewsDetailsModeNone;
 }
 
--(void) updateArticleWithId:(NSNumber *)identifire{
-    Articles *article = [Articles MR_findFirstByAttribute:@"id" withValue:identifire];
-        [[RemoteManager sharedManager] parsedArticleWithId:identifire : ^(NSDictionary* updatedArticle){
-            
-            article.views_count = [updatedArticle valueForKey:@"views_count"];
-            
-            NSNull * n=[[NSNull alloc]init];
-            if (![[updatedArticle valueForKey:@"content"] isEqual:n]) {
-                article.content = [updatedArticle valueForKey:@"content"];
-            }
-            
-            if ([[updatedArticle valueForKey:@"content"] isEqual:n]&&[article getLink]) {
-                article.content = @"link";
-            }
-            
-            if ( [[updatedArticle valueForKey:@"content"] isEqual:n] && ![article getLink] ) {
-                NSDataDetector* detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
-                NSArray* matches = [detector matchesInString:article.short_description options:0 range:NSMakeRange(0, [article.short_description length])];
-
-                NSString *short_description = article.short_description;
-
-                for (NSTextCheckingResult *match in matches) {
-                    NSString *link = [[match URL] absoluteString];
-                    NSString *html_link = [NSString stringWithFormat:@"<a href='%@'>%@</a>",link,link];
-                    short_description = [short_description stringByReplacingOccurrencesOfString:link withString:html_link];
-                }
-
-                article.content = [NSString stringWithFormat:HTML_CONTENT_WITH_IMAGE,article.title,[article getImageUrl],short_description];
-            }
-            
-            [article.managedObjectContext MR_saveOnlySelfAndWait];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDataNotification" object:nil];
-        }];
-}
-
-
+#pragma mark SAVING
 -(void)saveRatesAndWeatherToContext:(NSArray*)data{
     RateAndWeather *rateAndWeather = [RateAndWeather MR_findFirst];
     [rateAndWeather updateRateAndWeather:data];
     [rateAndWeather.managedObjectContext MR_saveOnlySelfAndWait];
 }
-
 
 -(void)saveTeamToContext:(NSArray *)arrayOfTeam
 {
@@ -109,27 +73,6 @@
         context = employe.managedObjectContext;
     }
     [context MR_saveToPersistentStoreAndWait];
-}
-
--(void)saveHelpDataToContext:(NSArray *)arrayOfHelpData
-{
-    HelpProject * helpProjectData= [HelpProject MR_createEntity];
-    
-    [helpProjectData convertDataToHelpProjectModel:arrayOfHelpData];
-    
-    [helpProjectData.managedObjectContext MR_saveOnlySelfAndWait];
-   }
-
--(void)saveContactsDataToContext:(NSArray *)arrayOfContacts
-{
-    Contacts * contacts= [Contacts MR_createEntity];
-    [contacts convertDataToContactsModel:arrayOfContacts];
-    [contacts.managedObjectContext MR_saveOnlySelfAndWait];
-}
-
-
--(id)getRateAndWeather{
-    return _rateAndWeather;
 }
 
 
@@ -154,26 +97,7 @@
     }
 }
 
-- (void) upDateTeam{
-    [[RemoteManager sharedManager] objectsForPath:TEAM_JSON attributes:nil success:^(NSArray *parsedTeam){
-        if ([parsedTeam count]==[_listOfEmployes count]) {
-            for (int i=0; i<[parsedTeam count]; i++) {
-                if ([[(Employe *)[_listOfEmployes objectAtIndex:i] identifire] intValue] != [[[parsedTeam objectAtIndex:i] valueForKey:@"id"] intValue]) {
-                    Employe * employe =[Employe MR_findFirstByAttribute:@"identifire" withValue:[[_listOfEmployes objectAtIndex:i] identifire]];
-                    [employe convertDataToEmployeModel:[parsedTeam objectAtIndex:i]];
-                    [employe.managedObjectContext MR_saveOnlySelfAndWait];
-                }
-            }
-        }else{
-            [Employe truncateAll];
-            [self saveTeamToContext:parsedTeam];
-        }
-         [self fetchListOfEmployes];
-         [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTeamNotification" object:nil];
-    }fail:^(){
-        
-    }];
-}
+
 
 
 #pragma mark - FetchingLocalData
@@ -188,7 +112,6 @@
     else {
         _dateOfLastArticle = @"1";
     }
-
 }
 
 -(void)fetchListOfArticles
@@ -200,6 +123,11 @@
 {
     _listOfEmployes = [NSArray arrayWithArray:[Employe MR_findAllSortedBy:@"identifire" ascending:YES]];
 }
+
+-(id)getRateAndWeather{
+    return _rateAndWeather;
+}
+
 
 -(void)fetchLocalRateAndWeather
 {
@@ -285,6 +213,46 @@
         }];
 }
 
+#pragma mark Updating local data
+
+-(void) updateArticleWithId:(NSNumber *)identifire{
+    Articles *article = [Articles MR_findFirstByAttribute:@"id" withValue:identifire];
+    NSString *path = [NSString stringWithFormat:@"%@/%@",ARTICKE_JSON,article.id.stringValue];
+    [[RemoteManager sharedManager] dicrtionaryForPath:path attributes:nil success: ^(NSDictionary* updatedArticle){
+        
+        article.views_count = [updatedArticle valueForKey:@"views_count"];
+        
+        NSNull * n=[[NSNull alloc]init];
+        if (![[updatedArticle valueForKey:@"content"] isEqual:n]) {
+            article.content = [updatedArticle valueForKey:@"content"];
+        }
+        
+        if ([[updatedArticle valueForKey:@"content"] isEqual:n]&&[article getLink]) {
+            article.content = @"link";
+        }
+        
+        if ( [[updatedArticle valueForKey:@"content"] isEqual:n] && ![article getLink] ) {
+            NSDataDetector* detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
+            NSArray* matches = [detector matchesInString:article.short_description options:0 range:NSMakeRange(0, [article.short_description length])];
+            
+            NSString *short_description = article.short_description;
+            
+            for (NSTextCheckingResult *match in matches) {
+                NSString *link = [[match URL] absoluteString];
+                NSString *html_link = [NSString stringWithFormat:@"<a href='%@'>%@</a>",link,link];
+                short_description = [short_description stringByReplacingOccurrencesOfString:link withString:html_link];
+            }
+            
+            article.content = [NSString stringWithFormat:HTML_CONTENT_WITH_IMAGE,article.title,[article getImageUrl],short_description];
+        }
+        
+        [article.managedObjectContext MR_saveOnlySelfAndWait];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDataNotification" object:nil];
+    }fail:^(){
+        
+    }];
+}
+
 - (void)updateViewsCount{
     NSString *count = [NSString stringWithFormat:@"%lu",(unsigned long)[Articles MR_countOfEntities]];
     [self fetchListOfArticles];
@@ -298,6 +266,27 @@
    }fail:^(){
    
    }];
+}
+
+- (void) upDateTeam{
+    [[RemoteManager sharedManager] objectsForPath:TEAM_JSON attributes:nil success:^(NSArray *parsedTeam){
+        if ([parsedTeam count]==[_listOfEmployes count]) {
+            for (int i=0; i<[parsedTeam count]; i++) {
+                if ([[(Employe *)[_listOfEmployes objectAtIndex:i] identifire] intValue] != [[[parsedTeam objectAtIndex:i] valueForKey:@"id"] intValue]) {
+                    Employe * employe =[Employe MR_findFirstByAttribute:@"identifire" withValue:[[_listOfEmployes objectAtIndex:i] identifire]];
+                    [employe convertDataToEmployeModel:[parsedTeam objectAtIndex:i]];
+                    [employe.managedObjectContext MR_saveOnlySelfAndWait];
+                }
+            }
+        }else{
+            [Employe truncateAll];
+            [self saveTeamToContext:parsedTeam];
+        }
+        [self fetchListOfEmployes];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTeamNotification" object:nil];
+    }fail:^(){
+        
+    }];
 }
 
 @end

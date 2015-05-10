@@ -7,19 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MenuViewController.h"
+
 #import <SWRevealViewController/SWRevealViewController.h>
+#import "MenuViewController.h"
 #import "NewsDetailsViewController.h"
 
 
 @interface ControllersManager : NSObject
 
-+(ControllersManager *)sharedManager;
++ (ControllersManager *)sharedManager;
 
-- (SWRevealViewController *) revealController;
+- (SWRevealViewController *)revealController;
 
-- (UIViewController *) viewControllerWithIdentefier:(NSString*)identefier;
+- (UIViewController *)viewControllerWithIdentefier:(NSString*)identefier;
 
-- (void) showTopViewControllerWithIdentefier:(NSString *)identefier;
+- (void)showTopViewControllerWithIdentefier:(NSString *)identefier;
 
 @end

@@ -7,14 +7,11 @@
 //
 
 #import "ControllersManager.h"
-#import "AppDelegate.h"
 
 #import "NewsViewController.h"
-#import "NewsDetailsViewController.h"
 #import "TeamViewController.h"
 #import "ContactsViewController.h"
 #import "HelpProjectViewController.h"
-#import "MenuViewController.h"
 
 @interface ControllersManager ()
 

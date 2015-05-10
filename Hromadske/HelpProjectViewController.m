@@ -9,7 +9,7 @@
 #import "HelpProjectViewController.h"
 #import "Constants.h"
 #import "ControllersManager.h"
-//#import "HelpProject.h"
+#import "NetworkTracker.h"
 
 @interface HelpProjectViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *label;
@@ -22,11 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self showAllert];
-//    [self setUpLabel];
-//    [self setUpData];
 }
 
-- (void) showAllert
+- (void)showAllert
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![[defaults valueForKey:@"Allert"] isEqual:@"Choosed"]) {
@@ -61,22 +59,15 @@
 
 }
 
-//- (void) setUpLabel {
-//    _label.lineBreakMode = NSLineBreakByWordWrapping;
-//    _label.numberOfLines = 0;
-//}
-
-//-(void) setUpData {
-//    [[DataManager sharedManager] helpProjectDataWithCompletion: ^(id helpData) {
-//        HelpProject *helpProjectData = helpData;
-//        [_label setText: helpProjectData.content];
-//        _url = helpProjectData.url;
-//    }];
-//}
-
 - (IBAction)goToWebSite:(id)sender {
-    UIViewController *controller = [[ControllersManager sharedManager] viewControllerWithIdentefier:@"WebHelpViewController"];
-    [self.navigationController pushViewController:controller animated:YES];
+    if ([NetworkTracker isReachable]) {
+        UIViewController *controller = [[ControllersManager sharedManager] viewControllerWithIdentefier:@"WebHelpViewController"];
+        [self.navigationController pushViewController:controller animated:YES];
+    }else{
+        UIAlertView *noConnection = [[UIAlertView alloc]initWithTitle:@"Помилка" message:@"Перевірте підключення до мережі" delegate:self cancelButtonTitle:@"Добре" otherButtonTitles: nil];
+        [noConnection show];
+    }
+    
 }
 
 @end
