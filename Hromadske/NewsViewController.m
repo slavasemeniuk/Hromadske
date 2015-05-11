@@ -59,6 +59,7 @@
 }
 
 - (void)setUpViews{
+    [self setUpStreamView];
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor blackColor]];
     [_tableView registerNib:[UINib nibWithNibName:@"NewsTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsCell"];
     _pullToReferesh = [[UIRefreshControl alloc] init];
@@ -120,6 +121,7 @@
         [self hideNewArticlesBage];
     }
     _stream=[[DataManager sharedManager] streamingURL];
+    [self setUpStreamView];
     for (int i=0; i<[listOfArticles count]; i++) {
         [_tableViewsData insertObject:[listOfArticles objectAtIndex:i] atIndex:i];
     }

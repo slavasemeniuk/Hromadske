@@ -24,12 +24,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hromadske/NewsViewController.m"
-            timestampString = "452993848.856199"
+            timestampString = "452995761.571999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-dataManager:didFinishUpdatingArticles:"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "-dataManagerDidFaildUpadating:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
