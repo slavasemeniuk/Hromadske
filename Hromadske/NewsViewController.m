@@ -58,7 +58,6 @@
 
 - (void)setUpViews{
     [self setUpStreamView];
-    [self.navigationItem.leftBarButtonItem setTintColor:[UIColor blackColor]];
     [_tableView registerNib:[UINib nibWithNibName:@"NewsTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsCell"];
     _pullToReferesh = [[UIRefreshControl alloc] init];
     [_pullToReferesh addTarget:[DataManager sharedManager] action:@selector(fetchRemoteDigest) forControlEvents:UIControlEventValueChanged];

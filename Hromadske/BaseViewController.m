@@ -27,6 +27,7 @@
     self.navigationController.navigationBar.barTintColor=[UIColor whiteColor];
     self.navigationController.navigationBar.tintColor=[UIColor blackColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStyleDone target:self.revealViewController action:@selector(revealToggle:)];
+    [self.navigationItem.leftBarButtonItem setTintColor:[UIColor blackColor]];
 }
 
 
