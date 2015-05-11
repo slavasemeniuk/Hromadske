@@ -184,8 +184,9 @@
         UIAlertView *noConnection = [[UIAlertView alloc]initWithTitle:@"Помилка" message:@"Перевірте підключення до мережі" delegate:self cancelButtonTitle:@"Добре" otherButtonTitles: nil];
         [noConnection show];
     }
-    article.viewed=[NSNumber numberWithBool:YES];
-    [article makeViewed];
+    if (article.viewed.boolValue==NO){
+        [article makeViewed];
+        }
     [_tableView reloadData];
     [_tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
