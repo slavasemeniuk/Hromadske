@@ -245,7 +245,6 @@
             
             article.content = [NSString stringWithFormat:HTML_CONTENT_WITH_IMAGE,article.title,[article getImageUrl],short_description];
         }
-        
         [article.managedObjectContext MR_saveOnlySelfAndWait];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDataNotification" object:nil];
     }fail:^(){

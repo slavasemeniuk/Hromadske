@@ -24,8 +24,6 @@
     NSString *_stream;
     NewArticlesView *_newArticles;
     NSInteger _countNewArticles;
-    NSMutableArray *_viewedArticles;
-    
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIRefreshControl *pullToReferesh;
@@ -95,7 +93,6 @@
 
 -(void)setUpData
 {
-    _viewedArticles = [NSMutableArray array];
     _tableViewsData = [NSMutableArray arrayWithArray:[DataManager sharedManager].listOfArticles];
 }
 
@@ -162,7 +159,7 @@
                                               timeoutInterval:60];
     [newsCell.image_view setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
     
-    if (indexPath.row<_countNewArticles&&![_viewedArticles containsObject:[NSNumber numberWithInteger:indexPath.row]]) {
+    if (article.viewed.boolValue==NO) {
         [newsCell unviewed];
     };
     
@@ -187,7 +184,8 @@
         UIAlertView *noConnection = [[UIAlertView alloc]initWithTitle:@"Помилка" message:@"Перевірте підключення до мережі" delegate:self cancelButtonTitle:@"Добре" otherButtonTitles: nil];
         [noConnection show];
     }
-    [_viewedArticles addObject:[NSNumber numberWithInteger:indexPath.row]];
+    article.viewed=[NSNumber numberWithBool:YES];
+    [article makeViewed];
     [_tableView reloadData];
     [_tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

@@ -21,6 +21,7 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSNumber * views_count;
 @property (nonatomic, retain) NSNumber * vk_id;
+@property (nonatomic, retain) NSNumber * viewed;
 @property (nonatomic, retain) NSSet *links;
 @property (nonatomic, retain) NSSet *photos;
 @property (nonatomic, retain) NSSet *videos;
@@ -29,6 +30,7 @@
 @interface Articles (CoreDataGeneratedAccessors)
 
 - (void)updateViewsCount:(NSArray *)listOfArticles;
+- (void)makeViewed;
 
 - (void)addLinksObject:(Link *)value;
 - (void)removeLinksObject:(Link *)value;

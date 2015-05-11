@@ -7,6 +7,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="short_description" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="viewed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="views_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="vk_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="links" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Link" inverseName="article" inverseEntity="Link" syncable="YES"/>
@@ -51,7 +52,7 @@
         <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Articles" inverseName="videos" inverseEntity="Articles" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Articles" positionX="7" positionY="-19" width="128" height="210"/>
+        <element name="Articles" positionX="7" positionY="-19" width="128" height="225"/>
         <element name="Contacts" positionX="-162" positionY="-180" width="128" height="135"/>
         <element name="Employe" positionX="-162" positionY="-18" width="128" height="120"/>
         <element name="HelpProject" positionX="-18" positionY="-180" width="128" height="73"/>

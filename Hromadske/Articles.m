@@ -23,6 +23,7 @@
 @dynamic id;
 @dynamic short_description;
 @dynamic title;
+@dynamic viewed;
 @dynamic views_count;
 @dynamic vk_id;
 @dynamic links;
@@ -40,6 +41,7 @@
     self.category = [article valueForKey:@"category"];
     self.vk_id = [article valueForKey:@"vk_id"];
     self.views_count = [article valueForKey:@"views_count"];
+    self.viewed = [NSNumber numberWithBool:NO];
     
     NSArray *videos = [[article valueForKey:@"attachments"] valueForKey:@"videos" ];
     NSArray *links = [[article valueForKey:@"attachments"] valueForKey:@"links" ];
@@ -63,6 +65,11 @@
         [photo.managedObjectContext MR_saveOnlySelfAndWait];
         [self addPhotosObject:photo];
     }
+}
+
+- (void)makeViewed{
+    self.viewed = [NSNumber numberWithBool:YES];
+    [self.managedObjectContext MR_saveOnlySelfAndWait];
 }
 
 -(NSString *)getImageUrl

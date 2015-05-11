@@ -44,6 +44,7 @@
 		84A159B01AF00D0C008AD999 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A41AF00D0C008AD999 /* QuartzCore.framework */; };
 		84A159B11AF00D0C008AD999 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A51AF00D0C008AD999 /* SystemConfiguration.framework */; };
 		84A1A93A1AF0467C00646DE5 /* WebHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A9391AF0467C00646DE5 /* WebHelpViewController.m */; };
+		84A25D691B00D168005DE9CD /* Articles.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A25D681B00D168005DE9CD /* Articles.m */; };
 		84A2A6891ABB7D59004862E6 /* RemoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A6881ABB7D59004862E6 /* RemoteManager.m */; };
 		84A439381AE5BB67002C0A98 /* RateAndWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A439371AE5BB67002C0A98 /* RateAndWeather.m */; };
 		84A9972E1AC9DA03007876F1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9972D1AC9DA03007876F1 /* BaseViewController.m */; };
@@ -60,7 +61,6 @@
 		84EA84071ACB5B2B00D51EB0 /* Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA84061ACB5B2B00D51EB0 /* Contacts.m */; };
 		84EBBAF41AC4527E00DF6E9D /* Employe.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBBAF31AC4527E00DF6E9D /* Employe.m */; };
 		84EBBAF71AC454D900DF6E9D /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBBAF61AC454D900DF6E9D /* DataManager.m */; };
-		84F6B8371AE5534900F6C49D /* Articles.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6B8361AE5534900F6C49D /* Articles.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +130,8 @@
 		84A159A51AF00D0C008AD999 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		84A1A9381AF0467C00646DE5 /* WebHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebHelpViewController.h; sourceTree = "<group>"; };
 		84A1A9391AF0467C00646DE5 /* WebHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebHelpViewController.m; sourceTree = "<group>"; };
+		84A25D671B00D168005DE9CD /* Articles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Articles.h; sourceTree = "<group>"; };
+		84A25D681B00D168005DE9CD /* Articles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Articles.m; sourceTree = "<group>"; };
 		84A2A6871ABB7D59004862E6 /* RemoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteManager.h; sourceTree = "<group>"; };
 		84A2A6881ABB7D59004862E6 /* RemoteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteManager.m; sourceTree = "<group>"; };
 		84A439361AE5BB67002C0A98 /* RateAndWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateAndWeather.h; sourceTree = "<group>"; };
@@ -160,8 +162,6 @@
 		84EBBAF31AC4527E00DF6E9D /* Employe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Employe.m; sourceTree = "<group>"; };
 		84EBBAF51AC454D900DF6E9D /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		84EBBAF61AC454D900DF6E9D /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		84F6B8351AE5534900F6C49D /* Articles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Articles.h; sourceTree = "<group>"; };
-		84F6B8361AE5534900F6C49D /* Articles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Articles.m; sourceTree = "<group>"; };
 		C1AD7FFDC3FB61C4705150C0 /* libPods-Hromadske.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hromadske.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -338,10 +338,10 @@
 		84EA84081ACB5B3C00D51EB0 /* DataClasses */ = {
 			isa = PBXGroup;
 			children = (
+				84A25D671B00D168005DE9CD /* Articles.h */,
+				84A25D681B00D168005DE9CD /* Articles.m */,
 				84A439361AE5BB67002C0A98 /* RateAndWeather.h */,
 				84A439371AE5BB67002C0A98 /* RateAndWeather.m */,
-				84F6B8351AE5534900F6C49D /* Articles.h */,
-				84F6B8361AE5534900F6C49D /* Articles.m */,
 				8472D13F1ADDA8E600F188E9 /* Photo.h */,
 				8472D1401ADDA8E600F188E9 /* Photo.m */,
 				8472D13C1ADDA8E600F188E9 /* Link.h */,
@@ -527,6 +527,7 @@
 				8472D13E1ADDA8E600F188E9 /* Link.m in Sources */,
 				849D0A641AE1A070003D9DE1 /* DateFormatter.m in Sources */,
 				84A9972E1AC9DA03007876F1 /* BaseViewController.m in Sources */,
+				84A25D691B00D168005DE9CD /* Articles.m in Sources */,
 				8436031C1AEA629600EC66EA /* NewArticlesView.m in Sources */,
 				84DB4E151AB7776400D7BA12 /* TeamViewController.m in Sources */,
 				84A1A93A1AF0467C00646DE5 /* WebHelpViewController.m in Sources */,
@@ -539,7 +540,6 @@
 				84EBBAF71AC454D900DF6E9D /* DataManager.m in Sources */,
 				84A439381AE5BB67002C0A98 /* RateAndWeather.m in Sources */,
 				8434AA2B1ACB5DD000523C10 /* HelpProject.m in Sources */,
-				84F6B8371AE5534900F6C49D /* Articles.m in Sources */,
 				849F82761AE955ED00EF2125 /* StreamView.m in Sources */,
 				84EA84071ACB5B2B00D51EB0 /* Contacts.m in Sources */,
 				847EEFE31AE1A95800E600B4 /* NewsDetailsViewController.m in Sources */,
