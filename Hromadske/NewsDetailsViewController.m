@@ -45,12 +45,6 @@
     [self updateCurrentMode];
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    _mode = [DataManager sharedManager].newsDetailsMode;
-    [self updateCurrentMode];
-}
-
 
 #pragma mark - VIEW CONTROLLER
 -(void)setUpViewController{
