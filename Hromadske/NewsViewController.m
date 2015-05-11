@@ -179,14 +179,14 @@
         NewsDetailsViewController *details = (NewsDetailsViewController *)[[ControllersManager sharedManager] viewControllerWithIdentefier:NSStringFromClass([NewsDetailsViewController class])];
         details.article = article;
         [self.navigationController pushViewController:details animated:YES];
+        if (article.viewed.boolValue==NO){
+            [article makeViewed];
+        }
     }
     else{
         UIAlertView *noConnection = [[UIAlertView alloc]initWithTitle:@"Помилка" message:@"Перевірте підключення до мережі" delegate:self cancelButtonTitle:@"Добре" otherButtonTitles: nil];
         [noConnection show];
     }
-    if (article.viewed.boolValue==NO){
-        [article makeViewed];
-        }
     [_tableView reloadData];
     [_tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
