@@ -53,7 +53,7 @@
     NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:employe.image]
                                                   cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                               timeoutInterval:60];
-                                  [cell.imageview setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
+                                  [cell.imageview setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"avatar"] success:nil failure:nil];
     return cell;
 }
 
