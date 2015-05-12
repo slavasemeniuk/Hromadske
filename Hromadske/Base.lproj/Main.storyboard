@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--Reveal View Controller-->
@@ -481,10 +481,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1lN-2b-UQj">
-                                <rect key="frame" x="0.0" y="15" width="600" height="585"/>
-                                <color key="backgroundColor" red="0.90196084980000002" green="0.90588241820000004" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1lN-2b-UQj">
+                                <rect key="frame" x="0.0" y="10" width="600" height="590"/>
+                                <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
                                 <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="bQW-ze-rHw" id="5hp-qf-ptR"/>
@@ -492,9 +491,10 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="X2x-f7-a64" firstAttribute="top" secondItem="1lN-2b-UQj" secondAttribute="bottom" id="EbM-fJ-sYC"/>
-                            <constraint firstItem="1lN-2b-UQj" firstAttribute="top" secondItem="nXI-Ts-kUh" secondAttribute="top" constant="15" id="H7A-ln-UJI"/>
+                            <constraint firstItem="1lN-2b-UQj" firstAttribute="top" secondItem="nXI-Ts-kUh" secondAttribute="top" constant="10" id="H7A-ln-UJI"/>
                             <constraint firstAttribute="trailing" secondItem="1lN-2b-UQj" secondAttribute="trailing" id="bb7-1Z-RC2"/>
                             <constraint firstItem="1lN-2b-UQj" firstAttribute="leading" secondItem="nXI-Ts-kUh" secondAttribute="leading" id="bbh-SN-H2w"/>
                         </constraints>
