@@ -14,7 +14,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <Parse/Parse.h>
 #import <iRate/iRate.h>
-
+#import "GAI.h"
 
 @implementation AppDelegate
 
@@ -31,6 +31,7 @@
     [NetworkTracker sharedManager];
     
     [GMSServices provideAPIKey:API_GOOGLE];
+    [self setupGoogleAnalytics];
     
     [DataManager sharedManager];
     
@@ -40,6 +41,13 @@
     [self setUpParse:application launchOptions:launchOptions];
     
     return YES;
+}
+
+- (void) setupGoogleAnalytics {
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [GAI sharedInstance].dispatchInterval = 20;
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-46233904-2"];
 }
 
 - (void)setUpParse: (UIApplication *)application launchOptions:(NSDictionary *)launchOptions {

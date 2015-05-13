@@ -9,7 +9,7 @@ pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord.git'
 pod 'PQFCustomLoaders'
 pod 'Parse'
 pod 'iRate'
-
+pod 'SQTShyNavigationBar'
 
 
 end

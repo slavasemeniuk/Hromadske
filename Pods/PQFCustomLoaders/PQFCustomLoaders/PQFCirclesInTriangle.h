@@ -1,30 +1,37 @@
 //
 //  PQFCirclesInTriangle.h
-//  randomAnimations
+//  PQFCustomLoadersDemo
 //
-//  Created by Pol Quintana on 28/10/14.
-//  Copyright (c) 2014 Pol Quintana. All rights reserved.
+//  Created by Pol Quintana on 6/3/15.
+//  Copyright (c) 2015 Pol Quintana. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "PQFLoader.h"
 
-@interface PQFCirclesInTriangle : UIView
-
-@property (nonatomic) NSUInteger numberOfCircles;
-@property (nonatomic) CGFloat cornerRadius;
-@property (nonatomic) CGFloat loaderAlpha;
-@property (nonatomic, strong) UIColor *loaderColor;
-@property (nonatomic) CGFloat maxDiam;
-@property (nonatomic) CGFloat separation;
-@property (nonatomic) CGFloat borderWidth;
-@property (nonatomic) CGFloat delay;
-@property (nonatomic) CGFloat duration;
+@interface PQFCirclesInTriangle : PQFLoader
+/** Text label of the Loader. Hidden if text is nil */
 @property (nonatomic, strong) UILabel *label;
-
-- (instancetype)initLoaderOnView:(UIView *)view;
-
-- (void)remove;
-- (void)show;
-- (void)hide;
-
+/** Corner radius of the Loader background */
+@property (nonatomic) CGFloat cornerRadius;
+/** Color of the Loader */
+@property (nonatomic, strong) UIColor *loaderColor;
+/** Alpha of the loader */
+@property (nonatomic) CGFloat loaderAlpha;
+/** Duration of each animation */
+@property (nonatomic) CGFloat duration;
+/** Size of the label text */
+@property (nonatomic) CGFloat fontSize;
+/** Number of circles to animate. 3 or 6 are the recommended values */
+@property (nonatomic) CGFloat numberOfCircles;
+/** Maximum diameter of the circles */
+@property (nonatomic) CGFloat maxDiam;
+/** Separation between the circles */
+@property (nonatomic) CGFloat separation;
+/** Border width of the circles*/
+@property (nonatomic) CGFloat borderWidth;
+/** Delay between the animations */
+@property (nonatomic) CGFloat delay;
+/** Alpha of the hole view */
+@property (nonatomic) CGFloat alpha;
 @end

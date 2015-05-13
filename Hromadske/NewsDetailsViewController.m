@@ -12,8 +12,9 @@
 #import "ControllersManager.h"
 #import "Constants.h"
 #import "Articles.h"
+#import "SQTShyNavigationBar.h"
 
-@interface NewsDetailsViewController ()<UIWebViewDelegate>
+@interface NewsDetailsViewController ()<UIWebViewDelegate,UIScrollViewDelegate>
 {
     NewsDetailsMode _mode;
     PQFCirclesInTriangle *_loader;
@@ -40,9 +41,12 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+
     [DataManager sharedManager].newsDetailsMode = _mode;
     _mode = NewsDetailsModeDay;
     [self updateCurrentMode];
+    
+    [self.navigationController.shyNavigationBar setToFullHeight:YES];
 }
 
 
@@ -64,6 +68,7 @@
     }
     [self setUpNavigationBar];
     _webView.delegate = self;
+    _webView.scrollView.delegate = self;
     _webView.alpha = 0;
 }
 
@@ -174,5 +179,8 @@
     [self showLoader:NO];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.navigationController.shyNavigationBar scrollViewDidScroll:scrollView];
+}
 
 @end

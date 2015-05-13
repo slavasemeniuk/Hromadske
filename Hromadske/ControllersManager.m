@@ -12,6 +12,7 @@
 #import "TeamViewController.h"
 #import "ContactsViewController.h"
 #import "HelpProjectViewController.h"
+#import "SQTShyNavigationBar.h"
 
 @interface ControllersManager ()
 
@@ -57,7 +58,17 @@
     
     UIViewController *controller = [self viewControllerWithIdentefier:identefier];
     [controller.view addGestureRecognizer: [self revealController].panGestureRecognizer];
-    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
+    UINavigationController *navigation = nil;
+
+//    if ([identefier isEqual:NSStringFromClass([NewsDetailsViewController class])]) {
+        navigation = [[UINavigationController alloc] initWithNavigationBarClass:[SQTShyNavigationBar class] toolbarClass:nil];
+        [navigation setViewControllers:@[controller] animated:NO];
+    
+    navigation.shyNavigationBar.shyHeight = 20.0f;
+    navigation.shyNavigationBar.fullHeight = 44.0f;
+//    } else {
+//        navigation = [[UINavigationController alloc] initWithRootViewController:controller];
+//    }
     
     return navigation;
 }

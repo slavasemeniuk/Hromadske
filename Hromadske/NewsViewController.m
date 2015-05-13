@@ -42,6 +42,10 @@
     
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
 #pragma mark Views
 - (void)setUpStreamView
 {

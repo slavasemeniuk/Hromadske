@@ -1,1 +1,0 @@
-../../../../MagicalRecord/Library/MagicalRecordStack/MagicalRecordStack+Private.h

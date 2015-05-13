@@ -61,6 +61,8 @@
 		84EA84071ACB5B2B00D51EB0 /* Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA84061ACB5B2B00D51EB0 /* Contacts.m */; };
 		84EBBAF41AC4527E00DF6E9D /* Employe.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBBAF31AC4527E00DF6E9D /* Employe.m */; };
 		84EBBAF71AC454D900DF6E9D /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBBAF61AC454D900DF6E9D /* DataManager.m */; };
+		929081C21B03792E00AB8736 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 929081C11B03792E00AB8736 /* libsqlite3.dylib */; };
+		929081C41B03798000AB8736 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 929081C31B03798000AB8736 /* libGoogleAnalyticsServices.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +164,18 @@
 		84EBBAF31AC4527E00DF6E9D /* Employe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Employe.m; sourceTree = "<group>"; };
 		84EBBAF51AC454D900DF6E9D /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		84EBBAF61AC454D900DF6E9D /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		929081B71B03790A00AB8736 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		929081B81B03790A00AB8736 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		929081B91B03790A00AB8736 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
+		929081BA1B03790A00AB8736 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		929081BB1B03790A00AB8736 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		929081BC1B03790A00AB8736 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		929081BD1B03790A00AB8736 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		929081BE1B03790A00AB8736 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		929081BF1B03790A00AB8736 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		929081C01B03790A00AB8736 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		929081C11B03792E00AB8736 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		929081C31B03798000AB8736 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		C1AD7FFDC3FB61C4705150C0 /* libPods-Hromadske.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hromadske.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				929081C21B03792E00AB8736 /* libsqlite3.dylib in Frameworks */,
 				84A159A61AF00D0C008AD999 /* AVFoundation.framework in Frameworks */,
 				84A159A71AF00D0C008AD999 /* CoreData.framework in Frameworks */,
 				84A159A81AF00D0C008AD999 /* CoreLocation.framework in Frameworks */,
@@ -180,6 +195,7 @@
 				84A159AD1AF00D0C008AD999 /* libicucore.dylib in Frameworks */,
 				84A159AE1AF00D0C008AD999 /* libz.dylib in Frameworks */,
 				84A159AF1AF00D0C008AD999 /* OpenGLES.framework in Frameworks */,
+				929081C41B03798000AB8736 /* libGoogleAnalyticsServices.a in Frameworks */,
 				84A159B01AF00D0C008AD999 /* QuartzCore.framework in Frameworks */,
 				84A159B11AF00D0C008AD999 /* SystemConfiguration.framework in Frameworks */,
 				84A159971AF00A3E008AD999 /* GoogleMaps.framework in Frameworks */,
@@ -358,9 +374,29 @@
 			name = DataClasses;
 			sourceTree = "<group>";
 		};
+		929081B61B0378E200AB8736 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				929081C31B03798000AB8736 /* libGoogleAnalyticsServices.a */,
+				929081B71B03790A00AB8736 /* GAI.h */,
+				929081B81B03790A00AB8736 /* GAIDictionaryBuilder.h */,
+				929081B91B03790A00AB8736 /* GAIEcommerceFields.h */,
+				929081BA1B03790A00AB8736 /* GAIEcommerceProduct.h */,
+				929081BB1B03790A00AB8736 /* GAIEcommerceProductAction.h */,
+				929081BC1B03790A00AB8736 /* GAIEcommercePromotion.h */,
+				929081BD1B03790A00AB8736 /* GAIFields.h */,
+				929081BE1B03790A00AB8736 /* GAILogger.h */,
+				929081BF1B03790A00AB8736 /* GAITrackedViewController.h */,
+				929081C01B03790A00AB8736 /* GAITracker.h */,
+			);
+			name = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
 		D800507DE9DBD1A7AE84A1C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				929081C11B03792E00AB8736 /* libsqlite3.dylib */,
+				929081B61B0378E200AB8736 /* GoogleAnalytics */,
 				84A159981AF00B97008AD999 /* GoogleMaps.bundle */,
 				84A1599A1AF00D0C008AD999 /* AVFoundation.framework */,
 				84A1599B1AF00D0C008AD999 /* CoreData.framework */,
@@ -672,8 +708,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Timophiy Kozak (KLU94V4U4X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Timophiy Kozak (KLU94V4U4X)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -681,8 +717,12 @@
 				INFOPLIST_FILE = Hromadske/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = hromadske;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cd7a9083-6212-403c-958b-d2f6fa05bfe5";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -693,8 +733,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Timophiy Kozak (KLU94V4U4X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Timophiy Kozak (KLU94V4U4X)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -702,8 +742,12 @@
 				INFOPLIST_FILE = Hromadske/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = hromadske;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cd7a9083-6212-403c-958b-d2f6fa05bfe5";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -724,6 +768,10 @@
 				);
 				INFOPLIST_FILE = HromadskeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hromadske.app/Hromadske";
@@ -742,6 +790,10 @@
 				);
 				INFOPLIST_FILE = HromadskeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hromadske.app/Hromadske";

@@ -22,22 +22,27 @@ PODS:
     - AFNetworking/NSURLSession
   - Bolts/Tasks (1.1.5)
   - iRate (1.11.4)
-  - MagicalRecord (3.0.0.dev.1431165833):
-    - MagicalRecord/Core (= 3.0.0.dev.1431165833)
-  - MagicalRecord/Core (3.0.0.dev.1431165833)
+  - MagicalRecord (3.0.0.dev.1431540611):
+    - MagicalRecord/Core (= 3.0.0.dev.1431540611)
+  - MagicalRecord/Core (3.0.0.dev.1431540611)
   - Parse (1.7.2.2):
     - Bolts/Tasks (>= 1.1.5)
-  - PQFCustomLoaders (0.0.1):
+  - pop (1.0.7)
+  - PQFCustomLoaders (1.0.1):
+    - pop (~> 1.0)
     - UIColor+FlatColors
+  - SQTShyNavigationBar (1.0)
   - SWRevealViewController (2.3.0)
   - UIColor+FlatColors (0.0.2)
 
 DEPENDENCIES:
   - AFNetworking
   - iRate
-  - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord.git`, branch `release/3.0`)
+  - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord.git`, branch
+    `release/3.0`)
   - Parse
   - PQFCustomLoaders
+  - SQTShyNavigationBar
   - SWRevealViewController
 
 EXTERNAL SOURCES:
@@ -54,10 +59,12 @@ SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
   Bolts: aac24961496d504aa56fc267cde95162a71bac39
   iRate: 599ed07c854e0695f3c605d1b2a64c67d912acb7
-  MagicalRecord: 1108009980499d6f370a373c16afb1f52635fde8
+  MagicalRecord: 5236bcbb0aaf2d3f68e766822e16d95b46c2477e
   Parse: 6187586a80eb7b4960d755f85e1353148a611f87
-  PQFCustomLoaders: 6e630d3ab3987e035598050f56a4f5a6a7766d92
+  pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
+  PQFCustomLoaders: 3352250e86c2961bfc3d0cccd91def07794c2aa9
+  SQTShyNavigationBar: 9857201cd368499bbdd4fbc67ae6cc442799d065
   SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
   UIColor+FlatColors: 6c699df7a575281794c688c64cee6c44fd1f93b4
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.37.1

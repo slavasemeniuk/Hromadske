@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--Reveal View Controller-->
@@ -469,10 +469,10 @@
             </objects>
             <point key="canvasLocation" x="409" y="326"/>
         </scene>
-        <!--Team View Controller-->
+        <!--Команда-->
         <scene sceneID="0rQ-3p-aQQ">
             <objects>
-                <viewController storyboardIdentifier="TeamViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bQW-ze-rHw" customClass="TeamViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamViewController" title="Команда" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bQW-ze-rHw" customClass="TeamViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7vA-4O-8J6"/>
                         <viewControllerLayoutGuide type="bottom" id="X2x-f7-a64"/>
@@ -499,25 +499,6 @@
                             <constraint firstItem="1lN-2b-UQj" firstAttribute="leading" secondItem="nXI-Ts-kUh" secondAttribute="leading" id="bbh-SN-H2w"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="gKH-n1-BrI">
-                        <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" id="Igv-3W-AKg">
-                            <rect key="frame" x="252" y="10" width="97" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hromadske-logo" translatesAutoresizingMaskIntoConstraints="NO" id="0QW-Ux-YNn">
-                                    <rect key="frame" x="0.0" y="0.0" width="97" height="25"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="0QW-Ux-YNn" firstAttribute="leading" secondItem="Igv-3W-AKg" secondAttribute="leading" id="Cgj-LD-uhX"/>
-                                <constraint firstAttribute="bottom" secondItem="0QW-Ux-YNn" secondAttribute="bottom" id="UQV-mY-JZ3"/>
-                                <constraint firstAttribute="trailing" secondItem="0QW-Ux-YNn" secondAttribute="trailing" id="cMz-34-7wE"/>
-                                <constraint firstItem="0QW-Ux-YNn" firstAttribute="top" secondItem="Igv-3W-AKg" secondAttribute="top" id="yYX-4P-GTq"/>
-                            </constraints>
-                        </view>
-                    </navigationItem>
                     <connections>
                         <outlet property="_tableView" destination="1lN-2b-UQj" id="j4H-13-Qkf"/>
                     </connections>

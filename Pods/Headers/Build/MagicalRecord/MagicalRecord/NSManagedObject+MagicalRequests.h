@@ -1,1 +1,0 @@
-../../../../MagicalRecord/Library/Categories/CoreData/NSManagedObject/NSManagedObject+MagicalRequests.h
