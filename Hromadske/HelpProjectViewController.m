@@ -8,7 +8,6 @@
 
 #import "HelpProjectViewController.h"
 #import "Constants.h"
-#import "ControllersManager.h"
 #import "NetworkTracker.h"
 
 @interface HelpProjectViewController () <UIAlertViewDelegate>
@@ -61,8 +60,7 @@
 
 - (IBAction)goToWebSite:(id)sender {
     if ([NetworkTracker isReachable]) {
-        UIViewController *controller = [[ControllersManager sharedManager] viewControllerWithIdentefier:@"WebHelpViewController"];
-        [self.navigationController pushViewController:controller animated:YES];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:HELP_URL]];
     }else{
         UIAlertView *noConnection = [[UIAlertView alloc]initWithTitle:@"Помилка" message:@"Перевірте підключення до мережі" delegate:self cancelButtonTitle:@"Добре" otherButtonTitles: nil];
         [noConnection show];
