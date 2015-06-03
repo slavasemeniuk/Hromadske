@@ -39,6 +39,7 @@
     }
 }
 
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 
@@ -157,9 +158,9 @@
     }
     
     if (yes) {
-        [_loader show];
+        [_loader showLoader];
     } else {
-        [_loader hide];
+        [_loader removeLoader];
     }
     
 }
@@ -177,10 +178,12 @@
 }
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     [self showLoader:NO];
+    _webView.alpha = 1;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self.navigationController.shyNavigationBar scrollViewDidScroll:scrollView];
+   
 }
 
 @end
