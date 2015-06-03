@@ -143,9 +143,9 @@
     [iRate sharedInstance].remindPeriod=5;
     [iRate sharedInstance].messageTitle=@"Оціни Громадське";
     [iRate sharedInstance].message=@"Якщо тобі сподобався додаток, оціни Громадське в AppStore";
-    [iRate sharedInstance].CancelButtonLabel = @"Ні, дякую";
-    [iRate sharedInstance].RemindButtonLabel = @"Нагадати пізніше";
-    [iRate sharedInstance].RateButtonLabel = @"Оцінити";
+    [iRate sharedInstance].cancelButtonLabel = @"Ні, дякую";
+    [iRate sharedInstance].remindButtonLabel = @"Нагадати пізніше";
+    [iRate sharedInstance].rateButtonLabel = @"Оцінити";
 }
 
 @end
