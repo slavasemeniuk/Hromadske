@@ -198,4 +198,9 @@
     [self.navigationController.shyNavigationBar scrollViewDidScroll:scrollView];
 }
 
+- (void)scrollViewDidScrollToTop:(UIScrollView*)scrollView
+{
+    [self.navigationController.shyNavigationBar setToFullHeight:YES];
+}
+
 @end
