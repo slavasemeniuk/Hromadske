@@ -1,0 +1,12 @@
+.DS_Store
+.DS_Store?
+.idea
+nbproject
+.Spotlight-V100
+.Trashes
+Thumbs.db
+*~
+xcuserstate
+xcuserdata
+Pods/
+Pods/Target Support Files/
