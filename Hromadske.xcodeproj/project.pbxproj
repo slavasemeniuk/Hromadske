@@ -43,7 +43,6 @@
 		84A159AF1AF00D0C008AD999 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A31AF00D0C008AD999 /* OpenGLES.framework */; };
 		84A159B01AF00D0C008AD999 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A41AF00D0C008AD999 /* QuartzCore.framework */; };
 		84A159B11AF00D0C008AD999 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A51AF00D0C008AD999 /* SystemConfiguration.framework */; };
-		84A1A93A1AF0467C00646DE5 /* WebHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A1A9391AF0467C00646DE5 /* WebHelpViewController.m */; };
 		84A25D691B00D168005DE9CD /* Articles.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A25D681B00D168005DE9CD /* Articles.m */; };
 		84A2A6891ABB7D59004862E6 /* RemoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A6881ABB7D59004862E6 /* RemoteManager.m */; };
 		84A439381AE5BB67002C0A98 /* RateAndWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A439371AE5BB67002C0A98 /* RateAndWeather.m */; };
@@ -130,8 +129,6 @@
 		84A159A31AF00D0C008AD999 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		84A159A41AF00D0C008AD999 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		84A159A51AF00D0C008AD999 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		84A1A9381AF0467C00646DE5 /* WebHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebHelpViewController.h; sourceTree = "<group>"; };
-		84A1A9391AF0467C00646DE5 /* WebHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebHelpViewController.m; sourceTree = "<group>"; };
 		84A25D671B00D168005DE9CD /* Articles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Articles.h; sourceTree = "<group>"; };
 		84A25D681B00D168005DE9CD /* Articles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Articles.m; sourceTree = "<group>"; };
 		84A2A6871ABB7D59004862E6 /* RemoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteManager.h; sourceTree = "<group>"; };
@@ -239,8 +236,6 @@
 				849D28791ABB39C300AB07BC /* HelpProjectViewController.m */,
 				849D287B1ABB3B8800AB07BC /* ContactsViewController.h */,
 				849D287C1ABB3B8800AB07BC /* ContactsViewController.m */,
-				84A1A9381AF0467C00646DE5 /* WebHelpViewController.h */,
-				84A1A9391AF0467C00646DE5 /* WebHelpViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -566,7 +561,6 @@
 				84A25D691B00D168005DE9CD /* Articles.m in Sources */,
 				8436031C1AEA629600EC66EA /* NewArticlesView.m in Sources */,
 				84DB4E151AB7776400D7BA12 /* TeamViewController.m in Sources */,
-				84A1A93A1AF0467C00646DE5 /* WebHelpViewController.m in Sources */,
 				84C22FD91AB77282006C8C2E /* AppDelegate.m in Sources */,
 				84EBBAF41AC4527E00DF6E9D /* Employe.m in Sources */,
 				8472D1411ADDA8E600F188E9 /* Photo.m in Sources */,

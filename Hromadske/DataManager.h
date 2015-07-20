@@ -12,29 +12,26 @@
 
 @interface DataManager : NSObject
 
-+ (DataManager *)sharedManager;
++ (DataManager*)sharedManager;
 
+- (void)updateArticleWithId:(NSNumber*)identifire;
+- (void)teamWithCompletion:(void (^)())completion;
+- (void)fetchRemoteArticles;
+- (void)fetchRemoteDigest;
+- (id)getRateAndWeather;
 
-- (void) updateArticleWithId: (NSNumber*) identifire;
-- (void) teamWithCompletion:(void (^)()) completion;
-- (void) fetchRemoteArticles;
-- (void) fetchRemoteDigest;
-- (id) getRateAndWeather;
-
-
-@property (nonatomic, strong) NSArray *listOfArticles;
-@property (nonatomic, strong) NSArray *listOfEmployes;
-@property (nonatomic, strong) NSString *streamingURL;
+@property (nonatomic, strong) NSArray* listOfArticles;
+@property (nonatomic, strong) NSArray* listOfEmployes;
+@property (nonatomic, strong) NSString* streamingURL;
 @property NewsDetailsMode newsDetailsMode;
-@property (nonatomic ,assign) id <DataManangerDelagate> delegate;
+@property (nonatomic, assign) id<DataManangerDelagate> delegate;
 
 @end
 
-
-@protocol DataManangerDelagate<NSObject>
+@protocol DataManangerDelagate <NSObject>
 
 @optional
-- (void) dataManagerDidStartUpadating:(DataManager *)manager;
-- (void) dataManager:(DataManager *)manager didFinishUpdatingArticles: (NSArray *)listOfArticles;
-- (void) dataManagerDidFaildUpadating:(DataManager *)manager;
+- (void)dataManagerDidStartUpadating:(DataManager*)manager;
+- (void)dataManager:(DataManager*)manager didFinishUpdatingArticles:(NSArray*)listOfArticles;
+- (void)dataManagerDidFaildUpadating:(DataManager*)manager;
 @end

@@ -27,15 +27,14 @@
 {
     [super viewDidLoad];
 
+    NSLog(@"%i", _mode);
     [self setUpViewController];
     [self updateCurrentMode];
-
     if (_article.content) {
         [self loadWebViewContent];
     }
     else {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataLoaded) name:@"refreshDataNotification" object:nil];
-
         [self loadData];
     }
 }
@@ -43,12 +42,18 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [DataManager sharedManager].newsDetailsMode = _mode;
-    _mode = NewsDetailsModeDay;
-    [self updateCurrentMode];
-
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     [self.navigationController.shyNavigationBar setToFullHeight:YES];
+    if (_webView.isLoading) {
+        [_webView stopLoading];
+    }
+    _webView.delegate = nil;
+    _webView.scrollView.delegate = nil;
+    _webView = nil;
 }
 
 #pragma mark - VIEW CONTROLLER
@@ -98,7 +103,7 @@
 
 - (void)loadWebViewContent
 {
-    if (![[_article valueForKey:@"content"] isEqual:@"link"]) {
+    if (![_article.content isEqual:@"link"]) {
         NSString* template = _mode == NewsDetailsModeDay ? HTMLDETAILS_DAY : HTMLDETAILS_NIGHT;
         NSString* htmlContent = [NSString stringWithFormat:@"%@%@%@", template, _article.content, HTMLDETAILS_WRAP];
         [_webView loadHTMLString:htmlContent baseURL:[NSURL URLWithString:HROMADSKE_URL]];

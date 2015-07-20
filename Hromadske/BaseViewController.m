@@ -15,23 +15,26 @@
 
 @implementation BaseViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self setUpMenuButton];
-
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
 
--(void)setUpMenuButton
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+}
+
+- (void)setUpMenuButton
 {
-    self.navigationController.navigationBar.barTintColor=[UIColor whiteColor];
-    self.navigationController.navigationBar.tintColor=[UIColor blackColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-icon"] style:UIBarButtonItemStyleDone target:self.revealViewController action:@selector(revealToggle:)];
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor blackColor]];
 }
-
-
-
-
 
 @end

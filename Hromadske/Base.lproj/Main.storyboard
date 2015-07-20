@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -35,6 +35,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="YQu-CJ-SHa">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8JW-Yc-BEW">
                                 <rect key="frame" x="0.0" y="0.0" width="280" height="480"/>
                                 <subviews>
@@ -170,10 +173,14 @@
                             </view>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="YQu-CJ-SHa" firstAttribute="top" secondItem="VZS-YQ-R4o" secondAttribute="top" id="6or-PW-JHv"/>
                             <constraint firstItem="1fP-Cs-Wbd" firstAttribute="top" secondItem="8JW-Yc-BEW" secondAttribute="bottom" id="EJg-YZ-Ydc"/>
                             <constraint firstAttribute="trailing" secondItem="8JW-Yc-BEW" secondAttribute="trailing" constant="40" id="HQV-y6-YaT"/>
+                            <constraint firstItem="YQu-CJ-SHa" firstAttribute="leading" secondItem="VZS-YQ-R4o" secondAttribute="leading" id="LKQ-ec-t5b"/>
                             <constraint firstItem="8JW-Yc-BEW" firstAttribute="top" secondItem="VZS-YQ-R4o" secondAttribute="top" id="OAN-3S-WwC"/>
+                            <constraint firstAttribute="trailing" secondItem="YQu-CJ-SHa" secondAttribute="trailing" id="cGN-tH-raE"/>
                             <constraint firstItem="8JW-Yc-BEW" firstAttribute="leading" secondItem="VZS-YQ-R4o" secondAttribute="leading" id="gbr-he-eae"/>
+                            <constraint firstItem="1fP-Cs-Wbd" firstAttribute="top" secondItem="YQu-CJ-SHa" secondAttribute="bottom" id="w6N-uu-4Jp"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -188,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sV8-U9-ZIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-19" y="-1156"/>
+            <point key="canvasLocation" x="-517" y="-716"/>
         </scene>
         <!--Допомогти-->
         <scene sceneID="Rgz-X8-pli">
@@ -256,7 +263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V3j-IQ-ZYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="409" y="2662"/>
+            <point key="canvasLocation" x="-39" y="981"/>
         </scene>
         <!--Контакти-->
         <scene sceneID="uFC-kn-15U">
@@ -377,7 +384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhA-FE-pXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="414" y="1897"/>
+            <point key="canvasLocation" x="-517" y="981"/>
         </scene>
         <!--News View Controller-->
         <scene sceneID="KNe-i2-uYZ">
@@ -388,11 +395,11 @@
                         <viewControllerLayoutGuide type="bottom" id="4GY-gq-Cku"/>
                     </layoutGuides>
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="VGx-v3-0ZT">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Dj-Cz-c7x">
-                                <rect key="frame" x="0.0" y="12" width="600" height="588"/>
+                                <rect key="frame" x="0.0" y="12" width="320" height="468"/>
                                 <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="yCa-Sq-Wem" id="QO9-kc-J2g"/>
@@ -426,13 +433,15 @@
                             </constraints>
                         </view>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                     <connections>
                         <outlet property="tableView" destination="8Dj-Cz-c7x" id="GeD-qP-3iZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sHr-Gw-SBG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="409" y="326"/>
+            <point key="canvasLocation" x="671" y="268"/>
         </scene>
         <!--Команда-->
         <scene sceneID="0rQ-3p-aQQ">
@@ -443,11 +452,11 @@
                         <viewControllerLayoutGuide type="bottom" id="X2x-f7-a64"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nXI-Ts-kUh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1lN-2b-UQj">
-                                <rect key="frame" x="0.0" y="10" width="600" height="590"/>
+                                <rect key="frame" x="0.0" y="10" width="320" height="470"/>
                                 <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
                                 <sections/>
                                 <connections>
@@ -464,13 +473,15 @@
                             <constraint firstItem="1lN-2b-UQj" firstAttribute="leading" secondItem="nXI-Ts-kUh" secondAttribute="leading" id="bbh-SN-H2w"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                     <connections>
                         <outlet property="_tableView" destination="1lN-2b-UQj" id="j4H-13-Qkf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nmb-VX-y43" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="409" y="1113"/>
+            <point key="canvasLocation" x="-517" y="289"/>
         </scene>
         <!--News Details View Controller-->
         <scene sceneID="xCa-s9-W8B">
@@ -481,11 +492,11 @@
                         <viewControllerLayoutGuide type="bottom" id="T2T-0g-7c2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="myR-P1-0EN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LjV-dE-ERe">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" calendarEvent="YES"/>
                                 <connections>
@@ -501,18 +512,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Pjx-xd-297"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                     <connections>
                         <outlet property="webView" destination="LjV-dE-ERe" id="nS7-a8-oGE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f6P-Ym-P07" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1110" y="326"/>
+            <point key="canvasLocation" x="1118" y="268"/>
         </scene>
     </scenes>
     <resources>
         <image name="adress-icon" width="15" height="25"/>
         <image name="email-icon" width="16" height="16"/>
+        <image name="gradient.png" width="1080" height="1920"/>
         <image name="hromadske-logo" width="97" height="25"/>
         <image name="kopilka.jpg" width="640" height="640"/>
         <image name="menu-weather" width="56" height="51"/>

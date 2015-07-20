@@ -17,16 +17,14 @@
 #import "NewsTableViewCell.h"
 #import "Articles.h"
 
-
-@interface NewsViewController ()<UITableViewDataSource, UITableViewDelegate, DataManangerDelagate>
-{
-    NSMutableArray *_tableViewsData;
-    NSString *_stream;
-    NewArticlesView *_newArticles;
+@interface NewsViewController () <UITableViewDataSource, UITableViewDelegate, DataManangerDelagate> {
+    NSMutableArray* _tableViewsData;
+    NSString* _stream;
+    NewArticlesView* _newArticles;
     NSInteger _countNewArticles;
 }
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) UIRefreshControl *pullToReferesh;
+@property (weak, nonatomic) IBOutlet UITableView* tableView;
+@property (strong, nonatomic) UIRefreshControl* pullToReferesh;
 @end
 
 @implementation NewsViewController
@@ -39,116 +37,119 @@
     [self setUpData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViweData) name:@"ViewsCountUpdated" object:nil];
     [[DataManager sharedManager] fetchRemoteDigest];
-    
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark Views
 - (void)setUpStreamView
 {
     if (_stream) {
-        StreamView *streamView = [[StreamView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+        StreamView* streamView = [[StreamView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
         [streamView loadVideoStreamWithUrl:_stream];
-        self.tableView.tableHeaderView=streamView;
+        self.tableView.tableHeaderView = streamView;
     }
-    else
-    {
+    else {
         self.tableView.tableHeaderView = nil;
     }
 }
 
-- (void)setUpViews{
+- (void)setUpViews
+{
     [self setUpStreamView];
     [_tableView registerNib:[UINib nibWithNibName:@"NewsTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsCell"];
     _pullToReferesh = [[UIRefreshControl alloc] init];
     [_pullToReferesh addTarget:[DataManager sharedManager] action:@selector(fetchRemoteDigest) forControlEvents:UIControlEventValueChanged];
     [_tableView addSubview:_pullToReferesh];
-    
 }
-- (void)showNewArticleBage:(NSInteger)count{
+- (void)showNewArticleBage:(NSInteger)count
+{
     if (!_newArticles) {
-        _newArticles =[[NewArticlesView alloc]init];
-        
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _newArticles = [[NewArticlesView alloc] init];
+
+        UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setBounds:_newArticles.frame];
         [btn addSubview:_newArticles];
         [btn addTarget:self action:@selector(goToTop) forControlEvents:UIControlEventAllEvents];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-        
     }
     [_newArticles setHidden:NO];
     [_newArticles newArticles:count];
 }
 
-- (void)hideNewArticlesBage{
+- (void)hideNewArticlesBage
+{
     [_newArticles setHidden:YES];
 }
 
-- (void) goToTop{
+- (void)goToTop
+{
     [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
     [self hideNewArticlesBage];
 }
 
 #pragma mark DATA
 
--(void)setUpData
+- (void)setUpData
 {
     _tableViewsData = [NSMutableArray arrayWithArray:[DataManager sharedManager].listOfArticles];
 }
 
--(void)reloadTableViweData{
+- (void)reloadTableViweData
+{
     _tableViewsData = [NSMutableArray arrayWithArray:[DataManager sharedManager].listOfArticles];
     [_tableView reloadData];
 }
 
-- (void) dataManagerDidStartUpadating:(DataManager *)manager
+- (void)dataManagerDidStartUpadating:(DataManager*)manager
 {
     if (![_pullToReferesh isRefreshing]) {
-         [_pullToReferesh beginRefreshing];
+        [_pullToReferesh beginRefreshing];
     }
 }
-- (void) dataManager:(DataManager *)manager didFinishUpdatingArticles:(NSArray *)listOfArticles{
+- (void)dataManager:(DataManager*)manager didFinishUpdatingArticles:(NSArray*)listOfArticles
+{
     _countNewArticles = [listOfArticles count];
-    if (_countNewArticles>0 && _tableView.contentOffset.y>0)
-    {
+    if (_countNewArticles > 0 && _tableView.contentOffset.y > 0) {
         [self showNewArticleBage:_countNewArticles];
     }
-    else
-    {
+    else {
         [self hideNewArticlesBage];
     }
-    _stream=[[DataManager sharedManager] streamingURL];
+    _stream = [[DataManager sharedManager] streamingURL];
     [self setUpStreamView];
-    for (int i=0; i<[listOfArticles count]; i++) {
+    for (int i = 0; i < [listOfArticles count]; i++) {
         [_tableViewsData insertObject:[listOfArticles objectAtIndex:i] atIndex:i];
     }
     [_tableView reloadData];
     [_pullToReferesh endRefreshing];
 }
 
-
-- (void) dataManagerDidFaildUpadating:(DataManager *)manager{
+- (void)dataManagerDidFaildUpadating:(DataManager*)manager
+{
     [_pullToReferesh endRefreshing];
 }
 
 #pragma mark - Table view delegate
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [(NewsTableViewCell *)cell performSelector:@selector(updateShadow) withObject:nil afterDelay:0];
+- (void)tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    [(NewsTableViewCell*)cell performSelector:@selector(updateShadow) withObject:nil afterDelay:0];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_tableViewsData count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    NewsTableViewCell *newsCell = [tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
-    Articles *article = [_tableViewsData objectAtIndex:indexPath.row];
+    NewsTableViewCell* newsCell = [tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
+    Articles* article = [_tableViewsData objectAtIndex:indexPath.row];
     [newsCell.title setText:article.title];
     [newsCell.shortDescription setText:article.short_description];
     [newsCell.viewsCount setText:[article.views_count stringValue]];
@@ -156,44 +157,41 @@
     if (![article.category isEqual:@"uncategorized"]) {
         [newsCell.category setText:article.category];
     }
-    
-    NSURLRequest *imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[article getImageUrl]]
+
+    NSURLRequest* imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[article getImageUrl]]
                                                   cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                               timeoutInterval:60];
     [newsCell.image_view setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
-    
-    if (article.viewed.boolValue==NO) {
+
+    if (article.viewed.boolValue == NO) {
         [newsCell unviewed];
     };
-    
+
     return newsCell;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     return 356.f;
 }
 
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    Articles *article = [_tableViewsData objectAtIndex:indexPath.row];
-    if ([NetworkTracker isReachable]||(article.content)) {
-        NewsDetailsViewController *details = (NewsDetailsViewController *)[[ControllersManager sharedManager] viewControllerWithIdentefier:NSStringFromClass([NewsDetailsViewController class])];
+    Articles* article = [_tableViewsData objectAtIndex:indexPath.row];
+    if ([NetworkTracker isReachable] || (article.content)) {
+        NewsDetailsViewController* details = (NewsDetailsViewController*)[[ControllersManager sharedManager] viewControllerWithIdentefier:NSStringFromClass([NewsDetailsViewController class])];
         details.article = article;
         [self.navigationController pushViewController:details animated:YES];
-        if (article.viewed.boolValue==NO){
+        if (article.viewed.boolValue == NO) {
             [article makeViewed];
         }
     }
-    else{
-        UIAlertView *noConnection = [[UIAlertView alloc]initWithTitle:@"Помилка" message:@"Перевірте підключення до мережі" delegate:self cancelButtonTitle:@"Добре" otherButtonTitles: nil];
+    else {
+        UIAlertView* noConnection = [[UIAlertView alloc] initWithTitle:@"Помилка" message:@"Перевірте підключення до мережі" delegate:self cancelButtonTitle:@"Добре" otherButtonTitles:nil];
         [noConnection show];
     }
     [_tableView reloadData];
     [_tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
-
-
 
 @end
