@@ -16,6 +16,7 @@
 #import "DataManager.h"
 #import "NewsTableViewCell.h"
 #import "Articles.h"
+#import "Categories.h"
 
 @interface NewsViewController () <UITableViewDataSource, UITableViewDelegate, DataManangerDelagate> {
     NSMutableArray* _tableViewsData;
@@ -154,8 +155,8 @@
     [newsCell.shortDescription setText:article.short_description];
     [newsCell.viewsCount setText:[article.views_count stringValue]];
     [newsCell.createdAt setText:[[DateFormatter sharedManager] timeIntervalFromDate:article.created_at]];
-    if (![article.category isEqual:@"uncategorized"]) {
-        [newsCell.category setText:article.category];
+    if (![article.category.name isEqual:@"uncategorized"]) {
+        [newsCell.category setText:article.category.name];
     }
 
     NSURLRequest* imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[article getImageUrl]]

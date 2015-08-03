@@ -17,6 +17,7 @@
     NSArray* _menuItems;
     NSArray* _arrayOfIdentifier;
     NSArray* _listOfIcon;
+    NSArray* _categories;
 }
 @property (weak, nonatomic) IBOutlet UITableView* tableView;
 @property (weak, nonatomic) IBOutlet UILabel* temperature;
@@ -33,6 +34,7 @@
     [super viewDidLoad];
     [self setUpViewController];
     [self refreshData];
+    _categories = [[DataManager sharedManager] fetchCategories];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:@"DigestUpdated" object:nil];
 }
 

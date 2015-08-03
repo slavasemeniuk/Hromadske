@@ -16,6 +16,7 @@
 
 - (void)updateArticleWithId:(NSNumber*)identifire;
 - (void)teamWithCompletion:(void (^)())completion;
+- (NSArray*)fetchCategories;
 - (void)fetchRemoteArticles;
 - (void)fetchRemoteDigest;
 - (id)getRateAndWeather;
