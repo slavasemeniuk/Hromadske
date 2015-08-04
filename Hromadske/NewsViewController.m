@@ -23,6 +23,7 @@
     NSString* _stream;
     NewArticlesView* _newArticles;
     NSInteger _countNewArticles;
+    NSString* _currentCategory;
 }
 @property (weak, nonatomic) IBOutlet UITableView* tableView;
 @property (strong, nonatomic) UIRefreshControl* pullToReferesh;
@@ -35,15 +36,26 @@
     [super viewDidLoad];
     [[DataManager sharedManager] setDelegate:self];
     [self setUpViews];
-    [self setUpData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViweData) name:@"ViewsCountUpdated" object:nil];
+    [self setUpData];
+    _currentCategory = [[DataManager sharedManager] articleCategory];
     [[DataManager sharedManager] fetchRemoteDigest];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (![[DataManager sharedManager].articleCategory isEqualToString:_currentCategory]) {
+        _currentCategory = [[DataManager sharedManager] articleCategory];
+        [self setUpData];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 #pragma mark Views
@@ -97,12 +109,11 @@
 
 - (void)setUpData
 {
-    _tableViewsData = [NSMutableArray arrayWithArray:[DataManager sharedManager].listOfArticles];
+    _tableViewsData = [NSMutableArray arrayWithArray:[[DataManager sharedManager] getArticlesWithCurrentCategories]];
 }
 
 - (void)reloadTableViweData
 {
-    _tableViewsData = [NSMutableArray arrayWithArray:[DataManager sharedManager].listOfArticles];
     [_tableView reloadData];
 }
 
@@ -114,6 +125,9 @@
 }
 - (void)dataManager:(DataManager*)manager didFinishUpdatingArticles:(NSArray*)listOfArticles
 {
+    _stream = [[DataManager sharedManager] streamingURL];
+    [self setUpStreamView];
+
     _countNewArticles = [listOfArticles count];
     if (_countNewArticles > 0 && _tableView.contentOffset.y > 0) {
         [self showNewArticleBage:_countNewArticles];
@@ -121,11 +135,11 @@
     else {
         [self hideNewArticlesBage];
     }
-    _stream = [[DataManager sharedManager] streamingURL];
-    [self setUpStreamView];
+
     for (int i = 0; i < [listOfArticles count]; i++) {
         [_tableViewsData insertObject:[listOfArticles objectAtIndex:i] atIndex:i];
     }
+
     [_tableView reloadData];
     [_pullToReferesh endRefreshing];
 }

@@ -54,11 +54,8 @@
                                             <constraint firstAttribute="height" constant="1" id="UoM-ob-20w"/>
                                         </constraints>
                                     </view>
-                                    <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="45" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HgQ-Ch-YfG">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="45" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HgQ-Ch-YfG">
                                         <rect key="frame" x="0.0" y="221" width="280" height="230"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="230" id="2t4-bv-NAf"/>
-                                        </constraints>
                                         <sections/>
                                         <connections>
                                             <outlet property="dataSource" destination="maS-4L-wqK" id="SK4-z2-qhs"/>
@@ -158,6 +155,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="HgQ-Ch-YfG" firstAttribute="leading" secondItem="8JW-Yc-BEW" secondAttribute="leading" id="1lW-DS-zir"/>
+                                    <constraint firstItem="egW-ae-yKW" firstAttribute="top" secondItem="HgQ-Ch-YfG" secondAttribute="bottom" constant="8" id="5ad-eG-Fcm"/>
                                     <constraint firstItem="egW-ae-yKW" firstAttribute="leading" secondItem="8JW-Yc-BEW" secondAttribute="leading" id="BfW-vg-1WD"/>
                                     <constraint firstItem="HgQ-Ch-YfG" firstAttribute="top" secondItem="fVE-bM-ewd" secondAttribute="bottom" constant="8" id="FdZ-y5-ucP"/>
                                     <constraint firstAttribute="bottom" secondItem="egW-ae-yKW" secondAttribute="bottom" constant="8" id="Fh4-MI-Iqr"/>

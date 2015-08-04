@@ -22,6 +22,7 @@
 @interface DataManager ()
 @property (nonatomic, strong) NSString* dateOfLastArticle;
 @property (nonatomic, strong) RateAndWeather* rateAndWeather;
+
 @end
 
 @implementation DataManager
@@ -56,6 +57,7 @@
 {
     [MagicalRecord setupSQLiteStackWithStoreNamed:@"Hromadske.sqlite"];
     [self fetchLocalData];
+    _articleCategory = @"Всі новини";
     _newsDetailsMode = NewsDetailsModeNone;
 }
 
@@ -126,9 +128,31 @@
     _listOfEmployes = [NSArray arrayWithArray:[Employe MR_findAllSortedBy:@"identifire" ascending:YES]];
 }
 
-- (NSArray*)fetchCategories
+- (void)fetchCategories
 {
-    return [Categories MR_findAll];
+    _categories = [Categories MR_findAll];
+}
+
+- (NSArray*)getCategories
+{
+    [self fetchCategories];
+    NSMutableArray* categoryStringList = [NSMutableArray array];
+    for (Categories* category in _categories) {
+        if (![category.name isEqualToString:@"uncategorized"]) {
+            [categoryStringList addObject:category.name];
+        }
+    }
+    return categoryStringList;
+}
+
+- (NSArray*)getArticlesWithCurrentCategories
+{
+    if ([[DataManager sharedManager].articleCategory isEqualToString:@"Всі новини"]) {
+        return _listOfArticles;
+    }
+    else {
+        return [_listOfArticles filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"category.name==%@", _articleCategory]];
+    }
 }
 
 - (id)getRateAndWeather

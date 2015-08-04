@@ -16,14 +16,17 @@
 
 - (void)updateArticleWithId:(NSNumber*)identifire;
 - (void)teamWithCompletion:(void (^)())completion;
-- (NSArray*)fetchCategories;
+- (NSArray*)getCategories;
+- (NSArray*)getArticlesWithCurrentCategories;
 - (void)fetchRemoteArticles;
 - (void)fetchRemoteDigest;
 - (id)getRateAndWeather;
 
 @property (nonatomic, strong) NSArray* listOfArticles;
 @property (nonatomic, strong) NSArray* listOfEmployes;
+@property (nonatomic, strong) NSArray* categories;
 @property (nonatomic, strong) NSString* streamingURL;
+@property NSString* articleCategory;
 @property NewsDetailsMode newsDetailsMode;
 @property (nonatomic, assign) id<DataManangerDelagate> delegate;
 
