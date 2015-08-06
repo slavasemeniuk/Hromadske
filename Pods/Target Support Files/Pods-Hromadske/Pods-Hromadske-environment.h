@@ -59,14 +59,14 @@
 // This library does not follow semantic-versioning,
 // so we were not able to define version macros.
 // Please contact the author.
-// Version: 3.0.0.dev.1438255401.
+// Version: 3.0.0.dev.1438865075.
 
 // MagicalRecord/Core
 #define COCOAPODS_POD_AVAILABLE_MagicalRecord_Core
 // This library does not follow semantic-versioning,
 // so we were not able to define version macros.
 // Please contact the author.
-// Version: 3.0.0.dev.1438255401.
+// Version: 3.0.0.dev.1438865075.
 
 // PQFCustomLoaders
 #define COCOAPODS_POD_AVAILABLE_PQFCustomLoaders

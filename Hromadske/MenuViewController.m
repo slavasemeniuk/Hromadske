@@ -17,9 +17,8 @@
     NSArray* _menuItems;
     NSArray* _arrayOfIdentifier;
     NSArray* _listOfMenuIcon;
-
-    NSArray* _section;
     NSMutableArray* _newsCatagorySec;
+    
     BOOL _isShowingList;
 }
 @property (weak, nonatomic) IBOutlet UITableView* tableView;
@@ -55,8 +54,6 @@
 
 - (void)setUpViewController
 {
-    //     @"menu-items-news",@"NewsViewController",
-
     NSString* appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     _version.text = [NSString stringWithFormat:@"Версія %@", appVersion];
 
@@ -68,8 +65,6 @@
     _menuItems = @[ @"Допомогти проекту", @"Команда", @"Контакти", @"Оцінити" ];
     _listOfMenuIcon = @[ @"menu-donate", @"menu-items-team", @"menu-contacts", @"menu-item-rate" ];
     _arrayOfIdentifier = @[ @"HelpProjectViewController", @"TeamViewController", @"ContactsViewController" ];
-
-    _section = @[ _newsCatagorySec, _menuItems ];
 }
 
 - (void)refreshData

@@ -22,9 +22,9 @@ PODS:
     - AFNetworking/NSURLSession
   - Bolts/Tasks (1.2.0)
   - iRate (1.11.4)
-  - MagicalRecord (3.0.0.dev.1438255401):
-    - MagicalRecord/Core (= 3.0.0.dev.1438255401)
-  - MagicalRecord/Core (3.0.0.dev.1438255401)
+  - MagicalRecord (3.0.0.dev.1438865075):
+    - MagicalRecord/Core (= 3.0.0.dev.1438865075)
+  - MagicalRecord/Core (3.0.0.dev.1438865075)
   - Parse (1.7.5.3):
     - Bolts/Tasks (>= 1.2.0)
   - pop (1.0.7)
@@ -36,7 +36,7 @@ PODS:
   - UIColor+FlatColors (0.0.2)
 
 DEPENDENCIES:
-  - AFNetworking
+  - AFNetworking (~> 2.5.3)
   - iRate
   - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord.git`, branch
     `release/3.0`)
@@ -59,7 +59,7 @@ SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   iRate: 599ed07c854e0695f3c605d1b2a64c67d912acb7
-  MagicalRecord: 2dacf8dc6b21e822b926277be23db47bf5989884
+  MagicalRecord: a106dfa52e6bd4d1595d4900a89e3e82ff1597fc
   Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   PQFCustomLoaders: 861daed580660069d1cb5c61db835baabf1f21a5
