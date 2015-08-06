@@ -1,30 +1,30 @@
 PODS:
-  - AFNetworking (2.5.4):
-    - AFNetworking/NSURLConnection (= 2.5.4)
-    - AFNetworking/NSURLSession (= 2.5.4)
-    - AFNetworking/Reachability (= 2.5.4)
-    - AFNetworking/Security (= 2.5.4)
-    - AFNetworking/Serialization (= 2.5.4)
-    - AFNetworking/UIKit (= 2.5.4)
-  - AFNetworking/NSURLConnection (2.5.4):
+  - AFNetworking (2.5.3):
+    - AFNetworking/NSURLConnection (= 2.5.3)
+    - AFNetworking/NSURLSession (= 2.5.3)
+    - AFNetworking/Reachability (= 2.5.3)
+    - AFNetworking/Security (= 2.5.3)
+    - AFNetworking/Serialization (= 2.5.3)
+    - AFNetworking/UIKit (= 2.5.3)
+  - AFNetworking/NSURLConnection (2.5.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.4):
+  - AFNetworking/NSURLSession (2.5.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.4)
-  - AFNetworking/Security (2.5.4)
-  - AFNetworking/Serialization (2.5.4)
-  - AFNetworking/UIKit (2.5.4):
+  - AFNetworking/Reachability (2.5.3)
+  - AFNetworking/Security (2.5.3)
+  - AFNetworking/Serialization (2.5.3)
+  - AFNetworking/UIKit (2.5.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Bolts/Tasks (1.2.0)
   - iRate (1.11.4)
-  - MagicalRecord (3.0.0.dev.1438865075):
-    - MagicalRecord/Core (= 3.0.0.dev.1438865075)
-  - MagicalRecord/Core (3.0.0.dev.1438865075)
+  - MagicalRecord (3.0.0.dev.1438868765):
+    - MagicalRecord/Core (= 3.0.0.dev.1438868765)
+  - MagicalRecord/Core (3.0.0.dev.1438868765)
   - Parse (1.7.5.3):
     - Bolts/Tasks (>= 1.2.0)
   - pop (1.0.7)
@@ -36,14 +36,14 @@ PODS:
   - UIColor+FlatColors (0.0.2)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.5.3)
-  - iRate
+  - AFNetworking (= 2.5.3)
+  - iRate (= 1.11.4)
   - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord.git`, branch
     `release/3.0`)
-  - Parse
-  - PQFCustomLoaders
-  - SQTShyNavigationBar
-  - SWRevealViewController
+  - Parse (= 1.7.5.3)
+  - PQFCustomLoaders (~> 1.1)
+  - SQTShyNavigationBar (~> 1.0)
+  - SWRevealViewController (~> 2.3.0)
 
 EXTERNAL SOURCES:
   MagicalRecord:
@@ -56,10 +56,10 @@ CHECKOUT OPTIONS:
     :git: https://github.com/magicalpanda/MagicalRecord.git
 
 SPEC CHECKSUMS:
-  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   iRate: 599ed07c854e0695f3c605d1b2a64c67d912acb7
-  MagicalRecord: a106dfa52e6bd4d1595d4900a89e3e82ff1597fc
+  MagicalRecord: 21e47bfb7f232691f2fcf624a07be2c3aa4abd30
   Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
   PQFCustomLoaders: 861daed580660069d1cb5c61db835baabf1f21a5
