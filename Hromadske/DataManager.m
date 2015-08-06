@@ -11,6 +11,7 @@
 #import "DateFormatter.h"
 #import "RemoteManager.h"
 #import "NetworkTracker.h"
+#import "Photo.h"
 #import "Constants.h"
 #import "RateAndWeather.h"
 #import "Employe.h"
@@ -280,7 +281,15 @@
                     short_description = [short_description stringByReplacingOccurrencesOfString:link withString:html_link];
                 }
 
-                article.content = [NSString stringWithFormat:HTML_CONTENT_WITH_IMAGE, article.title, [article getImageUrl], short_description];
+                NSMutableString* imageHtmlContent = [NSMutableString string];
+                NSArray* arrayOfImages = [article.photos allObjects];
+
+                for (int i = 0; i < [arrayOfImages count]; i++) {
+                    NSString* imageContent = [NSString stringWithFormat:HTMLITEMIMAGE, [(Photo*)[arrayOfImages objectAtIndex:i] url]];
+                    [imageHtmlContent appendString:imageContent];
+                    NSLog(@"%@", imageHtmlContent);
+                }
+                article.content = [NSString stringWithFormat:HTML_CONTENT_WITH_IMAGE, article.title, imageHtmlContent, short_description];
             }
             [article.managedObjectContext MR_saveOnlySelfAndWait];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDataNotification" object:nil];
