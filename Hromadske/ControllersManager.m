@@ -59,7 +59,6 @@
 
 - (UINavigationController*)topViewControllerWithIdentefier:(NSString*)identefier
 {
-
     UIViewController* controller = [self viewControllerWithIdentefier:identefier];
     [controller.view addGestureRecognizer:[self revealController].panGestureRecognizer];
     UINavigationController* navigation = nil;

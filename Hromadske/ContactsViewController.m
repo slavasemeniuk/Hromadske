@@ -12,33 +12,26 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 @interface ContactsViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *adress;
-@property (weak, nonatomic) IBOutlet UILabel *email;
-@property (weak, nonatomic) IBOutlet UILabel *phone;
-@property (weak, nonatomic) IBOutlet UIView *mapView;
+@property (weak, nonatomic) IBOutlet UILabel* adress;
+@property (weak, nonatomic) IBOutlet UILabel* email;
+@property (weak, nonatomic) IBOutlet UILabel* phone;
+@property (weak, nonatomic) IBOutlet UIView* mapView;
 @end
 
 @implementation ContactsViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-//    [[DataManager sharedManager] contactsDataWithCompletion:^(Contacts *contacts) {
-//        _adress.text = [_adress.text stringByAppendingString:contacts.place];
-//        _webPage.text = [_webPage.text stringByAppendingString:contacts.url];
-//        _email.text = [_email.text stringByAppendingString:contacts.emails];
-//        _phone.text = [_phone.text stringByAppendingString:contacts.phones];
-//    }];
-}
--(void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     [self setUpMap];
 }
 
--(void)setUpMap{
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:49.445570 longitude:32.062412 zoom:18];
-    GMSMapView *googleMapView = [GMSMapView mapWithFrame:_mapView.bounds camera:camera];
-    
-    GMSMarker * marker = [[GMSMarker alloc] init];
+- (void)setUpMap
+{
+    GMSCameraPosition* camera = [GMSCameraPosition cameraWithLatitude:49.445570 longitude:32.062412 zoom:18];
+    GMSMapView* googleMapView = [GMSMapView mapWithFrame:_mapView.bounds camera:camera];
+
+    GMSMarker* marker = [[GMSMarker alloc] init];
     marker.position = camera.target;
     marker.snippet = @"ГромадськеТВ";
     marker.appearAnimation = kGMSMarkerAnimationPop;

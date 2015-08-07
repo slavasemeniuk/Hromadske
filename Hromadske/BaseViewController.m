@@ -21,14 +21,6 @@
     [self setUpMenuButton];
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-}
-
 - (void)setUpMenuButton
 {
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];

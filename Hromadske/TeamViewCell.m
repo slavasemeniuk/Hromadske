@@ -10,30 +10,33 @@
 
 @implementation TeamViewCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
     [self setUpImageView];
 }
 
-- (void) setUpImageView
+- (void)setUpImageView
 {
-    _imageview.layer.cornerRadius = _imageview.frame.size.width/2;
-    _imageview.layer.masksToBounds = YES;
+    _imageview.layer.cornerRadius = _imageview.frame.size.width / 2;
 }
 
-- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
-    [self setHighlighted:highlighted];
-}
+//- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+//{
+//    [self setHighlighted:highlighted];
+//}
+//
+//- (void)setHighlighted:(BOOL)highlighted
+//{
+//    self.conteiner.alpha = highlighted ? 0.5 : 1;
+//}
 
-- (void)setHighlighted:(BOOL)highlighted{
-    self.conteiner.alpha = highlighted ? 0.5 : 1;
-}
-
--(void)prepareForReuse{
+- (void)prepareForReuse
+{
     [super prepareForReuse];
-    _imageview.image=nil;
-    _bio.text=nil;
-    _label.text=nil;
+    _imageview.image = nil;
+    _bio.text = nil;
+    _label.text = nil;
 }
 
 @end

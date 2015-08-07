@@ -8,23 +8,34 @@
 
 #import "MenuItemCell.h"
 
-
-@implementation MenuItemCell
-
-- (void)awakeFromNib {
-    // Initialization code
+@implementation MenuItemCell {
+    BOOL _selected;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-  
+- (void)awakeFromNib
+{
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
--(void)setSelected:(BOOL)selected{
-    UIView * selectedBackgroundView = [[UIView alloc] init];
-    [selectedBackgroundView setBackgroundColor:[UIColor colorWithRed:21.f/255.0f green:21.f/255.0f blue:21.f/255.0f alpha:0.2f]];
-    [self setSelectedBackgroundView:selectedBackgroundView];
- 
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    _icon.image = nil;
+    _rightImageView.image = nil;
+    _title.text = @"";
+    _selected = NO;
+    [self.contentView setBackgroundColor:[UIColor clearColor]];
+}
+
+- (void)selectCell
+{
+    if (!_selected) {
+        [self.contentView setBackgroundColor:[UIColor colorWithRed:21.f / 255.0f green:21.f / 255.0f blue:21.f / 255.0f alpha:0.2f]];
+    }
+    else {
+        [self.contentView setBackgroundColor:[UIColor clearColor]];
+    }
+    _selected = !_selected;
 }
 
 @end

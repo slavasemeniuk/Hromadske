@@ -18,8 +18,10 @@
     NSArray* _arrayOfIdentifier;
     NSArray* _listOfMenuIcon;
     NSMutableArray* _newsCatagorySec;
-    
+    NSIndexPath* _selectedIP;
+
     BOOL _isShowingList;
+    BOOL _showRotateAnimation;
 }
 @property (weak, nonatomic) IBOutlet UITableView* tableView;
 @property (weak, nonatomic) IBOutlet UILabel* temperature;
@@ -109,8 +111,33 @@
         [cell.icon setImage:[UIImage imageNamed:[_listOfMenuIcon objectAtIndex:indexPath.row]]];
     }
     if (indexPath.section == 0) {
-        if (indexPath.row == 0)
+        if (indexPath.row == 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (!_isShowingList) {
+                    UIImage* toImage = [UIImage imageNamed:@"arrow_down"];
+                    [UIView transitionWithView:cell.rightImageView
+                                      duration:0.35
+                                       options:UIViewAnimationOptionTransitionFlipFromBottom
+                                    animations:^{
+                                        cell.rightImageView.image = toImage;
+                                    }
+                                    completion:NULL];
+                }
+                else {
+                    UIImage* toImage = [UIImage imageNamed:@"arrow_up"];
+                    [UIView transitionWithView:cell.rightImageView
+                                      duration:0.35
+                                       options:UIViewAnimationOptionTransitionFlipFromTop
+                                    animations:^{
+                                        cell.rightImageView.image = toImage;
+                                    }
+                                    completion:NULL];
+                }
+
+            });
             [cell.icon setImage:[UIImage imageNamed:@"menu-items-news"]];
+        }
+
         [cell.title setText:[_newsCatagorySec objectAtIndex:indexPath.row]];
     }
 
@@ -119,25 +146,31 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
+    MenuItemCell* cell = (MenuItemCell*)[tableView cellForRowAtIndexPath:indexPath];
+
     if (indexPath.section == 0 && indexPath.row == 0) {
         _isShowingList = !_isShowingList;
-        [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+        [(MenuItemCell*)[tableView cellForRowAtIndexPath:_selectedIP] selectCell];
     }
-    if (indexPath.section == 0 && indexPath.row != 0) {
-        MenuItemCell* cell = (MenuItemCell*)[tableView cellForRowAtIndexPath:indexPath];
-        [DataManager sharedManager].articleCategory = cell.title.text;
-        [[ControllersManager sharedManager] showTopViewControllerWithIdentefier:@"NewsViewController"];
-    }
-    if (indexPath.section == 1) {
-        if (indexPath.row != 3) {
-            NSString* identefier = [_arrayOfIdentifier objectAtIndex:indexPath.row];
-            [[ControllersManager sharedManager] showTopViewControllerWithIdentefier:identefier];
+    else {
+        [(MenuItemCell*)[tableView cellForRowAtIndexPath:_selectedIP] selectCell];
+        [cell selectCell];
+        _selectedIP = indexPath;
+
+        if (indexPath.section == 0 && indexPath.row != 0) {
+            [DataManager sharedManager].articleCategory = cell.title.text;
+            [[ControllersManager sharedManager] showTopViewControllerWithIdentefier:@"NewsViewController"];
         }
-        else {
-            [[iRate sharedInstance] openRatingsPageInAppStore];
-            [iRate sharedInstance].ratedThisVersion = YES;
-            [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        if (indexPath.section == 1) {
+            if (indexPath.row != 3) {
+                NSString* identefier = [_arrayOfIdentifier objectAtIndex:indexPath.row];
+                [[ControllersManager sharedManager] showTopViewControllerWithIdentefier:identefier];
+            }
+            else {
+                [[iRate sharedInstance] openRatingsPageInAppStore];
+                [iRate sharedInstance].ratedThisVersion = YES;
+            }
         }
     }
 }

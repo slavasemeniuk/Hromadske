@@ -398,7 +398,8 @@
                         <subviews>
                             <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Dj-Cz-c7x">
                                 <rect key="frame" x="0.0" y="12" width="320" height="468"/>
-                                <color key="backgroundColor" red="0.95294123890000004" green="0.95294123890000004" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="yCa-Sq-Wem" id="QO9-kc-J2g"/>
                                     <outlet property="delegate" destination="yCa-Sq-Wem" id="XlX-Nf-Xq0"/>

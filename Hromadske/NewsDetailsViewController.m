@@ -13,6 +13,7 @@
 #import "Constants.h"
 #import "Articles.h"
 #import "SQTShyNavigationBar.h"
+#import <WebKit/WebKit.h>
 
 @interface NewsDetailsViewController () <UIWebViewDelegate, UIScrollViewDelegate> {
     NewsDetailsMode _mode;
@@ -26,8 +27,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    NSLog(@"%i", _mode);
     [self setUpViewController];
     [self updateCurrentMode];
     if (_article.content) {

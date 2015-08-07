@@ -21,7 +21,7 @@
     return self;
 }
 -(void)newArticles:(NSInteger)number{
-    [self.label setText:[NSString stringWithFormat:@"%d",number]];
+    [self.label setText:[NSString stringWithFormat:@"%ld",(long)number]];
 }
 
 @end

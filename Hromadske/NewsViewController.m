@@ -20,8 +20,7 @@
 
 @interface NewsViewController () <UITableViewDataSource, UITableViewDelegate, DataManangerDelagate> {
     NSMutableArray* _tableViewsData;
-    NSString* _stream;
-    NewArticlesView* _newArticles;
+    NewArticlesView* _newArticlesView;
     NSInteger _countNewArticles;
     NSString* _currentCategory;
 }
@@ -42,11 +41,6 @@
     [[DataManager sharedManager] fetchRemoteDigest];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -61,9 +55,9 @@
 #pragma mark Views
 - (void)setUpStreamView
 {
-    if (_stream) {
+    if ([[DataManager sharedManager] streamingURL]) {
         StreamView* streamView = [[StreamView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
-        [streamView loadVideoStreamWithUrl:_stream];
+        [streamView loadVideoStreamWithUrl:[[DataManager sharedManager] streamingURL]];
         self.tableView.tableHeaderView = streamView;
     }
     else {
@@ -81,22 +75,21 @@
 }
 - (void)showNewArticleBage:(NSInteger)count
 {
-    if (!_newArticles) {
-        _newArticles = [[NewArticlesView alloc] init];
-
+    if (!_newArticlesView) {
+        _newArticlesView = [[NewArticlesView alloc] init];
         UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setBounds:_newArticles.frame];
-        [btn addSubview:_newArticles];
+        [btn setBounds:_newArticlesView.frame];
+        [btn addSubview:_newArticlesView];
         [btn addTarget:self action:@selector(goToTop) forControlEvents:UIControlEventAllEvents];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     }
-    [_newArticles setHidden:NO];
-    [_newArticles newArticles:count];
+    [_newArticlesView setHidden:NO];
+    [_newArticlesView newArticles:count];
 }
 
 - (void)hideNewArticlesBage
 {
-    [_newArticles setHidden:YES];
+    [_newArticlesView setHidden:YES];
 }
 
 - (void)goToTop
@@ -125,7 +118,6 @@
 }
 - (void)dataManager:(DataManager*)manager didFinishUpdatingArticles:(NSArray*)listOfArticles
 {
-    _stream = [[DataManager sharedManager] streamingURL];
     [self setUpStreamView];
 
     _countNewArticles = [listOfArticles count];
@@ -153,7 +145,7 @@
 
 - (void)tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    //[(NewsTableViewCell*)cell performSelector:@selector(updateShadow) withObject:nil afterDelay:0];
+    [(NewsTableViewCell*)cell performSelector:@selector(updateShadow) withObject:nil afterDelay:0];
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
