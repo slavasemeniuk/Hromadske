@@ -19,6 +19,7 @@
     NSArray* _listOfMenuIcon;
     NSMutableArray* _newsCatagorySec;
     NSIndexPath* _selectedIP;
+    NSString *currentSubtitle;
 
     BOOL _isShowingList;
     BOOL _showRotateAnimation;
@@ -39,6 +40,8 @@
     [self setUpViewController];
     [self refreshData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:@"DigestUpdated" object:nil];
+
+    currentSubtitle = @"Всі новини";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -102,6 +105,13 @@
     return @"";
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0 && indexPath.row != 0) {
+        return 35;
+    }
+    return 45;
+}
+
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
 
@@ -136,12 +146,14 @@
 
             });
             [cell.icon setImage:[UIImage imageNamed:@"menu-items-news"]];
+            [cell.title setText:[_newsCatagorySec objectAtIndex:indexPath.row]];
+            [cell.subTitle setText:currentSubtitle];
         }
         else {
             [cell.icon setImage:[UIImage imageNamed:@"white_dot"]];
+            [cell.subTitle setText:[_newsCatagorySec objectAtIndex:indexPath.row]];
         }
 
-        [cell.title setText:[_newsCatagorySec objectAtIndex:indexPath.row]];
     }
 
     return cell;
@@ -162,8 +174,13 @@
         _selectedIP = indexPath;
 
         if (indexPath.section == 0 && indexPath.row != 0) {
-            [DataManager sharedManager].articleCategory = cell.title.text;
+            [DataManager sharedManager].articleCategory = cell.subTitle.text;
+            currentSubtitle = [DataManager sharedManager].articleCategory;
+            [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+            _isShowingList=false;
+            [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
             [[ControllersManager sharedManager] showTopViewControllerWithIdentefier:@"NewsViewController"];
+            [(MenuItemCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] selectCell];
         }
         if (indexPath.section == 1) {
             if (indexPath.row != 3) {
