@@ -21,16 +21,6 @@
     _imageview.layer.cornerRadius = _imageview.frame.size.width / 2;
 }
 
-//- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
-//{
-//    [self setHighlighted:highlighted];
-//}
-//
-//- (void)setHighlighted:(BOOL)highlighted
-//{
-//    self.conteiner.alpha = highlighted ? 0.5 : 1;
-//}
-
 - (void)prepareForReuse
 {
     [super prepareForReuse];

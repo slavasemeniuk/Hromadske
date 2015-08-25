@@ -137,6 +137,9 @@
             });
             [cell.icon setImage:[UIImage imageNamed:@"menu-items-news"]];
         }
+        else {
+            [cell.icon setImage:[UIImage imageNamed:@"white_dot"]];
+        }
 
         [cell.title setText:[_newsCatagorySec objectAtIndex:indexPath.row]];
     }
@@ -174,5 +177,4 @@
         }
     }
 }
-
 @end

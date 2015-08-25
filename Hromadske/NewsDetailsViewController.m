@@ -207,4 +207,14 @@
     [self.navigationController.shyNavigationBar setToFullHeight:YES];
 }
 
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return (UIInterfaceOrientationMaskAll);
+}
+
 @end

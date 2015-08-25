@@ -11,61 +11,65 @@
 #import "NetworkTracker.h"
 
 @interface HelpProjectViewController () <UIAlertViewDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *label;
-@property (weak, nonatomic) NSString *url;
+@property (weak, nonatomic) IBOutlet UILabel* label;
+@property (weak, nonatomic) NSString* url;
 
 @end
 
 @implementation HelpProjectViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self showAllert];
 }
 
 - (void)showAllert
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     if (![[defaults valueForKey:@"Allert"] isEqual:@"Choosed"]) {
-        UIAlertView *allert =[[UIAlertView alloc] initWithTitle:@"Нагадування" message:@"Ми постійно потребуємо твоєї підтримки. Встановити щомісячне нагадування про допомогу?" delegate:self cancelButtonTitle:@"Пізніше" otherButtonTitles:@"Авжеж", nil];
+        UIAlertView* allert = [[UIAlertView alloc] initWithTitle:@"Нагадування" message:@"Ми постійно потребуємо твоєї підтримки. Встановити щомісячне нагадування про допомогу?" delegate:self cancelButtonTitle:@"Пізніше" otherButtonTitles:@"Авжеж", nil];
         [allert show];
     }
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex != [alertView cancelButtonIndex]){
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+- (void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != [alertView cancelButtonIndex]) {
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:@"Choosed" forKey:@"Allert"];
         [defaults synchronize];
         [self setUpLoacalNotification];
     }
 }
 
-- (void) setUpLoacalNotification{
-    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *comp = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit) fromDate:[NSDate date]];
+- (void)setUpLoacalNotification
+{
+    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+
+    NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents* comp = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit)fromDate:[NSDate date]];
     [comp setDay:1];
     [comp setHour:15];
-    
+
     localNotification.fireDate = [gregorian dateFromComponents:comp];
     localNotification.repeatInterval = kCFCalendarUnitMonth;
     localNotification.alertBody = [NSString stringWithFormat:@"Громадське чекає на допомогу"];
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     localNotification.applicationIconBadgeNumber = 1;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-
 }
 
-- (IBAction)goToWebSite:(id)sender {
+- (IBAction)goToWebSite:(id)sender
+{
     if ([NetworkTracker isReachable]) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:HELP_URL]];
-    }else{
-        UIAlertView *noConnection = [[UIAlertView alloc]initWithTitle:@"Помилка" message:@"Перевірте підключення до мережі" delegate:self cancelButtonTitle:@"Добре" otherButtonTitles: nil];
+    }
+    else {
+        UIAlertView* noConnection = [[UIAlertView alloc] initWithTitle:@"Помилка" message:@"Перевірте підключення до мережі" delegate:self cancelButtonTitle:@"Добре" otherButtonTitles:nil];
         [noConnection show];
     }
-    
 }
+
 
 @end

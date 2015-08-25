@@ -10,6 +10,7 @@
 
 #import "NewsViewController.h"
 #import "TeamViewController.h"
+#import "ParentNavController.h"
 #import "ContactsViewController.h"
 #import "HelpProjectViewController.h"
 #import "SQTShyNavigationBar.h"
@@ -46,7 +47,7 @@
         _revealViewController = [[SWRevealViewController alloc] initWithRearViewController:[self menu] frontViewController:nil];
         [self.revealViewController setRearViewRevealWidth:[self menu].view.frame.size.width - 40.0f];
 
-        UIViewController* news = [self topViewControllerWithIdentefier:NSStringFromClass([NewsViewController class])];
+        NewsViewController* news = [self topViewControllerWithIdentefier:NSStringFromClass([NewsViewController class])];
         _revealViewController.frontViewController = news;
     }
     return _revealViewController;
@@ -57,13 +58,13 @@
     return (MenuViewController*)[self viewControllerWithIdentefier:NSStringFromClass([MenuViewController class])];
 }
 
-- (UINavigationController*)topViewControllerWithIdentefier:(NSString*)identefier
+- (ParentNavController*)topViewControllerWithIdentefier:(NSString*)identefier
 {
     UIViewController* controller = [self viewControllerWithIdentefier:identefier];
     [controller.view addGestureRecognizer:[self revealController].panGestureRecognizer];
-    UINavigationController* navigation = nil;
+    ParentNavController* navigation = nil;
 
-    navigation = [[UINavigationController alloc] initWithNavigationBarClass:[SQTShyNavigationBar class] toolbarClass:nil];
+    navigation = [[ParentNavController alloc] initWithNavigationBarClass:[SQTShyNavigationBar class] toolbarClass:nil];
     [navigation setViewControllers:@[ controller ] animated:NO];
 
     navigation.shyNavigationBar.shyHeight = 20.0f;

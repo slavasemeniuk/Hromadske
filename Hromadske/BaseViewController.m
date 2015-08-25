@@ -29,4 +29,14 @@
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor blackColor]];
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return (UIInterfaceOrientationMaskPortrait);
+}
+
 @end
