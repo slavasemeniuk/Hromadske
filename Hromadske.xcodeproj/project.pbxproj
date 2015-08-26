@@ -90,6 +90,7 @@
 		4F74DBBF1B6F8AF7003B8BEA /* Articles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Articles.m; sourceTree = "<group>"; };
 		4F74DBC01B6F8AF7003B8BEA /* Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categories.h; sourceTree = "<group>"; };
 		4F74DBC11B6F8AF7003B8BEA /* Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categories.m; sourceTree = "<group>"; };
+		4FA3E1E61B8D9DEE009E6526 /* Hromadske 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Hromadske 2.xcdatamodel"; sourceTree = "<group>"; };
 		840DD8D71ABB4C1B00EC6923 /* TeamViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeamViewCell.h; sourceTree = "<group>"; };
 		840DD8D81ABB4C1B00EC6923 /* TeamViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamViewCell.m; sourceTree = "<group>"; };
 		840DD8D91ABB4C1B00EC6923 /* TeamViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeamViewCell.xib; sourceTree = "<group>"; };
@@ -835,9 +836,10 @@
 		84C22FDA1AB77283006C8C2E /* Hromadske.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				4FA3E1E61B8D9DEE009E6526 /* Hromadske 2.xcdatamodel */,
 				84C22FDB1AB77283006C8C2E /* Hromadske.xcdatamodel */,
 			);
-			currentVersion = 84C22FDB1AB77283006C8C2E /* Hromadske.xcdatamodel */;
+			currentVersion = 4FA3E1E61B8D9DEE009E6526 /* Hromadske 2.xcdatamodel */;
 			path = Hromadske.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

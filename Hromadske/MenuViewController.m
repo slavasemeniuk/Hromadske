@@ -19,7 +19,7 @@
     NSArray* _listOfMenuIcon;
     NSMutableArray* _newsCatagorySec;
     NSIndexPath* _selectedIP;
-    NSString *currentSubtitle;
+    NSString* currentSubtitle;
 
     BOOL _isShowingList;
     BOOL _showRotateAnimation;
@@ -105,7 +105,8 @@
     return @"";
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
+{
     if (indexPath.section == 0 && indexPath.row != 0) {
         return 35;
     }
@@ -153,7 +154,6 @@
             [cell.icon setImage:[UIImage imageNamed:@"white_dot"]];
             [cell.subTitle setText:[_newsCatagorySec objectAtIndex:indexPath.row]];
         }
-
     }
 
     return cell;
@@ -165,7 +165,7 @@
 
     if (indexPath.section == 0 && indexPath.row == 0) {
         _isShowingList = !_isShowingList;
-        [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+        [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
         [(MenuItemCell*)[tableView cellForRowAtIndexPath:_selectedIP] selectCell];
     }
     else {
@@ -176,11 +176,15 @@
         if (indexPath.section == 0 && indexPath.row != 0) {
             [DataManager sharedManager].articleCategory = cell.subTitle.text;
             currentSubtitle = [DataManager sharedManager].articleCategory;
-            [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
-            _isShowingList=false;
+            [tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationTop];
+            _isShowingList = false;
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
             [[ControllersManager sharedManager] showTopViewControllerWithIdentefier:@"NewsViewController"];
             [(MenuItemCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] selectCell];
+        }
+        if (_isShowingList) {
+            _isShowingList = !_isShowingList;
+            [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
         }
         if (indexPath.section == 1) {
             if (indexPath.row != 3) {

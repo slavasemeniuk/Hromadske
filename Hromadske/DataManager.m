@@ -56,7 +56,7 @@
 
 - (void)setUp
 {
-    [MagicalRecord setupSQLiteStackWithStoreNamed:@"Hromadske.sqlite"];
+    [MagicalRecord setupSQLiteStackWithStoreNamed:@"Hromadske 2.sqlite"];
     [self fetchLocalData];
     _articleCategory = @"Всі новини";
     _newsDetailsMode = NewsDetailsModeNone;
