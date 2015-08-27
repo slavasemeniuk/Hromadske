@@ -23,6 +23,7 @@
     _icon.image = nil;
     _rightImageView.image = nil;
     _title.text = @"";
+    _subTitle.text = @"";
     _selected = NO;
     [self.contentView setBackgroundColor:[UIColor clearColor]];
 }
