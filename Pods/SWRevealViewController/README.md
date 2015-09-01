@@ -6,7 +6,7 @@ A UIViewController subclass for revealing a rear (left and/or right) view contro
 ## NOTE ( Version 2.3)
 
 * This version fixes an old bug that caused an incorrect initialization of the class on particular scenarios.
-* The old RevealControllerStoryboardExample has been removed from the report as it was deprecated, please look at the newest RevealControllerStoryboardExample2 instead.
+* The old RevealControllerStoryboardExample has been removed from the repo as it was deprecated, please use the newest RevealControllerStoryboardExample2 instead.
 
 
 ## NOTE ( Upgrading to Version 2.1)
@@ -126,7 +126,7 @@ As of November 15, 2013 Release Notes are updated on the class main header file.
 
 ## Tutorials
 
-* Some time ago the guys at AppCoda published an online tutorial featuring the SWRevealViewController: "How To Add a Slide-out Sidebar Menu in Your Apps" (thanks for that). You will find it at http://www.appcoda.com/ios-programming-sidebar-navigation-menu/ . Not updated to the last SWRevealViewController version but still worth a read.
+* Some time ago the guys at AppCoda published an online tutorial featuring the SWRevealViewController: "How To Add a Slide-out Sidebar Menu in Your Apps" (thanks for that). You will find it at http://www.appcoda.com/ios-programming-sidebar-navigation-menu/ . They have recently updated it to match the lastest SWRevealViewController version. Worth a read.
 
 * Tammy Coron on Ray Wenderlich blog made an excelent tutorial on "how to build a slide-out navigation panel". She recomends the SWRevealViewController in case you do not want to implement one yourself. http://www.raywenderlich.com/32054/how-to-create-a-slide-out-navigation-like-facebook-and-path
 
@@ -140,7 +140,7 @@ Thanks to Jesper Vandborg for having contributed with a Xamarin Binding project 
 
 ## Special Mentions
 
-A Special Thank you to Joan Martin who formely worked at http://www.sweetwilliamsl.com and has recently been developing an app for http://www.citizen.tv. He had the original idea and implemented code for generic view deployment/undeployment and replacement of view controllers used in the class. 
+A Special Thank you to [Joan Martin](http://www.vilanovi.com) who formely worked at http://www.sweetwilliamsl.com and has recently been developing an app for http://www.citizen.tv. He had the original idea and implemented code for generic view deployment/undeployment and replacement of view controllers used in the class. 
 
 Early code and api was inspired on a similar class by Philip Kluz (Philip.Kluz@zuui.org)
 	
