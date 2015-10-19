@@ -39,4 +39,14 @@
     [_mapView addSubview:googleMapView];
 }
 
+#pragma mark - HandleUserInteratcionAccordingMenu
+
+-(void)disableUserInteractionInViews{
+    self.mapView.userInteractionEnabled = NO;
+}
+
+-(void)enableUserInteractionInViews{
+     self.mapView.userInteractionEnabled = YES;
+}
+
 @end

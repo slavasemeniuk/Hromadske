@@ -7,9 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "ControllersManager.h"
 #import <SWRevealViewController/SWRevealViewController.h>
 
-@interface BaseViewController ()
+@interface BaseViewController () <SWRevealViewControllerDelegate>
 
 @end
 
@@ -19,6 +20,7 @@
 {
     [super viewDidLoad];
     [self setUpMenuButton];
+    [ControllersManager sharedManager].revealController.delegate = self;
 }
 
 - (void)setUpMenuButton
@@ -38,5 +40,27 @@
 {
     return (UIInterfaceOrientationMaskPortrait);
 }
+
+- (void)revealController:(SWRevealViewController *)revealController willMoveToPosition:(FrontViewPosition)position{
+    if(position == FrontViewPositionLeft) {
+         [self enableUserInteractionInViews];
+   
+    } else {
+            [self disableUserInteractionInViews];
+    }
+
+}
+
+
+
+- (void) revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position{
+    if(position == FrontViewPositionLeft) {
+        [self enableUserInteractionInViews];
+        
+    } else {
+        [self disableUserInteractionInViews];
+    }
+}
+
 
 @end

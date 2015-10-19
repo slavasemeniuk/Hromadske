@@ -10,4 +10,7 @@
 
 @interface BaseViewController : UIViewController
 
+-(void)disableUserInteractionInViews;
+-(void)enableUserInteractionInViews;
+
 @end

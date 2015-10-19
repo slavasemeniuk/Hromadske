@@ -15,6 +15,8 @@
 
 @interface ControllersManager : NSObject
 
+@property (strong, nonatomic) SWRevealViewController* revealViewController;
+
 + (ControllersManager *)sharedManager;
 
 - (SWRevealViewController *)revealController;

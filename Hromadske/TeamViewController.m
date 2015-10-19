@@ -40,6 +40,17 @@
     [_tableView reloadData];
 }
 
+#pragma mark - HandleUserInteratcionAccordingMenu
+
+-(void)disableUserInteractionInViews{
+    _tableView.userInteractionEnabled = NO;
+}
+
+-(void)enableUserInteractionInViews{
+    _tableView.userInteractionEnabled = YES;
+}
+
+#pragma mark - TableViewDelegates
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_tableViewsData count];

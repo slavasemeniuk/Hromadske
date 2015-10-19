@@ -18,7 +18,7 @@
 @interface ControllersManager ()
 
 @property (strong, nonatomic) NewsViewController* newsViewController;
-@property (strong, nonatomic) SWRevealViewController* revealViewController;
+
 
 @end
 

@@ -141,6 +141,16 @@
     [_pullToReferesh endRefreshing];
 }
 
+#pragma mark - HandleUserInteratcionAccordingMenu
+
+-(void)disableUserInteractionInViews{
+    self.tableView.userInteractionEnabled = NO;
+}
+
+-(void)enableUserInteractionInViews{
+    self.tableView.userInteractionEnabled = YES;
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView*)tableView willDisplayCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath
