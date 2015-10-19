@@ -7,7 +7,7 @@ pod 'SWRevealViewController', :git => 'https://github.com/slavasemeniuk/SWReveal
 pod 'AFNetworking', '2.5.3' 
 pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord.git', :branch => 'release/3.0'
 pod 'PQFCustomLoaders', '~>1.1'
-pod 'Parse', '1.7.5.3'
+pod 'Parse'
 pod 'iRate', '1.11.4'
 pod 'SQTShyNavigationBar', '~>1.0'
 
