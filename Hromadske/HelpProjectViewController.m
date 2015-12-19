@@ -60,6 +60,14 @@
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
+-(void)disableUserInteractionInViews
+{
+}
+
+-(void)enableUserInteractionInViews
+{
+}
+
 - (IBAction)goToWebSite:(id)sender
 {
     if ([NetworkTracker isReachable]) {
