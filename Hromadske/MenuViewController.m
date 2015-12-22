@@ -174,8 +174,7 @@
         _selectedIP = indexPath;
 
         if (indexPath.section == 0 && indexPath.row != 0) {
-            [DataManager sharedManager].articleCategory = cell.subTitle.text;
-            currentSubtitle = [DataManager sharedManager].articleCategory;
+            [DataManager sharedManager].articleCategory = currentSubtitle = cell.subTitle.text;
             [tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationTop];
             _isShowingList = false;
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];

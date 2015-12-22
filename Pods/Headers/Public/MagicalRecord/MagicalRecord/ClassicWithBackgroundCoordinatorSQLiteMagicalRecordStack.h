@@ -1,1 +1,0 @@
-../../../../MagicalRecord/Library/MagicalRecordStack/ClassicWithBackgroundCoordinatorSQLiteMagicalRecordStack.h

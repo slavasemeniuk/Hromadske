@@ -1,1 +1,0 @@
-../../../../MagicalRecord/Library/Categories/CoreData/NSPersistentStoreCoordinator/NSPersistentStoreCoordinator+MagicalRecord.h

@@ -1,1 +1,0 @@
-../../../../MagicalRecord/Library/Categories/Foundation/NSArray+MagicalRecord.h

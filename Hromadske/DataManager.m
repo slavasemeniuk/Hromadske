@@ -129,16 +129,16 @@
     _listOfEmployes = [NSArray arrayWithArray:[Employe MR_findAllSortedBy:@"identifire" ascending:YES]];
 }
 
-- (void)fetchCategories
+- (NSArray* )fetchCategories
 {
-    _categories = [Categories MR_findAll];
+    return [Categories MR_findAll];
 }
 
 - (NSArray*)getCategories
 {
-    [self fetchCategories];
+    NSArray *categoryList = [self fetchCategories];
     NSMutableArray* categoryStringList = [NSMutableArray array];
-    for (Categories* category in _categories) {
+    for (Categories* category in categoryList) {
         if (![category.name isEqualToString:@"uncategorized"]) {
             [categoryStringList addObject:category.name];
         }

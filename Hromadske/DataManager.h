@@ -24,7 +24,6 @@
 
 @property (nonatomic, strong) NSArray* listOfArticles;
 @property (nonatomic, strong) NSArray* listOfEmployes;
-@property (nonatomic, strong) NSArray* categories;
 @property (nonatomic, strong) NSString* streamingURL;
 @property NSString* articleCategory;
 @property NewsDetailsMode newsDetailsMode;

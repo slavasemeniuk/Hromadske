@@ -1,1 +1,0 @@
-../../../../MagicalRecord/Library/MagicalRecord/MagicalRecordDeprecated.h
