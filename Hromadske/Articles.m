@@ -37,7 +37,7 @@
     self.title = [[HTMLManager sharedManager] removeTagsFromString:[article valueForKey:@"title"]];
 
     self.created_at = [[DateFormatter sharedManager] convertToDateFromTimeStamp:[article valueForKey:@"created_at"]];
-
+//RELATIONSHIP
     Categories* category = [Categories MR_findFirstByAttribute:@"name" withValue:[article valueForKey:@"category"]];
     if (!category) {
         Categories* newCategory = [Categories MR_createEntity];

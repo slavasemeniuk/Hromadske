@@ -12,7 +12,7 @@
 
 @interface NetworkTracker()
 {
-    AFNetworkReachabilityStatus _networkStatus;
+//    AFNetworkReachabilityStatus _networkStatus;
 }
 
 @end
@@ -39,29 +39,29 @@
 }
 
 -(void)setUp{
-    _networkStatus = AFNetworkReachabilityStatusNotReachable;
-    [self startNetworkTracker];
+//    _networkStatus = AFNetworkReachabilityStatusNotReachable;
+//    [self startNetworkTracker];
 }
 
 -(void)startNetworkTracker
 {
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:API_URL]];
-    [manager.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
-        _networkStatus=status;
-    }];
-    [manager.reachabilityManager startMonitoring];
+//    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:API_URL]];
+//    [manager.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
+//        _networkStatus=status;
+//    }];
+//    [manager.reachabilityManager startMonitoring];
 }
-
--(AFNetworkReachabilityStatus) status{
-    return _networkStatus;
-}
+//
+//-(AFNetworkReachabilityStatus) status{
+//    return _networkStatus;
+//}
 
 + (BOOL)isReachable
 {
-    AFNetworkReachabilityStatus status = [[NetworkTracker sharedManager] status];
-    if ((status==AFNetworkReachabilityStatusReachableViaWiFi) || (status==AFNetworkReachabilityStatusReachableViaWWAN)) {
-        return YES;
-    }
+//    AFNetworkReachabilityStatus status = [[NetworkTracker sharedManager] status];
+//    if ((status==AFNetworkReachabilityStatusReachableViaWiFi) || (status==AFNetworkReachabilityStatusReachableViaWWAN)) {
+//        return YES;
+//    }
     return NO;
 }
 

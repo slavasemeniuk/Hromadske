@@ -65,7 +65,7 @@
     [_tableView registerNib:[UINib nibWithNibName:@"MenuItemCell" bundle:nil] forCellReuseIdentifier:@"menu_cell"];
 
     _newsCatagorySec = [NSMutableArray arrayWithArray:@[ @"Новини", @"Всі новини" ]];
-    [_newsCatagorySec addObjectsFromArray:[[DataManager sharedManager] getCategories]];
+//    [_newsCatagorySec addObjectsFromArray:[[DataManager sharedManager] getCategories]];
 
     _menuItems = @[ @"Допомогти проекту", @"Команда", @"Контакти", @"Оцінити" ];
     _listOfMenuIcon = @[ @"menu-donate", @"menu-items-team", @"menu-contacts", @"menu-item-rate" ];

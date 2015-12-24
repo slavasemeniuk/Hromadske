@@ -13,8 +13,5 @@
 
 + (RemoteManager *)sharedManager;
 
-- (void)dicrtionaryForPath:(NSString *)path attributes:(NSDictionary *)attributes success:(void (^)(NSDictionary *))success fail:(void (^)(void))fail;
-
-- (void)objectsForPath:(NSString *)path attributes:(NSDictionary *)attributes success:(void (^)(NSArray *))success fail:(void (^)(void))fail;
 
 @end

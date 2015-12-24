@@ -102,16 +102,16 @@
 
 - (void)loadWebViewContent
 {
-    if (![_article.content isEqual:@"link"]) {
-        NSString* template = _mode == NewsDetailsModeDay ? HTMLDETAILS_DAY : HTMLDETAILS_NIGHT;
-        NSString* htmlContent = [NSString stringWithFormat:@"%@%@%@", template, _article.content, HTMLDETAILS_WRAP];
-        [_webView loadHTMLString:htmlContent baseURL:[NSURL URLWithString:HROMADSKE_URL]];
-    }
-    else if ([_article getLink]) {
-        NSString* url = [[NSString alloc] initWithString:[_article getLink]];
-        NSURLRequest* request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-        [_webView loadRequest:request];
-    }
+//    if (![_article.content isEqual:@"link"]) {
+//        NSString* template = _mode == NewsDetailsModeDay ? HTMLDETAILS_DAY : HTMLDETAILS_NIGHT;
+//        NSString* htmlContent = [NSString stringWithFormat:@"%@%@%@", template, _article.content, HTMLDETAILS_WRAP];
+//        [_webView loadHTMLString:htmlContent baseURL:[NSURL URLWithString:HROMADSKE_URL]];
+//    }
+//    else if ([_article getLink]) {
+//        NSString* url = [[NSString alloc] initWithString:[_article getLink]];
+//        NSURLRequest* request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+//        [_webView loadRequest:request];
+//    }
 }
 
 #pragma mark - MODE

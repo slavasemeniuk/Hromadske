@@ -8,7 +8,7 @@
 
 #import "RemoteManager.h"
 #import "Constants.h"
-#import <AFNetworking/AFNetworking.h>
+#import <RestKit/RestKit.h>
 
 
 @implementation RemoteManager
@@ -23,33 +23,8 @@
     return __manager;
 }
 
-- (void) objectsForPath:(NSString *)path attributes:(NSDictionary *)attributes success:(void (^)(NSArray *))success fail:(void (^)(void))fail
-{
-   
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:path parameters:attributes success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success([NSArray arrayWithArray:responseObject[@"data"]]);
-    }
-         failure:^(AFHTTPRequestOperation *operation,NSError *error){
-             if (fail){
-                 NSLog(@"%@",error);
-                 fail();
-             }
-         }];
-}
-
-- (void)dicrtionaryForPath: (NSString *)path attributes:(NSDictionary *)attributes success:(void (^)(NSDictionary *))success fail:(void (^)(void))fail
-{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:path parameters:attributes success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success([NSDictionary dictionaryWithDictionary:responseObject[@"data"]]);
-    }
-         failure:^(AFHTTPRequestOperation *operation,NSError *error){
-             if (fail){
-                 NSLog(@"%@",error);
-                 fail();
-             }
-         }];
++ (void)getEmployees {
+    [[RKObjectManager sharedManager] getObjectsAtPath:TEAM_JSON parameters:nil success:nil failure:nil];
 }
 
 @end

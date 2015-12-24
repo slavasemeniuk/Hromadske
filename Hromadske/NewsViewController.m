@@ -175,10 +175,10 @@
         [newsCell.category setText:article.category.name];
     }
 
-    NSURLRequest* imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[article getImageUrl]]
-                                                  cachePolicy:NSURLRequestReturnCacheDataElseLoad
-                                              timeoutInterval:60];
-    [newsCell.image_view setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
+//    NSURLRequest* imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[article getImageUrl]]
+//                                                  cachePolicy:NSURLRequestReturnCacheDataElseLoad
+//                                              timeoutInterval:60];
+//    [newsCell.image_view setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
 
     if (article.viewed.boolValue == NO) {
         [newsCell unviewed];
@@ -200,7 +200,7 @@
         details.article = article;
         [self.navigationController pushViewController:details animated:YES];
         if (article.viewed.boolValue == NO) {
-            [article makeViewed];
+//            [article makeViewed];
         }
     }
     else {

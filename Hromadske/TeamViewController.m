@@ -10,13 +10,18 @@
 #import "TeamViewCell.h"
 #import "Employe.h"
 #import "DataManager.h"
+#import <RestKit/RestKit.h>
+#import <CoreData/CoreData.h>
+#import "RestKitManager.h"
 #import <UIImageView+AFNetworking.h>
 
-@interface TeamViewController () <UITableViewDataSource, UITableViewDelegate> {
-    NSArray* _tableViewsData;
+@interface TeamViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+{
     __weak IBOutlet UITableView* _tableView;
     TeamViewCell* _prototypecell;
 }
+@property (strong, nonatomic)  NSFetchedResultsController* fetchedResultsController;
+
 
 @end
 
@@ -25,19 +30,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Perform Fetch
+    NSError *error = nil;
+    [self.fetchedResultsController performFetch:&error];
+    
+    if (error) {
+        NSLog(@"Unable to perform fetch.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+    }
+    
     [self setUpCell];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:@"refreshTeamNotification" object:nil];
+    [[RKObjectManager sharedManager] getObjectsAtPath:TEAM_JSON parameters:nil success:nil failure:nil];
     _tableView.estimatedRowHeight = 171.f;
     _prototypecell = [_tableView dequeueReusableCellWithIdentifier:@"TeamCell"];
-    [[DataManager sharedManager] teamWithCompletion:^() {
-        [self updateData];
-    }];
-}
-
-- (void)updateData
-{
-    _tableViewsData = [[DataManager sharedManager] listOfEmployes];
-    [_tableView reloadData];
+    
+    [[DataManager sharedManager] fetchTeam];
 }
 
 #pragma mark - HandleUserInteratcionAccordingMenu
@@ -53,14 +60,14 @@
 #pragma mark - TableViewDelegates
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_tableViewsData count];
+    return [[[self.fetchedResultsController sections] objectAtIndex: section] numberOfObjects];
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     TeamViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"TeamCell" forIndexPath:indexPath];
 
-    Employe* employe = [_tableViewsData objectAtIndex:indexPath.row];
+    Employe* employe = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell.label setText:employe.name];
     [cell.bio setText:employe.bio];
     NSURLRequest* imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:employe.image]
@@ -72,7 +79,7 @@
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    [_prototypecell.bio setText:[(Employe*)[_tableViewsData objectAtIndex:indexPath.row] bio]];
+    [_prototypecell.bio setText:[(Employe*)[self.fetchedResultsController objectAtIndexPath:indexPath] bio]];
 
     [_prototypecell layoutIfNeeded];
 
@@ -84,5 +91,65 @@
     [_tableView registerNib:[UINib nibWithNibName:@"TeamViewCell" bundle:nil] forCellReuseIdentifier:@"TeamCell"];
 }
 
+#pragma mark - FetchedResultController
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:NSStringFromClass([Employe class]) inManagedObjectContext:[RestKitManager managedObkjectContext]];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
+                              initWithKey:@"name" ascending:NO];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
+    NSFetchedResultsController *theFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:[RestKitManager managedObkjectContext] sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    
+    self.fetchedResultsController = theFetchedResultsController;
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
+    
+}
+
+#pragma mark - FetchedResultControllerDelegate
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [_tableView beginUpdates];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [_tableView endUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    switch (type) {
+        case NSFetchedResultsChangeInsert: {
+            [_tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeDelete: {
+            [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeUpdate: {
+            [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeMove: {
+            [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [_tableView insertRowsAtIndexPaths: @[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+    }
+}
 
 @end

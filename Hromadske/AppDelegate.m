@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "NetworkTracker.h"
 #import "DataManager.h"
+#import "RestKitManager.h"
 #import "ControllersManager.h"
 #import "Constants.h"
 #import <GoogleMaps/GoogleMaps.h>
@@ -30,7 +31,7 @@
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
     [NetworkTracker sharedManager];
-
+    [RestKitManager sharedManager];
     [GMSServices provideAPIKey:API_GOOGLE];
     [self setupGoogleAnalytics];
 

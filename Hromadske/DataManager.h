@@ -15,7 +15,7 @@
 + (DataManager*)sharedManager;
 
 - (void)updateArticleWithId:(NSNumber*)identifire;
-- (void)teamWithCompletion:(void (^)())completion;
+- (void)fetchTeam;
 - (NSArray*)getCategories;
 - (NSArray*)getArticlesWithCurrentCategories;
 - (void)fetchRemoteArticles;
