@@ -42,7 +42,6 @@
 		84A159AF1AF00D0C008AD999 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A31AF00D0C008AD999 /* OpenGLES.framework */; };
 		84A159B01AF00D0C008AD999 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A41AF00D0C008AD999 /* QuartzCore.framework */; };
 		84A159B11AF00D0C008AD999 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A51AF00D0C008AD999 /* SystemConfiguration.framework */; };
-		84A2A6891ABB7D59004862E6 /* RemoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A6881ABB7D59004862E6 /* RemoteManager.m */; };
 		84A9972E1AC9DA03007876F1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9972D1AC9DA03007876F1 /* BaseViewController.m */; };
 		84C22FD61AB77282006C8C2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C22FD51AB77282006C8C2E /* main.m */; };
 		84C22FD91AB77282006C8C2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C22FD81AB77282006C8C2E /* AppDelegate.m */; };
@@ -135,8 +134,6 @@
 		84A159A31AF00D0C008AD999 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		84A159A41AF00D0C008AD999 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		84A159A51AF00D0C008AD999 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		84A2A6871ABB7D59004862E6 /* RemoteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteManager.h; sourceTree = "<group>"; };
-		84A2A6881ABB7D59004862E6 /* RemoteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteManager.m; sourceTree = "<group>"; };
 		84A9972C1AC9DA03007876F1 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		84A9972D1AC9DA03007876F1 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		84C22FD01AB77282006C8C2E /* hromadske.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hromadske.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,8 +287,6 @@
 			children = (
 				845BA1551AB777AF000E7204 /* ControllersManager.h */,
 				845BA1561AB777AF000E7204 /* ControllersManager.m */,
-				84A2A6871ABB7D59004862E6 /* RemoteManager.h */,
-				84A2A6881ABB7D59004862E6 /* RemoteManager.m */,
 				84EBBAF51AC454D900DF6E9D /* DataManager.h */,
 				84EBBAF61AC454D900DF6E9D /* DataManager.m */,
 				849D0A621AE1A070003D9DE1 /* DateFormatter.h */,
@@ -646,7 +641,6 @@
 				844CDDC31AF56F750031470D /* HTMLManager.m in Sources */,
 				841032711AE41A20006E34C4 /* MenuItemCell.m in Sources */,
 				8A0CE7DA1C2BE6660061B463 /* _Link.m in Sources */,
-				84A2A6891ABB7D59004862E6 /* RemoteManager.m in Sources */,
 				84C22FD61AB77282006C8C2E /* main.m in Sources */,
 				840DD8DA1ABB4C1B00EC6923 /* TeamViewCell.m in Sources */,
 				8A0CE7EF1C2C0E910061B463 /* _Categories.m in Sources */,

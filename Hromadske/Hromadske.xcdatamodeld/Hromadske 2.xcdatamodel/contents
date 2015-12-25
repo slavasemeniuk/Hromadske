@@ -36,6 +36,7 @@
     <entity name="RateAndWeather" representedClassName="RateAndWeather" syncable="YES">
         <attribute name="rateEUR" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rateUSD" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streaming" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weather" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weatherType" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -49,7 +50,7 @@
         <element name="Employe" positionX="-162" positionY="-18" width="128" height="118"/>
         <element name="Link" positionX="295" positionY="-63" width="128" height="73"/>
         <element name="Photo" positionX="331" positionY="99" width="128" height="75"/>
-        <element name="RateAndWeather" positionX="162" positionY="-162" width="128" height="103"/>
+        <element name="RateAndWeather" positionX="162" positionY="-162" width="128" height="120"/>
         <element name="Video" positionX="313" positionY="251" width="128" height="75"/>
     </elements>
 </model>

@@ -8,22 +8,25 @@
 
 #import <Foundation/Foundation.h>
 #import "Constants.h"
+#import "RateAndWeather.h"
 @protocol DataManangerDelagate;
 
 @interface DataManager : NSObject
 
 + (DataManager*)sharedManager;
 
+@property (nonatomic, strong) RateAndWeather* rateAndWeather;
+- (void)fetchRemoteDigestWithCompletion: (void (^)(void))success fail:(void (^)(void))fail;
+
++ (void)fetchRemoterEmploye;
+
 - (void)updateArticleWithId:(NSNumber*)identifire;
-- (void)fetchTeam;
 - (NSArray*)getCategories;
 - (NSArray*)getArticlesWithCurrentCategories;
 - (void)fetchRemoteArticles;
-- (void)fetchRemoteDigest;
 - (id)getRateAndWeather;
 
 @property (nonatomic, strong) NSArray* listOfArticles;
-@property (nonatomic, strong) NSArray* listOfEmployes;
 @property (nonatomic, strong) NSString* streamingURL;
 @property NSString* articleCategory;
 @property NewsDetailsMode newsDetailsMode;

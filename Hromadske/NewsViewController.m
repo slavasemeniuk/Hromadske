@@ -38,7 +38,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViweData) name:@"ViewsCountUpdated" object:nil];
     [self setUpData];
     _currentCategory = [[DataManager sharedManager] articleCategory];
-    [[DataManager sharedManager] fetchRemoteDigest];
+//    [[DataManager sharedManager] fetchRemoteDigest];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -70,7 +70,7 @@
     [self setUpStreamView];
     [_tableView registerNib:[UINib nibWithNibName:@"NewsTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsCell"];
     _pullToReferesh = [[UIRefreshControl alloc] init];
-    [_pullToReferesh addTarget:[DataManager sharedManager] action:@selector(fetchRemoteDigest) forControlEvents:UIControlEventValueChanged];
+//    [_pullToReferesh addTarget:[DataManager sharedManager] action:@selector(fetchRemoteDigest) forControlEvents:UIControlEventValueChanged];
     [_tableView addSubview:_pullToReferesh];
 }
 - (void)showNewArticleBage:(NSInteger)count
@@ -102,7 +102,7 @@
 
 - (void)setUpData
 {
-    _tableViewsData = [NSMutableArray arrayWithArray:[[DataManager sharedManager] getArticlesWithCurrentCategories]];
+//    _tableViewsData = [NSMutableArray arrayWithArray:[[DataManager sharedManager] getArticlesWithCurrentCategories]];
 }
 
 - (void)reloadTableViweData

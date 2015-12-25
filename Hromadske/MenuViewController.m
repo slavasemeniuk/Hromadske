@@ -39,7 +39,6 @@
     [super viewDidLoad];
     [self setUpViewController];
     [self refreshData];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:@"DigestUpdated" object:nil];
 
     currentSubtitle = @"Всі новини";
 }
@@ -47,6 +46,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[DataManager sharedManager] fetchRemoteDigestWithCompletion:^{
+        [self refreshData];
+    } fail:nil];
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 

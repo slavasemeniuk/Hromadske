@@ -88,7 +88,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication*)application
 {
-    [[DataManager sharedManager] fetchRemoteDigest];
+    [[DataManager sharedManager] fetchRemoteDigestWithCompletion:nil fail:nil];
 }
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken

@@ -10,12 +10,12 @@
 
 + (NSArray*)identificationAttributes
 {
-    return @[@"id"];
+    return @[@"name"];
 }
 
-+ (NSArray*)mappingArray
++ (NSDictionary*)mappingDict
 {
-    return @[@"id", @"title", @"created_at", @"views_count"];
+    return @{@"category" : @"name"};
 }
 
 @end

@@ -8,16 +8,18 @@
 
 #import "RestKitManager.h"
 #import <RestKit/RestKit.h>
+#import <CoreData/CoreData.h>
 #import "Articles.h"
 #import "Link.h"
 #import "Photo.h"
+#import "RateAndWeather.h"
 #import "Video.h"
+#import "Categories.h"
 #import "Employe.h"
 #import "Constants.h"
 
 @interface RestKitManager()
 @property NSManagedObjectContext* managedObjectContext;
-//lazy var managedObjectContext = RKManagedObjectStore.defaultStore().mainQueueManagedObjectContext
 @end
 
 @implementation RestKitManager
@@ -74,7 +76,7 @@
         
         [managedObjectStore createManagedObjectContexts];
         
-        RKObjectManager* manager = [RKObjectManager managerWithBaseURL:[[NSURL alloc] initWithString:API_URL]];
+        RKObjectManager* manager = [RKObjectManager managerWithBaseURL:[[NSURL alloc] initWithString:base_URL]];
         manager.requestSerializationMIMEType = RKMIMETypeJSON;
         manager.managedObjectStore = managedObjectStore;
         
@@ -84,6 +86,10 @@
         [videoMapping addAttributeMappingsFromDictionary:[Photo mappingDictionary]];
         RKEntityMapping* photoMapping = [RKEntityMapping mappingForEntityForName:NSStringFromClass([Photo class]) inManagedObjectStore:managedObjectStore];
         [photoMapping addAttributeMappingsFromDictionary:[Photo mappingDictionary]];
+        RKEntityMapping* categoryMapping = [RKEntityMapping mappingForEntityForName:NSStringFromClass([Categories class]) inManagedObjectStore:managedObjectStore];
+        [categoryMapping addAttributeMappingsFromDictionary:[Categories mappingDict]];
+        [categoryMapping setIdentificationAttributes:[Categories identificationAttributes]];
+        
         
         RKEntityMapping* articlesMapping = [RKEntityMapping mappingForEntityForName:NSStringFromClass([Articles class]) inManagedObjectStore:managedObjectStore];
         [articlesMapping addAttributeMappingsFromArray:[Articles mappingArray]];
@@ -92,17 +98,33 @@
         [articlesMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"attachments.links" toKeyPath:@"links" withMapping:linkMapping]];
         [articlesMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"attachments.photos" toKeyPath:@"photos" withMapping: photoMapping]];
         [articlesMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"attachments.videos" toKeyPath:@"videos" withMapping: videoMapping]];
+        [articlesMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:nil toKeyPath:@"category" withMapping: categoryMapping]];
         
         RKEntityMapping* employeeMapping = [RKEntityMapping mappingForEntityForName:NSStringFromClass([Employe class]) inManagedObjectStore:managedObjectStore];
         [employeeMapping addAttributeMappingsFromArray:[Employe mappingArray]];
         [employeeMapping addAttributeMappingsFromDictionary:[Employe mappingDict]];
         [employeeMapping setIdentificationAttributes:[Employe identificationAttributes]];
         
+        RKEntityMapping* rateAndWeatherMapping = [RKEntityMapping mappingForEntityForName:NSStringFromClass([RateAndWeather class]) inManagedObjectStore:managedObjectStore];
+        [rateAndWeatherMapping addAttributeMappingsFromDictionary:[RateAndWeather mappingDictionary]];
+        
         RKResponseDescriptor* employeResponceDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:employeeMapping method:RKRequestMethodGET pathPattern:TEAM_JSON keyPath:@"data" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [manager addResponseDescriptor:employeResponceDescriptor];
         
-        RKResponseDescriptor* articleResponceDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:employeeMapping method:RKRequestMethodGET pathPattern:ARTICKE_JSON keyPath:@"data" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        RKResponseDescriptor* articleResponceDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:articlesMapping method:RKRequestMethodGET pathPattern:ARTICKE_JSON keyPath:@"data" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [manager addResponseDescriptor:articleResponceDescriptor];
+        
+        RKResponseDescriptor* digestResponceDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:rateAndWeatherMapping method:RKRequestMethodGET pathPattern:DIGEST_JSON keyPath:@"data" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [manager addResponseDescriptor:digestResponceDescriptor];
+        [manager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+            RKPathMatcher* pathMatcher = [RKPathMatcher pathMatcherWithPattern:DIGEST_JSON];
+            if ([pathMatcher matchesPath:URL.relativePath tokenizeQueryStrings:NO parsedArguments:nil]) {
+                return [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([RateAndWeather class])];
+            }
+            return nil;
+        }];
+        
+        
         
         
     }

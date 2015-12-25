@@ -3,6 +3,6 @@
 @interface Categories : _Categories {}
 
 + (NSArray*)identificationAttributes;
-+ (NSArray*)mappingArray;
++ (NSDictionary*)mappingDict;
 
 @end

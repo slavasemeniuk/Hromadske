@@ -10,7 +10,6 @@
 #import "TeamViewCell.h"
 #import "Employe.h"
 #import "DataManager.h"
-#import <RestKit/RestKit.h>
 #import <CoreData/CoreData.h>
 #import "RestKitManager.h"
 #import <UIImageView+AFNetworking.h>
@@ -40,11 +39,10 @@
     }
     
     [self setUpCell];
-    [[RKObjectManager sharedManager] getObjectsAtPath:TEAM_JSON parameters:nil success:nil failure:nil];
     _tableView.estimatedRowHeight = 171.f;
     _prototypecell = [_tableView dequeueReusableCellWithIdentifier:@"TeamCell"];
     
-    [[DataManager sharedManager] fetchTeam];
+    [DataManager fetchRemoterEmploye];
 }
 
 #pragma mark - HandleUserInteratcionAccordingMenu

@@ -8,12 +8,11 @@
 
 #import "DataManager.h"
 #import "DateFormatter.h"
-#import "RemoteManager.h"
 #import <RestKit/RestKit.h>
+#import "RestKitManager.h"
 #import "NetworkTracker.h"
 #import "Photo.h"
 #import "Constants.h"
-#import "RateAndWeather.h"
 #import "Employe.h"
 #import "HelpProject.h"
 #import "Articles.h"
@@ -22,7 +21,6 @@
 
 @interface DataManager ()
 @property (nonatomic, strong) NSString* dateOfLastArticle;
-@property (nonatomic, strong) RateAndWeather* rateAndWeather;
 
 @end
 
@@ -69,27 +67,11 @@
 //    [rateAndWeather.managedObjectContext MR_saveOnlySelfAndWait];
 }
 
-- (void)saveTeamToContext:(NSArray*)arrayOfTeam
-{
-//    NSManagedObjectContext* context = nil;
-//    for (int i = 0; i < [arrayOfTeam count]; i++) {
-//        Employe* employe = [Employe MR_createEntity];
-//        [employe convertDataToEmployeModel:[arrayOfTeam objectAtIndex:i]];
-//        context = employe.managedObjectContext;
-//    }
-//    [context MR_saveToPersistentStoreAndWait];
-}
-
-- (void)fetchTeam
-{
-     [[RKObjectManager sharedManager] getObjectsAtPath:TEAM_JSON parameters:nil success:nil failure:nil];
-}
 
 #pragma mark - FetchingLocalData
 - (void)fetchLocalData
 {
     [self fetchListOfArticles];
-    [self fetchListOfEmployes];
     [self fetchLocalRateAndWeather];
 
     if ([_listOfArticles count]) {
@@ -103,11 +85,6 @@
 - (void)fetchListOfArticles
 {
 //    _listOfArticles = [Articles MR_findAllSortedBy:@"created_at" ascending:NO];
-}
-
-- (void)fetchListOfEmployes
-{
-//    _listOfEmployes = [NSArray arrayWithArray:[Employe MR_findAllSortedBy:@"identifire" ascending:YES]];
 }
 
 //- (NSArray* )fetchCategories
@@ -127,15 +104,15 @@
 //    return categoryStringList;
 //}
 
-- (NSArray*)getArticlesWithCurrentCategories
-{
-    if ([[DataManager sharedManager].articleCategory isEqualToString:@"Всі новини"]) {
-        return _listOfArticles;
-    }
-    else {
-        return [_listOfArticles filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"category.name==%@", _articleCategory]];
-    }
-}
+//- (NSArray*)getArticlesWithCurrentCategories
+//{
+//    if ([[DataManager sharedManager].articleCategory isEqualToString:@"Всі новини"]) {
+//        return _listOfArticles;
+//    }
+//    else {
+//        return [_listOfArticles filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"category.name==%@", _articleCategory]];
+//    }
+//}
 
 - (id)getRateAndWeather
 {
@@ -144,15 +121,23 @@
 
 - (void)fetchLocalRateAndWeather
 {
-//    if (![RateAndWeather MR_findFirst]) {
-//        RateAndWeather* rateAndWeather = [RateAndWeather MR_createEntity];
-//        [rateAndWeather createInitialRateAndWeather];
-//        [rateAndWeather.managedObjectContext MR_saveOnlySelfAndWait];
-//    }
-//    _rateAndWeather = [RateAndWeather MR_findFirst];
+    NSError* error;
+    NSFetchRequest* fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([RateAndWeather class])];
+    NSArray* rateAndWeatherList = [[RestKitManager managedObkjectContext] executeFetchRequest:fetchRequest error:&error];
+    if (rateAndWeatherList.count > 0) {
+        self.rateAndWeather = [rateAndWeatherList firstObject];
+    } else {
+        RateAndWeather* rateAndWeather = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([RateAndWeather class]) inManagedObjectContext:[RestKitManager managedObkjectContext]];
+        [rateAndWeather createInitialRateAndWeather];
+        self.rateAndWeather = rateAndWeather;
+    }
 }
 
 #pragma mark - Remote
+
++ (void)fetchRemoterEmploye {
+    [[RKObjectManager sharedManager] getObjectsAtPath:TEAM_JSON parameters:nil success:nil failure:nil];
+}
 
 - (void)fetchRemoteArticles
 {
@@ -188,11 +173,20 @@
 //        }];
 }
 
-- (void)fetchRemoteDigest
+- (void)fetchRemoteDigestWithCompletion: (void (^)(void))success fail:(void (^)(void))fail
 {
-    if ([_delegate respondsToSelector:@selector(dataManagerDidStartUpadating:)]) {
-        [_delegate dataManagerDidStartUpadating:self];
-    }
+    [[RKObjectManager sharedManager] getObjectsAtPath:DIGEST_JSON parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        self.rateAndWeather = [[mappingResult array] firstObject];
+        if (success) {
+            success();
+        }
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (fail){
+            NSLog(@"%@",error);
+            fail();
+        }
+    }];
 
 //    [[RemoteManager sharedManager] objectsForPath:DIGEST_JSON
 //        attributes:@{ @"sync_date" : _dateOfLastArticle }
@@ -294,31 +288,6 @@
 //                [article.managedObjectContext MR_saveOnlySelfAndWait];
 //            }
 //            [[NSNotificationCenter defaultCenter] postNotificationName:@"ViewsCountUpdated" object:nil];
-//        }
-//        fail:^(){
-//
-//        }];
-}
-
-- (void)upDateTeam
-{
-//    [[RemoteManager sharedManager] objectsForPath:TEAM_JSON
-//        attributes:nil
-//        success:^(NSArray* parsedTeam) {
-//            if ([parsedTeam count] == [_listOfEmployes count]) {
-//                for (int i = 0; i < [parsedTeam count]; i++) {
-//                    if ([[(Employe*)[_listOfEmployes objectAtIndex:i] identifire] intValue] != [[[parsedTeam objectAtIndex:i] valueForKey:@"id"] intValue]) {
-//                        Employe* employe = [Employe MR_findFirstByAttribute:@"identifire" withValue:[[_listOfEmployes objectAtIndex:i] identifire]];
-//                        [employe convertDataToEmployeModel:[parsedTeam objectAtIndex:i]];
-//                        [employe.managedObjectContext MR_saveOnlySelfAndWait];
-//                    }
-//                }
-//            }
-//            else {
-//                [Employe truncateAll];
-//                [self saveTeamToContext:parsedTeam];
-//            }
-//            [self fetchListOfEmployes];
 //        }
 //        fail:^(){
 //
