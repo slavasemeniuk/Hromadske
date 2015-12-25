@@ -9,35 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "Constants.h"
 #import "RateAndWeather.h"
-@protocol DataManangerDelagate;
 
 @interface DataManager : NSObject
 
-+ (DataManager*)sharedManager;
-
 @property (nonatomic, strong) RateAndWeather* rateAndWeather;
-- (void)fetchRemoteDigestWithCompletion: (void (^)(void))success fail:(void (^)(void))fail;
+@property NSString* articleCategory;
+@property NewsDetailsMode newsDetailsMode;
 
++ (DataManager*)sharedManager;
+- (void)fetchRemoteDigestWithCompletion: (void (^)(void))success fail:(void (^)(void))fail;
++ (void)fetchRemoteArticlesFromDate:(NSDate*)date andCount: (NSNumber*)count success:(void (^)(NSUInteger))success fail:(void (^)(void))fail;
 + (void)fetchRemoterEmploye;
 
 - (void)updateArticleWithId:(NSNumber*)identifire;
 - (NSArray*)getCategories;
-- (NSArray*)getArticlesWithCurrentCategories;
-- (void)fetchRemoteArticles;
-- (id)getRateAndWeather;
 
-@property (nonatomic, strong) NSArray* listOfArticles;
-@property (nonatomic, strong) NSString* streamingURL;
-@property NSString* articleCategory;
-@property NewsDetailsMode newsDetailsMode;
-@property (nonatomic, assign) id<DataManangerDelagate> delegate;
+//- (NSArray*)getArticlesWithCurrentCategories;
+
+//@property (nonatomic, strong) NSString* streamingURL;
 
 @end
 
-@protocol DataManangerDelagate <NSObject>
-
-@optional
-- (void)dataManagerDidStartUpadating:(DataManager*)manager;
-- (void)dataManager:(DataManager*)manager didFinishUpdatingArticles:(NSArray*)listOfArticles;
-- (void)dataManagerDidFaildUpadating:(DataManager*)manager;
-@end

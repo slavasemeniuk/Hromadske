@@ -34,18 +34,18 @@
         <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Articles" inverseName="photos" inverseEntity="Articles" syncable="YES"/>
     </entity>
     <entity name="RateAndWeather" representedClassName="RateAndWeather" syncable="YES">
-        <attribute name="rateEUR" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="rateUSD" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rateEUR" attributeType="String" defaultValueString="10.0" syncable="YES"/>
+        <attribute name="rateUSD" attributeType="String" defaultValueString="5.0" syncable="YES"/>
         <attribute name="streaming" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="weather" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="weatherType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weather" attributeType="String" defaultValueString="+5" syncable="YES"/>
+        <attribute name="weatherType" attributeType="String" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Video" representedClassName="Video" syncable="YES">
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Articles" inverseName="videos" inverseEntity="Articles" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Articles" positionX="7" positionY="-19" width="128" height="223"/>
+        <element name="Articles" positionX="7" positionY="-19" width="128" height="225"/>
         <element name="Categories" positionX="-162" positionY="288" width="128" height="75"/>
         <element name="Employe" positionX="-162" positionY="-18" width="128" height="118"/>
         <element name="Link" positionX="295" positionY="-63" width="128" height="73"/>

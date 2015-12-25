@@ -12,8 +12,6 @@
 
 + (DateFormatter *)sharedManager;
 
-- (NSDate *)convertToDateFromTimeStamp : (NSNumber *)value;
-
 - (NSString *)timeIntervalFromDate:(NSDate *)date1;
 
 - (NSString *)convertToTimeStamp: (NSDate *)date;

@@ -48,6 +48,7 @@
         
         NSURL* pathToPersistantStore = [[NSURL alloc] initWithString:RKApplicationDataDirectory()];
         pathToPersistantStore = [pathToPersistantStore URLByAppendingPathComponent:@"Hromadske 2.sqlite"];
+        NSLog(@"%@", RKApplicationDataDirectory());
         
         NSPersistentStore* persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath: pathToPersistantStore.absoluteString  fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
         

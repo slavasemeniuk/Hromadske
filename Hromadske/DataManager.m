@@ -74,12 +74,12 @@
     [self fetchListOfArticles];
     [self fetchLocalRateAndWeather];
 
-    if ([_listOfArticles count]) {
-        _dateOfLastArticle = [[DateFormatter sharedManager] convertToTimeStamp:[(Articles*)[_listOfArticles firstObject] created_at]];
-    }
-    else {
-        _dateOfLastArticle = @"1";
-    }
+//    if ([_listOfArticles count]) {
+//        _dateOfLastArticle = [[DateFormatter sharedManager] convertToTimeStamp:[(Articles*)[_listOfArticles firstObject] created_at]];
+//    }
+//    else {
+//        _dateOfLastArticle = @"1";
+//    }
 }
 
 - (void)fetchListOfArticles
@@ -114,11 +114,6 @@
 //    }
 //}
 
-- (id)getRateAndWeather
-{
-    return _rateAndWeather;
-}
-
 - (void)fetchLocalRateAndWeather
 {
     NSError* error;
@@ -128,7 +123,6 @@
         self.rateAndWeather = [rateAndWeatherList firstObject];
     } else {
         RateAndWeather* rateAndWeather = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([RateAndWeather class]) inManagedObjectContext:[RestKitManager managedObkjectContext]];
-        [rateAndWeather createInitialRateAndWeather];
         self.rateAndWeather = rateAndWeather;
     }
 }
@@ -139,8 +133,28 @@
     [[RKObjectManager sharedManager] getObjectsAtPath:TEAM_JSON parameters:nil success:nil failure:nil];
 }
 
-- (void)fetchRemoteArticles
++ (void)fetchRemoteArticlesFromDate:(NSDate*)date andCount: (NSNumber*)count success:(void (^)(NSUInteger))success fail:(void (^)(void))fail
 {
+    NSDictionary* params;
+    if (count && date) {
+        params = @{@"sync_date" : [[DateFormatter sharedManager] convertToTimeStamp:date], @"per_page" : [NSString stringWithFormat:@"%i",count.intValue]};
+    }
+    if (count && !date) {
+        params = @{@"per_page" : [NSString stringWithFormat:@"%i",count.intValue]};
+    }
+    if (!count && date) {
+        params = @{@"sync_date" : [[DateFormatter sharedManager] convertToTimeStamp:date]};
+    }
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:ARTICKE_JSON parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        if (success) {
+            success(mappingResult.array.count);
+        }
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (fail) {
+            fail();
+        }
+    }];
 //    [[RemoteManager sharedManager] objectsForPath:ARTICKE_JSON
 //        attributes:@{ @"sync_date" : _dateOfLastArticle,
 //            @"per_page" : @"100" }

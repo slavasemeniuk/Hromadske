@@ -10,6 +10,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "NetworkTracker.h"
 #import "DateFormatter.h"
+#import "RestKitManager.h"
 #import "NewArticlesView.h"
 #import "StreamView.h"
 #import "ControllersManager.h"
@@ -18,12 +19,11 @@
 #import "Articles.h"
 #import "Categories.h"
 
-@interface NewsViewController () <UITableViewDataSource, UITableViewDelegate, DataManangerDelagate> {
-    NSMutableArray* _tableViewsData;
+@interface NewsViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate> {
     NewArticlesView* _newArticlesView;
-    NSInteger _countNewArticles;
     NSString* _currentCategory;
 }
+@property (strong, nonatomic)  NSFetchedResultsController* fetchedResultsController;
 @property (weak, nonatomic) IBOutlet UITableView* tableView;
 @property (strong, nonatomic) UIRefreshControl* pullToReferesh;
 @end
@@ -33,36 +33,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[DataManager sharedManager] setDelegate:self];
     [self setUpViews];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableViweData) name:@"ViewsCountUpdated" object:nil];
     [self setUpData];
-    _currentCategory = [[DataManager sharedManager] articleCategory];
-//    [[DataManager sharedManager] fetchRemoteDigest];
+//    _currentCategory = [[DataManager sharedManager] articleCategory];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (![[DataManager sharedManager].articleCategory isEqualToString:_currentCategory]) {
-        _currentCategory = [[DataManager sharedManager] articleCategory];
-        [self setUpData];
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-    }
+//    if (![[DataManager sharedManager].articleCategory isEqualToString:_currentCategory]) {
+//        _currentCategory = [[DataManager sharedManager] articleCategory];
+//        [self setUpData];
+//        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+//    }
 }
 
 #pragma mark Views
 - (void)setUpStreamView
 {
-    if ([[DataManager sharedManager] streamingURL]) {
-        StreamView* streamView = [[StreamView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
-        [streamView loadVideoStreamWithUrl:[[DataManager sharedManager] streamingURL]];
-        self.tableView.tableHeaderView = streamView;
-    }
-    else {
-        self.tableView.tableHeaderView = nil;
-    }
+//    if ([[DataManager sharedManager] streamingURL]) {
+//        StreamView* streamView = [[StreamView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+//        [streamView loadVideoStreamWithUrl:[[DataManager sharedManager] streamingURL]];
+//        self.tableView.tableHeaderView = streamView;
+//    }
+//    else {
+//        self.tableView.tableHeaderView = nil;
+//    }
 }
 
 - (void)setUpViews
@@ -70,7 +66,7 @@
     [self setUpStreamView];
     [_tableView registerNib:[UINib nibWithNibName:@"NewsTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsCell"];
     _pullToReferesh = [[UIRefreshControl alloc] init];
-//    [_pullToReferesh addTarget:[DataManager sharedManager] action:@selector(fetchRemoteDigest) forControlEvents:UIControlEventValueChanged];
+    [_pullToReferesh addTarget:self action:@selector(fetchRemoteArticles) forControlEvents:UIControlEventValueChanged];
     [_tableView addSubview:_pullToReferesh];
 }
 - (void)showNewArticleBage:(NSInteger)count
@@ -87,59 +83,52 @@
     [_newArticlesView newArticles:count];
 }
 
-- (void)hideNewArticlesBage
-{
-    [_newArticlesView setHidden:YES];
-}
-
 - (void)goToTop
 {
     [_tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-    [self hideNewArticlesBage];
+     [_newArticlesView setHidden:YES];
 }
 
 #pragma mark DATA
 
 - (void)setUpData
 {
-//    _tableViewsData = [NSMutableArray arrayWithArray:[[DataManager sharedManager] getArticlesWithCurrentCategories]];
+    NSError *error = nil;
+    [self.fetchedResultsController performFetch:&error];
+    
+    if (error) {
+        NSLog(@"Unable to perform fetch.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+        return;
+    }
+    [self fetchRemoteArticles];
 }
 
-- (void)reloadTableViweData
-{
-    [_tableView reloadData];
-}
-
-- (void)dataManagerDidStartUpadating:(DataManager*)manager
+- (void)fetchRemoteArticles
 {
     if (![_pullToReferesh isRefreshing]) {
         [_pullToReferesh beginRefreshing];
     }
-}
-- (void)dataManager:(DataManager*)manager didFinishUpdatingArticles:(NSArray*)listOfArticles
-{
-    [self setUpStreamView];
-
-    _countNewArticles = [listOfArticles count];
-    if (_countNewArticles > 0 && _tableView.contentOffset.y > 0) {
-        [self showNewArticleBage:_countNewArticles];
+    NSDate* date;
+    NSNumber* count;
+    if ([[[self.fetchedResultsController sections] objectAtIndex: 0] numberOfObjects] == 0) {
+        count = [NSNumber numberWithInt:30];
+    } else {
+        date = [(Articles*)[[[self.fetchedResultsController sections] objectAtIndex:0] objects].firstObject created_at];
     }
-    else {
-        [self hideNewArticlesBage];
-    }
+    
+    [DataManager fetchRemoteArticlesFromDate:date andCount:count success:^(NSUInteger countOfNews) {
+        if (countOfNews>0) {
+            [self showNewArticleBage:countOfNews];
+        } else {
+            [_newArticlesView setHidden:YES];
+        }
 
-    for (int i = 0; i < [listOfArticles count]; i++) {
-        [_tableViewsData insertObject:[listOfArticles objectAtIndex:i] atIndex:i];
-    }
-
-    [_tableView reloadData];
-    [_pullToReferesh endRefreshing];
-}
-
-- (void)dataManagerDidFaildUpadating:(DataManager*)manager
-{
-    [_pullToReferesh endRefreshing];
-}
+        [_pullToReferesh endRefreshing];
+    } fail:^{
+        [_pullToReferesh endRefreshing];
+    }];
+   }
 
 #pragma mark - HandleUserInteratcionAccordingMenu
 
@@ -160,13 +149,13 @@
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_tableViewsData count];
+    return [[[self.fetchedResultsController sections] objectAtIndex: section] numberOfObjects];
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     NewsTableViewCell* newsCell = [tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
-    Articles* article = [_tableViewsData objectAtIndex:indexPath.row];
+    Articles* article = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [newsCell.title setText:article.title];
     [newsCell.shortDescription setText:article.short_description];
     [newsCell.viewsCount setText:[article.views_count stringValue]];
@@ -194,7 +183,7 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    Articles* article = [_tableViewsData objectAtIndex:indexPath.row];
+    Articles* article = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if ([NetworkTracker isReachable] || (article.content)) {
         NewsDetailsViewController* details = (NewsDetailsViewController*)[[ControllersManager sharedManager] viewControllerWithIdentefier:NSStringFromClass([NewsDetailsViewController class])];
         details.article = article;
@@ -210,5 +199,70 @@
     [_tableView reloadData];
     [_tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
+
+#pragma mark - FetchedResultController
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:NSStringFromClass([Articles class]) inManagedObjectContext:[RestKitManager managedObkjectContext]];
+    [fetchRequest setEntity:entity];
+    
+    [fetchRequest setFetchLimit:10];
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
+                              initWithKey:@"created_at" ascending:NO];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
+    NSFetchedResultsController *theFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:[RestKitManager managedObkjectContext] sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    
+    self.fetchedResultsController = theFetchedResultsController;
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
+    
+}
+
+#pragma mark - FetchedResultControllerDelegate
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [_tableView beginUpdates];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [_tableView endUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    switch (type) {
+        case NSFetchedResultsChangeInsert: {
+            [_tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeDelete: {
+            [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeUpdate: {
+            [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+        case NSFetchedResultsChangeMove: {
+            if(![indexPath isEqual:newIndexPath]){
+                [_tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
+            }
+            break;
+        }
+    }
+}
+
 
 @end

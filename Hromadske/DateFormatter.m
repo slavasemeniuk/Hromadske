@@ -44,12 +44,6 @@
     return self;
 }
 
-- (NSDate *)convertToDateFromTimeStamp:(NSNumber *)value{
-    double timestamp = [value doubleValue];
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
-    return date;
-}
-
 - (NSString *)convertToTimeStamp: (NSDate *)date{
     NSTimeInterval timeInterval = [date timeIntervalSince1970];
     NSString *res = [NSString stringWithFormat:@"%f",timeInterval];

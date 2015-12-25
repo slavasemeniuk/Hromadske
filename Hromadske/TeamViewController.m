@@ -10,7 +10,6 @@
 #import "TeamViewCell.h"
 #import "Employe.h"
 #import "DataManager.h"
-#import <CoreData/CoreData.h>
 #import "RestKitManager.h"
 #import <UIImageView+AFNetworking.h>
 

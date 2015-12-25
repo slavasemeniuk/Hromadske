@@ -28,19 +28,6 @@
 		849F82761AE955ED00EF2125 /* StreamView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F82751AE955ED00EF2125 /* StreamView.m */; };
 		849F82781AE9562200EF2125 /* StreamView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849F82771AE9562200EF2125 /* StreamView.xib */; };
 		84A159951AF002F8008AD999 /* kopilka.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A159941AF002F8008AD999 /* kopilka.jpg */; };
-		84A159971AF00A3E008AD999 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159961AF00A3E008AD999 /* GoogleMaps.framework */; };
-		84A159991AF00B97008AD999 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84A159981AF00B97008AD999 /* GoogleMaps.bundle */; };
-		84A159A61AF00D0C008AD999 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A1599A1AF00D0C008AD999 /* AVFoundation.framework */; };
-		84A159A71AF00D0C008AD999 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A1599B1AF00D0C008AD999 /* CoreData.framework */; };
-		84A159A81AF00D0C008AD999 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A1599C1AF00D0C008AD999 /* CoreLocation.framework */; };
-		84A159A91AF00D0C008AD999 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A1599D1AF00D0C008AD999 /* CoreText.framework */; };
-		84A159AA1AF00D0C008AD999 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A1599E1AF00D0C008AD999 /* GLKit.framework */; };
-		84A159AB1AF00D0C008AD999 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A1599F1AF00D0C008AD999 /* ImageIO.framework */; };
-		84A159AC1AF00D0C008AD999 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A01AF00D0C008AD999 /* libc++.dylib */; };
-		84A159AD1AF00D0C008AD999 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A11AF00D0C008AD999 /* libicucore.dylib */; };
-		84A159AE1AF00D0C008AD999 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A21AF00D0C008AD999 /* libz.dylib */; };
-		84A159AF1AF00D0C008AD999 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A31AF00D0C008AD999 /* OpenGLES.framework */; };
-		84A159B01AF00D0C008AD999 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A41AF00D0C008AD999 /* QuartzCore.framework */; };
 		84A159B11AF00D0C008AD999 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A159A51AF00D0C008AD999 /* SystemConfiguration.framework */; };
 		84A9972E1AC9DA03007876F1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A9972D1AC9DA03007876F1 /* BaseViewController.m */; };
 		84C22FD61AB77282006C8C2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C22FD51AB77282006C8C2E /* main.m */; };
@@ -68,8 +55,6 @@
 		8A0CE7E61C2C0E880061B463 /* Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0CE7E11C2C0E880061B463 /* Categories.m */; };
 		8A0CE7EF1C2C0E910061B463 /* _Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0CE7EA1C2C0E910061B463 /* _Categories.m */; };
 		8A1D64411C29A74A0002BCB6 /* RestKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1D64401C29A74A0002BCB6 /* RestKitManager.m */; };
-		929081C21B03792E00AB8736 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 929081C11B03792E00AB8736 /* libsqlite3.dylib */; };
-		929081C41B03798000AB8736 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 929081C31B03798000AB8736 /* libGoogleAnalyticsServices.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,21 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				929081C21B03792E00AB8736 /* libsqlite3.dylib in Frameworks */,
-				84A159A61AF00D0C008AD999 /* AVFoundation.framework in Frameworks */,
-				84A159A71AF00D0C008AD999 /* CoreData.framework in Frameworks */,
-				84A159A81AF00D0C008AD999 /* CoreLocation.framework in Frameworks */,
-				84A159A91AF00D0C008AD999 /* CoreText.framework in Frameworks */,
-				84A159AA1AF00D0C008AD999 /* GLKit.framework in Frameworks */,
-				84A159AB1AF00D0C008AD999 /* ImageIO.framework in Frameworks */,
-				84A159AC1AF00D0C008AD999 /* libc++.dylib in Frameworks */,
-				84A159AD1AF00D0C008AD999 /* libicucore.dylib in Frameworks */,
-				84A159AE1AF00D0C008AD999 /* libz.dylib in Frameworks */,
-				84A159AF1AF00D0C008AD999 /* OpenGLES.framework in Frameworks */,
-				929081C41B03798000AB8736 /* libGoogleAnalyticsServices.a in Frameworks */,
-				84A159B01AF00D0C008AD999 /* QuartzCore.framework in Frameworks */,
 				84A159B11AF00D0C008AD999 /* SystemConfiguration.framework in Frameworks */,
-				84A159971AF00A3E008AD999 /* GoogleMaps.framework in Frameworks */,
 				43759B4762AA269357A4E50D /* libPods-Hromadske.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,7 +530,6 @@
 				84C30A8A1ACF38E000D44E8C /* NewsTableViewCell.xib in Resources */,
 				84C22FE41AB77283006C8C2E /* Images.xcassets in Resources */,
 				849F82781AE9562200EF2125 /* StreamView.xib in Resources */,
-				84A159991AF00B97008AD999 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

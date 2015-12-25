@@ -77,12 +77,11 @@
 
 - (void)refreshData
 {
-    RateAndWeather* data = [[DataManager sharedManager] getRateAndWeather];
-    NSString* format = [NSString stringWithFormat:@"%.02f", [data.rateUSD floatValue]];
+    NSString* format = [NSString stringWithFormat:@"%.02f", [[[DataManager sharedManager] rateAndWeather].rateUSD floatValue]];
     [_usdRate setText:format];
-    format = [NSString stringWithFormat:@"%.02f", [data.rateEUR floatValue]];
+    format = [NSString stringWithFormat:@"%.02f", [[[DataManager sharedManager] rateAndWeather].rateEUR floatValue]];
     [_eurRate setText:format];
-    [_temperature setText:[NSString stringWithFormat:@"%@", data.weather]];
+    [_temperature setText:[NSString stringWithFormat:@"%@", [[DataManager sharedManager] rateAndWeather].weather]];
 }
 
 #pragma mark - Table view data source
