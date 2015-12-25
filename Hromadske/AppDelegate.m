@@ -15,7 +15,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <Parse/Parse.h>
 #import <iRate/iRate.h>
-#import "GAI.h"
+#import <Google/Analytics.h>
 
 @implementation AppDelegate
 
@@ -36,8 +36,10 @@
     [self setupGoogleAnalytics];
 
     [DataManager sharedManager];
+    [[DataManager sharedManager] fetchRemoteDigestWithCompletion:nil fail:nil];
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    
     self.window.rootViewController = [[ControllersManager sharedManager] revealController];
 
     [self setUpParse:application launchOptions:launchOptions];
@@ -47,10 +49,11 @@
 
 - (void)setupGoogleAnalytics
 {
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [[GAI sharedInstance] setTrackUncaughtExceptions:YES]; // report uncaught exceptions
+    [GAI sharedInstance].logger.logLevel = kGAILogLevelVerbose;  // remove before app release
+    [[GAI sharedInstance] trackerWithTrackingId: @"UA-46233904-2"];
     [GAI sharedInstance].dispatchInterval = 20;
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-46233904-2"];
+
 }
 
 - (void)setUpParse:(UIApplication*)application launchOptions:(NSDictionary*)launchOptions

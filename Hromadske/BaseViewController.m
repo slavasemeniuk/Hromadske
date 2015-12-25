@@ -31,6 +31,7 @@
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor blackColor]];
 }
 
+
 - (BOOL)shouldAutorotate
 {
     return NO;
@@ -41,6 +42,12 @@
     return (UIInterfaceOrientationMaskPortrait);
 }
 
+//Should be overriden in subclasses
+- (void)disableUserInteractionInViews {}
+
+-(void)enableUserInteractionInViews {}
+
+#pragma mark RevealControllerDelegate
 - (void)revealController:(SWRevealViewController *)revealController willMoveToPosition:(FrontViewPosition)position{
     if(position == FrontViewPositionLeft) {
          [self enableUserInteractionInViews];
@@ -51,8 +58,6 @@
 
 }
 
-
-
 - (void) revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position{
     if(position == FrontViewPositionLeft) {
         [self enableUserInteractionInViews];
@@ -61,6 +66,8 @@
         [self disableUserInteractionInViews];
     }
 }
+
+
 
 
 @end

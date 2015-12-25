@@ -8,11 +8,11 @@
 
 #import "NetworkTracker.h"
 #import "Constants.h"
-#import <AFNetworking/AFNetworking.h>
+#import "Reachability.h"
 
 @interface NetworkTracker()
 {
-//    AFNetworkReachabilityStatus _networkStatus;
+    NetworkStatus _networkStatus;
 }
 
 @end
@@ -28,48 +28,52 @@
     
     return __manager;
 }
-
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        [self setUp];
+        [self startNetworkTracker];
     }
     return self;
 }
 
--(void)setUp{
-//    _networkStatus = AFNetworkReachabilityStatusNotReachable;
-//    [self startNetworkTracker];
+- (void)startNetworkTracker
+{
+    Reachability* reach = [Reachability reachabilityWithHostname:base_URL];
+    
+    reach.reachableBlock = ^(Reachability* reach) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _networkStatus = reach.currentReachabilityStatus;
+            NSLog(@"REACHABLE!");
+        });
+    };
+    
+    reach.unreachableBlock = ^(Reachability* reach) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"UNREACHABLE!");
+            _networkStatus = reach.currentReachabilityStatus;
+        });
+    };
+    [reach startNotifier];
 }
 
--(void)startNetworkTracker
+- (NetworkStatus)status
 {
-//    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:API_URL]];
-//    [manager.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status){
-//        _networkStatus=status;
-//    }];
-//    [manager.reachabilityManager startMonitoring];
+    return _networkStatus;
 }
-//
-//-(AFNetworkReachabilityStatus) status{
-//    return _networkStatus;
-//}
 
 + (BOOL)isReachable
 {
-//    AFNetworkReachabilityStatus status = [[NetworkTracker sharedManager] status];
-//    if ((status==AFNetworkReachabilityStatusReachableViaWiFi) || (status==AFNetworkReachabilityStatusReachableViaWWAN)) {
-//        return YES;
-//    }
+    NetworkStatus status = [[NetworkTracker sharedManager] status];
+    if (status != 0) {
+        return YES;
+    }
     return NO;
 }
 
-
--(void)dealloc
+- (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
 
 @end
