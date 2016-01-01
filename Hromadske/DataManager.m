@@ -15,7 +15,6 @@
 #import "Constants.h"
 #import "Employe.h"
 #import "HelpProject.h"
-#import "Articles.h"
 #import "Contacts.h"
 #import "Categories.h"
 
@@ -239,53 +238,22 @@
 
 #pragma mark Updating local data
 
-- (void)updateArticleWithId:(NSNumber*)identifire
++ (void)updateArticleWithId:(NSNumber*)identifire succes:(void (^)(Articles*))success fail:(void (^)(void))fail
 {
-//    Articles* article = [Articles MR_findFirstByAttribute:@"id" withValue:identifire];
-//    NSString* path = [NSString stringWithFormat:@"%@/%@", ARTICKE_JSON, article.id.stringValue];
-//    [[RemoteManager sharedManager] dicrtionaryForPath:path
-//        attributes:nil
-//        success:^(NSDictionary* updatedArticle) {
-//
-//            article.views_count = [updatedArticle valueForKey:@"views_count"];
-//
-//            NSNull* n = [[NSNull alloc] init];
-//            if (![[updatedArticle valueForKey:@"content"] isEqual:n]) {
-//                article.content = [updatedArticle valueForKey:@"content"];
-//            }
-//
-//            if ([[updatedArticle valueForKey:@"content"] isEqual:n] && [article getLink]) {
-//                article.content = @"link";
-//            }
-//
-//            if ([[updatedArticle valueForKey:@"content"] isEqual:n] && ![article getLink]) {
-//                NSDataDetector* detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
-//                NSArray* matches = [detector matchesInString:article.short_description options:0 range:NSMakeRange(0, [article.short_description length])];
-//
-//                NSString* short_description = article.short_description;
-//
-//                for (NSTextCheckingResult* match in matches) {
-//                    NSString* link = [[match URL] absoluteString];
-//                    NSString* html_link = [NSString stringWithFormat:@"<a href='%@'>%@</a>", link, link];
-//                    short_description = [short_description stringByReplacingOccurrencesOfString:link withString:html_link];
-//                }
-//
-//                NSMutableString* imageHtmlContent = [NSMutableString string];
-//                NSArray* arrayOfImages = [article.photos allObjects];
-//
-//                for (int i = 0; i < [arrayOfImages count]; i++) {
-//                    NSString* imageContent = [NSString stringWithFormat:HTMLITEMIMAGE, [(Photo*)[arrayOfImages objectAtIndex:i] url]];
-//                    [imageHtmlContent appendString:imageContent];
-//                    NSLog(@"%@", imageHtmlContent);
-//                }
-//                article.content = [NSString stringWithFormat:HTML_CONTENT_WITH_IMAGE, article.title, imageHtmlContent, short_description];
-//            }
-//            [article.managedObjectContext MR_saveOnlySelfAndWait];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshDataNotification" object:nil];
-//        }
-//        fail:^(){
-//
-//        }];
+    NSString* path = [ARTICLE_DETAIL stringByReplacingOccurrencesOfString:@":id" withString:identifire.stringValue];
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        Articles* article = [[mappingResult array] firstObject];
+        if (success) {
+            success(article);
+        }
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (fail){
+            NSLog(@"%@",error);
+            fail();
+        }
+
+    }];
 }
 
 - (void)updateViewsCount

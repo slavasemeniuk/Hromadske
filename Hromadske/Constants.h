@@ -15,6 +15,7 @@ typedef enum {
 static NSString* const base_URL = @"http://178.62.205.247/v1/";
 static NSString* const API_GOOGLE = @"AIzaSyCbYvIR377tNF-b7Flggn5r0N3A0qzVPyE";
 static NSString* const ARTICKE_JSON = @"articles";
+static NSString* const ARTICLE_DETAIL = @"articles/:id";
 static NSString* const TEAM_JSON = @"info/team";
 static NSString* const DIGEST_JSON = @"info/digest";
 static NSString* const HELP_URL = @"http://hromadske.cherkasy.ua/dopomogti";

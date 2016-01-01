@@ -6,6 +6,7 @@
 const struct RateAndWeatherAttributes RateAndWeatherAttributes = {
 	.rateEUR = @"rateEUR",
 	.rateUSD = @"rateUSD",
+	.streaming = @"streaming",
 	.weather = @"weather",
 	.weatherType = @"weatherType",
 };
@@ -42,6 +43,8 @@ const struct RateAndWeatherAttributes RateAndWeatherAttributes = {
 @dynamic rateEUR;
 
 @dynamic rateUSD;
+
+@dynamic streaming;
 
 @dynamic weather;
 

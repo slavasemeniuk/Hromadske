@@ -6,6 +6,8 @@
 const struct ArticlesAttributes ArticlesAttributes = {
 	.content = @"content",
 	.created_at = @"created_at",
+	.customContent = @"customContent",
+	.downloaded = @"downloaded",
 	.id = @"id",
 	.short_description = @"short_description",
 	.title = @"title",
@@ -47,6 +49,11 @@ const struct ArticlesRelationships ArticlesRelationships = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 
+	if ([key isEqualToString:@"downloadedValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"downloaded"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"idValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"id"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -74,6 +81,28 @@ const struct ArticlesRelationships ArticlesRelationships = {
 @dynamic content;
 
 @dynamic created_at;
+
+@dynamic customContent;
+
+@dynamic downloaded;
+
+- (BOOL)downloadedValue {
+	NSNumber *result = [self downloaded];
+	return [result boolValue];
+}
+
+- (void)setDownloadedValue:(BOOL)value_ {
+	[self setDownloaded:@(value_)];
+}
+
+- (BOOL)primitiveDownloadedValue {
+	NSNumber *result = [self primitiveDownloaded];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveDownloadedValue:(BOOL)value_ {
+	[self setPrimitiveDownloaded:@(value_)];
+}
 
 @dynamic id;
 

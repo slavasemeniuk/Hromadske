@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F27" minimumToolsVersion="Automatic">
     <entity name="Articles" representedClassName="Articles" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="customContent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="short_description" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -45,7 +46,7 @@
         <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Articles" inverseName="videos" inverseEntity="Articles" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Articles" positionX="7" positionY="-19" width="128" height="225"/>
+        <element name="Articles" positionX="7" positionY="-19" width="128" height="240"/>
         <element name="Categories" positionX="-162" positionY="288" width="128" height="75"/>
         <element name="Employe" positionX="-162" positionY="-18" width="128" height="118"/>
         <element name="Link" positionX="295" positionY="-63" width="128" height="73"/>

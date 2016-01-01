@@ -4,5 +4,7 @@
 
 + (NSArray*)identificationAttributes;
 + (NSArray*)mappingArray;
++ (NSArray*)detailMapping;
 
+- (NSString*)getContent;
 @end

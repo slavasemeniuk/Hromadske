@@ -115,8 +115,15 @@
         RKResponseDescriptor* articleResponceDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:articlesMapping method:RKRequestMethodGET pathPattern:ARTICKE_JSON keyPath:@"data" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [manager addResponseDescriptor:articleResponceDescriptor];
         
+        RKEntityMapping* articleDetailsMapping = articlesMapping;
+        [articlesMapping addAttributeMappingsFromArray:[Articles detailMapping]];
+        RKResponseDescriptor* articleDetailRepsonsceDescr = [RKResponseDescriptor responseDescriptorWithMapping:articleDetailsMapping method:RKRequestMethodGET pathPattern:ARTICLE_DETAIL keyPath:@"data" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [manager addResponseDescriptor:articleDetailRepsonsceDescr];
+        
         RKResponseDescriptor* digestResponceDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:rateAndWeatherMapping method:RKRequestMethodGET pathPattern:DIGEST_JSON keyPath:@"data" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        
         [manager addResponseDescriptor:digestResponceDescriptor];
+        
         [manager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
             RKPathMatcher* pathMatcher = [RKPathMatcher pathMatcherWithPattern:DIGEST_JSON];
             if ([pathMatcher matchesPath:URL.relativePath tokenizeQueryStrings:NO parsedArguments:nil]) {

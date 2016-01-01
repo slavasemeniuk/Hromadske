@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Constants.h"
 #import "RateAndWeather.h"
+#import "Articles.h"
 
 @interface DataManager : NSObject
 
@@ -21,7 +22,7 @@
 + (void)fetchRemoteArticlesFromDate:(NSDate*)date andCount: (NSNumber*)count success:(void (^)(NSUInteger))success fail:(void (^)(void))fail;
 + (void)fetchRemoterEmploye;
 
-- (void)updateArticleWithId:(NSNumber*)identifire;
++ (void)updateArticleWithId:(NSNumber*)identifire succes:(void (^)(Articles*))success fail:(void (^)(void))fail;
 - (NSArray*)getCategories;
 
 //- (NSArray*)getArticlesWithCurrentCategories;

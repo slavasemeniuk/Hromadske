@@ -12,6 +12,7 @@
 
 @interface NetworkTracker()
 {
+    Reachability* _reach;
     NetworkStatus _networkStatus;
 }
 
@@ -39,36 +40,20 @@
 
 - (void)startNetworkTracker
 {
-    Reachability* reach = [Reachability reachabilityWithHostname:base_URL];
-    
-    reach.reachableBlock = ^(Reachability* reach) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _networkStatus = reach.currentReachabilityStatus;
-            NSLog(@"REACHABLE!");
-        });
-    };
-    
-    reach.unreachableBlock = ^(Reachability* reach) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"UNREACHABLE!");
-            _networkStatus = reach.currentReachabilityStatus;
-        });
-    };
-    [reach startNotifier];
+    if (!_reach) {
+        _reach = [Reachability reachabilityWithHostName:base_URL];
+    }
+    [_reach startNotifier];
 }
 
 - (NetworkStatus)status
 {
-    return _networkStatus;
+    return [_reach isReachable];
 }
 
 + (BOOL)isReachable
 {
-    NetworkStatus status = [[NetworkTracker sharedManager] status];
-    if (status != 0) {
-        return YES;
-    }
-    return NO;
+    return [[NetworkTracker sharedManager] status];
 }
 
 - (void)dealloc

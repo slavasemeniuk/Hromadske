@@ -11,6 +11,7 @@
 #import "DataManager.h"
 #import "ControllersManager.h"
 #import "Constants.h"
+#import "Link.h"
 #import "Articles.h"
 #import "SQTShyNavigationBar.h"
 #import <WebKit/WebKit.h>
@@ -29,11 +30,10 @@
     [super viewDidLoad];
     [self setUpViewController];
     [self updateCurrentMode];
-    if (_article.content) {
+    if (_article.viewed) {
         [self loadWebViewContent];
     }
     else {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataLoaded) name:@"refreshDataNotification" object:nil];
         [self loadData];
     }
 }
@@ -41,7 +41,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [DataManager sharedManager].newsDetailsMode = _mode;
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
@@ -55,7 +54,7 @@
     _webView = nil;
 }
 
-#pragma mark - VIEW CONTROLLER
+#pragma mark - VIEWCONTROLLER
 - (void)setUpViewController
 {
     if ([DataManager sharedManager].newsDetailsMode != NewsDetailsModeNone) {
@@ -89,29 +88,27 @@
 #pragma mark - DATA
 - (void)loadData
 {
-    if (!_article.content) {
-        [self showLoader:YES];
-        [[DataManager sharedManager] updateArticleWithId:_article.id];
-    }
-}
-- (void)dataLoaded
-{
-    [self showLoader:NO];
-    [self loadWebViewContent];
+    [self showLoader:YES];
+    [DataManager updateArticleWithId:_article.id succes:^(Articles *article) {
+        _article = article;
+        [self showLoader:NO];
+        [self loadWebViewContent];
+    } fail:nil];
 }
 
 - (void)loadWebViewContent
 {
-//    if (![_article.content isEqual:@"link"]) {
-//        NSString* template = _mode == NewsDetailsModeDay ? HTMLDETAILS_DAY : HTMLDETAILS_NIGHT;
-//        NSString* htmlContent = [NSString stringWithFormat:@"%@%@%@", template, _article.content, HTMLDETAILS_WRAP];
-//        [_webView loadHTMLString:htmlContent baseURL:[NSURL URLWithString:HROMADSKE_URL]];
-//    }
-//    else if ([_article getLink]) {
-//        NSString* url = [[NSString alloc] initWithString:[_article getLink]];
-//        NSURLRequest* request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-//        [_webView loadRequest:request];
-//    }
+    NSString* content = [_article getContent];
+    if (![content isEqual:@"link"]) {
+        NSString* template = _mode == NewsDetailsModeDay ? HTMLDETAILS_DAY : HTMLDETAILS_NIGHT;
+        NSString* htmlContent = [NSString stringWithFormat:@"%@%@%@", template, content, HTMLDETAILS_WRAP];
+        [_webView loadHTMLString:htmlContent baseURL:[NSURL URLWithString:HROMADSKE_URL]];
+    }
+    else if (_article.links.allObjects.firstObject) {
+        NSString* url = [[NSString alloc] initWithString:[(Link*)_article.links.allObjects.firstObject url]];
+        NSURLRequest* request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+        [_webView loadRequest:request];
+    }
 }
 
 #pragma mark - MODE
@@ -165,7 +162,7 @@
             _loader.loaderColor = [UIColor whiteColor];
         }
     }
-
+    
     if (yes) {
         [_loader showLoader];
     }
