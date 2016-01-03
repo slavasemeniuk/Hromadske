@@ -98,7 +98,7 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:NSStringFromClass([Employe class]) inManagedObjectContext:[RestKitManager managedObkjectContext]];
+                                   entityForName:NSStringFromClass([Employe class]) inManagedObjectContext:[RestKitManager managedObjectContext]];
     [fetchRequest setEntity:entity];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
@@ -107,7 +107,7 @@
     
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                        managedObjectContext:[RestKitManager managedObkjectContext] sectionNameKeyPath:nil
+                                        managedObjectContext:[RestKitManager managedObjectContext] sectionNameKeyPath:nil
                                                    cacheName:nil];
     
     self.fetchedResultsController = theFetchedResultsController;

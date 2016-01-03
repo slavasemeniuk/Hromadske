@@ -11,10 +11,7 @@
 #import "Reachability.h"
 
 @interface NetworkTracker()
-{
-    Reachability* _reach;
-    NetworkStatus _networkStatus;
-}
+@property Reachability *reach;
 
 @end
 @implementation NetworkTracker
@@ -40,20 +37,21 @@
 
 - (void)startNetworkTracker
 {
-    if (!_reach) {
-        _reach = [Reachability reachabilityWithHostName:base_URL];
-    }
+    _reach = [Reachability reachabilityWithHostName:@"http://178.62.205.247"];
     [_reach startNotifier];
 }
 
 - (NetworkStatus)status
 {
-    return [_reach isReachable];
+    return [_reach currentReachabilityStatus];
 }
 
 + (BOOL)isReachable
 {
-    return [[NetworkTracker sharedManager] status];
+    if([[NetworkTracker sharedManager] status] == NotReachable) {
+        return NO;
+    }
+    return YES;
 }
 
 - (void)dealloc

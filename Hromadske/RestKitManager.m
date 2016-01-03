@@ -139,7 +139,7 @@
     return self;
 }
 
-+ (NSManagedObjectContext*) managedObkjectContext {
++ (NSManagedObjectContext*) managedObjectContext {
     return [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
 }
 

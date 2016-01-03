@@ -58,32 +58,10 @@
     _newsDetailsMode = NewsDetailsModeNone;
 }
 
-#pragma mark SAVING
-- (void)saveRatesAndWeatherToContext:(NSArray*)data
-{
-//    RateAndWeather* rateAndWeather = [RateAndWeather MR_findFirst];
-//    [rateAndWeather updateRateAndWeather:data];
-//    [rateAndWeather.managedObjectContext MR_saveOnlySelfAndWait];
-}
-
-
 #pragma mark - FetchingLocalData
 - (void)fetchLocalData
 {
-    [self fetchListOfArticles];
     [self fetchLocalRateAndWeather];
-
-//    if ([_listOfArticles count]) {
-//        _dateOfLastArticle = [[DateFormatter sharedManager] convertToTimeStamp:[(Articles*)[_listOfArticles firstObject] created_at]];
-//    }
-//    else {
-//        _dateOfLastArticle = @"1";
-//    }
-}
-
-- (void)fetchListOfArticles
-{
-//    _listOfArticles = [Articles MR_findAllSortedBy:@"created_at" ascending:NO];
 }
 
 //- (NSArray* )fetchCategories
@@ -117,11 +95,11 @@
 {
     NSError* error;
     NSFetchRequest* fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([RateAndWeather class])];
-    NSArray* rateAndWeatherList = [[RestKitManager managedObkjectContext] executeFetchRequest:fetchRequest error:&error];
+    NSArray* rateAndWeatherList = [[RestKitManager managedObjectContext] executeFetchRequest:fetchRequest error:&error];
     if (rateAndWeatherList.count > 0) {
         self.rateAndWeather = [rateAndWeatherList firstObject];
     } else {
-        RateAndWeather* rateAndWeather = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([RateAndWeather class]) inManagedObjectContext:[RestKitManager managedObkjectContext]];
+        RateAndWeather* rateAndWeather = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([RateAndWeather class]) inManagedObjectContext:[RestKitManager managedObjectContext]];
         self.rateAndWeather = rateAndWeather;
     }
 }
@@ -154,36 +132,6 @@
             fail();
         }
     }];
-//    [[RemoteManager sharedManager] objectsForPath:ARTICKE_JSON
-//        attributes:@{ @"sync_date" : _dateOfLastArticle,
-//            @"per_page" : @"100" }
-//        success:^(NSArray* parsedArticles) {
-//            NSMutableArray* newArticles = [NSMutableArray array];
-//            NSManagedObjectContext* context = nil;
-//            for (int i = 0; i < [parsedArticles count]; i++) {
-//                Articles* article = [Articles MR_createEntity];
-//                [article createArticlesDataModel:[parsedArticles objectAtIndex:i]];
-//                context = article.managedObjectContext;
-//                [newArticles addObject:article];
-//            }
-//            [context MR_saveToPersistentStoreAndWait];
-//
-//            [self updateViewsCount];
-//
-//            if ([newArticles count]) {
-//                _dateOfLastArticle = [[DateFormatter sharedManager] convertToTimeStamp:[(Articles*)[newArticles firstObject] created_at]];
-//            }
-//
-//            if ([_delegate respondsToSelector:@selector(dataManager:didFinishUpdatingArticles:)]) {
-//                [_delegate dataManager:self didFinishUpdatingArticles:newArticles];
-//            }
-//
-//        }
-//        fail:^() {
-//            if ([_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)]) {
-//                [_delegate dataManagerDidFaildUpadating:self];
-//            }
-//        }];
 }
 
 - (void)fetchRemoteDigestWithCompletion: (void (^)(void))success fail:(void (^)(void))fail
@@ -201,13 +149,6 @@
         }
     }];
 
-//    [[RemoteManager sharedManager] objectsForPath:DIGEST_JSON
-//        attributes:@{ @"sync_date" : _dateOfLastArticle }
-//        success:^(NSArray* parsedDigest) {
-//
-//            [self saveRatesAndWeatherToContext:parsedDigest];
-//            [self fetchLocalRateAndWeather];
-//
 //            NSNull* null = [[NSNull alloc] init];
 //            if ([[parsedDigest valueForKey:@"streaming"] firstObject] != null) {
 //                _streamingURL = [[parsedDigest valueForKey:@"streaming"] firstObject];
@@ -216,24 +157,6 @@
 //                _streamingURL = nil;
 //            }
 //
-//            if (![[[parsedDigest valueForKey:@"new_entries_count"] firstObject] isEqual:@"0"]) {
-//                [self fetchRemoteArticles];
-//            }
-//            else {
-//                [self updateViewsCount];
-//                if ([_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)]) {
-//                    [_delegate dataManagerDidFaildUpadating:self];
-//                }
-//            }
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"DigestUpdated" object:nil];
-//
-//        }
-//        fail:^{
-//            if ([_delegate respondsToSelector:@selector(dataManagerDidFaildUpadating:)]) {
-//                [_delegate dataManagerDidFaildUpadating:self];
-//            }
-//
-//        }];
 }
 
 #pragma mark Updating local data
@@ -254,26 +177,6 @@
         }
 
     }];
-}
-
-- (void)updateViewsCount
-{
-//    NSString* count = [NSString stringWithFormat:@"%lu", (unsigned long)[Articles MR_countOfEntities]];
-//    [self fetchListOfArticles];
-//    [[RemoteManager sharedManager] objectsForPath:ARTICKE_JSON
-//        attributes:@{ @"sync_date" : @"1",
-//            @"per_page" : count }
-//        success:^(NSArray* parsedArticles) {
-//            for (int i = 0; i < [parsedArticles count]; i++) {
-//                Articles* article = [_listOfArticles objectAtIndex:i];
-//                article.views_count = [[parsedArticles objectAtIndex:i] valueForKey:@"views_count"];
-//                [article.managedObjectContext MR_saveOnlySelfAndWait];
-//            }
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"ViewsCountUpdated" object:nil];
-//        }
-//        fail:^(){
-//
-//        }];
 }
 
 @end

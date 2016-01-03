@@ -12,6 +12,6 @@
 @interface RestKitManager : NSObject
 
 + (RestKitManager*)sharedManager;
-+ (NSManagedObjectContext*) managedObkjectContext;
++ (NSManagedObjectContext*) managedObjectContext;
 
 @end

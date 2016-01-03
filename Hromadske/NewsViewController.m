@@ -6,14 +6,16 @@
 //  Copyright (c) 2015 Semeniuk Sviatoslav. All rights reserved.
 //
 
-#import "NewsViewController.h"
+#import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 #import <UIImageView+AFNetworking.h>
+#import "NewsViewController.h"
 #import "NetworkTracker.h"
 #import "DateFormatter.h"
 #import "RestKitManager.h"
 #import "NewArticlesView.h"
 #import "StreamView.h"
 #import "ControllersManager.h"
+#import "Photo.h"
 #import "DataManager.h"
 #import "NewsTableViewCell.h"
 #import "Articles.h"
@@ -22,6 +24,8 @@
 @interface NewsViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate> {
     NewArticlesView* _newArticlesView;
     NSString* _currentCategory;
+    NSUInteger* fetchLimit;
+    
 }
 @property (strong, nonatomic)  NSFetchedResultsController* fetchedResultsController;
 @property (weak, nonatomic) IBOutlet UITableView* tableView;
@@ -65,9 +69,12 @@
 {
     [self setUpStreamView];
     [_tableView registerNib:[UINib nibWithNibName:@"NewsTableViewCell" bundle:nil] forCellReuseIdentifier:@"NewsCell"];
+    
     _pullToReferesh = [[UIRefreshControl alloc] init];
+    
     [_pullToReferesh addTarget:self action:@selector(fetchRemoteArticles) forControlEvents:UIControlEventValueChanged];
-    [_tableView addSubview:_pullToReferesh];
+    
+    [_tableView insertSubview:_pullToReferesh atIndex:0];
 }
 - (void)showNewArticleBage:(NSInteger)count
 {
@@ -130,6 +137,11 @@
     }];
    }
 
+- (void)handleBottomRefresh
+{
+    
+}
+
 #pragma mark - HandleUserInteratcionAccordingMenu
 
 -(void)disableUserInteractionInViews{
@@ -164,11 +176,16 @@
         [newsCell.category setText:article.category.name];
     }
 
-//    NSURLRequest* imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[article getImageUrl]]
-//                                                  cachePolicy:NSURLRequestReturnCacheDataElseLoad
-//                                              timeoutInterval:60];
-//    [newsCell.image_view setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
-
+    if (article.photos.count > 0) {
+        NSURLRequest* imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[(Photo*)article.photos.allObjects.firstObject url]]
+                                                      cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                                  timeoutInterval:60];
+        [newsCell.image_view setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
+    } else {
+        newsCell.image_view.image = [UIImage imageNamed:@"gromadsketv.jpg"];
+    }
+    
+    
     if (article.viewed.boolValue == NO) {
         [newsCell unviewed];
     };
@@ -206,7 +223,7 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:NSStringFromClass([Articles class]) inManagedObjectContext:[RestKitManager managedObkjectContext]];
+                                   entityForName:NSStringFromClass([Articles class]) inManagedObjectContext:[RestKitManager managedObjectContext]];
     [fetchRequest setEntity:entity];
     
     [fetchRequest setFetchLimit:10];
@@ -217,7 +234,7 @@
     
     NSFetchedResultsController *theFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                        managedObjectContext:[RestKitManager managedObkjectContext] sectionNameKeyPath:nil
+                                        managedObjectContext:[RestKitManager managedObjectContext] sectionNameKeyPath:nil
                                                    cacheName:nil];
     
     self.fetchedResultsController = theFetchedResultsController;
@@ -225,6 +242,26 @@
     
     return _fetchedResultsController;
     
+}
+
+#pragma mark - ScrollView delegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    float bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+    if (bottomEdge >= scrollView.contentSize.height-350) {
+        NSUInteger count = [[[self.fetchedResultsController sections] firstObject] numberOfObjects];
+        self.fetchedResultsController.fetchRequest.fetchLimit = count + 10;
+        NSError* error;
+        [self.fetchedResultsController performFetch:&error];
+        if (error) {
+            NSLog(@"Unable to perform fetch.");
+            NSLog(@"%@, %@", error, error.localizedDescription);
+            return;
+        } else {
+            [_tableView reloadData];
+        }
+
+    }
 }
 
 #pragma mark - FetchedResultControllerDelegate

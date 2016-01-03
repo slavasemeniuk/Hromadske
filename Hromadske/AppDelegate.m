@@ -35,6 +35,8 @@
     [GMSServices provideAPIKey:API_GOOGLE];
     [self setupGoogleAnalytics];
 
+    NSLog(@"%@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory  inDomains:NSUserDomainMask] lastObject]);
+    
     [DataManager sharedManager];
     [[DataManager sharedManager] fetchRemoteDigestWithCompletion:nil fail:nil];
 
