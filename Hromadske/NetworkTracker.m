@@ -9,16 +9,17 @@
 #import "NetworkTracker.h"
 #import "Constants.h"
 #import "Reachability.h"
-
-@interface NetworkTracker()
-@property Reachability *reach;
+@interface NetworkTracker () {
+    NetworkStatus _networkStatus;
+    Reachability *reach;
+}
 
 @end
 @implementation NetworkTracker
 
-
-+ (NetworkTracker *)sharedManager {
-    static NetworkTracker *__manager = nil;
++ (NetworkTracker*)sharedManager
+{
+    static NetworkTracker* __manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         __manager = [[NetworkTracker alloc] init];
@@ -26,6 +27,7 @@
     
     return __manager;
 }
+
 - (instancetype)init
 {
     self = [super init];
@@ -37,26 +39,22 @@
 
 - (void)startNetworkTracker
 {
-    _reach = [Reachability reachabilityWithHostName:@"http://178.62.205.247"];
-    [_reach startNotifier];
+    reach = [Reachability reachabilityWithHostName:@"www.google.com"];
+    [reach startNotifier];
 }
 
 - (NetworkStatus)status
 {
-    return [_reach currentReachabilityStatus];
+    return [reach currentReachabilityStatus];
 }
 
 + (BOOL)isReachable
 {
-    if([[NetworkTracker sharedManager] status] == NotReachable) {
-        return NO;
+    NetworkStatus status = [[NetworkTracker sharedManager] status];
+    if (status != 0) {
+        return YES;
     }
-    return YES;
-}
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    return NO;
 }
 
 @end

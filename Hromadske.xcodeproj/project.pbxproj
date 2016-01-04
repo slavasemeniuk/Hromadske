@@ -54,7 +54,7 @@
 		8A0CE7E61C2C0E880061B463 /* Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0CE7E11C2C0E880061B463 /* Categories.m */; };
 		8A0CE7EF1C2C0E910061B463 /* _Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0CE7EA1C2C0E910061B463 /* _Categories.m */; };
 		8A1D64411C29A74A0002BCB6 /* RestKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1D64401C29A74A0002BCB6 /* RestKitManager.m */; };
-		8A2C44F91C2D849000274E0A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C44F81C2D849000274E0A /* Reachability.m */; };
+		8ACD937A1C3AAEBB000A733C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ACD93791C3AAEBB000A733C /* SystemConfiguration.framework */; };
 		F989AFDF1C399B410021B6B4 /* gromadsketv.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F989AFDE1C399B410021B6B4 /* gromadsketv.jpg */; };
 /* End PBXBuildFile section */
 
@@ -157,8 +157,7 @@
 		8A0CE7EA1C2C0E910061B463 /* _Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Categories.m; sourceTree = "<group>"; };
 		8A1D643F1C29A74A0002BCB6 /* RestKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestKitManager.h; sourceTree = "<group>"; };
 		8A1D64401C29A74A0002BCB6 /* RestKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestKitManager.m; sourceTree = "<group>"; };
-		8A2C44F71C2D849000274E0A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		8A2C44F81C2D849000274E0A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		8ACD93791C3AAEBB000A733C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C1AD7FFDC3FB61C4705150C0 /* libPods-Hromadske.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hromadske.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F989AFDE1C399B410021B6B4 /* gromadsketv.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gromadsketv.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ACD937A1C3AAEBB000A733C /* SystemConfiguration.framework in Frameworks */,
 				43759B4762AA269357A4E50D /* libPods-Hromadske.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,8 +299,6 @@
 		84C22FD31AB77282006C8C2E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8A2C44F71C2D849000274E0A /* Reachability.h */,
-				8A2C44F81C2D849000274E0A /* Reachability.m */,
 				84C22FD41AB77282006C8C2E /* Info.plist */,
 				84C22FD51AB77282006C8C2E /* main.m */,
 			);
@@ -378,6 +376,7 @@
 		D800507DE9DBD1A7AE84A1C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8ACD93791C3AAEBB000A733C /* SystemConfiguration.framework */,
 				C1AD7FFDC3FB61C4705150C0 /* libPods-Hromadske.a */,
 			);
 			name = Frameworks;
@@ -533,7 +532,6 @@
 				8436031C1AEA629600EC66EA /* NewArticlesView.m in Sources */,
 				8A0CE7D31C2BE6660061B463 /* Employe.m in Sources */,
 				8A0CE7DB1C2BE6660061B463 /* _Photo.m in Sources */,
-				8A2C44F91C2D849000274E0A /* Reachability.m in Sources */,
 				84DB4E151AB7776400D7BA12 /* TeamViewController.m in Sources */,
 				84C22FD91AB77282006C8C2E /* AppDelegate.m in Sources */,
 				4F22658F1B876E1900FAC927 /* ParentNavController.m in Sources */,

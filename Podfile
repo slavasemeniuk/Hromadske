@@ -10,9 +10,11 @@ pod 'RestKit', '~> 0.25.0'
 pod 'PQFCustomLoaders', '~>1.1'
 pod 'Parse', '~> 1.10'
 pod 'iRate', '1.11.4'
+pod 'AppleReachability'
 pod 'SQTShyNavigationBar', '~>1.0'
 pod 'Google/Analytics', '~> 1.0.0'
 pod 'GoogleMaps'
+
 
 
 end
