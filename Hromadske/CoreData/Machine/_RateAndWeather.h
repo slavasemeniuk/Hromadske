@@ -7,6 +7,7 @@ extern const struct RateAndWeatherAttributes {
 	__unsafe_unretained NSString *rateEUR;
 	__unsafe_unretained NSString *rateUSD;
 	__unsafe_unretained NSString *streaming;
+	__unsafe_unretained NSString *streamingTitle;
 	__unsafe_unretained NSString *weather;
 	__unsafe_unretained NSString *weatherType;
 } RateAndWeatherAttributes;
@@ -32,6 +33,10 @@ extern const struct RateAndWeatherAttributes {
 
 //- (BOOL)validateStreaming:(id*)value_ error:(NSError**)error_;
 
+@property (nonatomic, strong) NSString* streamingTitle;
+
+//- (BOOL)validateStreamingTitle:(id*)value_ error:(NSError**)error_;
+
 @property (nonatomic, strong) NSString* weather;
 
 //- (BOOL)validateWeather:(id*)value_ error:(NSError**)error_;
@@ -52,6 +57,9 @@ extern const struct RateAndWeatherAttributes {
 
 - (NSString*)primitiveStreaming;
 - (void)setPrimitiveStreaming:(NSString*)value;
+
+- (NSString*)primitiveStreamingTitle;
+- (void)setPrimitiveStreamingTitle:(NSString*)value;
 
 - (NSString*)primitiveWeather;
 - (void)setPrimitiveWeather:(NSString*)value;

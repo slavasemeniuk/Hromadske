@@ -7,7 +7,6 @@ extern const struct ArticlesAttributes {
 	__unsafe_unretained NSString *content;
 	__unsafe_unretained NSString *created_at;
 	__unsafe_unretained NSString *customContent;
-	__unsafe_unretained NSString *downloaded;
 	__unsafe_unretained NSString *id;
 	__unsafe_unretained NSString *short_description;
 	__unsafe_unretained NSString *title;
@@ -48,14 +47,6 @@ extern const struct ArticlesRelationships {
 @property (nonatomic, strong) NSString* customContent;
 
 //- (BOOL)validateCustomContent:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSNumber* downloaded;
-
-@property (atomic) BOOL downloadedValue;
-- (BOOL)downloadedValue;
-- (void)setDownloadedValue:(BOOL)value_;
-
-//- (BOOL)validateDownloaded:(id*)value_ error:(NSError**)error_;
 
 @property (nonatomic, strong) NSNumber* id;
 
@@ -149,12 +140,6 @@ extern const struct ArticlesRelationships {
 
 - (NSString*)primitiveCustomContent;
 - (void)setPrimitiveCustomContent:(NSString*)value;
-
-- (NSNumber*)primitiveDownloaded;
-- (void)setPrimitiveDownloaded:(NSNumber*)value;
-
-- (BOOL)primitiveDownloadedValue;
-- (void)setPrimitiveDownloadedValue:(BOOL)value_;
 
 - (NSNumber*)primitiveId;
 - (void)setPrimitiveId:(NSNumber*)value;

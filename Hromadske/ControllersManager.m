@@ -47,7 +47,7 @@
         _revealViewController = [[SWRevealViewController alloc] initWithRearViewController:[self menu] frontViewController:nil];
         [self.revealViewController setRearViewRevealWidth:[self menu].view.frame.size.width - 40.0f];
 
-        NewsViewController* news = [self topViewControllerWithIdentefier:NSStringFromClass([NewsViewController class])];
+        NewsViewController* news = (NewsViewController* )[self topViewControllerWithIdentefier:NSStringFromClass([NewsViewController class])];
         _revealViewController.frontViewController = news;
     }
     return _revealViewController;

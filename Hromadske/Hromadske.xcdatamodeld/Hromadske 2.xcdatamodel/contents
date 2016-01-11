@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F27" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Automatic">
     <entity name="Articles" representedClassName="Articles" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
@@ -17,7 +17,7 @@
     </entity>
     <entity name="Categories" representedClassName="Categories" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="articles" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Articles" inverseName="category" inverseEntity="Articles" syncable="YES"/>
+        <relationship name="articles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Articles" inverseName="category" inverseEntity="Articles" syncable="YES"/>
     </entity>
     <entity name="Employe" representedClassName="Employe" syncable="YES">
         <attribute name="bio" optional="YES" attributeType="String" syncable="YES"/>
@@ -38,6 +38,7 @@
         <attribute name="rateEUR" attributeType="String" defaultValueString="10.0" syncable="YES"/>
         <attribute name="rateUSD" attributeType="String" defaultValueString="5.0" syncable="YES"/>
         <attribute name="streaming" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streamingTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weather" attributeType="String" defaultValueString="+5" syncable="YES"/>
         <attribute name="weatherType" attributeType="String" defaultValueString="0" syncable="YES"/>
     </entity>
@@ -51,7 +52,7 @@
         <element name="Employe" positionX="-162" positionY="-18" width="128" height="118"/>
         <element name="Link" positionX="295" positionY="-63" width="128" height="73"/>
         <element name="Photo" positionX="331" positionY="99" width="128" height="75"/>
-        <element name="RateAndWeather" positionX="162" positionY="-162" width="128" height="120"/>
+        <element name="RateAndWeather" positionX="162" positionY="-162" width="128" height="135"/>
         <element name="Video" positionX="313" positionY="251" width="128" height="75"/>
     </elements>
 </model>

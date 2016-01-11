@@ -21,7 +21,11 @@
     return self;
 }
 -(void)newArticles:(NSInteger)number{
-    [self.label setText:[NSString stringWithFormat:@"%ld",(long)number]];
+    if (number > 99) {
+        [self.label setText:@"99"];
+    } else {
+        [self.label setText:[NSString stringWithFormat:@"%ld",(long)number]];
+    }
 }
 
 @end

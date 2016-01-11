@@ -10,7 +10,7 @@
 
 + (NSDictionary*)mappingDictionary {
     
-    return @{@"weather.temperature" : @"weather", @"weather.type" : @"weatherType", @"rates.eur" : @"rateEUR", @"rates.usd" : @"rateUSD"};
+    return @{@"weather.temperature" : @"weather", @"weather.type" : @"weatherType", @"rates.eur" : @"rateEUR", @"rates.usd" : @"rateUSD", @"streaming" : @"streaming", @"streaming.title" : @"streamingTitle"};
     
 }
 

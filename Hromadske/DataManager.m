@@ -18,11 +18,6 @@
 #import "Contacts.h"
 #import "Categories.h"
 
-@interface DataManager ()
-@property (nonatomic, strong) NSString* dateOfLastArticle;
-
-@end
-
 @implementation DataManager
 
 + (DataManager*)sharedManager
@@ -46,50 +41,29 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void)setUp
 {
-    [self fetchLocalData];
+    [self fetchLocalRateAndWeather];
     _articleCategory = @"Всі новини";
     _newsDetailsMode = NewsDetailsModeNone;
 }
 
 #pragma mark - FetchingLocalData
-- (void)fetchLocalData
+
++ (NSArray*)getCategories
 {
-    [self fetchLocalRateAndWeather];
+    NSError* error;
+    NSFetchRequest* fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Categories class])];
+    NSArray* categoryList = [[RestKitManager managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    NSMutableArray* categoryStringList = [[NSMutableArray alloc] init];
+    for (Categories* category in categoryList) {
+        if (![category.name isEqualToString:@"uncategorized"]) {
+            [categoryStringList addObject:category.name];
+        }
+    }
+    
+    return categoryStringList;
 }
-
-//- (NSArray* )fetchCategories
-//{
-//    return [Categories MR_findAll];
-//}
-
-//- (NSArray*)getCategories
-//{
-//    NSArray *categoryList = [self fetchCategories];
-//    NSMutableArray* categoryStringList = [NSMutableArray array];
-//    for (Categories* category in categoryList) {
-//        if (![category.name isEqualToString:@"uncategorized"]) {
-//            [categoryStringList addObject:category.name];
-//        }
-//    }
-//    return categoryStringList;
-//}
-
-//- (NSArray*)getArticlesWithCurrentCategories
-//{
-//    if ([[DataManager sharedManager].articleCategory isEqualToString:@"Всі новини"]) {
-//        return _listOfArticles;
-//    }
-//    else {
-//        return [_listOfArticles filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"category.name==%@", _articleCategory]];
-//    }
-//}
 
 - (void)fetchLocalRateAndWeather
 {
@@ -110,21 +84,26 @@
     [[RKObjectManager sharedManager] getObjectsAtPath:TEAM_JSON parameters:nil success:nil failure:nil];
 }
 
-+ (void)fetchRemoteArticlesFromDate:(NSDate*)date andCount: (NSNumber*)count success:(void (^)(NSUInteger))success fail:(void (^)(void))fail
++ (void)fetchRemoteArticlesWithCount: (NSNumber*)count success:(void (^)(NSUInteger))success fail:(void (^)(void))fail
 {
     NSDictionary* params;
-    if (count && date) {
-        params = @{@"sync_date" : [[DateFormatter sharedManager] convertToTimeStamp:date], @"per_page" : [NSString stringWithFormat:@"%i",count.intValue]};
+    if (count && [[DataManager sharedManager] latestArticleDate]) {
+        params = @{@"sync_date" : [[DateFormatter sharedManager] convertToTimeStamp:[[DataManager sharedManager] latestArticleDate]], @"per_page" : [NSString stringWithFormat:@"%i",count.intValue]};
     }
-    if (count && !date) {
+    
+    if (count && ![[DataManager sharedManager] latestArticleDate]) {
         params = @{@"per_page" : [NSString stringWithFormat:@"%i",count.intValue]};
     }
-    if (!count && date) {
-        params = @{@"sync_date" : [[DateFormatter sharedManager] convertToTimeStamp:date]};
+    
+    if (!count && [[DataManager sharedManager] latestArticleDate]) {
+        params = @{@"sync_date" : [[DateFormatter sharedManager] convertToTimeStamp:[[DataManager sharedManager] latestArticleDate]]};
     }
     
     [[RKObjectManager sharedManager] getObjectsAtPath:ARTICKE_JSON parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         if (success) {
+            if (mappingResult.array.count > 0) {
+                [[DataManager sharedManager] setLatestArticleDate:[(Articles*)mappingResult.array.firstObject created_at]];
+            }
             success(mappingResult.array.count);
         }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -149,14 +128,6 @@
         }
     }];
 
-//            NSNull* null = [[NSNull alloc] init];
-//            if ([[parsedDigest valueForKey:@"streaming"] firstObject] != null) {
-//                _streamingURL = [[parsedDigest valueForKey:@"streaming"] firstObject];
-//            }
-//            else {
-//                _streamingURL = nil;
-//            }
-//
 }
 
 #pragma mark Updating local data

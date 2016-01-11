@@ -15,19 +15,18 @@
 
 @property (nonatomic, strong) RateAndWeather* rateAndWeather;
 @property NSString* articleCategory;
+@property NSDate* latestArticleDate;
 @property NewsDetailsMode newsDetailsMode;
 
 + (DataManager*)sharedManager;
 - (void)fetchRemoteDigestWithCompletion: (void (^)(void))success fail:(void (^)(void))fail;
-+ (void)fetchRemoteArticlesFromDate:(NSDate*)date andCount: (NSNumber*)count success:(void (^)(NSUInteger))success fail:(void (^)(void))fail;
++ (void)fetchRemoteArticlesWithCount: (NSNumber*)count success:(void (^)(NSUInteger))success fail:(void (^)(void))fail;
 + (void)fetchRemoterEmploye;
++ (NSArray*)getCategories;
 
 + (void)updateArticleWithId:(NSNumber*)identifire succes:(void (^)(Articles*))success fail:(void (^)(void))fail;
-- (NSArray*)getCategories;
 
-//- (NSArray*)getArticlesWithCurrentCategories;
 
-//@property (nonatomic, strong) NSString* streamingURL;
 
 @end
 

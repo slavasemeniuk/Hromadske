@@ -46,9 +46,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[DataManager sharedManager] fetchRemoteDigestWithCompletion:^{
-        [self refreshData];
-    } fail:nil];
+//    [[DataManager sharedManager] fetchRemoteDigestWithCompletion:^{
+//        [self refreshData];
+//    } fail:nil];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
@@ -57,18 +57,19 @@
 {
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setUpViewController
 {
-    NSString* appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    NSString* appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     _version.text = [NSString stringWithFormat:@"Версія %@", appVersion];
 
     [_tableView registerNib:[UINib nibWithNibName:@"MenuItemCell" bundle:nil] forCellReuseIdentifier:@"menu_cell"];
 
     _newsCatagorySec = [NSMutableArray arrayWithArray:@[ @"Новини", @"Всі новини" ]];
-//    [_newsCatagorySec addObjectsFromArray:[[DataManager sharedManager] getCategories]];
+    
+    [_newsCatagorySec addObjectsFromArray:[DataManager getCategories]];
+    
 
     _menuItems = @[ @"Допомогти проекту", @"Команда", @"Контакти", @"Оцінити" ];
     _listOfMenuIcon = @[ @"menu-donate", @"menu-items-team", @"menu-contacts", @"menu-item-rate" ];

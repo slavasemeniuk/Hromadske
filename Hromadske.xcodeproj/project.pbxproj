@@ -33,7 +33,6 @@
 		84C22FD91AB77282006C8C2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C22FD81AB77282006C8C2E /* AppDelegate.m */; };
 		84C22FDC1AB77283006C8C2E /* Hromadske.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84C22FDA1AB77283006C8C2E /* Hromadske.xcdatamodeld */; };
 		84C22FE41AB77283006C8C2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C22FE31AB77283006C8C2E /* Images.xcassets */; };
-		84C22FF31AB77283006C8C2E /* HromadskeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C22FF21AB77283006C8C2E /* HromadskeTests.m */; };
 		84C30A891ACF38E000D44E8C /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C30A871ACF38E000D44E8C /* NewsTableViewCell.m */; };
 		84C30A8A1ACF38E000D44E8C /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C30A881ACF38E000D44E8C /* NewsTableViewCell.xib */; };
 		84DB4E121AB7774100D7BA12 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4E111AB7774100D7BA12 /* NewsViewController.m */; };
@@ -57,16 +56,6 @@
 		8ACD937A1C3AAEBB000A733C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ACD93791C3AAEBB000A733C /* SystemConfiguration.framework */; };
 		F989AFDF1C399B410021B6B4 /* gromadsketv.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F989AFDE1C399B410021B6B4 /* gromadsketv.jpg */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		84C22FED1AB77283006C8C2E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 84C22FC81AB77282006C8C2E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 84C22FCF1AB77282006C8C2E;
-			remoteInfo = Hromadske;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1938097AA927F14D5DD9C3EF /* Pods-Hromadske.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hromadske.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hromadske/Pods-Hromadske.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,7 +104,6 @@
 		84C22FD81AB77282006C8C2E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		84C22FDB1AB77283006C8C2E /* Hromadske.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hromadske.xcdatamodel; sourceTree = "<group>"; };
 		84C22FE31AB77283006C8C2E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		84C22FEC1AB77283006C8C2E /* HromadskeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HromadskeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C22FF11AB77283006C8C2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C22FF21AB77283006C8C2E /* HromadskeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HromadskeTests.m; sourceTree = "<group>"; };
 		84C30A861ACF38E000D44E8C /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
@@ -169,13 +157,6 @@
 			files = (
 				8ACD937A1C3AAEBB000A733C /* SystemConfiguration.framework in Frameworks */,
 				43759B4762AA269357A4E50D /* libPods-Hromadske.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		84C22FE91AB77283006C8C2E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				84C22FD01AB77282006C8C2E /* hromadske.app */,
-				84C22FEC1AB77283006C8C2E /* HromadskeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -404,41 +384,18 @@
 			productReference = 84C22FD01AB77282006C8C2E /* hromadske.app */;
 			productType = "com.apple.product-type.application";
 		};
-		84C22FEB1AB77283006C8C2E /* HromadskeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 84C22FF91AB77283006C8C2E /* Build configuration list for PBXNativeTarget "HromadskeTests" */;
-			buildPhases = (
-				84C22FE81AB77283006C8C2E /* Sources */,
-				84C22FE91AB77283006C8C2E /* Frameworks */,
-				84C22FEA1AB77283006C8C2E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				84C22FEE1AB77283006C8C2E /* PBXTargetDependency */,
-			);
-			name = HromadskeTests;
-			productName = HromadskeTests;
-			productReference = 84C22FEC1AB77283006C8C2E /* HromadskeTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		84C22FC81AB77282006C8C2E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Semeniuk Sviatoslav";
 				TargetAttributes = {
 					84C22FCF1AB77282006C8C2E = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = MV56H6DF9X;
-					};
-					84C22FEB1AB77283006C8C2E = {
-						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = KLU94V4U4X;
-						TestTargetID = 84C22FCF1AB77282006C8C2E;
 					};
 				};
 			};
@@ -456,7 +413,6 @@
 			projectRoot = "";
 			targets = (
 				84C22FCF1AB77282006C8C2E /* Hromadske */,
-				84C22FEB1AB77283006C8C2E /* HromadskeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -476,13 +432,6 @@
 				84C22FE41AB77283006C8C2E /* Images.xcassets in Resources */,
 				849F82781AE9562200EF2125 /* StreamView.xib in Resources */,
 				F989AFDF1C399B410021B6B4 /* gromadsketv.jpg in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		84C22FEA1AB77283006C8C2E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,23 +514,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84C22FE81AB77283006C8C2E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				84C22FF31AB77283006C8C2E /* HromadskeTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		84C22FEE1AB77283006C8C2E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 84C22FCF1AB77282006C8C2E /* Hromadske */;
-			targetProxy = 84C22FED1AB77283006C8C2E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		84C22FF41AB77283006C8C2E /* Debug */ = {
@@ -605,6 +538,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -724,56 +658,6 @@
 			};
 			name = Release;
 		};
-		84C22FFA1AB77283006C8C2E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = HromadskeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hromadske.app/Hromadske";
-			};
-			name = Debug;
-		};
-		84C22FFB1AB77283006C8C2E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = HromadskeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hromadske.app/Hromadske";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -791,15 +675,6 @@
 			buildConfigurations = (
 				84C22FF71AB77283006C8C2E /* Debug */,
 				84C22FF81AB77283006C8C2E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		84C22FF91AB77283006C8C2E /* Build configuration list for PBXNativeTarget "HromadskeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				84C22FFA1AB77283006C8C2E /* Debug */,
-				84C22FFB1AB77283006C8C2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

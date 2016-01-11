@@ -37,30 +37,37 @@
     [super viewDidLoad];
     [self setUpViews];
     [self setUpData];
-//    _currentCategory = [[DataManager sharedManager] articleCategory];
+    _currentCategory = [[DataManager sharedManager] articleCategory];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    if (![[DataManager sharedManager].articleCategory isEqualToString:_currentCategory]) {
-//        _currentCategory = [[DataManager sharedManager] articleCategory];
-//        [self setUpData];
-//        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-//    }
+    if (![[DataManager sharedManager].articleCategory isEqualToString:_currentCategory]) {
+        _currentCategory = [[DataManager sharedManager] articleCategory];
+        
+        if (![_currentCategory  isEqual: @"Всі новини"]) {
+            self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"category.name == %@", _currentCategory];
+        } else {
+            self.fetchedResultsController.fetchRequest.predicate = nil;
+        }
+        [self performFetch];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+    }
 }
 
 #pragma mark Views
 - (void)setUpStreamView
 {
-//    if ([[DataManager sharedManager] streamingURL]) {
-//        StreamView* streamView = [[StreamView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
-//        [streamView loadVideoStreamWithUrl:[[DataManager sharedManager] streamingURL]];
-//        self.tableView.tableHeaderView = streamView;
-//    }
-//    else {
-//        self.tableView.tableHeaderView = nil;
-//    }
+    if ([[[DataManager sharedManager] rateAndWeather] streaming]) {
+        StreamView* streamView = [[StreamView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+        [streamView loadVideoStreamWithUrl:[[[DataManager sharedManager] rateAndWeather] streaming]];
+        self.tableView.tableHeaderView = streamView;
+    }
+    else {
+        self.tableView.tableHeaderView = nil;
+    }
 }
 
 - (void)setUpViews
@@ -74,6 +81,7 @@
     
     [_tableView insertSubview:_pullToReferesh atIndex:0];
 }
+
 - (void)showNewArticleBage:(NSInteger)count
 {
     if (!_newArticlesView) {
@@ -106,6 +114,9 @@
         NSLog(@"%@, %@", error, error.localizedDescription);
         return;
     }
+    
+    [[DataManager sharedManager] setLatestArticleDate:[(Articles*)[[[self.fetchedResultsController sections] objectAtIndex:0] objects].firstObject created_at]];
+    
     [self fetchRemoteArticles];
 }
 
@@ -114,15 +125,12 @@
     if (![_pullToReferesh isRefreshing]) {
         [_pullToReferesh beginRefreshing];
     }
-    NSDate* date;
     NSNumber* count;
     if ([[[self.fetchedResultsController sections] objectAtIndex: 0] numberOfObjects] == 0) {
-        count = [NSNumber numberWithInt:30];
-    } else {
-        date = [(Articles*)[[[self.fetchedResultsController sections] objectAtIndex:0] objects].firstObject created_at];
+        count = [NSNumber numberWithInt:100];
     }
     
-    [DataManager fetchRemoteArticlesFromDate:date andCount:count success:^(NSUInteger countOfNews) {
+    [DataManager fetchRemoteArticlesWithCount:count success:^(NSUInteger countOfNews) {
         if (countOfNews>0) {
             [self showNewArticleBage:countOfNews];
         } else {
@@ -249,16 +257,8 @@
     if (bottomEdge >= scrollView.contentSize.height-350) {
         NSUInteger count = [[[self.fetchedResultsController sections] firstObject] numberOfObjects];
         self.fetchedResultsController.fetchRequest.fetchLimit = count + 10;
-        NSError* error;
-        [self.fetchedResultsController performFetch:&error];
-        if (error) {
-            NSLog(@"Unable to perform fetch.");
-            NSLog(@"%@, %@", error, error.localizedDescription);
-            return;
-        } else {
-            [_tableView reloadData];
-        }
-
+        [self performFetch];
+        [self.tableView reloadData];
     }
 }
 
@@ -295,5 +295,15 @@
     }
 }
 
+- (void)performFetch {
+    NSError* error;
+    [self.fetchedResultsController performFetch:&error];
+    if (error) {
+        NSLog(@"Unable to perform fetch.");
+        NSLog(@"%@, %@", error, error.localizedDescription);
+        return;
+    }
+
+}
 
 @end

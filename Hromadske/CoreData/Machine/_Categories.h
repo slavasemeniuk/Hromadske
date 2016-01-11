@@ -26,9 +26,17 @@ extern const struct CategoriesRelationships {
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) Articles *articles;
+@property (nonatomic, strong) NSSet *articles;
 
-//- (BOOL)validateArticles:(id*)value_ error:(NSError**)error_;
+- (NSMutableSet*)articlesSet;
+
+@end
+
+@interface _Categories (ArticlesCoreDataGeneratedAccessors)
+- (void)addArticles:(NSSet*)value_;
+- (void)removeArticles:(NSSet*)value_;
+- (void)addArticlesObject:(Articles*)value_;
+- (void)removeArticlesObject:(Articles*)value_;
 
 @end
 
@@ -37,7 +45,7 @@ extern const struct CategoriesRelationships {
 - (NSString*)primitiveName;
 - (void)setPrimitiveName:(NSString*)value;
 
-- (Articles*)primitiveArticles;
-- (void)setPrimitiveArticles:(Articles*)value;
+- (NSMutableSet*)primitiveArticles;
+- (void)setPrimitiveArticles:(NSMutableSet*)value;
 
 @end

@@ -2,5 +2,4 @@
 
 @interface RateAndWeather : _RateAndWeather {}
 + (NSDictionary*) mappingDictionary;
-- (void) createInitialRateAndWeather;
 @end

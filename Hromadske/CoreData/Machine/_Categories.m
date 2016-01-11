@@ -44,5 +44,14 @@ const struct CategoriesRelationships CategoriesRelationships = {
 
 @dynamic articles;
 
+- (NSMutableSet*)articlesSet {
+	[self willAccessValueForKey:@"articles"];
+
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"articles"];
+
+	[self didAccessValueForKey:@"articles"];
+	return result;
+}
+
 @end
 
