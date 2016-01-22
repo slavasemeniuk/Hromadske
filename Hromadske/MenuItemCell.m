@@ -28,15 +28,15 @@
     [self.contentView setBackgroundColor:[UIColor clearColor]];
 }
 
-- (void)selectCell
-{
-    if (!_selected) {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    
+    if (selected) {
         [self.contentView setBackgroundColor:[UIColor colorWithRed:21.f / 255.0f green:21.f / 255.0f blue:21.f / 255.0f alpha:0.2f]];
     }
     else {
         [self.contentView setBackgroundColor:[UIColor clearColor]];
     }
-    _selected = !_selected;
+
 }
 
 @end

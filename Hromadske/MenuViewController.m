@@ -18,9 +18,8 @@
     NSArray* _arrayOfIdentifier;
     NSArray* _listOfMenuIcon;
     NSMutableArray* _newsCatagorySec;
-    NSIndexPath* _selectedIP;
     NSString* currentSubtitle;
-
+    
     BOOL _isShowingList;
     BOOL _showRotateAnimation;
 }
@@ -39,16 +38,16 @@
     [super viewDidLoad];
     [self setUpViewController];
     [self refreshData];
-
+    
     currentSubtitle = @"Всі новини";
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    [[DataManager sharedManager] fetchRemoteDigestWithCompletion:^{
-//        [self refreshData];
-//    } fail:nil];
+    //    [[DataManager sharedManager] fetchRemoteDigestWithCompletion:^{
+    //        [self refreshData];
+    //    } fail:nil];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
@@ -63,14 +62,14 @@
 {
     NSString* appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     _version.text = [NSString stringWithFormat:@"Версія %@", appVersion];
-
+    
     [_tableView registerNib:[UINib nibWithNibName:@"MenuItemCell" bundle:nil] forCellReuseIdentifier:@"menu_cell"];
-
+    
     _newsCatagorySec = [NSMutableArray arrayWithArray:@[ @"Новини", @"Всі новини" ]];
     
     [_newsCatagorySec addObjectsFromArray:[DataManager getCategories]];
     
-
+    
     _menuItems = @[ @"Допомогти проекту", @"Команда", @"Контакти", @"Оцінити" ];
     _listOfMenuIcon = @[ @"menu-donate", @"menu-items-team", @"menu-contacts", @"menu-item-rate" ];
     _arrayOfIdentifier = @[ @"HelpProjectViewController", @"TeamViewController", @"ContactsViewController" ];
@@ -118,7 +117,7 @@
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-
+    
     MenuItemCell* cell = [tableView dequeueReusableCellWithIdentifier:@"menu_cell" forIndexPath:indexPath];
     if (indexPath.section != 0) {
         [cell.title setText:[_menuItems objectAtIndex:indexPath.row]];
@@ -147,7 +146,7 @@
                                     }
                                     completion:NULL];
                 }
-
+                
             });
             [cell.icon setImage:[UIImage imageNamed:@"menu-items-news"]];
             [cell.title setText:[_newsCatagorySec objectAtIndex:indexPath.row]];
@@ -158,45 +157,40 @@
             [cell.subTitle setText:[_newsCatagorySec objectAtIndex:indexPath.row]];
         }
     }
-
+    
     return cell;
 }
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     MenuItemCell* cell = (MenuItemCell*)[tableView cellForRowAtIndexPath:indexPath];
-
+    
+    
     if (indexPath.section == 0 && indexPath.row == 0) {
         _isShowingList = !_isShowingList;
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-        [(MenuItemCell*)[tableView cellForRowAtIndexPath:_selectedIP] selectCell];
+        return;
     }
-    else {
-        [(MenuItemCell*)[tableView cellForRowAtIndexPath:_selectedIP] selectCell];
-        [cell selectCell];
-        _selectedIP = indexPath;
-
-        if (indexPath.section == 0 && indexPath.row != 0) {
-            [DataManager sharedManager].articleCategory = currentSubtitle = cell.subTitle.text;
-            [tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationTop];
-            _isShowingList = false;
-            [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-            [[ControllersManager sharedManager] showTopViewControllerWithIdentefier:@"NewsViewController"];
-            [(MenuItemCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] selectCell];
+    
+    if (indexPath.section == 0 && indexPath.row != 0) {
+        [DataManager sharedManager].articleCategory = currentSubtitle = cell.subTitle.text;
+        [tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:0 inSection:0] ] withRowAnimation:UITableViewRowAnimationTop];
+        _isShowingList = false;
+        [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+        [[ControllersManager sharedManager] showTopViewControllerWithIdentefier:@"NewsViewController"];
+    }
+    if (_isShowingList) {
+        _isShowingList = !_isShowingList;
+        [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    if (indexPath.section == 1) {
+        if (indexPath.row != 3) {
+            NSString* identefier = [_arrayOfIdentifier objectAtIndex:indexPath.row];
+            [[ControllersManager sharedManager] showTopViewControllerWithIdentefier:identefier];
         }
-        if (_isShowingList) {
-            _isShowingList = !_isShowingList;
-            [tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-        }
-        if (indexPath.section == 1) {
-            if (indexPath.row != 3) {
-                NSString* identefier = [_arrayOfIdentifier objectAtIndex:indexPath.row];
-                [[ControllersManager sharedManager] showTopViewControllerWithIdentefier:identefier];
-            }
-            else {
-                [[iRate sharedInstance] openRatingsPageInAppStore];
-                [iRate sharedInstance].ratedThisVersion = YES;
-            }
+        else {
+            [[iRate sharedInstance] openRatingsPageInAppStore];
+            [iRate sharedInstance].ratedThisVersion = YES;
         }
     }
 }

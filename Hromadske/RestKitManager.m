@@ -46,6 +46,11 @@
             abort();
         }
         
+        NSURL* pathToOldPersistantStore = [[NSURL alloc] initWithString:RKApplicationDataDirectory()];
+        pathToOldPersistantStore = [pathToOldPersistantStore URLByAppendingPathComponent:@"Hromadske.sqlite"];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[pathToOldPersistantStore absoluteString]])
+            [[NSFileManager defaultManager] removeItemAtURL:pathToOldPersistantStore error:&error];
+        
         NSURL* pathToPersistantStore = [[NSURL alloc] initWithString:RKApplicationDataDirectory()];
         pathToPersistantStore = [pathToPersistantStore URLByAppendingPathComponent:@"Hromadske 2.sqlite"];
         NSLog(@"%@", RKApplicationDataDirectory());
