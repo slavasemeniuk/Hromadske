@@ -54,7 +54,6 @@
 		8A0CE7EF1C2C0E910061B463 /* _Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A0CE7EA1C2C0E910061B463 /* _Categories.m */; };
 		8A1D64411C29A74A0002BCB6 /* RestKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A1D64401C29A74A0002BCB6 /* RestKitManager.m */; };
 		8ACD937A1C3AAEBB000A733C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ACD93791C3AAEBB000A733C /* SystemConfiguration.framework */; };
-		F989AFDF1C399B410021B6B4 /* gromadsketv.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F989AFDE1C399B410021B6B4 /* gromadsketv.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,7 +146,6 @@
 		8A1D64401C29A74A0002BCB6 /* RestKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestKitManager.m; sourceTree = "<group>"; };
 		8ACD93791C3AAEBB000A733C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C1AD7FFDC3FB61C4705150C0 /* libPods-Hromadske.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Hromadske.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F989AFDE1C399B410021B6B4 /* gromadsketv.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gromadsketv.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,7 +255,6 @@
 				8A0CE7B71C2BE6660061B463 /* CoreData */,
 				4F1FECDE1B6F93AD00E6865F /* Main.storyboard */,
 				4F1FECDA1B6F933900E6865F /* gradient.png */,
-				F989AFDE1C399B410021B6B4 /* gromadsketv.jpg */,
 				84A159941AF002F8008AD999 /* kopilka.jpg */,
 				847D71D21AE286EF000477FE /* Constants.h */,
 				84A356FA1ACDEF9E00A604F7 /* Managers */,
@@ -431,7 +428,6 @@
 				84C30A8A1ACF38E000D44E8C /* NewsTableViewCell.xib in Resources */,
 				84C22FE41AB77283006C8C2E /* Images.xcassets in Resources */,
 				849F82781AE9562200EF2125 /* StreamView.xib in Resources */,
-				F989AFDF1C399B410021B6B4 /* gromadsketv.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +619,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Pods/GoogleAnalytics/Libraries",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.timothykozak.hromadsk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timothykozak.hromads;
 				PRODUCT_NAME = hromadske;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -651,7 +647,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Pods/GoogleAnalytics/Libraries",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.timothykozak.hromadsk;
+				PRODUCT_BUNDLE_IDENTIFIER = com.timothykozak.hromads;
 				PRODUCT_NAME = hromadske;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

@@ -188,7 +188,7 @@
                                                   timeoutInterval:60];
         [newsCell.image_view setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
     } else {
-        newsCell.image_view.image = [UIImage imageNamed:@"gromadsketv.jpg"];
+        newsCell.image_view.image = [UIImage imageNamed:@"homelogo"];
     }
     
     
@@ -197,11 +197,6 @@
     };
 
     return newsCell;
-}
-
-- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
-{
-    return 356.f;
 }
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath

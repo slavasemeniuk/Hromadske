@@ -20,6 +20,10 @@
 {
     [super viewDidLoad];
     [self setUpMenuButton];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [ControllersManager sharedManager].revealController.delegate = self;
 }
 
@@ -53,17 +57,8 @@
 -(void)enableUserInteractionInViews {}
 
 #pragma mark RevealControllerDelegate
-- (void)revealController:(SWRevealViewController *)revealController willMoveToPosition:(FrontViewPosition)position{
-    if(position == FrontViewPositionLeft) {
-         [self enableUserInteractionInViews];
-   
-    } else {
-            [self disableUserInteractionInViews];
-    }
 
-}
-
-- (void) revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position{
+- (void) revealController:(SWRevealViewController *)revealController willMoveToPosition:(FrontViewPosition)position{
     if(position == FrontViewPositionLeft) {
         [self enableUserInteractionInViews];
         
