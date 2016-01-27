@@ -13,7 +13,6 @@
 #import "ParentNavController.h"
 #import "ContactsViewController.h"
 #import "HelpProjectViewController.h"
-#import "SQTShyNavigationBar.h"
 
 @interface ControllersManager ()
 
@@ -64,11 +63,8 @@
     [controller.view addGestureRecognizer:[self revealController].panGestureRecognizer];
     ParentNavController* navigation = nil;
 
-    navigation = [[ParentNavController alloc] initWithNavigationBarClass:[SQTShyNavigationBar class] toolbarClass:nil];
-    [navigation setViewControllers:@[ controller ] animated:NO];
+    navigation = [[ParentNavController alloc] initWithRootViewController:controller];
 
-    navigation.shyNavigationBar.shyHeight = 20.0f;
-    navigation.shyNavigationBar.fullHeight = 44.0f;
     return navigation;
 }
 

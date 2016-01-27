@@ -11,7 +11,7 @@
 #import "Employe.h"
 #import "DataManager.h"
 #import "RestKitManager.h"
-#import <UIImageView+AFNetworking.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface TeamViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 {
@@ -67,10 +67,11 @@
     Employe* employe = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell.label setText:employe.name];
     [cell.bio setText:employe.bio];
-    NSURLRequest* imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:employe.image]
-                                                  cachePolicy:NSURLRequestReturnCacheDataElseLoad
-                                              timeoutInterval:60];
-    [cell.imageview setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"avatar"] success:nil failure:nil];
+    
+    [cell.imageview sd_setImageWithURL: [NSURL URLWithString:employe.image]
+        placeholderImage:[UIImage imageNamed:@"avatar"]];
+    
+   
     return cell;
 }
 

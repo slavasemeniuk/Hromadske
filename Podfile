@@ -9,11 +9,13 @@ pod 'SWRevealViewController', :git => 'https://github.com/slavasemeniuk/SWReveal
 pod 'RestKit', '~> 0.25.0'
 pod 'PQFCustomLoaders', '~>1.1'
 pod 'Parse', '~> 1.10'
+pod 'GoogleMaps'
 pod 'iRate', '1.11.4'
 pod 'AppleReachability'
-pod 'SQTShyNavigationBar', '~>1.0'
+pod 'AMScrollingNavbar', '~>1.5.0'
 pod 'Google/Analytics', '~> 1.0.0'
-pod 'GoogleMaps'
+pod 'Google/Analytics', '~> 1.0.0'
+pod 'SDWebImage', '~> 3.7'
 
 
 

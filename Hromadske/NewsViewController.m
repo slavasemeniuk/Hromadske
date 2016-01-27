@@ -5,7 +5,7 @@
 //  Created by Admin on 16.03.15.
 //  Copyright (c) 2015 Semeniuk Sviatoslav. All rights reserved.
 //
-#import <UIImageView+AFNetworking.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "NewsViewController.h"
 #import "NetworkTracker.h"
 #import "DateFormatter.h"
@@ -183,10 +183,10 @@
     }
 
     if (article.photos.count > 0) {
-        NSURLRequest* imageRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[(Photo*)article.photos.allObjects.firstObject url]]
-                                                      cachePolicy:NSURLRequestReturnCacheDataElseLoad
-                                                  timeoutInterval:60];
-        [newsCell.image_view setImageWithURLRequest:imageRequest placeholderImage:[UIImage imageNamed:@"placeholder"] success:nil failure:nil];
+        [newsCell.image_view
+            sd_setImageWithURL: [NSURL URLWithString:[(Photo*)article.photos.allObjects.firstObject url]]
+            placeholderImage:[UIImage imageNamed:@"placeholder"]];
+         
     } else {
         newsCell.image_view.image = [UIImage imageNamed:@"homelogo"];
     }

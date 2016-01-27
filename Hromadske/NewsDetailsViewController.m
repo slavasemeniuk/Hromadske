@@ -13,7 +13,7 @@
 #import "Constants.h"
 #import "Link.h"
 #import "Articles.h"
-#import "SQTShyNavigationBar.h"
+#import "UIViewController+ScrollingNavbar.h"
 #import <WebKit/WebKit.h>
 
 @interface NewsDetailsViewController () <UIWebViewDelegate, UIScrollViewDelegate> {
@@ -28,6 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self followScrollView:_webView];
+    [self setUseSuperview:YES];
+    
     [self setUpViewController];
     [self updateCurrentMode];
     if (_article.viewed) {
@@ -45,7 +48,7 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    [self.navigationController.shyNavigationBar setToFullHeight:YES];
+    [self showNavBarAnimated:NO];
     if (_webView.isLoading) {
         [_webView stopLoading];
     }
@@ -194,19 +197,20 @@
     _webView.alpha = 1;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView*)scrollView
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
 {
-    [self.navigationController.shyNavigationBar scrollViewDidScroll:scrollView];
-}
-
-- (void)scrollViewDidScrollToTop:(UIScrollView*)scrollView
-{
-    [self.navigationController.shyNavigationBar setToFullHeight:YES];
+    [self showNavbar];
+    
+    return YES;
 }
 
 - (BOOL)shouldAutorotate
 {
     return YES;
+}
+
+- (void)dealloc {
+    [self stopFollowingScrollView];
 }
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < 90000
